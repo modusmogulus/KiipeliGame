@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://1nx4tihfphpr"]
+
+[resource]
+resource_name = "shoecol1"
+cull_mode = 2
+albedo_color = Color(0.906418, 0.329414, 0.496301, 1)
+roughness = 0.5

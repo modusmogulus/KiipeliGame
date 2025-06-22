@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bacn1lbfdnuug"
+path.s3tc="res://.godot/imported/aikuislukio_perhontalo xd godot_perho-laudat.png-f38217b12a617d840f6de7e5f642d90a.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "5b6badc8244b4eb94f6e8e0bd534d53a"
+}
+
+[deps]
+
+source_file="res://Models/Blender/aikuislukio_perhontalo xd godot_perho-laudat.png"
+dest_files=["res://.godot/imported/aikuislukio_perhontalo xd godot_perho-laudat.png-f38217b12a617d840f6de7e5f642d90a.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx8lyfe42b3y7"]
+
+[ext_resource type="Script" uid="uid://cp22lpbvd77nc" path="res://Entities/GoldGdt/KP_FootstepAudioPlayer.gd" id="1_n5squ"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n5squ"]
+radius = 0.185
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_n5squ")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_n5squ")
+
+[connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]

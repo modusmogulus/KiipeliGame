@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://fy4cdf36lgsd"]
+
+[ext_resource type="Texture2D" uid="uid://0g3f33htdvtt" path="res://Models/Characters/YOKYOPELI-KADET_vaasan_ruispalat_12kpl_2021-800x306-removebg-preview.png" id="1_bb4qx"]
+
+[resource]
+resource_name = "Material.006"
+cull_mode = 2
+albedo_texture = ExtResource("1_bb4qx")

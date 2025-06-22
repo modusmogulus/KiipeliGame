@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbdvfhw4h61eh"]
+
+[ext_resource type="Texture2D" uid="uid://udpimmiwpe3f" path="res://Models/Characters/YOKYOPELI-KADET_custom-toaster-skin-01.png" id="1_kqngq"]
+
+[resource]
+resource_name = "Material.004"
+cull_mode = 2
+albedo_texture = ExtResource("1_kqngq")
+metallic = 0.188976
+roughness = 0.0

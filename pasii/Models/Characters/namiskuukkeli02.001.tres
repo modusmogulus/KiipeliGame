@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://5r2c7qc0gro3"]
+
+[resource]
+resource_name = "namiskuukkeli02.001"
+cull_mode = 2
+albedo_color = Color(0.906343, 0.0217488, 0.164862, 1)
+roughness = 0.5

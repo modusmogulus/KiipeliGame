@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://boq4cm4rb51oq"]
+
+[ext_resource type="Texture2D" uid="uid://uk53w2t7ahh3" path="res://Models/Characters/YOKYOPELI-KADET_jackettex2.png" id="1_1vud2"]
+
+[resource]
+resource_name = "shirt3"
+cull_mode = 2
+albedo_color = Color(0.766211, 0.629439, 1, 1)
+metallic = 1.0
+metallic_texture = ExtResource("1_1vud2")
+metallic_texture_channel = 2
+roughness = 0.33054
+roughness_texture = ExtResource("1_1vud2")
+roughness_texture_channel = 1

@@ -1,0 +1,104 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bji4tac3tvkdr"
+path="res://.godot/imported/YOKYOPELI-KADET.glb-0aa28c47ef90d7f3c16ebc1e2ef58459.scn"
+
+[deps]
+
+source_file="res://Models/Characters/YOKYOPELI-KADET.glb"
+dest_files=["res://.godot/imported/YOKYOPELI-KADET.glb-0aa28c47ef90d7f3c16ebc1e2ef58459.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=false
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/Material.tres"
+},
+"Material.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/Material.002.tres"
+},
+"Material.004": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/Material.004.tres"
+},
+"Material.005": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/Material.005.tres"
+},
+"Material.006": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/Material.006.tres"
+},
+"gloves": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/gloves.tres"
+},
+"namiskuukkeli01.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/namiskuukkeli01.001.tres"
+},
+"namiskuukkeli02.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/namiskuukkeli02.001.tres"
+},
+"shirt": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/shirt.tres"
+},
+"shirt2": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/shirt2.tres"
+},
+"shirt3": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/shirt3.tres"
+},
+"shoecol1": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/shoecol1.tres"
+},
+"shoecol2": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/shoecol2.tres"
+},
+"skin": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/skin.tres"
+},
+"socks": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/socks.tres"
+},
+"trousers": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/Characters/trousers.tres"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1
