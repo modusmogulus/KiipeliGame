@@ -7,7 +7,7 @@ uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_nearest
 
 uniform float zNear = 2;
 uniform float zFar = 10.0;
-
+uniform float blur_strength = 1.0;
 uniform float width = 1.0;
 uniform bool addDepth = false;
 
@@ -38,6 +38,14 @@ void fragment() {
 	
 	float res = textureCavity(NORMAL_TEXTURE, SCREEN_UV, SCREEN_PIXEL_SIZE);
 	float scaled_depth = scaledDepth(DEPTH_TEXTURE, SCREEN_UV, INV_PROJECTION_MATRIX);
+	vec4 blur_color = vec4(0.0);
+	float blur_samples = 8.0;
+	for(float i = 0.0; i < blur_samples; i++){
+		float angle = (i / blur_samples) * PI * 2.0;
+		vec2 offset = vec2(cos(angle), sin(angle)) * blur_strength;
+		blur_color += texture(SCREEN_TEXTURE, SCREEN_UV + offset);
+	}
+	blur_color /= blur_samples;
 	
 	if (addDepth) {
 		ALBEDO = overlay(overlay(origin.rgb, vec3(res)), vec3(scaled_depth));
