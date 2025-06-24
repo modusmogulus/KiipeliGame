@@ -1,0 +1,92 @@
+[gd_resource type="AudioBusLayout" load_steps=10 format=3 uid="uid://bwwuocwv88m6c"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+ratio = 13.8
+gain = 10.9
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_j3pel"]
+resource_name = "PitchShift"
+pitch_scale = 0.5
+fft_size = 0
+
+[sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_g28q7"]
+resource_name = "BandPassFilter"
+cutoff_hz = 195.0
+resonance = 0.77
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_g28q7"]
+resource_name = "PitchShift"
+pitch_scale = 2.0
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_j3pel"]
+resource_name = "Delay"
+dry = 0.0
+tap1_level_db = -27.29
+tap1_pan = 0.0
+tap2_level_db = -6.0
+tap2_pan = 0.0
+feedback_active = true
+feedback_level_db = -26.78
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_n8wo2"]
+resource_name = "PitchShift"
+pitch_scale = 0.5
+oversampling = 6
+
+[sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_j3pel"]
+resource_name = "BandPassFilter"
+cutoff_hz = 60.0
+resonance = 0.57
+db = 3
+
+[sub_resource type="AudioEffectNotchFilter" id="AudioEffectNotchFilter_j3pel"]
+resource_name = "NotchFilter"
+cutoff_hz = 120.0
+resonance = 1.0
+gain = 4.0
+db = 3
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "Reverb"
+room_size = 1.0
+damping = 0.0
+spread = 0.18
+
+[resource]
+bus/1/name = &"Footsteps"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"RTReverb"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -14.6228
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/2/effect/0/enabled = false
+bus/2/effect/1/effect = SubResource("AudioEffectPitchShift_j3pel")
+bus/2/effect/1/enabled = false
+bus/2/effect/2/effect = SubResource("AudioEffectBandPassFilter_g28q7")
+bus/2/effect/2/enabled = true
+bus/3/name = &"RTReverbRefl"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -72.5235
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectPitchShift_g28q7")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectPitchShift_n8wo2")
+bus/3/effect/2/enabled = true
+bus/3/effect/3/effect = SubResource("AudioEffectBandPassFilter_j3pel")
+bus/3/effect/3/enabled = false
+bus/3/effect/4/effect = SubResource("AudioEffectNotchFilter_j3pel")
+bus/3/effect/4/enabled = true
+bus/3/effect/5/effect = SubResource("AudioEffectReverb_j3pel")
+bus/3/effect/5/enabled = true

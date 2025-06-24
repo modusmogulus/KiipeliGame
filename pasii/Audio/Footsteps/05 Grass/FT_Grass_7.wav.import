@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfgvf8bicxq6h"
+path="res://.godot/imported/FT_Grass_7.wav-e9df20dc955476f2b58fb802f9135447.sample"
+
+[deps]
+
+source_file="res://Audio/Footsteps/05 Grass/FT_Grass_7.wav"
+dest_files=["res://.godot/imported/FT_Grass_7.wav-e9df20dc955476f2b58fb802f9135447.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

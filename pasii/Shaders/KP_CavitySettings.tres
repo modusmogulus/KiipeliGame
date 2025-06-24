@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://brfxf4vi2mr4b"]
+
+[ext_resource type="Shader" uid="uid://dhsipjndu7iv1" path="res://Shaders/Hybrid/cavity.gdshader" id="1_pch57"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pch57")
+shader_parameter/intensity = 0.575
+shader_parameter/zNear = 2.0
+shader_parameter/zFar = 10.0
+shader_parameter/blur_strength = 64
+shader_parameter/width = 1.265
+shader_parameter/addDepth = false

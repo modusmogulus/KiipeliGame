@@ -13,10 +13,10 @@ shader_type spatial;
 
 //render_mode unshaded;
 render_mode vertex_lighting;
-uniform sampler2D matcap : source_color, hint_default_black;
+uniform sampler2D matcap : source_color, hint_default_black, filter_nearest;
 uniform float matcappiness : hint_range(0.0,1.0) = 1.0;
 uniform vec4 texture_colorize : source_color = vec4(0.0);
-uniform sampler2D albedo_texture : hint_default_transparent;
+uniform sampler2D albedo_texture : hint_default_transparent, filter_nearest;
 uniform float vertex_shadow_strength : hint_range(0.0, 1.0);
 uniform float matcap_hue_shift: hint_range(0.0, 1.0) = 0.0;
 

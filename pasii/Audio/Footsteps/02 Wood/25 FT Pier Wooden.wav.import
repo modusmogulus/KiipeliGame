@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://nwvildytkfts"
+path="res://.godot/imported/25 FT Pier Wooden.wav-6657d0d4b18219c35be0e1694b2ac421.sample"
+
+[deps]
+
+source_file="res://Audio/Footsteps/02 Wood/25 FT Pier Wooden.wav"
+dest_files=["res://.godot/imported/25 FT Pier Wooden.wav-6657d0d4b18219c35be0e1694b2ac421.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://05xvraa0xv4h"
+path="res://.godot/imported/FT Unstable tiles from 1m 07.wav-da7f436a150aef50c81d47b14c3f5fe4.sample"
+
+[deps]
+
+source_file="res://Audio/Footsteps/06 Tiles Outdoors/FT Unstable tiles from 1m 07.wav"
+dest_files=["res://.godot/imported/FT Unstable tiles from 1m 07.wav-da7f436a150aef50c81d47b14c3f5fe4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

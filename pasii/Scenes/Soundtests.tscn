@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://da70sd3ddtj0a"]
+
+[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="1_stmr8"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Pawn" parent="." instance=ExtResource("1_stmr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48474, 1.45456, 3.36584)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["SM_Default"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48474, -0.610573, -1.88696)
+use_collision = true
+size = Vector3(14.3806, 1, 4.77393)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["SM_Roof"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48474, -0.610573, 3.36584)
+use_collision = true
+size = Vector3(14.3806, 1, 4.77393)

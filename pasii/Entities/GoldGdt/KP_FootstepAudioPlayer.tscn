@@ -1,17 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx8lyfe42b3y7"]
+[gd_scene load_steps=4 format=3 uid="uid://cx8lyfe42b3y7"]
 
 [ext_resource type="Script" uid="uid://cp22lpbvd77nc" path="res://Entities/GoldGdt/KP_FootstepAudioPlayer.gd" id="1_n5squ"]
+[ext_resource type="Resource" uid="uid://beesu0jqytwj7" path="res://Audio/Soundtextures/Ice.tres" id="2_bk6if"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_n5squ"]
-radius = 0.185
+[sub_resource type="ViewportTexture" id="ViewportTexture_3e288"]
+viewport_path = NodePath("Control/SubViewportContainer/SubViewport")
 
-[node name="Node3D" type="Node3D"]
+[node name="FootstepAudioPlayer" type="Node3D" node_paths=PackedStringArray("AudioPlayer", "Groundcast", "MaterialCamera")]
 script = ExtResource("1_n5squ")
+AudioPlayer = NodePath("AudioStreamPlayer3D")
+Groundcast = NodePath("Groundcast")
+MaterialCamera = NodePath("Control/SubViewportContainer/SubViewport/MaterialCamera")
+MaterialViewportTexture = SubResource("ViewportTexture_3e288")
+DefaultSoundTexture = ExtResource("2_bk6if")
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 2
+[node name="Groundcast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -2, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_n5squ")
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 1
+max_polyphony = 16
+bus = &"Footsteps"
+playback_type = 2
+attenuation_filter_db = 0.0
 
-[connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -272.0
+offset_bottom = 244.0
+grow_horizontal = 0
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+debug_draw = 1
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="MaterialCamera" type="Camera3D" parent="Control/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+cull_mask = 2
+size = 0.419
+near = 0.042

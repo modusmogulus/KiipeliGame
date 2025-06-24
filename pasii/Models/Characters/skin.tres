@@ -4,6 +4,12 @@
 
 [resource]
 resource_name = "skin"
-cull_mode = 2
 albedo_texture = ExtResource("1_7ew1y")
-roughness = 0.5
+rim_tint = 0.97
+anisotropy = -1.0
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 1.0
+subsurf_scatter_skin_mode = true
+subsurf_scatter_transmittance_enabled = true
+subsurf_scatter_transmittance_depth = 0.679
+subsurf_scatter_transmittance_boost = 1.0

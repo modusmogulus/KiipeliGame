@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crkeqt2mlflgf"
+path="res://.godot/imported/02 Fakegravel.wav-a3ac2f193ca8ce2b4dfa9b43a7b59a77.sample"
+
+[deps]
+
+source_file="res://Audio/Footsteps/04 Fake Gravel/02 Fakegravel.wav"
+dest_files=["res://.godot/imported/02 Fakegravel.wav-a3ac2f193ca8ce2b4dfa9b43a7b59a77.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

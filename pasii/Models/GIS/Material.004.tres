@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dobbpbn3aiipj"]
+
+[ext_resource type="Texture2D" uid="uid://ccah2wu4ig0xc" path="res://Models/GIS/kaleva_Hervantataloseina_pix 1.png" id="1_pmq7f"]
+
+[resource]
+resource_name = "Material.004"
+cull_mode = 2
+albedo_texture = ExtResource("1_pmq7f")
+roughness = 0.5

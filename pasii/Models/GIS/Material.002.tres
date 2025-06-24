@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dvax0qr6g4q0v"]
+
+[ext_resource type="Texture2D" uid="uid://b4xxyhrxqgnlt" path="res://Models/GIS/kaleva_haapatalo2_seina-export.png" id="1_xq3r4"]
+
+[resource]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("1_xq3r4")
+roughness = 0.5

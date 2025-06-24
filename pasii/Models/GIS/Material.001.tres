@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bq0rn5kn4ky24"]
+
+[ext_resource type="Texture2D" uid="uid://dhhhvjlqr1yp" path="res://Models/GIS/kaleva_perhontalo xd godot_Fabric079_1K-JPG_Color.jpg" id="1_24iy3"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_24iy3")

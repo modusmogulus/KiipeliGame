@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bayf7t2pongmt"
+path="res://.godot/imported/13 FT Sisal Carpet.wav-83078ab9203dcb624511e8aa48c5c866.sample"
+
+[deps]
+
+source_file="res://Audio/Footsteps/01 Carpet/13 FT Sisal Carpet.wav"
+dest_files=["res://.godot/imported/13 FT Sisal Carpet.wav-83078ab9203dcb624511e8aa48c5c866.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="SoundTexture" load_steps=12 format=3 uid="uid://di6yrvg53kj2"]
+
+[ext_resource type="AudioStream" uid="uid://dgu0756drg7uk" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 01.wav" id="1_b4sdf"]
+[ext_resource type="Script" uid="uid://c243vjtr0b4ee" path="res://Globals/SoundTexture.gd" id="1_u8vr1"]
+[ext_resource type="AudioStream" uid="uid://d2ng4re01khxm" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 02.wav" id="2_ualjv"]
+[ext_resource type="AudioStream" uid="uid://ctoqtewepi5ew" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 03.wav" id="3_ph1gu"]
+[ext_resource type="AudioStream" uid="uid://cb2rbrtnvdt7v" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 04.wav" id="4_lnovn"]
+[ext_resource type="AudioStream" uid="uid://e58sunlqe4x2" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 05.wav" id="5_cexe4"]
+[ext_resource type="AudioStream" uid="uid://dcmmhcwhv14pn" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 06.wav" id="6_3kxfb"]
+[ext_resource type="AudioStream" uid="uid://cj5ijuavluecj" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 07.wav" id="7_boahn"]
+[ext_resource type="AudioStream" uid="uid://bdcghira6tnq4" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 08.wav" id="8_54glk"]
+[ext_resource type="AudioStream" uid="uid://cam01rgvphji8" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 09.wav" id="9_khhnj"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_shgxi"]
+streams_count = 9
+stream_0/stream = ExtResource("1_b4sdf")
+stream_1/stream = ExtResource("2_ualjv")
+stream_2/stream = ExtResource("3_ph1gu")
+stream_3/stream = ExtResource("4_lnovn")
+stream_4/stream = ExtResource("5_cexe4")
+stream_5/stream = ExtResource("6_3kxfb")
+stream_6/stream = ExtResource("7_boahn")
+stream_7/stream = ExtResource("8_54glk")
+stream_8/stream = ExtResource("9_khhnj")
+
+[resource]
+script = ExtResource("1_u8vr1")
+ingame_name = "Tiles"
+footsteps = SubResource("AudioStreamRandomizer_shgxi")
+footstep_loudness_linear = 0.263
+footstep_running_loudness_linear = 0.8
+landing_loudness_linear = 0.8
+slide_loudness_linear = 0.8
+wallrun_loudness_linear = 0.8
+roll_loudness_linear = 0.8
+subtitles = Array[String]([])
+metadata/_custom_type_script = "uid://c243vjtr0b4ee"

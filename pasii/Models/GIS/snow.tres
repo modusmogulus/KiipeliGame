@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://crvbtmcnwdre2"]
+
+[ext_resource type="Texture2D" uid="uid://d3qhwgebe20nt" path="res://Models/GIS/kaleva_yk_lumipenkka 2.png" id="1_qii6u"]
+
+[resource]
+resource_name = "snow"
+cull_mode = 2
+albedo_texture = ExtResource("1_qii6u")
+roughness = 0.5

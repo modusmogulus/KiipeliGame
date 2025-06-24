@@ -14,6 +14,8 @@ class_name GoldGdt_Body extends CharacterBody3D
 
 @export var anim_tree : AnimationTree
 @export var AnimHandler : KiipeliAnimHandler
+@export var HpHandler : KP_HpHandler
+
 @onready var state_machine = anim_tree["parameters/playback"]
 
 @export_group("Player View")
@@ -33,12 +35,14 @@ var trace_margin : float = 0.0
 var trace_dir_add : float = 1.0
 var wall_normal : Vector3 = Vector3.ZERO
 
+var was_on_floor
 @export var collision_hull : CollisionShape3D ## Player collision shape/hull, make sure it's a box unless you edit the script to use otherwise!
 
 @export_group("Ducking")
 @export var duck_timer : Timer ## Timer used for ducking animation and collision hull swapping. Time is set in [method _duck] to 1 second.
 var ducked : bool = false # True if you are fully ducked.
 var ducking : bool = false # True if you are currently between ducked and normal standing.
+var previous_fall_speed : float = 0
 
 # Identifier for wall proximity.
 enum WallCollision {
@@ -73,15 +77,23 @@ func _ready() -> void:
 	# Set hull and head position to default.
 	collision_hull.shape = BBOX_STANDING
 
+func landing(last_fall_speed : float):
+	var damage = last_fall_speed * 2
+	HpHandler.take_damage(damage)
+	
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
+	
 	View.horizontal_view.transform.origin.y = offset
 	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= Parameters.GRAVITY * delta
-
-	
+	if was_on_floor == false && is_on_floor() == true:
+		landing(previous_fall_speed) 
+	was_on_floor = is_on_floor()
+	if !is_on_floor():
+		previous_fall_speed = absf(velocity.y)
 	_handle_step_trace_values()
 	
 	# Create deformed collision hull for use in _move_step()
@@ -229,6 +241,8 @@ func _unduck_trace(origin : Vector3, shape : Shape3D, e) -> bool:
 	params.collide_with_bodies = true
 	params.exclude = [e]
 	
+	if !get_world_3d():
+		return false
 	space_state = get_world_3d().direct_space_state
 	var results : Array[Vector3] = space_state.collide_shape(params, 8)
 	

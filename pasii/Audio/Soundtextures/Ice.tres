@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="SoundTexture" load_steps=12 format=3 uid="uid://beesu0jqytwj7"]
+
+[ext_resource type="AudioStream" uid="uid://wq2wxqrn6o8g" path="res://Audio/Footsteps/03 Ice Outdoors/01 Ice Outdoors.wav" id="1_dtmff"]
+[ext_resource type="AudioStream" uid="uid://dhoik8u1q1ben" path="res://Audio/Footsteps/03 Ice Outdoors/02 Ice Outdoors.wav" id="2_3yeew"]
+[ext_resource type="AudioStream" uid="uid://cyumh2p3os3p3" path="res://Audio/Footsteps/03 Ice Outdoors/03 Ice Outdoors.wav" id="3_vebt7"]
+[ext_resource type="AudioStream" uid="uid://cm3rjk2v5lpn2" path="res://Audio/Footsteps/03 Ice Outdoors/04 Ice Outdoors.wav" id="4_wqvi3"]
+[ext_resource type="AudioStream" uid="uid://dvi23tlh4fhxh" path="res://Audio/Footsteps/03 Ice Outdoors/06 Ice Outdoors.wav" id="5_cl1ul"]
+[ext_resource type="AudioStream" uid="uid://58knw3awjsqg" path="res://Audio/Footsteps/03 Ice Outdoors/07 Ice Outdoors.wav" id="6_lk5r3"]
+[ext_resource type="AudioStream" uid="uid://dtyswelbm5w8k" path="res://Audio/Footsteps/03 Ice Outdoors/08 Ice Outdoors.wav" id="7_mnaq4"]
+[ext_resource type="AudioStream" uid="uid://cn707pwtjvwci" path="res://Audio/Footsteps/03 Ice Outdoors/09 Ice Outdoors.wav" id="8_a8e8f"]
+[ext_resource type="AudioStream" uid="uid://v5kxhn1fcwej" path="res://Audio/Footsteps/03 Ice Outdoors/10 Ice Outdoors.wav" id="9_kf1fq"]
+[ext_resource type="Script" uid="uid://c243vjtr0b4ee" path="res://Globals/SoundTexture.gd" id="10_how3f"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_shgxi"]
+playback_mode = 2
+streams_count = 9
+stream_0/stream = ExtResource("1_dtmff")
+stream_1/stream = ExtResource("2_3yeew")
+stream_2/stream = ExtResource("3_vebt7")
+stream_3/stream = ExtResource("4_wqvi3")
+stream_4/stream = ExtResource("5_cl1ul")
+stream_5/stream = ExtResource("6_lk5r3")
+stream_6/stream = ExtResource("7_mnaq4")
+stream_7/stream = ExtResource("8_a8e8f")
+stream_8/stream = ExtResource("9_kf1fq")
+
+[resource]
+script = ExtResource("10_how3f")
+ingame_name = "Ice"
+footsteps = SubResource("AudioStreamRandomizer_shgxi")
+footstep_loudness_linear = 0.263
+footstep_running_loudness_linear = 0.8
+landing_loudness_linear = 0.8
+slide_loudness_linear = 0.8
+wallrun_loudness_linear = 0.8
+roll_loudness_linear = 0.8
+subtitles = Array[String]([])
+metadata/_custom_type_script = "uid://c243vjtr0b4ee"

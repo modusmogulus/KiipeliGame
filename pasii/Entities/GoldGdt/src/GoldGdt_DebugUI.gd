@@ -5,6 +5,7 @@ extends Control
 @export var View : GoldGdt_View
 @export var Body : GoldGdt_Body
 @export var InventoryHandler : KP_InventoryHandler
+@export var HpHandler : KP_HpHandler
 
 @export_group("Component Info Labels")
 @export var GameInfo : Label
@@ -12,6 +13,8 @@ extends Control
 @export var ViewInfo : Label
 @export var BodyInfo : Label
 @export var InvInfo : Label
+@export var FootstepPlayer : Node
+@export var FootstepInfo : Label
 
 var plot_velocity : Array[float]
 
@@ -31,9 +34,14 @@ func _process(delta):
 	_write_input_ui()
 	_write_view_ui()
 	_write_body_ui()
+	_write_health_ui()
 	_write_inv_ui()
+	_write_audio_info()
 	ImGui.End()
 	
+func _write_audio_info():
+	if FootstepPlayer.standing_on:
+		FootstepInfo.text = FootstepPlayer.current_sound_tex.ingame_name
 func _write_game_ui():
 	var format = "Rendering FPS: %s\nPhysics Tick Rate: %s\nPhysics Frame Time: %s"
 	var str = format % [Engine.get_frames_per_second(), Engine.physics_ticks_per_second, get_physics_process_delta_time()]
@@ -56,6 +64,9 @@ func _write_view_ui():
 	ImGui.Text(str)
 	pass
 	
+func _write_health_ui():
+	ImGui.Text(str(HpHandler.hp))
+
 func _write_body_ui():
 	var format = "Position: %s\nVelocity: %s\nSpeed: %s m/s (%s u/s)\nDucking: %s\nDucked: %s"
 	var h_vel = Vector2(Body.velocity.x, Body.velocity.z)

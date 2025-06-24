@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bm4m4wdohd4uu"]
+
+[ext_resource type="Texture2D" uid="uid://c70uf30c7615b" path="res://Models/GIS/kaleva_punatiili128.png" id="1_iggj3"]
+
+[resource]
+resource_name = "Material.003"
+cull_mode = 2
+albedo_texture = ExtResource("1_iggj3")
+roughness = 0.5

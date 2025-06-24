@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="SoundTexture" load_steps=12 format=3 uid="uid://jisfb07kngu1"]
+
+[ext_resource type="AudioStream" uid="uid://d201gyvjv8hbe" path="res://Audio/Footsteps/02 Wood/01 FT Pier Wooden.wav" id="1_xk0au"]
+[ext_resource type="AudioStream" uid="uid://df432k2hy0vpk" path="res://Audio/Footsteps/02 Wood/02 FT Pier Wooden.wav" id="2_hxojj"]
+[ext_resource type="AudioStream" uid="uid://kpxc1bp3dund" path="res://Audio/Footsteps/02 Wood/03 FT Pier Wooden.wav" id="3_gnd2p"]
+[ext_resource type="AudioStream" uid="uid://cokn4vp6bxf5q" path="res://Audio/Footsteps/02 Wood/04 FT Pier Wooden.wav" id="4_6luss"]
+[ext_resource type="AudioStream" uid="uid://de7jt7kimyhmj" path="res://Audio/Footsteps/02 Wood/05 FT Pier Wooden.wav" id="5_7qr4s"]
+[ext_resource type="AudioStream" uid="uid://bqcoyb7rtreca" path="res://Audio/Footsteps/02 Wood/06 FT Pier Wooden.wav" id="6_gg0k7"]
+[ext_resource type="AudioStream" uid="uid://cjr067xk3ucm8" path="res://Audio/Footsteps/02 Wood/07 FT Pier Wooden.wav" id="7_4x8g1"]
+[ext_resource type="AudioStream" uid="uid://dmjcoxmjlkx3i" path="res://Audio/Footsteps/02 Wood/08 FT Pier Wooden.wav" id="8_2y2ff"]
+[ext_resource type="AudioStream" uid="uid://bp0ikv2wp5ku2" path="res://Audio/Footsteps/02 Wood/09 FT Pier Wooden.wav" id="9_okyp7"]
+[ext_resource type="Script" uid="uid://c243vjtr0b4ee" path="res://Globals/SoundTexture.gd" id="10_v2t3f"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_shgxi"]
+streams_count = 9
+stream_0/stream = ExtResource("1_xk0au")
+stream_1/stream = ExtResource("2_hxojj")
+stream_2/stream = ExtResource("3_gnd2p")
+stream_3/stream = ExtResource("4_6luss")
+stream_4/stream = ExtResource("5_7qr4s")
+stream_5/stream = ExtResource("6_gg0k7")
+stream_6/stream = ExtResource("7_4x8g1")
+stream_7/stream = ExtResource("8_2y2ff")
+stream_8/stream = ExtResource("9_okyp7")
+
+[resource]
+script = ExtResource("10_v2t3f")
+ingame_name = "Wood"
+footsteps = SubResource("AudioStreamRandomizer_shgxi")
+footstep_loudness_linear = 0.263
+footstep_running_loudness_linear = 0.8
+landing_loudness_linear = 0.8
+slide_loudness_linear = 0.8
+wallrun_loudness_linear = 0.8
+roll_loudness_linear = 0.8
+subtitles = Array[String]([])
+metadata/_custom_type_script = "uid://c243vjtr0b4ee"

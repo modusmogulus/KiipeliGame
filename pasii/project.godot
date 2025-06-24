@@ -15,9 +15,14 @@ run/main_scene="uid://bb5pxbwtl5gsg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/output_latency=4
+
 [autoload]
 
 ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
+AudioManager="*res://Globals/AudioManager.tscn"
 
 [dotnet]
 
@@ -30,10 +35,13 @@ enabled=PackedStringArray("res://addons/fancy_folder_icons/plugin.cfg", "res://a
 [file_customization]
 
 folder_colors={
+"res://Audio/": "orange",
+"res://Audio/Soundtextures/": "yellow",
 "res://Entities/": "red",
 "res://Globals/": "orange",
 "res://Models/": "purple",
-"res://Shaders/": "yellow"
+"res://Shaders/": "yellow",
+"res://Tools/": "blue"
 }
 
 [global_group]

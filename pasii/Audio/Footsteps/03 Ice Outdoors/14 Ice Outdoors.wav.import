@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://57ghaeeupedd"
+path="res://.godot/imported/14 Ice Outdoors.wav-0eaa0a00a9a26b0d8cfdd0c35a9183cf.sample"
+
+[deps]
+
+source_file="res://Audio/Footsteps/03 Ice Outdoors/14 Ice Outdoors.wav"
+dest_files=["res://.godot/imported/14 Ice Outdoors.wav-0eaa0a00a9a26b0d8cfdd0c35a9183cf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
