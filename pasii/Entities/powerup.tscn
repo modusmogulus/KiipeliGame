@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://kahnx4222bhy"]
+
+[ext_resource type="Script" uid="uid://dws2jf1eb8fro" path="res://Entities/powerup.gd" id="1_ls2ue"]
+[ext_resource type="Resource" uid="uid://bwagb1cceshm" path="res://Entities/Powerups/pup_liukuri.tres" id="2_el8vv"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_el8vv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrukl"]
+render_priority = 22
+no_depth_test = true
+shading_mode = 0
+billboard_mode = 1
+proximity_fade_distance = 30.9
+distance_fade_mode = 3
+distance_fade_min_distance = 24.0
+distance_fade_max_distance = 12.0
+
+[sub_resource type="Gradient" id="Gradient_el8vv"]
+colors = PackedColorArray(0.615686, 0, 0, 1, 1, 0.631373, 0.94902, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rrukl"]
+gradient = SubResource("Gradient_el8vv")
+fill_to = Vector2(0.393162, 0.57265)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_el8vv"]
+
+[node name="Powerup" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_el8vv")
+surface_material_override/0 = SubResource("StandardMaterial3D_rrukl")
+script = ExtResource("1_ls2ue")
+player_params = ExtResource("2_el8vv")
+powerup_icon = SubResource("GradientTexture2D_rrukl")
+powerup_type_enum = 4
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_el8vv")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 0.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

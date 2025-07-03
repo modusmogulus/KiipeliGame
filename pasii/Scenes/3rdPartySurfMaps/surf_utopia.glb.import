@@ -1,0 +1,114 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://ca8wctg8kesev"
+path="res://.godot/imported/surf_utopia.glb-912366f0fd40e7f4d8d1da055248a880.scn"
+
+[deps]
+
+source_file="res://Scenes/3rdPartySurfMaps/surf_utopia.glb"
+dest_files=["res://.godot/imported/surf_utopia.glb-912366f0fd40e7f4d8d1da055248a880.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"materials/concrete/computerwall001": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_concrete_computerwall001.tres"
+},
+"materials/concrete/computerwall002": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_concrete_computerwall002.tres"
+},
+"materials/concrete/computerwall005": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_concrete_computerwall005.tres"
+},
+"materials/concrete/concretewall001e": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_concrete_concretewall001e.tres"
+},
+"materials/concrete/concretewall002": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_concrete_concretewall002.tres"
+},
+"materials/concrete/concretewall011": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_concrete_concretewall011.tres"
+},
+"materials/glass/glasswindow001a": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_glass_glasswindow001a.tres"
+},
+"materials/lights/white001": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_lights_white001.tres"
+},
+"materials/metal/imetal003": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_metal_imetal003.tres"
+},
+"materials/overlays/logo_blue_white": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_overlays_logo_blue_white.tres"
+},
+"materials/overlays/logo_red_white": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_overlays_logo_red_white.tres"
+},
+"materials/tools/toolsblack": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_tools_toolsblack.tres"
+},
+"materials/tools/toolsnodraw": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_tools_toolsnodraw.tres"
+},
+"materials/water/water_well": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/3rdPartySurfMaps/materials_water_water_well.tres"
+}
+},
+"meshes": {
+"surf_utopia_overlay_51095_001": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+},
+"surf_utopia_overlay_51096_001": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

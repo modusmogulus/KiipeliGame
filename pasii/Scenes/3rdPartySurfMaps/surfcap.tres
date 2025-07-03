@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://qx1gamcgwwjo"]
+
+[ext_resource type="Shader" uid="uid://dw6irdsqw60il" path="res://Shaders/Hybrid/matcap_basic_textured.gdshader" id="1_v5wu2"]
+[ext_resource type="Texture2D" uid="uid://syaf438yp0ab" path="res://textures/ykp/Textures/punatiili128.png" id="2_v5wu2"]
+[ext_resource type="Texture2D" uid="uid://cx8np0vdxpiva" path="res://textures/matcaps/marvinsketch-matcap.png" id="3_pgkja"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_v5wu2")
+shader_parameter/matcap = ExtResource("3_pgkja")
+shader_parameter/matcappiness = 1.0
+shader_parameter/texture_colorize = Color(0, 0, 0, 0)
+shader_parameter/albedo_texture = ExtResource("2_v5wu2")
+shader_parameter/vertex_shadow_strength = 0.0
+shader_parameter/matcap_hue_shift = 0.0

@@ -1,0 +1,69 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://csjucp8jhbru4"]
+
+[ext_resource type="Shader" path="res://Shaders/luna_vesishader.gdshader" id="1_p3utd"]
+
+[sub_resource type="Gradient" id="Gradient_gajf2"]
+offsets = PackedFloat32Array(0, 0.299435, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.299547, 0.299548, 0.299547, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sgfqu"]
+noise_type = 0
+seed = 635
+frequency = 0.0073
+fractal_type = 2
+fractal_octaves = 2
+fractal_lacunarity = 1.82
+fractal_gain = 0.28
+cellular_distance_function = 3
+cellular_jitter = 1.8
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 22.375
+domain_warp_frequency = 0.01
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yhq0w"]
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_gajf2")
+noise = SubResource("FastNoiseLite_sgfqu")
+
+[sub_resource type="Gradient" id="Gradient_761wq"]
+offsets = PackedFloat32Array(0.528249, 0.683616, 0.875706)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r1bq4"]
+seed = 290
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c0spr"]
+generate_mipmaps = false
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_761wq")
+noise = SubResource("FastNoiseLite_r1bq4")
+
+[resource]
+render_priority = 64
+shader = ExtResource("1_p3utd")
+shader_parameter/albedo = Color(0.958333, 1, 0.916667, 1)
+shader_parameter/water_fog_exponent = 1.0
+shader_parameter/glimmer_color = Color(0.142406, 0.168932, 0.197917, 1)
+shader_parameter/fog_color = Color(0.0208333, 0.0208333, 0.0208333, 1)
+shader_parameter/water_fog = 4.197
+shader_parameter/point_size = 11.0
+shader_parameter/speed = 0.014
+shader_parameter/flow_speed = 0.209
+shader_parameter/glimmer_strength = 100.0
+shader_parameter/shore_strength = 1.479
+shader_parameter/shorecol = Color(0.921875, 0.84375, 1, 1)
+shader_parameter/refraction = -1.5
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/distort_tex = SubResource("NoiseTexture2D_yhq0w")
+shader_parameter/glimmer_tex = SubResource("NoiseTexture2D_c0spr")
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/oiliness = 0.012
+shader_parameter/uv1_scale = Vector3(70, 70, 70)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)

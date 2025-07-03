@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwm22k5pouu8i"]
+
+[ext_resource type="Shader" uid="uid://1l8gkex70u0q" path="res://Shaders/Hybrid/oldschool_diffuse.gdshader" id="1_4eesb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4eesb")
+shader_parameter/albedo_tint = Color(1, 1, 1, 1)

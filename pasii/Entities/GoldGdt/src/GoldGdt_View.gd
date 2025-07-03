@@ -8,12 +8,13 @@ class_name GoldGdt_View extends Node
 @export var horizontal_view : Node3D ## Y-axis Camera Mount gimbal.
 @export var vertical_view : Node3D ## X-axis Camera Mount gimbal.
 @export var camera_mount : Node3D ## Used for player view aesthetics such as view tilt and bobbing.
+@export var camera_animation_mount : Node3D ##Used to give a layer to rotation that is controlled by the rig animation
 @export var camera : Camera3D
 @export var speedlines : ColorRect
 @export var legs : Node
 @export var zoneout : ColorRect
 var original_fov : float = 0.0
-
+var previous_velocity : Vector3
 func _ready() -> void:
 	original_fov = camera.fov
 
@@ -21,25 +22,28 @@ func _physics_process(_delta) -> void:
 	# Add some view bobbing to the Camera Mount
 	_camera_mount_bob()
 	
-	camera_mount.rotation.z = _calc_roll(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED)*1.2
+	camera_mount.rotation.z = lerpf(camera_mount.rotation.z, _calc_roll(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED)*1.2, 0.2)
 	var _ct = camera_mount.rotation.x
 	var _lt = legs.rotation.x
-	camera_mount.rotation.x = lerpf(_ct, pow(_calc_pitch_overshoot(Parameters.ROLL_ANGLE*0.2, Parameters.ROLL_SPEED*0.1)*2, 0.2)
-	legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
+	camera_mount.rotation.x = lerpf(_ct, (_calc_pitch_overshoot(Parameters.ROLL_ANGLE*0.2, Parameters.ROLL_SPEED*0.1)*2), 0.2)
+	#legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
 	
-	camera.fov = lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.05)
-	
+	camera.fov = lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.1)
+	speedlines.modulate.a = lerpf(speedlines.modulate.a, _calc_g_fx(0.0, 1.0, previous_velocity)*50, 0.05)
+	previous_velocity = Body.velocity
 	if Vector2(Body.velocity.x, Body.velocity.y).length() > 0:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.02) #Speedlines by using same function as fov
 	else:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.002) #Lazy way to make braking lose speedlines faster
-
+	
 func _handle_camera_input(look_input: Vector2) -> void:
 	horizontal_view.rotate_object_local(Vector3.DOWN, look_input.x)
 	horizontal_view.orthonormalize()
 	
 	vertical_view.rotate_object_local(Vector3.LEFT, look_input.y)
 	vertical_view.orthonormalize()
+	var _ct = camera_mount.rotation.x
+	var maxrotx = Parameters.NECK_LIMIT_LOWER + lerpf(_ct, (_calc_pitch_overshoot(Parameters.ROLL_ANGLE*0.2, Parameters.ROLL_SPEED*0.1)*2), 0.2)
 	
 	vertical_view.rotation.x = clamp(vertical_view.rotation.x, deg_to_rad(Parameters.NECK_LIMIT_LOWER), deg_to_rad(Parameters.NECK_LIMIT_UPPER))
 	vertical_view.orthonormalize()
@@ -99,9 +103,22 @@ func _calc_pitch_overshoot(rollangle: float, rollspeed: float) -> float:
 	else:
 		front = value
 	
-	return front * roll_sign + clampf(Body.velocity.y * 0.01, -0.5, 0.5)
+	return front * roll_sign + clampf(Body.velocity.y * 0.01, -1.5, 1.5)
 
 
 func _calc_speed_fx(original: float, max_change: float) -> float:
-	var fov = (Body.velocity.length() / Parameters.MAX_SPEED*2.0) * max_change
+	var fov = (Body.velocity.length() / Parameters.MAX_SPEED*16.0) * max_change
 	return original+clampf(fov, 0.0, max_change)
+
+
+func _calc_g_fx(original: float, max_change: float, prev_vel: Vector3) -> float:
+	#var prev_vel := Body.velocity
+	#Siirrä koko moska body scriptiin
+	#var fov = (Body.velocity.length() / Parameters.MAX_SPEED*16.0) * max_change
+	var gs = Vector3(prev_vel.x, 0, prev_vel.z).distance_squared_to(Vector3(Body.velocity.x, 0, Body.velocity.z)) / 9.8
+	#prev_vel = Body.velocity
+	if gs > 10:
+		Engine.time_scale = 4
+	else:
+		Engine.time_scale = 1
+	return original+clampf(gs/50, 0.0, max_change)

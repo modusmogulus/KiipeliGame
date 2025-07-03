@@ -85,10 +85,9 @@ func playFootstepSound():
 	if Groundcast.get_collider():
 		
 		var col = Groundcast.get_collider()
-		if col != PhysicsBody3D:
-			return
+		if col == PhysicsBody3D:
+			standing_on = col #For debug ui
 		#print(col)
-		standing_on = col #For debug ui
 		#HOW TO USE: ADD A SOUND MATERIAL NODE UNDER EVERY STATIC BODY... 
 		for child in col.get_children():
 			if child is SoundMaterial:

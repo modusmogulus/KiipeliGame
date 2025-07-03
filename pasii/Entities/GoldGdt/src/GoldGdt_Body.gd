@@ -8,14 +8,21 @@
 @icon("src/gdticon.png")
 class_name GoldGdt_Body extends CharacterBody3D
 
+
+@export var current_powerups : Array[enumsKP.powerups] = []
 @export_group("Components")
 @export var Parameters : PlayerParameters
+var original_parameters : PlayerParameters
 @export var View : GoldGdt_View
 
 @export var anim_tree : AnimationTree
 @export var AnimHandler : KiipeliAnimHandler
 @export var HpHandler : KP_HpHandler
-
+@export var InvHandler : KP_InventoryHandler
+@export var PowerupInfo : Label
+@export var PowerupIconContainer : TextureRect
+@export var Move : GoldGdt_Move
+@export var UserInput : GoldGdt_Controls
 @onready var state_machine = anim_tree["parameters/playback"]
 
 @export_group("Player View")
@@ -76,11 +83,19 @@ func _ready() -> void:
 	
 	# Set hull and head position to default.
 	collision_hull.shape = BBOX_STANDING
+	original_parameters = Parameters
 
+func request_roll(start_or_stop : bool):
+	roll(start_or_stop)
+
+func roll(start_or_stop : bool):
+	AnimHandler.rolling = start_or_stop
+	
 func landing(last_fall_speed : float):
 	var damage = last_fall_speed * 2
 	HpHandler.take_damage(damage)
-	
+
+
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
 	
@@ -334,3 +349,23 @@ func _move_step(normal: Vector3) -> bool:
 		return true
 	
 	return false
+
+func add_powerup(pup : KP_Powerup):
+	Parameters = pup.player_params
+	UserInput.Parameters = pup.player_params
+	View.Parameters = pup.player_params
+	Move.Parameters = pup.player_params
+	
+	current_powerups.append(pup.powerup_type_enum)
+	AnimHandler.animate_powerup_ui()
+	if pup.powerup_icon:
+		PowerupIconContainer.texture = pup.powerup_icon
+	else:
+		PowerupIconContainer.texture.reset_state()
+func remove_powerup(pup : KP_Powerup):
+	Parameters = original_parameters
+	View.Parameters = original_parameters
+	UserInput.Parameters = pup.player_params
+	Move.Parameters = original_parameters
+	current_powerups.erase(pup.powerup_type_enum)
+	PowerupIconContainer.texture.reset_state()

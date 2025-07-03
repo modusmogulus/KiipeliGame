@@ -1,6 +1,7 @@
 class_name KP_InventoryHandler extends Node
 
-var hotbar = [enumsKP.items.NO, enumsKP.items.DENSE, enumsKP.items.TOASTER, enumsKP.items.PHONE]
+var hotbar = [enumsKP.items.NO, enumsKP.items.LIUKURI, enumsKP.items.TOASTER, enumsKP.items.PHONE]
+#powerups are in GoldGdt_Body btw
 var current_hotbar_index = 0
 var currently_holding : enumsKP.items
 @export var AnimHandler : KiipeliAnimHandler

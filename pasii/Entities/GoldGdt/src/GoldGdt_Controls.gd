@@ -13,6 +13,7 @@ var mouse_input : Vector2
 var move_dir : Vector3
 var jump_on : bool
 var duck_on : bool
+var roll_on : bool
 
 @export var SyncedAnimTrees : Array[AnimationTree]
 @export var AnimHandler : KiipeliAnimHandler
@@ -47,7 +48,7 @@ func _input(event) -> void:
 			if event.button_index == 1 && mousing_around == false:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		return
-	
+		
 	if event is InputEventKey:
 		if event.is_action_released("ui_cancel"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -126,6 +127,8 @@ func _gather_input() -> void:
 	# Gather jumping and crouching input.
 	jump_on = Input.is_action_pressed("pm_jump") if Parameters.AUTOHOP else Input.is_action_just_pressed("pm_jump")
 	duck_on = Input.is_action_pressed("pm_duck")
+	roll_on = Input.is_action_just_pressed("pm_roll")
+	Body.request_roll(roll_on)
 	
 	if (Input.is_action_just_pressed("kp_die")):
 		get_parent().die()

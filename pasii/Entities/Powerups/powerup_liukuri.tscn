@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq3p6jsb61qyn"]
+
+[ext_resource type="PackedScene" uid="uid://kahnx4222bhy" path="res://Entities/powerup.tscn" id="1_080ma"]
+[ext_resource type="Texture2D" uid="uid://d4k4iq0o6uedu" path="res://textures/yk_pulkka_liukuri.png" id="2_4xve8"]
+
+[node name="Powerup_Liukuri" instance=ExtResource("1_080ma")]
+powerup_icon = ExtResource("2_4xve8")
+powerup_sprite_3d = ExtResource("2_4xve8")

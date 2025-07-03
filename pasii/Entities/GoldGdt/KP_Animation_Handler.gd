@@ -9,7 +9,8 @@ var player_velocity: Vector3 = Vector3.ZERO
 var reloading: bool = false
 var item = ""
 var current_animation_node: String
-
+var rolling : bool = false
+@export var powerup_ui_anim : AnimationPlayer
 @export var InvHandler : KP_InventoryHandler
 @export var SyncedAnimTrees : Array[AnimationTree]
 var state_machines : Array[AnimationNodeStateMachinePlayback]
@@ -17,6 +18,7 @@ var state_machines : Array[AnimationNodeStateMachinePlayback]
 
 @export var Dense: Node
 @export var Phone: Node
+@export var Liukuri: Node
 @export var AnimationSound: AudioStreamPlayer3D
 
 @export var PaahdinReloadSound: AudioStream
@@ -27,14 +29,19 @@ var state_machines : Array[AnimationNodeStateMachinePlayback]
 func _ready() -> void:
 	state_machines.append(SyncedAnimTrees[0]["parameters/playback"])
 	state_machines.append(SyncedAnimTrees[1]["parameters/playback"])
-	
+
+func animate_powerup_ui():
+	powerup_ui_anim.play("powerup_added")
 func _process(delta: float) -> void:
+	if rolling:
+		print("ROLLED")
 	#if InvHandler.currently_holding in item_link.keys():
 	#	print(item_link[item_link.find_key(InvHandler.currently_holding)])
 	#	print("jjjjjjjjjjjjjjjjjjjjj")
 	current_animation_node = state_machines[0].get_current_node()
 	#print(AnimTree.animation_finished)
 	Dense.visible = false
+	Liukuri.visible = false
 	if !("RELOAD" in current_animation_node):
 		AnimationSound.stop()
 	
@@ -50,3 +57,8 @@ func _process(delta: float) -> void:
 			if reloading && !AnimationSound.playing:
 				AnimationSound.stream = PhoneReloadSound
 				AnimationSound.play()
+		enumsKP.items.LIUKURI:
+			Liukuri.visible = true
+			#if reloading && !AnimationSound.playing:
+				#AnimationSound.stream = PhoneReloadSound
+			#	AnimationSound.play()

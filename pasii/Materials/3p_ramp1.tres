@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://brwptrbxwxg1y"]
+
+[ext_resource type="Shader" uid="uid://e0ec8ey3ij15" path="res://Shaders/Hybrid/caverock.gdshader" id="1_5lmnl"]
+[ext_resource type="Texture2D" uid="uid://b24vco8tdwf8a" path="res://textures/ykp/Textures/ba_planks.png" id="2_5lmnl"]
+[ext_resource type="Texture2D" uid="uid://bluo3inta3m67" path="res://textures/ykp/Textures/yk_lumipenkka 1.png" id="3_5lmnl"]
+[ext_resource type="Texture2D" uid="uid://cgl86efmjki5j" path="res://textures/ykp/Textures/haapa_jaa_px.png" id="4_n1iyr"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5lmnl")
+shader_parameter/albedo_ceiling = Color(0.683077, 0.683077, 0.683077, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("2_5lmnl")
+shader_parameter/roughness = 0.252
+shader_parameter/albedo_wall = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_wall = ExtResource("4_n1iyr")
+shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("3_5lmnl")
+shader_parameter/ground_threshold = 0.45
+shader_parameter/blend_smoothness = 0.5
+shader_parameter/uv1_blend_sharpness = 63.503
+shader_parameter/uv1_scale = Vector3(0.09, 0.09, 0.09)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv_global = true
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false
