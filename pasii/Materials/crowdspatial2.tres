@@ -1,0 +1,30 @@
+[gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://d0qspt6h417jt"]
+
+[ext_resource type="Texture2D" uid="uid://cwiyce0d4stmy" path="res://textures/animatedimages/crowd_topmost0001.png" id="1_tjevu"]
+[ext_resource type="Texture2D" uid="uid://cfp4l8swlck84" path="res://textures/animatedimages/crowd_topmost0002.png" id="2_0n7ve"]
+[ext_resource type="Texture2D" uid="uid://2xsamu80ktly" path="res://textures/animatedimages/crowd_topmost0003.png" id="3_qyv3h"]
+[ext_resource type="Texture2D" uid="uid://dnwpknv7gq3n2" path="res://textures/animatedimages/crowd_topmost0004.png" id="4_s5wdv"]
+[ext_resource type="Texture2D" uid="uid://qa626bp1cgf5" path="res://textures/animatedimages/crowd_topmost0005.png" id="5_oejhm"]
+[ext_resource type="Texture2D" uid="uid://c2n1bh6b2fiby" path="res://textures/animatedimages/crowd_topmost0006.png" id="6_xscfl"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_euqjp"]
+frames = 6
+speed_scale = 20.0
+frame_0/texture = ExtResource("1_tjevu")
+frame_1/texture = ExtResource("2_0n7ve")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_qyv3h")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_s5wdv")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_oejhm")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_xscfl")
+frame_5/duration = 1.0
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("AnimatedTexture_euqjp")

@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://dv6b5f3sti17d"]
+
+[ext_resource type="Material" uid="uid://7clbqxka4rxm" path="res://Materials/3p_kalliolumessa.tres" id="1_q2tdm"]
+[ext_resource type="ArrayMesh" uid="uid://co22n2c0thdah" path="res://Models/OBJ/isle-kyopeli-csg-8k.obj" id="2_xufy1"]
+[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="3_xufy1"]
+
+[sub_resource type="Gradient" id="Gradient_q2tdm"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.445833, 0.445833, 0.470833, 0.483333, 0.558333, 0.608333, 0.658333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.1584, 0.54216, 0.72, 1, 0.614902, 0.501445, 0.883665, 1, 0.552967, 0.824455, 0.902464, 1, 0.238187, 0.2002, 0.77, 1, 0.02096, 0, 0.525727, 1, 0.00679834, 0, 0.308268, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xufy1"]
+gradient = SubResource("Gradient_q2tdm")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yi6j5"]
+panorama = SubResource("GradientTexture2D_xufy1")
+
+[sub_resource type="Sky" id="Sky_qpws8"]
+sky_material = SubResource("PanoramaSkyMaterial_yi6j5")
+
+[sub_resource type="Environment" id="Environment_wku3y"]
+background_mode = 2
+sky = SubResource("Sky_qpws8")
+ambient_light_source = 3
+ambient_light_color = Color(0.834614, 0.834614, 0.834614, 1)
+tonemap_mode = 2
+ssr_enabled = true
+ssao_radius = 0.34
+ssao_intensity = 16.7
+ssil_intensity = 2.0
+ssil_sharpness = 1.0
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 0.0488281
+sdfgi_cascade0_distance = 3.125
+sdfgi_max_distance = 50.0
+sdfgi_y_scale = 0
+glow_enabled = true
+glow_intensity = 0.1
+glow_blend_mode = 0
+glow_hdr_threshold = 4.0
+glow_hdr_luminance_cap = 22.45
+fog_light_color = Color(0.815007, 0.841906, 1, 1)
+fog_light_energy = 0.71
+fog_sky_affect = 0.0
+volumetric_fog_density = 0.0
+volumetric_fog_ambient_inject = 1.9
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kam8o"]
+viewport_path = NodePath("Control/SubViewportContainer/SubViewport")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+material_override = ExtResource("1_q2tdm")
+gi_mode = 0
+use_collision = true
+mesh = ExtResource("2_xufy1")
+material = ExtResource("1_q2tdm")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 2.44835, 0, 0, 0, 1, 1.5252, 7.30921, 6.66795)
+operation = 2
+inner_radius = 11.194
+outer_radius = 7.074
+ring_sides = 8
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 2.44835, 0, 0, 0, 1, -33.7681, 21.444, -18.1917)
+operation = 2
+inner_radius = 11.194
+outer_radius = 7.074
+ring_sides = 8
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wku3y")
+
+[node name="Pawn" parent="." instance=ExtResource("3_xufy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.39547, 0, -44.8747)
+
+[node name="Body" parent="Pawn" index="7"]
+floor_max_angle = 0.785398
+
+[node name="Display Body" parent="Pawn" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711003, 0)
+
+[node name="FootstepAudioPlayer" parent="Pawn/Display Body/Arm/Arm Anchor/Camera" index="3"]
+MaterialViewportTexture = SubResource("ViewportTexture_kam8o")
+
+[editable path="Pawn"]
+[editable path="Pawn/Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET"]
+[editable path="Pawn/Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT"]

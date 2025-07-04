@@ -13,11 +13,21 @@ class_name GoldGdt_View extends Node
 @export var speedlines : ColorRect
 @export var legs : Node
 @export var zoneout : ColorRect
+@export var g_loc_curve : Curve
+@export var afterimage : TextureRect
+
 var original_fov : float = 0.0
 var previous_velocity : Vector3
+var _frm = 0
 func _ready() -> void:
 	original_fov = camera.fov
-
+func _process(delta: float) -> void:
+	_frm += 1
+	if _frm > 30:
+		var _atimg = get_viewport().get_texture().get_image()
+		var _attex = ImageTexture.create_from_image(_atimg)
+		afterimage.texture = _attex
+		_frm = 0
 func _physics_process(_delta) -> void:
 	# Add some view bobbing to the Camera Mount
 	_camera_mount_bob()
@@ -29,13 +39,18 @@ func _physics_process(_delta) -> void:
 	#legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
 	
 	camera.fov = lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.1)
-	speedlines.modulate.a = lerpf(speedlines.modulate.a, _calc_g_fx(0.0, 1.0, previous_velocity)*50, 0.05)
+	if speedlines.modulate.a + 0.1 < _calc_g_fx():
+		
+		speedlines.modulate.a = lerpf(speedlines.modulate.a, _calc_g_fx(), 0.1)
+	else:
+		#if randi_range(0, 10) > 5:
+		speedlines.modulate.a = lerpf(speedlines.modulate.a, _calc_g_fx(), 0.05)
 	previous_velocity = Body.velocity
 	if Vector2(Body.velocity.x, Body.velocity.y).length() > 0:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.02) #Speedlines by using same function as fov
 	else:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.002) #Lazy way to make braking lose speedlines faster
-	
+		
 func _handle_camera_input(look_input: Vector2) -> void:
 	horizontal_view.rotate_object_local(Vector3.DOWN, look_input.x)
 	horizontal_view.orthonormalize()
@@ -110,15 +125,7 @@ func _calc_speed_fx(original: float, max_change: float) -> float:
 	var fov = (Body.velocity.length() / Parameters.MAX_SPEED*16.0) * max_change
 	return original+clampf(fov, 0.0, max_change)
 
-
-func _calc_g_fx(original: float, max_change: float, prev_vel: Vector3) -> float:
-	#var prev_vel := Body.velocity
-	#Siirrä koko moska body scriptiin
-	#var fov = (Body.velocity.length() / Parameters.MAX_SPEED*16.0) * max_change
-	var gs = Vector3(prev_vel.x, 0, prev_vel.z).distance_squared_to(Vector3(Body.velocity.x, 0, Body.velocity.z)) / 9.8
-	#prev_vel = Body.velocity
-	if gs > 10:
-		Engine.time_scale = 4
-	else:
-		Engine.time_scale = 1
-	return original+clampf(gs/50, 0.0, max_change)
+func _calc_g_fx() -> float:
+	var gs = Body.g_forces
+	var fx_strength = g_loc_curve.sample_baked(gs)
+	return fx_strength

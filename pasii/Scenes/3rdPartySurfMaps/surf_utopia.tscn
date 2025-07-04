@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="2_s8j2k"]
 [ext_resource type="LightmapGIData" uid="uid://bvjmlvj7pyd6j" path="res://Scenes/3rdPartySurfMaps/surf_utopia.lmbake" id="2_wucc6"]
-[ext_resource type="Material" uid="uid://dlgj46yl3o27v" path="res://Materials/3p_cave.tres" id="3_4vg0b"]
 [ext_resource type="PackedScene" uid="uid://cndn1swgcrq84" path="res://Models/Blender/omasurfmap.glb" id="4_tf40n"]
 [ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="4_x3wu7"]
 [ext_resource type="Resource" uid="uid://beesu0jqytwj7" path="res://Audio/Soundtextures/Ice.tres" id="5_3ikpb"]
 [ext_resource type="PackedScene" uid="uid://dq3p6jsb61qyn" path="res://Entities/Powerups/powerup_liukuri.tscn" id="6_qva2f"]
+[ext_resource type="Material" uid="uid://d00v6e3n7j0iq" path="res://Shaders/-AA-IHANA-MERI-VESI3.tres" id="6_x3wu7"]
 [ext_resource type="Script" uid="uid://svdh0nyihu6v" path="res://Entities/GoldGdt/src/PlayerParameters.gd" id="7_qva2f"]
 [ext_resource type="Texture2D" uid="uid://cx7qqixfjty02" path="res://textures/decal_shadowfade.tres" id="7_somx4"]
 [ext_resource type="Shader" uid="uid://422wpurshq0j" path="res://Shaders/luna_vesishader.gdshader" id="8_somx4"]
@@ -33,43 +33,10 @@ fill = 1
 fill_from = Vector2(0.492823, 0.507177)
 fill_to = Vector2(1, 1)
 
-[sub_resource type="Resource" id="Resource_somx4"]
-script = ExtResource("7_qva2f")
-THIRD_PERSON_CAMERA = false
-AUTOHOP = true
-FORWARD_SPEED = 10.16
-SIDE_SPEED = 10.16
-MAX_SPEED = 8.128
-MAX_AIR_SPEED = 0.762
-STOP_SPEED = 2.54
-GRAVITY = 20.32
-JUMP_HEIGHT = 1.143
-STEP_HEIGHT = 0.457
-HULL_STANDING_BOUNDS = Vector3(0.813, 1.829, 0.813)
-HULL_DUCKING_BOUNDS = Vector3(0.813, 0.914, 0.813)
-VIEW_OFFSET = 0.711
-DUCK_VIEW_OFFSET = 0.305
-ACCELERATION = 10.0
-AIR_ACCELERATION = 150.0
-FRICTION = 4.0
-DUCKING_SPEED_MULTIPLIER = 0.333
-BUNNYHOP_CAP_MODE = 0
-SPEED_THRESHOLD_FACTOR = 1.7
-SPEED_DROP_FACTOR = 1.1
-MOUSE_SENSITIVITY = 12.0
-BOB_FREQUENCY = 0.008
-BOB_FRACTION = 12.0
-ROLL_ANGLE = 3.0
-ROLL_SPEED = 300.0
-NECK_LIMIT_UPPER = 89.0
-NECK_LIMIT_LOWER = -40.0
-ARM_LENGTH = 2.0
-ARM_OFFSET_DEGREES = Vector2(0, 0)
-
 [sub_resource type="Gradient" id="Gradient_06bms"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0.445833, 0.445833, 0.470833, 0.483333, 0.565714, 0.605714, 0.748571)
-colors = PackedColorArray(1, 1, 1, 1, 0.1584, 0.54216, 0.72, 1, 0.614902, 0.501445, 0.883665, 1, 0.732533, 0.762714, 0.946546, 1, 0.543884, 0.398788, 0.565241, 1, 0.150227, 0.151375, 0.544662, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.445833, 0.445833, 0.470833, 0.483333, 0.565714, 0.748571, 0.884298)
+colors = PackedColorArray(1, 1, 1, 1, 0.1584, 0.54216, 0.72, 1, 0.614902, 0.501445, 0.883665, 1, 0.732533, 0.762714, 0.946546, 1, 0.812195, 0.464918, 0.770447, 1, 0.294515, 0.36498, 0.633598, 1, 0.245933, 0.224338, 0.617849, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4vg0b"]
 gradient = SubResource("Gradient_06bms")
@@ -115,6 +82,39 @@ fog_depth_begin = 725.8
 fog_depth_end = 1704.8
 volumetric_fog_density = 0.0
 volumetric_fog_ambient_inject = 1.9
+
+[sub_resource type="Resource" id="Resource_somx4"]
+script = ExtResource("7_qva2f")
+THIRD_PERSON_CAMERA = false
+AUTOHOP = true
+FORWARD_SPEED = 10.16
+SIDE_SPEED = 10.16
+MAX_SPEED = 8.128
+MAX_AIR_SPEED = 0.762
+STOP_SPEED = 2.54
+GRAVITY = 20.32
+JUMP_HEIGHT = 1.143
+STEP_HEIGHT = 0.457
+HULL_STANDING_BOUNDS = Vector3(0.813, 1.829, 0.813)
+HULL_DUCKING_BOUNDS = Vector3(0.813, 0.914, 0.813)
+VIEW_OFFSET = 0.711
+DUCK_VIEW_OFFSET = 0.305
+ACCELERATION = 10.0
+AIR_ACCELERATION = 150.0
+FRICTION = 4.0
+DUCKING_SPEED_MULTIPLIER = 0.333
+BUNNYHOP_CAP_MODE = 0
+SPEED_THRESHOLD_FACTOR = 1.7
+SPEED_DROP_FACTOR = 1.1
+MOUSE_SENSITIVITY = 12.0
+BOB_FREQUENCY = 0.008
+BOB_FRACTION = 12.0
+ROLL_ANGLE = 3.0
+ROLL_SPEED = 300.0
+NECK_LIMIT_UPPER = 89.0
+NECK_LIMIT_LOWER = -40.0
+ARM_LENGTH = 2.0
+ARM_OFFSET_DEGREES = Vector2(0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qxsbm"]
 size = Vector2(2000, 500)
@@ -190,27 +190,16 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.014, 262.954, -4.24461)
 bounces = 9
-use_denoiser = false
 texel_scale = 16.0
 camera_attributes = SubResource("CameraAttributesPractical_06bms")
 generate_probes_subdiv = 4
 light_data = ExtResource("2_wucc6")
 
-[node name="omasurfmap" parent="LightmapGI" instance=ExtResource("4_tf40n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.47516, -4.1792, -1.47204)
-
-[node name="Circle_001_007" parent="LightmapGI/omasurfmap" index="7"]
-material_override = ExtResource("3_4vg0b")
-
-[node name="SoundMaterial" type="Node" parent="LightmapGI/omasurfmap/Plane/StaticBody3D" index="1"]
-script = ExtResource("4_x3wu7")
-sound_texture = ExtResource("5_3ikpb")
-metadata/_custom_type_script = "uid://blnsht0ajtpig"
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightmapGI"]
-transform = Transform3D(0.836361, -0.541205, 0.0871724, 0.438133, 0.755527, 0.487051, -0.329455, -0.369156, 0.869013, 279.014, 8.73865, 4.24461)
-light_color = Color(0.762478, 0.736076, 0.879986, 1)
+transform = Transform3D(0.75398, -0.187697, -0.629512, 0.639427, -0.00983453, 0.768789, -0.150489, -0.982178, 0.112603, 279.014, 8.73865, 4.24461)
+light_color = Color(0.919758, 0.679962, 0.763935, 1)
 light_energy = 8.0
+light_indirect_energy = 3.37
 light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.0
@@ -224,6 +213,7 @@ directional_shadow_max_distance = 1000.0
 
 [node name="Decal" type="Decal" parent="LightmapGI"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 466.939, -378.495, 7.19534)
+visible = false
 size = Vector3(1000, 946.087, 1000)
 texture_albedo = ExtResource("7_somx4")
 texture_orm = SubResource("GradientTexture2D_somx4")
@@ -233,6 +223,7 @@ lower_fade = 0.00788341
 
 [node name="Decal4" type="Decal" parent="LightmapGI"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 517.238, -429.479, -417.084)
+visible = false
 size = Vector3(1000, 946.087, 1000)
 texture_albedo = ExtResource("7_somx4")
 texture_orm = SubResource("GradientTexture2D_somx4")
@@ -242,6 +233,7 @@ lower_fade = 0.00788341
 
 [node name="Decal2" type="Decal" parent="LightmapGI"]
 transform = Transform3D(0.945405, -0.325898, 0, 0.325898, 0.945405, 0, 0, 0, 1, 94.9027, -612.152, -974.746)
+visible = false
 size = Vector3(1000, 1024, 1000)
 texture_albedo = ExtResource("7_somx4")
 texture_orm = SubResource("GradientTexture2D_somx4")
@@ -251,6 +243,7 @@ lower_fade = 0.00788341
 
 [node name="Decal5" type="Decal" parent="LightmapGI"]
 transform = Transform3D(0.917366, -0.398045, 0, 0.398045, 0.917366, 0, 0, 0, 1, 501.732, -506.122, -974.746)
+visible = false
 size = Vector3(1000, 1024, 1000)
 texture_albedo = ExtResource("7_somx4")
 texture_orm = SubResource("GradientTexture2D_somx4")
@@ -260,6 +253,7 @@ lower_fade = 0.00788341
 
 [node name="Decal3" type="Decal" parent="LightmapGI"]
 transform = Transform3D(0.883259, -0.468886, 0, 0.468886, 0.883259, 0, 0, 0, 1, -541.016, -771.413, -974.746)
+visible = false
 size = Vector3(1000, 1024, 1000)
 texture_albedo = ExtResource("7_somx4")
 texture_orm = SubResource("GradientTexture2D_somx4")
@@ -267,28 +261,41 @@ texture_emission = SubResource("GradientTexture2D_qxsbm")
 upper_fade = 15.5953
 lower_fade = 0.00788341
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI"]
+script = ExtResource("4_x3wu7")
+sound_texture = ExtResource("5_3ikpb")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
+[node name="omasurfmap" parent="LightmapGI" instance=ExtResource("4_tf40n")]
+
+[node name="water" parent="LightmapGI/omasurfmap" index="13"]
+material_override = ExtResource("6_x3wu7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="LightmapGI"]
+environment = SubResource("Environment_qxsbm")
+
 [node name="Pawn" parent="." instance=ExtResource("2_s8j2k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.014, 262.954, -4.24461)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.014, 264.309, -4.24461)
 
 [node name="Powerup_Liukuri" parent="." instance=ExtResource("6_qva2f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -276.384, 260.163, -4.43159)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -281.889, 264.302, -4.43159)
 player_params = SubResource("Resource_somx4")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_qxsbm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 589.067, -25.7388, 0)
+visible = false
 mesh = SubResource("PlaneMesh_qxsbm")
 surface_material_override/0 = SubResource("ShaderMaterial_somx4")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 589.067, -25.7388, 488.976)
+visible = false
 mesh = SubResource("PlaneMesh_qxsbm")
 surface_material_override/0 = SubResource("ShaderMaterial_somx4")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.887421, -4.9023, 0, -0.460959, -9.43773, 589.067, -1254.16, -2601.67)
+visible = false
 mesh = SubResource("PlaneMesh_qxsbm")
 surface_material_override/0 = SubResource("ShaderMaterial_somx4")
 

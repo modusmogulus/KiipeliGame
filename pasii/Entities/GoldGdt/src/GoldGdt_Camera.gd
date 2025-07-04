@@ -3,7 +3,6 @@ class_name GoldGdt_Camera extends Node3D
 
 @export_group("Components")
 @export var Parameters : PlayerParameters
-@export var NodesToIgnoreVertical : Node
 
 @export_group("View Interpolation")
 @export var target : Node3D ## The node this function mimics the transform of.
@@ -17,7 +16,6 @@ var update : bool = false
 @export var camera : Node3D ## Camera node that is automatically rotated to compensate for the camera anchor rotation.
 @export var legs_ground_cast : Node3D
 
-var groundnormal = Vector3.UP
 var grounded = false
 
 func _ready() -> void:
@@ -36,18 +34,6 @@ func _process(delta_) -> void:
 
 func _physics_process(delta_) -> void:
 	# Update the transforms.
-	var spacestate = get_world_3d().direct_space_state
-	var queryparams = PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3.DOWN*10)
-	queryparams.exclude = [self, get_parent_node_3d()]
-	var result = spacestate.intersect_ray(queryparams)
-	if result:
-		groundnormal = result.normal
-	if NodesToIgnoreVertical:
-	#NodesToIgnoreVertical.global_rotation.x = lerpf(NodesToIgnoreVertical.global_rotation.x, 0.0, 0.9)
-		NodesToIgnoreVertical.global_rotation.x = 0.0
-		NodesToIgnoreVertical.global_rotation.z = 0.0
-		NodesToIgnoreVertical.global_basis.y = NodesToIgnoreVertical.global_basis.y.lerp(groundnormal, 0.02)
-		NodesToIgnoreVertical.global_basis = NodesToIgnoreVertical.global_basis.orthonormalized()
 	_update_target()
 func _update_target() -> void:
 	# Update interpolation transforms.

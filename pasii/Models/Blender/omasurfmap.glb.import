@@ -34,9 +34,29 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
+"@MATERIAL:2": {
+"use_external/enabled": true,
+"use_external/path": "uid://brwptrbxwxg1y"
+},
 "Material": {
 "use_external/enabled": true,
 "use_external/path": "uid://brwptrbxwxg1y"
+},
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "uid://dlgj46yl3o27v"
+},
+"crowd": {
+"use_external/enabled": true,
+"use_external/path": "uid://bov6mj2p5co3r"
+},
+"crowd_top": {
+"use_external/enabled": true,
+"use_external/path": "uid://d0qspt6h417jt"
+},
+"water-surface": {
+"use_external/enabled": true,
+"use_external/path": "uid://csjucp8jhbru4"
 }
 }
 }

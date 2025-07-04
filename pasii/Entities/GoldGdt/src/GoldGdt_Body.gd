@@ -24,6 +24,9 @@ var original_parameters : PlayerParameters
 @export var Move : GoldGdt_Move
 @export var UserInput : GoldGdt_Controls
 @onready var state_machine = anim_tree["parameters/playback"]
+@export var g_force_damage_curve : Curve
+@export var NodesToIgnoreVertical : Node
+var groundnormal = Vector3.UP
 
 @export_group("Player View")
 var offset : float = 0.711 # Current offset from player's origin.
@@ -50,6 +53,8 @@ var was_on_floor
 var ducked : bool = false # True if you are fully ducked.
 var ducking : bool = false # True if you are currently between ducked and normal standing.
 var previous_fall_speed : float = 0
+var g_forces : float = 0
+var previous_velocity : Vector3
 
 # Identifier for wall proximity.
 enum WallCollision {
@@ -57,6 +62,14 @@ enum WallCollision {
 	NEAR,
 	ON
 }
+
+func calculate_g_forces(current_velocity: Vector3, previous_velocity, axes: Vector3, delta_time: float) -> float:
+	var cur_vel = current_velocity * axes
+	var prev_vel = previous_velocity * axes
+	var vel_change = (current_velocity - previous_velocity) * axes
+	var acceleration = vel_change.length() / delta_time
+	var gs = acceleration / 9.80665
+	return gs*0.5
 
 # Base class for collision shape tracing.
 class Trace extends RefCounted:
@@ -101,24 +114,41 @@ func _physics_process(delta) -> void:
 	
 	View.horizontal_view.transform.origin.y = offset
 	
+	var spacestate = get_world_3d().direct_space_state
+	var queryparams = PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3.DOWN*10)
+	queryparams.exclude = [self, get_parent_node_3d()]
+	var result = spacestate.intersect_ray(queryparams)
+	if result:
+		groundnormal = result.normal
+	if NodesToIgnoreVertical:
+	#NodesToIgnoreVertical.global_rotation.x = lerpf(NodesToIgnoreVertical.global_rotation.x, 0.0, 0.9)
+		NodesToIgnoreVertical.global_rotation.x = 0.0
+		NodesToIgnoreVertical.global_rotation.z = 0.0
+		NodesToIgnoreVertical.global_basis.y = NodesToIgnoreVertical.global_basis.y.lerp(groundnormal, 0.02)
+		NodesToIgnoreVertical.global_basis = NodesToIgnoreVertical.global_basis.orthonormalized()
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= Parameters.GRAVITY * delta
+		previous_fall_speed = absf(velocity.y)
 	if was_on_floor == false && is_on_floor() == true:
 		landing(previous_fall_speed) 
 	was_on_floor = is_on_floor()
-	if !is_on_floor():
-		previous_fall_speed = absf(velocity.y)
 	_handle_step_trace_values()
-	
 	# Create deformed collision hull for use in _move_step()
 	_set_shape_bounds(BBOX_STEP, collision_hull.shape.size + Vector3(trace_margin, 0, trace_margin))
 	
+	g_forces = calculate_g_forces(velocity, previous_velocity, Vector3(1,1,1), delta)
 	# Run body movement and collision logic.
+	
+	if g_force_damage_curve.sample_baked(g_forces) > 1:
+		HpHandler.take_damage(g_force_damage_curve.sample_baked(g_forces))
+	
+	previous_velocity = velocity
 	_check_for_step()
 	_move_body()
+	
 	AnimHandler.player_velocity = velocity
-
 # Function for changing shape bounds, only here for when I add collision shape changing.
 func _set_shape_bounds(shape: BoxShape3D, size: Vector3) -> void:
 	shape.size = size

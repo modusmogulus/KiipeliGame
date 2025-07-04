@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=127 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" uid="uid://2j4wuk4aq4mg" path="res://Entities/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -30,6 +30,18 @@
 [ext_resource type="Shader" uid="uid://c6do48bkr07ri" path="res://Shaders/Hybrid/sharpen.gdshader" id="28_4yj34"]
 [ext_resource type="Shader" uid="uid://c3nr6m68st5eh" path="res://Shaders/Hybrid/Zoomblur.gdshader" id="28_8o6ai"]
 [ext_resource type="PackedScene" uid="uid://cx8lyfe42b3y7" path="res://Entities/GoldGdt/KP_FootstepAudioPlayer.tscn" id="29_on1w3"]
+[ext_resource type="Shader" uid="uid://bfrhloeogfum8" path="res://Shaders/colorblend.gdshader" id="31_on1w3"]
+[ext_resource type="Texture2D" uid="uid://c6nk7ic50eq8l" path="res://textures/animatedimages/Näyttökuva 2025-07-04 175336.png" id="32_on1w3"]
+
+[sub_resource type="Curve" id="Curve_2s55v"]
+_limits = [0.0, 1.0, 0.0, 12.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.335196, 0), 0.0, 0.0, 0, 0, Vector2(2.81564, 0.438202), 0.259023, 0.259023, 0, 0, Vector2(12, 1), 0.0538724, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_kam8o"]
+_limits = [0.0, 1.0, 0.0, 200.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(68.1564, 0), 0.0, 0.0, 0, 0, Vector2(200, 0.303371), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.829, 0.813)
@@ -471,22 +483,37 @@ shader = ExtResource("28_4yj34")
 shader_parameter/blur_sharp = -1.0
 shader_parameter/pixel = 3.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_on1w3"]
+shader = ExtResource("28_4yj34")
+shader_parameter/blur_sharp = 2.0
+shader_parameter/pixel = 1.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u0g1q"]
 shader = ExtResource("28_8o6ai")
 shader_parameter/blur_center = Vector2(0.5, 0.5)
-shader_parameter/blur_power = 0.224
+shader_parameter/blur_power = 0.004
 shader_parameter/sampling_count = 32
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_on1w3"]
-shader = ExtResource("28_4yj34")
-shader_parameter/blur_sharp = 200.0
-shader_parameter/pixel = 2.0
+[sub_resource type="Gradient" id="Gradient_on1w3"]
+offsets = PackedFloat32Array(0, 0.424, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.485703, 0.485704, 0.485703, 1, 0.485703, 0.485704, 0.485703, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r4n6a"]
-shader = ExtResource("28_8o6ai")
-shader_parameter/blur_center = Vector2(0.5, 0.5)
-shader_parameter/blur_power = 0.04
-shader_parameter/sampling_count = 32
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r4n6a"]
+noise_type = 2
+frequency = 0.0026
+fractal_octaves = 1
+fractal_lacunarity = 1.73
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u0g1q"]
+seamless = true
+seamless_blend_skirt = 0.345
+color_ramp = SubResource("Gradient_on1w3")
+noise = SubResource("FastNoiseLite_r4n6a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_521hp"]
+shader = ExtResource("31_on1w3")
+shader_parameter/vignette = ExtResource("32_on1w3")
+shader_parameter/uvnoise = SubResource("NoiseTexture2D_u0g1q")
 
 [sub_resource type="Animation" id="Animation_r4n6a"]
 length = 0.001
@@ -851,7 +878,7 @@ AnimHandler = NodePath("../Animation Handler")
 script = ExtResource("5_27krj")
 AnimHandler = NodePath("../Animation Handler")
 
-[node name="View Control" type="Node" parent="." node_paths=PackedStringArray("Body", "horizontal_view", "vertical_view", "camera_mount", "camera_animation_mount", "camera", "speedlines", "legs", "zoneout")]
+[node name="View Control" type="Node" parent="." node_paths=PackedStringArray("Body", "horizontal_view", "vertical_view", "camera_mount", "camera_animation_mount", "camera", "speedlines", "legs", "zoneout", "afterimage")]
 script = ExtResource("5_say2d")
 Parameters = ExtResource("2_m0ukv")
 Body = NodePath("../Body")
@@ -860,9 +887,11 @@ vertical_view = NodePath("../Body/Horizontal View/Vertical View")
 camera_mount = NodePath("../Body/Horizontal View/Vertical View/Camera Mount")
 camera_animation_mount = NodePath("../Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig/Skeleton3D/BoneAttachment3D2/CameraAnimationMount")
 camera = NodePath("../Display Body/Arm/Arm Anchor/Camera")
-speedlines = NodePath("../VFX/Speedlines")
+speedlines = NodePath("../VFX/Speedlines2")
 legs = NodePath("../Display Body/HorizontalOnly/LegsPelvis")
 zoneout = NodePath("../VFX/Zoneout")
+g_loc_curve = SubResource("Curve_2s55v")
+afterimage = NodePath("../VFX/Speedlines2/Afterimage")
 
 [node name="Move Functions" type="Node" parent="." node_paths=PackedStringArray("Body", "anim_tree", "AnimHandler")]
 script = ExtResource("4_5gavo")
@@ -887,7 +916,7 @@ AnimationSound = NodePath("../Display Body/Arm/Arm Anchor/Camera/AnimationSound"
 PaahdinReloadSound = ExtResource("9_44c2v")
 PhoneReloadSound = ExtResource("10_chcr7")
 
-[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "collision_hull", "duck_timer") groups=["Player"]]
+[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "collision_hull", "duck_timer") groups=["Player"]]
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 0.169297
@@ -902,6 +931,8 @@ PowerupInfo = NodePath("../GameUI/PowerupInfo")
 PowerupIconContainer = NodePath("../GameUI/PowerupInfo/TextureRect")
 Move = NodePath("../Move Functions")
 UserInput = NodePath("../User Input")
+g_force_damage_curve = SubResource("Curve_kam8o")
+NodesToIgnoreVertical = NodePath("../Display Body/HorizontalOnly")
 collision_hull = NodePath("Collision Hull")
 duck_timer = NodePath("Duck Timer")
 
@@ -937,11 +968,10 @@ parameters/RELOAD_Dense/Add2/add_amount = 1.0
 parameters/RELOAD_Paahdin/Add2/add_amount = 1.0
 parameters/RELOAD_Phone/Add2/add_amount = 0
 
-[node name="Display Body" type="Node3D" parent="." node_paths=PackedStringArray("NodesToIgnoreVertical", "target", "camera_arm", "camera_anchor", "camera")]
+[node name="Display Body" type="Node3D" parent="." node_paths=PackedStringArray("target", "camera_arm", "camera_anchor", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711003, 2.75671e-07)
 script = ExtResource("7_3b78s")
 Parameters = ExtResource("2_m0ukv")
-NodesToIgnoreVertical = NodePath("HorizontalOnly")
 target = NodePath("../Body/Horizontal View/Vertical View/Camera Mount")
 camera_arm = NodePath("Arm")
 camera_anchor = NodePath("Arm/Arm Anchor")
@@ -5073,8 +5103,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Speedlines" type="ColorRect" parent="VFX"]
-self_modulate = Color(1.2514e-06, 0.425073, 0.364169, 1)
+[node name="Speedlines2" type="ColorRect" parent="VFX"]
+self_modulate = Color(1, 1, 1, 0.509804)
+material = SubResource("ShaderMaterial_on1w3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speedlines" type="ColorRect" parent="VFX/Speedlines2"]
+z_index = -15
 material = SubResource("ShaderMaterial_u0g1q")
 layout_mode = 1
 anchors_preset = 15
@@ -5084,26 +5124,16 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Speedlines2" type="ColorRect" parent="VFX/Speedlines"]
-self_modulate = Color(0.557979, 0, 0.26847, 1)
-material = SubResource("ShaderMaterial_on1w3")
+[node name="Afterimage" type="TextureRect" parent="VFX/Speedlines2"]
+self_modulate = Color(1, 1, 1, 0.192157)
+material = SubResource("ShaderMaterial_521hp")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Speedlines3" type="ColorRect" parent="VFX/Speedlines"]
-material = SubResource("ShaderMaterial_r4n6a")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+expand_mode = 1
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3

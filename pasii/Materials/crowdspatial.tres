@@ -1,0 +1,26 @@
+[gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://bov6mj2p5co3r"]
+
+[ext_resource type="Texture2D" uid="uid://pfspj6rsdgu3" path="res://textures/animatedimages/crowd0002.png" id="1_pvob4"]
+[ext_resource type="Texture2D" uid="uid://cqad1ura747k3" path="res://textures/animatedimages/crowd0003.png" id="2_0mne7"]
+[ext_resource type="Texture2D" uid="uid://chwjb63cvv028" path="res://textures/animatedimages/crowd0004.png" id="3_2uhqq"]
+[ext_resource type="Texture2D" uid="uid://dljadkacmcqal" path="res://textures/animatedimages/crowd0005.png" id="4_5dl56"]
+[ext_resource type="Texture2D" uid="uid://cs4ba8ryas76p" path="res://textures/animatedimages/crowd0006.png" id="5_y3snx"]
+[ext_resource type="Texture2D" uid="uid://dtv6bh2p1rppe" path="res://textures/animatedimages/crowd0007.png" id="6_d87kr"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_1c68j"]
+frames = 6
+speed_scale = 20.0
+frame_0/texture = ExtResource("1_pvob4")
+frame_1/texture = ExtResource("2_0mne7")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_2uhqq")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_5dl56")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_y3snx")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_d87kr")
+frame_5/duration = 1.0
+
+[resource]
+albedo_texture = SubResource("AnimatedTexture_1c68j")

@@ -2,7 +2,7 @@ shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, fog_disabled, cull_back, diffuse_burley, specular_schlick_ggx, shadows_disabled, unshaded;
 
 uniform vec4 albedo : source_color;
-uniform float water_fog_exponent: hint_range(-4.0, 4.0);
+uniform float water_fog_exponent: hint_range(-20.0, 20.0);
 uniform vec4 glimmer_color : source_color;
 uniform vec4 fog_color : source_color;
 uniform float water_fog: hint_range(-5.0, 5.0);

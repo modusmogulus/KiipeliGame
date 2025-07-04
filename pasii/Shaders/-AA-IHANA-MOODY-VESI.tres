@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://csjucp8jhbru4"]
 
-[ext_resource type="Shader" path="res://Shaders/luna_vesishader.gdshader" id="1_p3utd"]
+[ext_resource type="Shader" uid="uid://422wpurshq0j" path="res://Shaders/luna_vesishader.gdshader" id="1_p3utd"]
 
 [sub_resource type="Gradient" id="Gradient_gajf2"]
 offsets = PackedFloat32Array(0, 0.299435, 1)
