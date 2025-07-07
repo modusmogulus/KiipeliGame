@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://beesu0jqytwj7" path="res://Audio/Soundtextures/Ice.tres" id="5_3ikpb"]
 [ext_resource type="PackedScene" uid="uid://dq3p6jsb61qyn" path="res://Entities/Powerups/powerup_liukuri.tscn" id="6_qva2f"]
 [ext_resource type="Material" uid="uid://d00v6e3n7j0iq" path="res://Shaders/-AA-IHANA-MERI-VESI3.tres" id="6_x3wu7"]
-[ext_resource type="Environment" uid="uid://dbieyabivb32q" path="res://Materials/WORLD_ENV_Morning.tres" id="7_3ikpb"]
+[ext_resource type="Environment" uid="uid://bg6bl1l0qk5dw" path="res://Materials/WORLD_ENV_Morning.tres" id="7_3ikpb"]
 [ext_resource type="Script" uid="uid://svdh0nyihu6v" path="res://Entities/GoldGdt/src/PlayerParameters.gd" id="7_qva2f"]
 [ext_resource type="Texture2D" uid="uid://cx7qqixfjty02" path="res://textures/decal_shadowfade.tres" id="7_somx4"]
 [ext_resource type="Shader" uid="uid://422wpurshq0j" path="res://Shaders/luna_vesishader.gdshader" id="8_somx4"]

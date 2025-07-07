@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c0ol8vqpt4m17" path="res://Models/Characters/YOKYOPELI-KADET_jackettex.png" id="20_o5sai"]
 [ext_resource type="Texture2D" uid="uid://udpimmiwpe3f" path="res://Models/Characters/YOKYOPELI-KADET_custom-toaster-skin-01.png" id="22_o5sai"]
 [ext_resource type="Texture2D" uid="uid://bhhyxgg08x6em" path="res://Models/Characters/YOKYOPELI-KADET_TROUSERTEX.png" id="22_pajro"]
-[ext_resource type="Material" uid="uid://brfxf4vi2mr4b" path="res://Shaders/KP_CavitySettings.tres" id="24_8o6ai"]
+[ext_resource type="Material" path="res://Shaders/KP_CavitySettings.tres" id="24_8o6ai"]
 [ext_resource type="Shader" uid="uid://dw6irdsqw60il" path="res://Shaders/Hybrid/matcap_basic_textured.gdshader" id="25_8d4tw"]
 [ext_resource type="Texture2D" uid="uid://bwf2b1pfhcoy7" path="res://textures/matcaps/63584B_E6E0D6_A8A092_BFB6A8-64px.png" id="27_8o6ai"]
 [ext_resource type="Shader" uid="uid://c6do48bkr07ri" path="res://Shaders/Hybrid/sharpen.gdshader" id="28_4yj34"]
