@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://din8vyp1eg6tk"]
+[gd_scene load_steps=33 format=3 uid="uid://din8vyp1eg6tk"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="2_s8j2k"]
 [ext_resource type="LightmapGIData" uid="uid://bvjmlvj7pyd6j" path="res://Scenes/3rdPartySurfMaps/surf_utopia.lmbake" id="2_wucc6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://beesu0jqytwj7" path="res://Audio/Soundtextures/Ice.tres" id="5_3ikpb"]
 [ext_resource type="PackedScene" uid="uid://dq3p6jsb61qyn" path="res://Entities/Powerups/powerup_liukuri.tscn" id="6_qva2f"]
 [ext_resource type="Material" uid="uid://d00v6e3n7j0iq" path="res://Shaders/-AA-IHANA-MERI-VESI3.tres" id="6_x3wu7"]
+[ext_resource type="Environment" uid="uid://dbieyabivb32q" path="res://Materials/WORLD_ENV_Morning.tres" id="7_3ikpb"]
 [ext_resource type="Script" uid="uid://svdh0nyihu6v" path="res://Entities/GoldGdt/src/PlayerParameters.gd" id="7_qva2f"]
 [ext_resource type="Texture2D" uid="uid://cx7qqixfjty02" path="res://textures/decal_shadowfade.tres" id="7_somx4"]
 [ext_resource type="Shader" uid="uid://422wpurshq0j" path="res://Shaders/luna_vesishader.gdshader" id="8_somx4"]
@@ -32,56 +33,6 @@ gradient = SubResource("Gradient_somx4")
 fill = 1
 fill_from = Vector2(0.492823, 0.507177)
 fill_to = Vector2(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_06bms"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.445833, 0.445833, 0.470833, 0.483333, 0.565714, 0.748571, 0.884298)
-colors = PackedColorArray(1, 1, 1, 1, 0.1584, 0.54216, 0.72, 1, 0.614902, 0.501445, 0.883665, 1, 0.732533, 0.762714, 0.946546, 1, 0.812195, 0.464918, 0.770447, 1, 0.294515, 0.36498, 0.633598, 1, 0.245933, 0.224338, 0.617849, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4vg0b"]
-gradient = SubResource("Gradient_06bms")
-fill_from = Vector2(1, 1)
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qva2f"]
-panorama = SubResource("GradientTexture2D_4vg0b")
-
-[sub_resource type="Sky" id="Sky_somx4"]
-sky_material = SubResource("PanoramaSkyMaterial_qva2f")
-
-[sub_resource type="Environment" id="Environment_qxsbm"]
-background_mode = 2
-sky = SubResource("Sky_somx4")
-ambient_light_source = 3
-ambient_light_color = Color(0.834614, 0.834614, 0.834614, 1)
-ssr_enabled = true
-ssao_radius = 0.34
-ssao_intensity = 16.7
-ssil_intensity = 2.0
-ssil_sharpness = 1.0
-sdfgi_use_occlusion = true
-sdfgi_min_cell_size = 0.0488281
-sdfgi_cascade0_distance = 3.125
-sdfgi_max_distance = 50.0
-sdfgi_y_scale = 0
-glow_enabled = true
-glow_intensity = 0.54
-glow_strength = 0.6
-glow_bloom = 0.26
-glow_blend_mode = 0
-glow_hdr_threshold = 4.0
-glow_hdr_luminance_cap = 1.0
-glow_map_strength = 0.0
-fog_mode = 1
-fog_light_color = Color(0.856472, 0.827493, 0.951342, 1)
-fog_light_energy = 0.3
-fog_density = 0.0
-fog_sky_affect = 0.0
-fog_height = -8.62
-fog_height_density = 0.0181
-fog_depth_begin = 725.8
-fog_depth_end = 1704.8
-volumetric_fog_density = 0.0
-volumetric_fog_ambient_inject = 1.9
 
 [sub_resource type="Resource" id="Resource_somx4"]
 script = ExtResource("7_qva2f")
@@ -185,6 +136,72 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
+[sub_resource type="Gradient" id="Gradient_5hby1"]
+offsets = PackedFloat32Array(0, 0.299435, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.299547, 0.299548, 0.299547, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_inh42"]
+noise_type = 0
+seed = 635
+frequency = 0.0073
+fractal_type = 2
+fractal_octaves = 2
+fractal_lacunarity = 1.82
+fractal_gain = 0.28
+cellular_distance_function = 3
+cellular_jitter = 1.8
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 22.375
+domain_warp_frequency = 0.01
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rtv3i"]
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_5hby1")
+noise = SubResource("FastNoiseLite_inh42")
+
+[sub_resource type="Gradient" id="Gradient_pyk8c"]
+offsets = PackedFloat32Array(0.528249, 0.683616, 0.875706)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7bbay"]
+seed = 290
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f2jvd"]
+generate_mipmaps = false
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_pyk8c")
+noise = SubResource("FastNoiseLite_7bbay")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dey7o"]
+render_priority = 2
+shader = ExtResource("8_somx4")
+shader_parameter/albedo = Color(0.94, 0.94, 0.94, 1)
+shader_parameter/water_fog_exponent = 0.719
+shader_parameter/glimmer_color = Color(0.338234, 0.689206, 1, 1)
+shader_parameter/fog_color = Color(0, 0.005, 0.15, 1)
+shader_parameter/water_fog = 2.953
+shader_parameter/point_size = 74.5
+shader_parameter/speed = 0.014
+shader_parameter/flow_speed = -0.13
+shader_parameter/glimmer_strength = 10.404
+shader_parameter/shore_strength = 2.0
+shader_parameter/shorecol = Color(0, 0.177307, 1, 1)
+shader_parameter/refraction = -0.553
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/distort_tex = SubResource("NoiseTexture2D_rtv3i")
+shader_parameter/glimmer_tex = SubResource("NoiseTexture2D_f2jvd")
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/oiliness = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
@@ -272,7 +289,7 @@ metadata/_custom_type_script = "uid://blnsht0ajtpig"
 material_override = ExtResource("6_x3wu7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="LightmapGI"]
-environment = SubResource("Environment_qxsbm")
+environment = ExtResource("7_3ikpb")
 
 [node name="Pawn" parent="." instance=ExtResource("2_s8j2k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.014, 264.309, -4.24461)
@@ -298,5 +315,23 @@ transform = Transform3D(1, 0, 0, 0, 0.887421, -4.9023, 0, -0.460959, -9.43773, 5
 visible = false
 mesh = SubResource("PlaneMesh_qxsbm")
 surface_material_override/0 = SubResource("ShaderMaterial_somx4")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1559.33, 0.356979, 0)
+material_override = SubResource("ShaderMaterial_dey7o")
+flip_faces = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1558.89, 0.713957, 0)
+material_override = SubResource("ShaderMaterial_dey7o")
+flip_faces = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -779.883, 0, 0)
+material_override = SubResource("ShaderMaterial_dey7o")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -779.444, 0.596078, 0.468543)
+material_override = SubResource("ShaderMaterial_dey7o")
 
 [editable path="LightmapGI/omasurfmap"]

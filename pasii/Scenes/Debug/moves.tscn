@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://vlx34qx02kca"]
+
+[ext_resource type="Material" uid="uid://dlgj46yl3o27v" path="res://Materials/3p_cave.tres" id="1_8u15s"]
+[ext_resource type="Shader" uid="uid://e0ec8ey3ij15" path="res://Shaders/Hybrid/caverock.gdshader" id="2_qs1c1"]
+[ext_resource type="Texture2D" uid="uid://dy63cimxxy2ef" path="res://textures/ykp/Textures/yk_rocksfinland-export.png" id="3_n8o73"]
+[ext_resource type="Texture2D" uid="uid://dadg7ls2cav82" path="res://textures/ykp/Textures/yk_lumipenkka 2.png" id="4_fqqwr"]
+[ext_resource type="Texture2D" uid="uid://b65iwipfyop1r" path="res://textures/mustavuorikivi-kaleido5.png" id="5_sr1t1"]
+[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="6_qs1c1"]
+
+[sub_resource type="Gradient" id="Gradient_06bms"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.445833, 0.445833, 0.470833, 0.483333, 0.565714, 0.748571, 0.884298)
+colors = PackedColorArray(1, 1, 1, 1, 0.1584, 0.54216, 0.72, 1, 0.614902, 0.501445, 0.883665, 1, 0.732533, 0.762714, 0.946546, 1, 0.812195, 0.464918, 0.770447, 1, 0.294515, 0.36498, 0.633598, 1, 0.245933, 0.224338, 0.617849, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4vg0b"]
+gradient = SubResource("Gradient_06bms")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qva2f"]
+panorama = SubResource("GradientTexture2D_4vg0b")
+
+[sub_resource type="Sky" id="Sky_somx4"]
+sky_material = SubResource("PanoramaSkyMaterial_qva2f")
+
+[sub_resource type="Environment" id="Environment_gj0ju"]
+background_mode = 2
+sky = SubResource("Sky_somx4")
+ambient_light_source = 3
+ambient_light_color = Color(0.834614, 0.834614, 0.834614, 1)
+ssr_enabled = true
+ssao_radius = 0.34
+ssao_intensity = 16.7
+ssil_intensity = 2.0
+ssil_sharpness = 1.0
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 0.0488281
+sdfgi_cascade0_distance = 3.125
+sdfgi_max_distance = 50.0
+sdfgi_y_scale = 0
+glow_enabled = true
+glow_intensity = 0.54
+glow_strength = 0.6
+glow_bloom = 0.26
+glow_blend_mode = 0
+glow_hdr_threshold = 4.0
+glow_hdr_luminance_cap = 1.0
+glow_map_strength = 0.0
+fog_mode = 1
+fog_light_color = Color(0.856472, 0.827493, 0.951342, 1)
+fog_light_energy = 0.3
+fog_density = 0.0
+fog_sky_affect = 0.0
+fog_height = -8.62
+fog_height_density = 0.0181
+fog_depth_begin = 725.8
+fog_depth_end = 1704.8
+volumetric_fog_density = 0.0
+volumetric_fog_ambient_inject = 1.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxfds"]
+render_priority = 0
+shader = ExtResource("2_qs1c1")
+shader_parameter/albedo_ceiling = Color(0.184127, 0.323858, 0.539898, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("3_n8o73")
+shader_parameter/roughness = 1.0
+shader_parameter/albedo_wall = Color(0.74978, 0.74978, 0.74978, 1)
+shader_parameter/texture_albedo_wall = ExtResource("5_sr1t1")
+shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("4_fqqwr")
+shader_parameter/ground_threshold = 0.51
+shader_parameter/blend_smoothness = 0.38
+shader_parameter/uv1_blend_sharpness = 63.503
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv_global = false
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gj0ju")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.609734, 0)
+material_override = ExtResource("1_8u15s")
+use_collision = true
+size = Vector3(80, 2, 80)
+material = SubResource("ShaderMaterial_bxfds")
+
+[node name="Pawn" parent="." instance=ExtResource("6_qs1c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 3)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.546643, 0.837366, 0, -0.837366, -0.546643, 0, 0, 0)
+light_energy = 0.275
+shadow_enabled = true
