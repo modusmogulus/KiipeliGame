@@ -32,7 +32,10 @@ func _physics_process(_delta) -> void:
 	# Add some view bobbing to the Camera Mount
 	_camera_mount_bob()
 	
-	camera_mount.rotation.z = lerpf(camera_mount.rotation.z, _calc_roll(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED)*1.2, 0.2)
+	if Body.current_wallrun_state !=  enumsKP.wallrun_states.NONE && Body.current_wallrun_state != enumsKP.wallrun_states.BOTH:
+		camera_mount.rotation.z = lerpf(camera_mount.rotation.z, deg_to_rad(Body.current_wallrun_state * 12.0), 0.2)
+	else:
+		camera_mount.rotation.z = lerpf(camera_mount.rotation.z, _calc_roll(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED)*1.2, 0.2)
 	var _ct = camera_mount.rotation.x
 	var _lt = legs.rotation.x
 	camera_mount.rotation.x = lerpf(_ct, (_calc_pitch_overshoot(Parameters.ROLL_ANGLE*0.2, Parameters.ROLL_SPEED*0.1)*2), 0.2)
@@ -86,6 +89,7 @@ func _calc_roll(rollangle: float, rollspeed: float) -> float:
 		return 0
 	
 	var side = Body.velocity.dot(horizontal_view.transform.basis.x)
+	
 	
 	var roll_sign = 1.0 if side < 0.0 else -1.0
 	

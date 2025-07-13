@@ -116,6 +116,10 @@ func _gather_input() -> void:
 	# Create vector that stores speed and direction.
 	move_dir = Vector3(movement_input.x * speeds.x, 0, movement_input.y * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)
 	
+	# Overwrite movement input on wallrun
+	if Body.current_wallrun_state != 0:
+		move_dir = Vector3(Body.current_wallrun_state * speeds.x, 0, -10.0 * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)
+	
 	# Bring down the move direction to a third of it's speed.
 	if Body.ducked:
 		move_dir *= Parameters.DUCKING_SPEED_MULTIPLIER
@@ -130,6 +134,9 @@ func _gather_input() -> void:
 	roll_on = Input.is_action_just_pressed("pm_roll")
 	Body.request_roll(roll_on)
 	
+	if (Input.is_action_just_pressed("pm_jump")) && !Body.is_on_floor(): #just_pressed is important on this one!
+		Body.current_wallrun_state = Move.request_wallrun()
+		
 	if (Input.is_action_just_pressed("kp_die")):
 		get_parent().die()
 	
@@ -153,5 +160,15 @@ func _act_on_input() -> void:
 		else:
 			Move._friction(delta, 1.0)
 			Move._accelerate(delta, move_dir.normalized(), move_dir.length(), Parameters.ACCELERATION)
+			
 	else: 
+		
+		print(Move.request_wallrun())
 		Move._airaccelerate(delta, move_dir.normalized(), move_dir.length(), Parameters.AIR_ACCELERATION)
+		if jump_on:
+			if Body.current_wallrun_state != 0:
+				#re-request wallrun because otherwise player will float when wall ends
+				Body.current_wallrun_state = Move.request_wallrun()
+				Move._accelerate(delta, move_dir.normalized(), move_dir.length()*1.0, Parameters.AIR_ACCELERATION*5.0)
+		else:
+			Body.current_wallrun_state = enumsKP.wallrun_states.NONE

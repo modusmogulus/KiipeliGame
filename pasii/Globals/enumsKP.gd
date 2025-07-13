@@ -13,3 +13,11 @@ enum powerups {
 	NO = 0,
 	LIUKURI = 4
 }
+
+
+enum wallrun_states {
+	NONE = 0,
+	LEFT = -1,
+	RIGHT = 1,
+	BOTH = 2
+}

@@ -9,6 +9,27 @@ class_name GoldGdt_Move extends Node
 @export var AnimHandler : KiipeliAnimHandler
 @onready var state_machine = anim_tree["parameters/playback"]
 # Adds to the player's velocity based on direction, speed and acceleration.
+
+func request_wallrun() -> enumsKP.wallrun_states:
+	var query = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * -1)
+	var query2 = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * 1)
+	query.exclude = [Body.collision_hull]
+	query2.exclude = [Body.collision_hull]
+	var space_state = Body.get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(query)
+	if result.size() > 0:
+		print("LEFT WALLRUN")
+		return enumsKP.wallrun_states.LEFT
+	
+	result = space_state.intersect_ray(query2)
+	if result.size() > 0:
+		
+		print("RIGHT WALLRUN")
+		return enumsKP.wallrun_states.RIGHT
+	else:
+		
+		print("NO WALLRUn")
+		return enumsKP.wallrun_states.NONE
 func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float) -> void:
 	if !Body: return
 	
@@ -96,6 +117,7 @@ func _friction(delta: float, strength: float) -> void:
 
 # Applies a jump force to the player.
 func _jump(delta: float) -> void:
+	#print(request_wallrun())
 	# Apply the jump impulse
 	Body.velocity.y = sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
 	AnimHandler.is_grounded = false

@@ -27,6 +27,7 @@ var original_parameters : PlayerParameters
 @export var g_force_damage_curve : Curve
 @export var NodesToIgnoreVertical : Node
 var groundnormal = Vector3.UP
+var current_wallrun_state : enumsKP.wallrun_states
 
 @export_group("Player View")
 var offset : float = 0.711 # Current offset from player's origin.
@@ -128,11 +129,12 @@ func _physics_process(delta) -> void:
 		NodesToIgnoreVertical.global_basis = NodesToIgnoreVertical.global_basis.orthonormalized()
 		
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() && current_wallrun_state == 0:
 		velocity.y -= Parameters.GRAVITY * delta
 		previous_fall_speed = absf(velocity.y)
 	if was_on_floor == false && is_on_floor() == true:
-		landing(previous_fall_speed) 
+		landing(previous_fall_speed)
+		
 	was_on_floor = is_on_floor()
 	_handle_step_trace_values()
 	# Create deformed collision hull for use in _move_step()
