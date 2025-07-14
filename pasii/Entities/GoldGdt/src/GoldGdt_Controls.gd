@@ -118,8 +118,8 @@ func _gather_input() -> void:
 	
 	# Overwrite movement input on wallrun
 	if Body.current_wallrun_state != 0:
-		move_dir = Vector3(Body.current_wallrun_state * speeds.x, 0, -10.0 * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)
-	
+		#move_dir = Vector3(Body.current_wallrun_state * speeds.x, 0, -10.0 * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)
+		move_dir = -View.camera_mount.global_basis.z * speeds.length() - (Body.wall_normal * 5.0)
 	# Bring down the move direction to a third of it's speed.
 	if Body.ducked:
 		move_dir *= Parameters.DUCKING_SPEED_MULTIPLIER
@@ -169,6 +169,14 @@ func _act_on_input() -> void:
 			if Body.current_wallrun_state != 0:
 				#re-request wallrun because otherwise player will float when wall ends
 				Body.current_wallrun_state = Move.request_wallrun()
-				Move._accelerate(delta, move_dir.normalized(), move_dir.length()*1.0, Parameters.AIR_ACCELERATION*5.0)
+				if !Move.request_wallrun():
+					Body.current_wallrun_state = enumsKP.wallrun_states.NONE
+					Move._jump(delta)
+					
+					#Move._accelerate(delta, Vector3(0.0, 0.0, 1.0).rotated(Vector3.UP, View.horizontal_view.rotation.y), -100.0, 200.0)
+				Move._accelerate(delta, move_dir.normalized(), 8.0, 20.0)
+				
+				#print(move_dir.normalized().dot(Body.velocity.normalized()))
+				
 		else:
 			Body.current_wallrun_state = enumsKP.wallrun_states.NONE

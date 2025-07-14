@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=126 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" uid="uid://2j4wuk4aq4mg" path="res://Entities/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://c0ol8vqpt4m17" path="res://Models/Characters/YOKYOPELI-KADET_jackettex.png" id="20_o5sai"]
 [ext_resource type="Texture2D" uid="uid://udpimmiwpe3f" path="res://Models/Characters/YOKYOPELI-KADET_custom-toaster-skin-01.png" id="22_o5sai"]
 [ext_resource type="Texture2D" uid="uid://bhhyxgg08x6em" path="res://Models/Characters/YOKYOPELI-KADET_TROUSERTEX.png" id="22_pajro"]
-[ext_resource type="Material" path="res://Shaders/KP_CavitySettings.tres" id="24_8o6ai"]
 [ext_resource type="Shader" uid="uid://dw6irdsqw60il" path="res://Shaders/Hybrid/matcap_basic_textured.gdshader" id="25_8d4tw"]
 [ext_resource type="Texture2D" uid="uid://bwf2b1pfhcoy7" path="res://textures/matcaps/63584B_E6E0D6_A8A092_BFB6A8-64px.png" id="27_8o6ai"]
 [ext_resource type="Shader" uid="uid://c6do48bkr07ri" path="res://Shaders/Hybrid/sharpen.gdshader" id="28_4yj34"]
@@ -3015,7 +3014,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.711003, -0.537996)
 visible = false
 mesh = SubResource("QuadMesh_8o6ai")
 skeleton = NodePath("../../../../..")
-surface_material_override/0 = ExtResource("24_8o6ai")
 
 [node name="FootstepAudioPlayer" parent="Display Body/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("player_hull") instance=ExtResource("29_on1w3")]
 transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, -8.88178e-16, -0.313537, -2.75671e-07)

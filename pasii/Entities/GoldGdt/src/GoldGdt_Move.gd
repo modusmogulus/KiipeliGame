@@ -11,12 +11,15 @@ class_name GoldGdt_Move extends Node
 # Adds to the player's velocity based on direction, speed and acceleration.
 
 func request_wallrun() -> enumsKP.wallrun_states:
+	if !Body: return enumsKP.wallrun_states.NONE
 	var query = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * -1)
 	var query2 = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * 1)
 	query.exclude = [Body.collision_hull]
 	query2.exclude = [Body.collision_hull]
+	
 	var space_state = Body.get_world_3d().direct_space_state
 	var result = space_state.intersect_ray(query)
+	
 	if result.size() > 0:
 		print("LEFT WALLRUN")
 		return enumsKP.wallrun_states.LEFT

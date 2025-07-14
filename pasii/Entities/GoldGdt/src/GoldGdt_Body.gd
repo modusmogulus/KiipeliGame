@@ -28,7 +28,6 @@ var original_parameters : PlayerParameters
 @export var NodesToIgnoreVertical : Node
 var groundnormal = Vector3.UP
 var current_wallrun_state : enumsKP.wallrun_states
-
 @export_group("Player View")
 var offset : float = 0.711 # Current offset from player's origin.
 

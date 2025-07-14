@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cl3ojf5rtn8pu"]
+
+[ext_resource type="Shader" uid="uid://e0ec8ey3ij15" path="res://Shaders/Hybrid/3p_retro.gdshader" id="1_qda6x"]
+[ext_resource type="Texture2D" uid="uid://cms5pfmldaj3w" path="res://textures/Tammertex 01 Indexed/16.png" id="2_0pe0s"]
+[ext_resource type="Texture2D" uid="uid://jto48wokl7fw" path="res://Models/Blender/kaleva_yk_lumipenkka 2.png" id="3_wrbi2"]
+[ext_resource type="Texture2D" uid="uid://dfscasxfxdrj8" path="res://textures/Tammertex 01 Indexed/17.png" id="4_y5jq5"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qda6x")
+shader_parameter/albedo_ceiling = Color(0.851769, 0.851769, 0.851769, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("2_0pe0s")
+shader_parameter/roughness = 1.0
+shader_parameter/albedo_wall = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_wall = ExtResource("4_y5jq5")
+shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("3_wrbi2")
+shader_parameter/ground_threshold = 0.25
+shader_parameter/blend_smoothness = 0.0
+shader_parameter/uv1_blend_sharpness = 8.654
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv_global = true
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false

@@ -133,6 +133,7 @@ textures/default_filters/use_nearest_mipmap_filter=true
 textures/default_filters/anisotropic_filtering_level=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 textures/decals/filter=0
+lightmapping/lightmap_gi/use_bicubic_filter=false
 anti_aliasing/quality/use_debanding=true
 occlusion_culling/use_occlusion_culling=true
 
