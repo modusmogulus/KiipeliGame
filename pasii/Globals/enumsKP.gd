@@ -21,3 +21,8 @@ enum wallrun_states {
 	RIGHT = 1,
 	BOTH = 2
 }
+
+enum vault_states {
+	NONE = 0,
+	INITIAL_VAULT = 1
+}

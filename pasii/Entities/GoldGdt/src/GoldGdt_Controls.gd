@@ -39,7 +39,6 @@ func _input(event) -> void:
 				get_tree().quit()
 	
 		if event is InputEventKey:
-		
 			if event.is_action_released("kp_mousemode"):
 				if mousing_around == true:
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -136,6 +135,7 @@ func _gather_input() -> void:
 	
 	if (Input.is_action_just_pressed("pm_jump")) && !Body.is_on_floor(): #just_pressed is important on this one!
 		Body.current_wallrun_state = Move.request_wallrun()
+		Body.current_vault_state = Move.request_vault()
 		
 	if (Input.is_action_just_pressed("kp_die")):
 		get_parent().die()

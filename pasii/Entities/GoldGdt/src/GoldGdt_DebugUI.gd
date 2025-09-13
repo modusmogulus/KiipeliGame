@@ -17,6 +17,8 @@ extends Control
 @export var FootstepInfo : Label
 
 var plot_velocity : Array[float]
+var plot_velocity_lowpass : Array[float]
+var plot_velocity_kernel : Array[float] = [1.0, 0.5, 0.25, 0.125, 0.0625, 0.03125]
 
 var wc_topmost: ImGuiWindowClassPtr
 
@@ -70,16 +72,20 @@ func _write_health_ui():
 func _write_body_ui():
 	var format = "Position: %s\nVelocity: %s\nSpeed: %s km/h (%s u/s)\n G-Forces: %s\n Ducking: %s\nDucked: %s"
 	var h_vel = Vector2(Body.velocity.x, Body.velocity.z)
+	var vel_lp = Body.velocity_lowpass_filtered
 	var str = format % [Body.global_position, Body.velocity*3.6, round(h_vel.length()), round(h_vel.length() * 39.37), Body.g_forces, Body.ducking, Body.ducked]
 	BodyInfo.text = str
 	
 	ImGui.Text(str)
 	plot_velocity.append(h_vel.length())
+	plot_velocity_lowpass.append(vel_lp.y)
+	
 	
 	if plot_velocity.size() >= 512:
 		plot_velocity.pop_front()
 	
 	ImGui.PlotHistogram("Velocity", plot_velocity, plot_velocity.size())
+	ImGui.PlotHistogram("VelocityLowpass", plot_velocity_lowpass, plot_velocity_lowpass.size())
 	pass
 
 func _write_inv_ui():

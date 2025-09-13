@@ -26,8 +26,13 @@ var original_parameters : PlayerParameters
 @onready var state_machine = anim_tree["parameters/playback"]
 @export var g_force_damage_curve : Curve
 @export var NodesToIgnoreVertical : Node
+@export var FallDamageRollWindow : Timer
+
 var groundnormal = Vector3.UP
 var current_wallrun_state : enumsKP.wallrun_states
+var current_vault_state : enumsKP.vault_states
+
+
 @export_group("Player View")
 var offset : float = 0.711 # Current offset from player's origin.
 
@@ -53,8 +58,12 @@ var was_on_floor
 var ducked : bool = false # True if you are fully ducked.
 var ducking : bool = false # True if you are currently between ducked and normal standing.
 var previous_fall_speed : float = 0
+var pre_landing_fall_speed : float = 0 #set to zero if rolling occurs right after landing
 var g_forces : float = 0
 var previous_velocity : Vector3
+
+var velocity_lowpass_filtered: Vector3 = Vector3.ZERO #for rolling etc
+var velocity_lowpass_size: float = 16.0
 
 # Identifier for wall proximity.
 enum WallCollision {
@@ -99,15 +108,17 @@ func _ready() -> void:
 	original_parameters = Parameters
 
 func request_roll(start_or_stop : bool):
-	roll(start_or_stop)
+	
+	if start_or_stop == true && FallDamageRollWindow.is_stopped() == false:
+		roll()
 
-func roll(start_or_stop : bool):
-	AnimHandler.rolling = start_or_stop
+func roll():
+	AnimHandler.rolling = true
+	pre_landing_fall_speed = 0.0
 	
 func landing(last_fall_speed : float):
-	var damage = last_fall_speed * 2
-	HpHandler.take_damage(damage)
-
+	pre_landing_fall_speed = last_fall_speed
+	FallDamageRollWindow.start()
 
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
@@ -133,7 +144,9 @@ func _physics_process(delta) -> void:
 		previous_fall_speed = absf(velocity.y)
 	if was_on_floor == false && is_on_floor() == true:
 		landing(previous_fall_speed)
-		
+	
+	velocity_lowpass_filtered = abs(lerp(previous_velocity, velocity, (1 / velocity_lowpass_size)*delta))
+
 	was_on_floor = is_on_floor()
 	_handle_step_trace_values()
 	# Create deformed collision hull for use in _move_step()
@@ -150,6 +163,9 @@ func _physics_process(delta) -> void:
 	_move_body()
 	
 	AnimHandler.player_velocity = velocity
+	
+	
+	
 # Function for changing shape bounds, only here for when I add collision shape changing.
 func _set_shape_bounds(shape: BoxShape3D, size: Vector3) -> void:
 	shape.size = size
@@ -400,3 +416,9 @@ func remove_powerup(pup : KP_Powerup):
 	Move.Parameters = original_parameters
 	current_powerups.erase(pup.powerup_type_enum)
 	PowerupIconContainer.texture.reset_state()
+
+
+func _on_fall_damage_roll_window_timeout() -> void:
+	var damage = pre_landing_fall_speed * 2
+	HpHandler.take_damage(damage)
+	AnimHandler.rolling = false

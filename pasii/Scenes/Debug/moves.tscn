@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=4 uid="uid://vlx34qx02kca"]
+[gd_scene load_steps=119 format=4 uid="uid://vlx34qx02kca"]
 
 [ext_resource type="Material" uid="uid://7clbqxka4rxm" path="res://Materials/3p_kalliolumessa.tres" id="1_lgyu2"]
 [ext_resource type="Material" uid="uid://co1gtv7arvr1" path="res://Materials/3p_talo01.tres" id="2_j8g4b"]
@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://b3n88655jg4h6" path="res://Models/Blender/cio60435.jpg" id="22_mxqav"]
 [ext_resource type="Texture2D" uid="uid://dnphwqujl5qm8" path="res://Models/Blender/bussi_bussitex_indexed-15palp.png" id="22_rgdri"]
 [ext_resource type="Texture2D" uid="uid://sx8nn7nlir1t" path="res://Models/Blender/bussi_bussitex_indexed-15p.png.png" id="23_mxqav"]
+[ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="24_pccgv"]
+[ext_resource type="Resource" uid="uid://beesu0jqytwj7" path="res://Audio/Soundtextures/Ice.tres" id="25_bfbsa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vy62"]
 render_priority = 0
@@ -247,8 +249,8 @@ exposure_multiplier = 0.3
 
 [sub_resource type="Gradient" id="Gradient_lp6b5"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0.264463, 0.438017, 0.446281, 0.528926, 0.652893, 0.950413, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.614902, 0.501445, 0.883665, 1, 0.830217, 0.565363, 0.0924664, 1, 0.906605, 0.483118, 0.409041, 1, 0.453577, 0.316262, 0.735511, 1, 0.0211385, 0.132474, 0.177128, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.38843, 0.429752, 0.504132, 0.61157, 0.818182, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.748964, 0.547649, 0.699811, 1, 0.614902, 0.501445, 0.883665, 1, 0.281439, 0.390171, 0.729845, 1, 0.0942405, 5.24625e-06, 0.4395, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nqs72"]
 gradient = SubResource("Gradient_lp6b5")
@@ -278,8 +280,8 @@ glow_normalized = true
 glow_intensity = 8.0
 glow_strength = 0.94
 glow_blend_mode = 0
-glow_hdr_threshold = 0.27
-glow_map_strength = 1.0
+glow_hdr_threshold = 0.92
+glow_map_strength = 0.0
 glow_map = ExtResource("22_mxqav")
 fog_mode = 1
 fog_light_color = Color(0.856472, 0.827493, 0.951342, 1)
@@ -1953,6 +1955,11 @@ radial_segments = 8
 rings = 8
 material = SubResource("ShaderMaterial_npc1u")
 
+[node name="SoundMaterial" type="Node" parent="CSGBox3D"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -400, 0)
 texel_scale = 0.32
@@ -1961,7 +1968,7 @@ light_data = ExtResource("10_j8g4b")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="LightmapGI"]
 transform = Transform3D(0.253749, 0.148133, -0.95586, 0.0509759, 0.984782, 0.166148, 0.965926, -0.0908858, 0.242337, 0, 400, 0)
-light_color = Color(0.860733, 0.344226, 0.546067, 1)
+light_color = Color(0.772442, 0.667073, 0.929933, 1)
 light_energy = 6.0
 light_bake_mode = 1
 shadow_enabled = true
@@ -2025,153 +2032,298 @@ transform = Transform3D(1.17084, 0, 0.0136576, 0, 1.13588, 0, -0.0146296, 0, 1.0
 mesh = SubResource("ArrayMesh_epu4j")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_001" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.713363, 0, 0, 0, 1, 0, -1.86265e-09, 1.49012e-08, 1, -2.45828, 1.53772, -0.324477)
 mesh = SubResource("ArrayMesh_s42b2")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_001"]
+script = ExtResource("24_pccgv")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Cube_002" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.713363, -1.50996e-07, 0, 1.07715e-07, 1, 0, 0, 0, -1, -2.45828, 1.53772, -0.162011)
 mesh = SubResource("ArrayMesh_nnt6r")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_002"]
+script = ExtResource("24_pccgv")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_003" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0291027, 0.0396075, 0, -0.22891, 0.00503555, 0, 0, 0, 0.141964, -0.314614, 0.923229, 0.582208)
 mesh = SubResource("ArrayMesh_j8mga")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_003"]
+script = ExtResource("24_pccgv")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Cube_004" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0291027, 0.0396075, 0, -0.22891, 0.00503555, 0, 0, 0, 0.141964, -1.46702, 0.923361, 0.582208)
 mesh = SubResource("ArrayMesh_86dy2")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_004"]
+script = ExtResource("24_pccgv")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_005" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0020029, 0.0399248, 0, -0.230744, 0.000346555, 0, 0, 0, 0.141964, -2.83639, 1.02444, -0.824274)
 mesh = SubResource("ArrayMesh_jc6pb")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_005"]
+script = ExtResource("24_pccgv")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Cube_006" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0291027, 0.0396075, 0, -0.22891, 0.00503555, 0, 0, 0, 0.141964, -0.346574, 0.923229, -0.824274)
 mesh = SubResource("ArrayMesh_5p0br")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_006"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_016" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.030121, 0.0394813, -0.0101688, -0.210605, 0.0036585, -0.0565381, -0.0893598, 0.00468581, 0.129822, 0.126707, 0.169219, 10.0529)
 mesh = SubResource("ArrayMesh_5p0br")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_016"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Cube_017" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.061026, 0.0154829, 0.125353, -0.126022, 0.0325342, -0.0275821, -0.183415, -0.0172023, 0.0606587, 0.0848231, -0.283099, 11.5749)
 mesh = SubResource("ArrayMesh_5p0br")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_017"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_007" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0291027, 0.0396075, 0, -0.22891, 0.00503554, 0, 0, 0, 0.189501, -3.15665, 0.923361, 0.454484)
 mesh = SubResource("ArrayMesh_8dh6a")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_007"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Cube_008" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.00135948, 0.00185025, 0.141809, -0.22891, 0.00503556, -2.8439e-08, -0.029071, -0.0395643, 0.00663177, -1.82889, 0.993813, 0.641021)
 mesh = SubResource("ArrayMesh_6ilyi")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_008"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_009" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.713363, 0, 0, 0, 2.04185, 0, 0, 0, 1.13298, 1.13472, 1.57111, -0.316394)
 mesh = SubResource("ArrayMesh_tf3pa")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_009"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Cube_010" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.713363, -3.08311e-07, 0, 1.07715e-07, 2.04185, 0, 0, 0, -1, 0.945443, 1.57827, -0.16148)
 mesh = SubResource("ArrayMesh_a8nye")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_010"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_011" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0291027, 0.0396075, 0, -0.22891, 0.00503555, 0, 0, 0, 0.141964, 1.10415, 0.751841, 0.582208)
 mesh = SubResource("ArrayMesh_7dp6u")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_011"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Cube_012" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(-0.0290778, -0.0395734, -0.00588705, -0.22891, 0.00503556, -4.7628e-09, 0.00120686, 0.00164247, -0.141842, 1.95106, 0.782405, 0.271161)
 mesh = SubResource("ArrayMesh_rhut8")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_012"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_013" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0291027, 0.0396075, 0, -0.22891, 0.00503555, 0, 0, 0, 0.141964, 1.10415, 0.751841, -0.849115)
 mesh = SubResource("ArrayMesh_gdh3j")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_013"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Cube_014" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0290816, 0.0395788, -0.00540758, -0.22891, 0.00503555, 5.4186e-09, 0.00110857, 0.0015087, 0.141861, 1.50904, 0.868175, -0.801041)
 mesh = SubResource("ArrayMesh_wl30q")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_014"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Cube_015" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(-0.363109, 0, -8.74228e-08, 0, 2.04185, 0, 3.1744e-08, 0, -1, 0.92891, 1.57827, -0.16148)
 mesh = SubResource("ArrayMesh_jhguj")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Cube_015"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Plane" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(2.52285, 0, 0, 0, 1, 0, 0, 0, 1, -0.234972, 0.372422, -0.250854)
 mesh = SubResource("ArrayMesh_rgvb4")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Plane_001" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0407594, 0, 0, 0, 0, -0.1, 0, 0.0796678, 0, 0.237331, 0.975781, 0.726036)
 mesh = SubResource("ArrayMesh_ql14v")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_001"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Plane_002" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0279177, 0, 0, 0, 0, -0.0188413, 0, 0.1, 0, 0.203223, 1.62958, 0.699251)
 mesh = SubResource("ArrayMesh_sxxbv")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_002"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Plane_003" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0431786, 0, 0, 0, 0, -0.1, 0, 0.0796678, 0, 2.04063, 0.975781, -1.32268)
 mesh = SubResource("ArrayMesh_c7mlf")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_003"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Plane_004" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0295748, 0, 0, 0, 0, -0.0188413, 0, 0.1, 0, 2.0045, 1.62958, -1.34947)
 mesh = SubResource("ArrayMesh_ghoga")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_004"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Plane_005" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0407594, 0, 0, 0, 0, -0.1, 0, 0.0796678, 0, -2.59674, 0.975781, 0.726036)
 mesh = SubResource("ArrayMesh_i38i1")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_005"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Plane_006" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0279177, 0, 0, 0, 0, -0.0188413, 0, 0.1, 0, -2.6205, 1.62958, 0.699251)
 mesh = SubResource("ArrayMesh_eba0x")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_006"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Plane_007" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0260963, 0, 0, 0, 0, -0.1, 0, 0.0796678, 0, 2.01414, 0.975781, 0.726036)
 mesh = SubResource("ArrayMesh_ajht3")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_007"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Plane_008" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0178744, 0, 0, 0, 0, -0.0188413, 0, 0.1, 0, 1.99915, 1.62958, 0.699251)
 mesh = SubResource("ArrayMesh_upcnm")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_008"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Plane_009" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(-0.469041, -0.0576155, 5.11471e-09, 0, -1.191e-07, -0.744002, 0.0270939, -0.997422, 8.85444e-08, 0.691597, 0.940351, 0.738347)
 mesh = SubResource("ArrayMesh_cd2sw")
 skeleton = NodePath("")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_009"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="Plane_010" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(3.3189, 0, 0, 0, 1, 0, 0, 0, 1, -0.198516, 1.67244, -0.34212)
 mesh = SubResource("ArrayMesh_84dj4")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_010"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Plane_011" type="MeshInstance3D" parent="LightmapGI/bussi/BUSSI"]
 transform = Transform3D(0.0312443, -0.999512, 0, 0.999512, 0.0312443, 0, 0, 0, 1, 2.86578, 1.15638, -0.34212)
 mesh = SubResource("ArrayMesh_olvja")
 skeleton = NodePath("")
 
+[node name="SoundMaterial" type="Node" parent="LightmapGI/bussi/BUSSI/Plane_011"]
+script = ExtResource("24_pccgv")
+sound_texture = ExtResource("25_bfbsa")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
 [node name="Pawn" parent="." instance=ExtResource("6_qs1c1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 10.0033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.33142, 17.1291, 10.0033)
 
 [node name="Deco" type="Node3D" parent="."]
 

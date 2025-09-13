@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 render_mode blend_mix;
 uniform sampler2D screentex: hint_screen_texture;
-//unifmr sampler2D canvatex: 
+//unifmr sampler2D canvatex:
 
 vec3 rgb2yiq(vec3 rgb) {
 	return mat3(vec3(0.299, 0.596, 0.211), vec3(0.587, -0.274, -0.523), vec3(0.114, -0.322, 0.312)) * rgb;
@@ -34,7 +34,7 @@ void vertex() {
 
 void fragment() {
 	vec3 col = texture(screentex, SCREEN_UV).rgb;
-	
+
 	// yiq
 	//vec3 col2 = rgb2yiq(col);
 	//vec3 col3 = vec3(1.1, 1.1, 0.9) * col + vec3(-0.1, -0.1, 0.1) * vec3(texture(TEXTURE, UV).rgb);

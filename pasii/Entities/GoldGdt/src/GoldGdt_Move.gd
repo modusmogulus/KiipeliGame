@@ -10,6 +10,18 @@ class_name GoldGdt_Move extends Node
 @onready var state_machine = anim_tree["parameters/playback"]
 # Adds to the player's velocity based on direction, speed and acceleration.
 
+func request_vault() -> enumsKP.vault_states:
+	if !Body: return enumsKP.vault_states.NONE
+	var query = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.basis.z * 1)
+	query.exclude = [Body.collision_hull]
+	var space_state = Body.get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(query)
+	
+	if result.size() > 1:
+		return enumsKP.vault_states.INITIAL_VAULT
+	else:
+		return enumsKP.vault_states.NONE
+
 func request_wallrun() -> enumsKP.wallrun_states:
 	if !Body: return enumsKP.wallrun_states.NONE
 	var query = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * -1)
@@ -33,6 +45,8 @@ func request_wallrun() -> enumsKP.wallrun_states:
 		
 		print("NO WALLRUn")
 		return enumsKP.wallrun_states.NONE
+		
+
 func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float) -> void:
 	if !Body: return
 	
@@ -135,6 +149,9 @@ func _jump(delta: float) -> void:
 			_bunnyhop_capmode_threshold()
 		Parameters.BunnyhopCapMode.DROP:
 			_bunnyhop_capmode_drop()
+
+func _vault(delta: float) -> void:
+	Body.velocity.y = sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
 
 # Crops horizontal velocity down to a defined maximum threshold.
 func _bunnyhop_capmode_threshold() -> void:

@@ -1,5 +1,6 @@
 @tool
 class_name GoldGdt_Pawn extends Node3D
+#Mostly handles settings and puts everything together
 
 @export_group("Components")
 @export var View : GoldGdt_View

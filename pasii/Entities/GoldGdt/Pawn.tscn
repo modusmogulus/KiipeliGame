@@ -915,7 +915,7 @@ AnimationSound = NodePath("../Display Body/Arm/Arm Anchor/Camera/AnimationSound"
 PaahdinReloadSound = ExtResource("9_44c2v")
 PhoneReloadSound = ExtResource("10_chcr7")
 
-[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "collision_hull", "duck_timer") groups=["Player"]]
+[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "FallDamageRollWindow", "collision_hull", "duck_timer") groups=["Player"]]
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 0.169297
@@ -932,6 +932,7 @@ Move = NodePath("../Move Functions")
 UserInput = NodePath("../User Input")
 g_force_damage_curve = SubResource("Curve_kam8o")
 NodesToIgnoreVertical = NodePath("../Display Body/HorizontalOnly")
+FallDamageRollWindow = NodePath("FallDamageRollWindow")
 collision_hull = NodePath("Collision Hull")
 duck_timer = NodePath("Duck Timer")
 
@@ -939,6 +940,11 @@ duck_timer = NodePath("Duck Timer")
 shape = SubResource("BoxShape3D_j7pn1")
 
 [node name="Duck Timer" type="Timer" parent="Body"]
+
+[node name="FallDamageRollWindow" type="Timer" parent="Body"]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
 
 [node name="Horizontal View" type="Node3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
@@ -2974,6 +2980,15 @@ visible = false
 
 [node name="socks" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D" index="6"]
 visible = false
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -4.76837e-07, 0, 4.76837e-07, 0.999999, 0, 1.7813, 0.0247001)
+bone_name = "head"
+bone_idx = 404
+
+[node name="AnimationCamera" type="Camera3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.44089e-16, -1.19209e-07, 0)
+current = true
 
 [node name="Spring" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/paahdin" index="0"]
 layers = 2
@@ -5158,6 +5173,22 @@ expand_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_u0g1q")
 }
+
+[node name="Press F3 to etc etc" type="Label" parent="GameUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -17.0
+offset_right = 653.0
+offset_bottom = 55.0
+grow_vertical = 0
+scale = Vector2(0.676976, 0.56)
+theme_override_font_sizes/font_size = 20
+text = "Press F3 to open Debugmenu, then press § to start mousing around"
+
+[connection signal="timeout" from="Body/FallDamageRollWindow" to="Body" method="_on_fall_damage_roll_window_timeout"]
 
 [editable path="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET"]
 [editable path="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT"]

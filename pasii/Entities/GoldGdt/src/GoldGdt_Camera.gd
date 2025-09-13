@@ -15,6 +15,7 @@ var update : bool = false
 @export var camera_anchor : Node3D ## Camera anchor node that is automatically rotated to compensate for the camera arm rotation.
 @export var camera : Node3D ## Camera node that is automatically rotated to compensate for the camera anchor rotation.
 @export var legs_ground_cast : Node3D
+@export var animation_camera : Camera3D #this one is the REAL camera
 
 var grounded = false
 
@@ -26,7 +27,6 @@ func _ready() -> void:
 	t_curr = target.global_transform
 
 func _process(delta_) -> void:
-	
 	_interpolate()
 	# Modify camera nodes to conform with Player Parameters.
 	# TODO: I have to make this not run every frame, but as far as I can tell, there is negligible impact on performance, so it stays.
