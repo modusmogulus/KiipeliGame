@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dttwot724jrd6"]
+
+[ext_resource type="Shader" uid="uid://bms4qqjj0o7c0" path="res://Shaders/Hybrid/3p_retro_stochastic.gdshader" id="1_p13ck"]
+[ext_resource type="Texture2D" uid="uid://c2fyclh8lkb84" path="res://textures/ykp/Textures/graniitti.jpg" id="2_n3suv"]
+[ext_resource type="Texture2D" uid="uid://c6oexkwqq31wj" path="res://textures/ykp/Textures/texcom_snow.png" id="3_g4pfe"]
+[ext_resource type="Texture2D" uid="uid://ij4tcpsaj77t" path="res://textures/ykp/Textures/texcd/yk_texcd_tiles9.png" id="4_aaq00"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_p13ck")
+shader_parameter/albedo_ceiling = Color(0.851769, 0.851769, 0.851769, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("2_n3suv")
+shader_parameter/roughness = 1.0
+shader_parameter/albedo_wall = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_wall = ExtResource("4_aaq00")
+shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("3_g4pfe")
+shader_parameter/ground_threshold = 0.25
+shader_parameter/blend_smoothness = 0.0
+shader_parameter/uv1_blend_sharpness = 8.654
+shader_parameter/uv1_scale = Vector3(0.265, 0.055, 0.265)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv_global = true
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false

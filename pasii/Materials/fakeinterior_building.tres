@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ba88vhpq51ops"]
+
+[ext_resource type="Shader" uid="uid://db3gbd7ev1yy7" path="res://Shaders/fakeinterior_building.gdshader" id="1_hwdte"]
+[ext_resource type="Texture2D" uid="uid://ccewk273mx3f1" path="res://textures/ykp/Textures/yk_reflection_rappukaytaytava.png" id="2_4bul3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hwdte")
+shader_parameter/rooms = Vector2(4.94, 4.76)
+shader_parameter/room_seed = 509.0
+shader_parameter/atlas_rooms = Vector2(8.645, 1)
+shader_parameter/depth = 0.5
+shader_parameter/emission_cutoff = 0.5
+shader_parameter/emission_strength = 1.08
+shader_parameter/room_texture = ExtResource("2_4bul3")

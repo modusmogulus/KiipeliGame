@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://7hrp1rdu4euh"
+path.s3tc="res://.godot/imported/FoliagetJaLiikennemerkit_ykp_tree_leaves_plane_01_winter.png-164276c8d80253302379d28a81696626.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "04d5141f8fd746cd55cf66c881c18a9d"
+}
+
+[deps]
+
+source_file="res://Models/Props/FoliagetJaLiikennemerkit_ykp_tree_leaves_plane_01_winter.png"
+dest_files=["res://.godot/imported/FoliagetJaLiikennemerkit_ykp_tree_leaves_plane_01_winter.png-164276c8d80253302379d28a81696626.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c2bk82bkn42e8"]
+
+[ext_resource type="Texture2D" uid="uid://dxr88m2ryk315" path="res://Models/Blender/omasurfmap_aikuislukio_yk_fence3d.png" id="1_yh1dw"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_yh1dw")
+metallic = 0.97

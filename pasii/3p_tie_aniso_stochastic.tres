@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dfwem27ltul02"]
+
+[ext_resource type="Shader" uid="uid://bms4qqjj0o7c0" path="res://Shaders/Hybrid/3p_retro_stochastic.gdshader" id="1_nf5vp"]
+[ext_resource type="Texture2D" uid="uid://dy63cimxxy2ef" path="res://textures/ykp/Textures/yk_rocksfinland-export.png" id="2_ar4fg"]
+[ext_resource type="Texture2D" uid="uid://dadg7ls2cav82" path="res://textures/ykp/Textures/yk_lumipenkka 2.png" id="3_4dlt5"]
+[ext_resource type="Texture2D" uid="uid://b65iwipfyop1r" path="res://textures/mustavuorikivi-kaleido5.png" id="4_qlm2e"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nf5vp")
+shader_parameter/albedo_ceiling = Color(0.441587, 0.605966, 0.859659, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("2_ar4fg")
+shader_parameter/roughness = 1.0
+shader_parameter/albedo_wall = Color(0.74978, 0.74978, 0.74978, 1)
+shader_parameter/texture_albedo_wall = ExtResource("4_qlm2e")
+shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("3_4dlt5")
+shader_parameter/ground_threshold = 0.8
+shader_parameter/blend_smoothness = 0.1
+shader_parameter/uv1_blend_sharpness = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv_global = false
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false

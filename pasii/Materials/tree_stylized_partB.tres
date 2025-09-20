@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dfoqlm8nfowm3"]
+
+[ext_resource type="Shader" uid="uid://1h672k7lhjv5" path="res://Shaders/tree_stylistic_cheap.gdshader" id="1_561wp"]
+[ext_resource type="Texture2D" uid="uid://7hrp1rdu4euh" path="res://Models/Props/FoliagetJaLiikennemerkit_ykp_tree_leaves_plane_01_winter.png" id="2_561wp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_561wp")
+shader_parameter/foliage_texture = ExtResource("2_561wp")
+shader_parameter/foliage_colour = Color(1, 1, 1, 1)

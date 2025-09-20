@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://0j6irjbrjldq"]
+
+[ext_resource type="Shader" uid="uid://1h672k7lhjv5" path="res://Shaders/tree_stylistic_cheap.gdshader" id="1_n6jw8"]
+[ext_resource type="Texture2D" uid="uid://blaqxqg7vgavi" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_clip_birch_winter_02.png" id="2_xrh8i"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_n6jw8")
+shader_parameter/foliage_texture = ExtResource("2_xrh8i")
+shader_parameter/foliage_colour = Color(1, 1, 1, 1)

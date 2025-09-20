@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://xf2mic4kmyhk"]
+
+[ext_resource type="Texture2D" uid="uid://wcryaupk8qtq" path="res://textures/ykp/Textures/Kaleva_ClipAlphas/0014.png" id="1_erpl5"]
+[ext_resource type="Shader" uid="uid://db3gbd7ev1yy7" path="res://Shaders/fakeinterior_building.gdshader" id="2_7dak7"]
+[ext_resource type="Texture2D" uid="uid://ccewk273mx3f1" path="res://textures/ykp/Textures/yk_reflection_rappukaytaytava.png" id="3_3o776"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eg0o4"]
+render_priority = 0
+shader = ExtResource("2_7dak7")
+shader_parameter/rooms = Vector2(2.62, 2.33)
+shader_parameter/room_seed = 0.0
+shader_parameter/atlas_rooms = Vector2(1, 1)
+shader_parameter/depth = 0.5
+shader_parameter/emission_cutoff = 0.586
+shader_parameter/emission_strength = 1.0
+shader_parameter/room_texture = ExtResource("3_3o776")
+shader_parameter/room_emit_texture = ExtResource("3_3o776")
+shader_parameter/emission_texture = ExtResource("3_3o776")
+
+[resource]
+next_pass = SubResource("ShaderMaterial_eg0o4")
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_erpl5")
