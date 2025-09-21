@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ij70y2ndesfp"
+path.s3tc="res://.godot/imported/ykp_mummokeinu_mob_yk_mina12v.png-7986d0afe91e766671b28d18aa01673b.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "4195be87482f7c7346cad31cbf2e17fe"
+}
+
+[deps]
+
+source_file="res://Models/Blender/ykp_mummokeinu_mob_yk_mina12v.png"
+dest_files=["res://.godot/imported/ykp_mummokeinu_mob_yk_mina12v.png-7986d0afe91e766671b28d18aa01673b.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

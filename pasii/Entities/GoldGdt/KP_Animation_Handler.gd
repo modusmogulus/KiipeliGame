@@ -15,7 +15,7 @@ var rolling : bool = false
 @export var SyncedAnimTrees : Array[AnimationTree]
 var state_machines : Array[AnimationNodeStateMachinePlayback]
 @export var AnimPlayer : AnimationPlayer
-
+var vaultstate : String #This is set from move controller
 @export var Dense: Node
 @export var Phone: Node
 @export var Liukuri: Node

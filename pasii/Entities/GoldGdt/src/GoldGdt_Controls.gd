@@ -135,7 +135,7 @@ func _gather_input() -> void:
 	
 	if (Input.is_action_just_pressed("pm_jump")) && !Body.is_on_floor(): #just_pressed is important on this one!
 		Body.current_wallrun_state = Move.request_wallrun()
-		Body.current_vault_state = Move.request_vault()
+		Body.current_vault_state = Move.request_vault(movement_input)
 		
 	if (Input.is_action_just_pressed("kp_die")):
 		get_parent().die()
@@ -147,8 +147,8 @@ func _gather_input() -> void:
 		
 func _act_on_input() -> void:
 	var delta = get_physics_process_delta_time()
-	
-	Body._duck(duck_on)
+	if Body.current_vault_state == enumsKP.vault_states.NONE:
+		Body._duck(duck_on)
 	
 	# Check if we are on ground
 	if Body.is_on_floor():

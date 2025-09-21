@@ -49,7 +49,7 @@ var BBOX_INTO_WALL = BoxShape3D.new() # Cached hull for wall collision.
 var trace_margin : float = 0.0
 var trace_dir_add : float = 1.0
 var wall_normal : Vector3 = Vector3.ZERO
-
+var velocity_before_vault : Vector3 = Vector3.ZERO
 var was_on_floor
 @export var collision_hull : CollisionShape3D ## Player collision shape/hull, make sure it's a box unless you edit the script to use otherwise!
 
@@ -145,7 +145,7 @@ func _physics_process(delta) -> void:
 	if was_on_floor == false && is_on_floor() == true:
 		landing(previous_fall_speed)
 	
-	velocity_lowpass_filtered = abs(lerp(previous_velocity, velocity, (1 / velocity_lowpass_size)*delta))
+	velocity_lowpass_filtered = (lerp(previous_velocity, velocity, (1 / velocity_lowpass_size)*delta))
 
 	was_on_floor = is_on_floor()
 	_handle_step_trace_values()
@@ -164,8 +164,13 @@ func _physics_process(delta) -> void:
 	
 	AnimHandler.player_velocity = velocity
 	
-	
-	
+	if velocity.y < 0.0 && AnimHandler:
+		AnimHandler.vaultstate = "NONE"
+		current_vault_state = enumsKP.vault_states.NONE
+		if current_vault_state != enumsKP.vault_states.NONE:
+			velocity = velocity_before_vault
+	if current_vault_state != enumsKP.vault_states.NONE:
+		_duck(true)
 # Function for changing shape bounds, only here for when I add collision shape changing.
 func _set_shape_bounds(shape: BoxShape3D, size: Vector3) -> void:
 	shape.size = size

@@ -10,9 +10,11 @@ class_name GoldGdt_Move extends Node
 @onready var state_machine = anim_tree["parameters/playback"]
 # Adds to the player's velocity based on direction, speed and acceleration.
 
-func request_vault() -> enumsKP.vault_states:
+func request_vault(wishdir) -> enumsKP.vault_states:
 	if !Body: return enumsKP.vault_states.NONE
-	var query = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.camera.basis.z * -0.2, Body.global_position + Body.View.camera.basis.z * -1.2)
+	if !Body.current_wallrun_state == enumsKP.wallrun_states.NONE:
+		return enumsKP.vault_states.NONE
+	var query = PhysicsRayQueryParameters3D.create(Body.View.camera.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE * wishdir.length())
 	query.exclude = [Body.collision_hull]
 	var space_state = Body.get_world_3d().direct_space_state
 	var result = space_state.intersect_ray(query)
@@ -152,8 +154,12 @@ func _jump(delta: float) -> void:
 			_bunnyhop_capmode_drop()
 
 func _vault(delta: float) -> void:
-	Body.velocity.y = sqrt(4 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
-
+	Body.velocity.y = sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.1))
+	Body.current_vault_state = enumsKP.vault_states.NONE
+	AnimHandler.vaultstate = "VAULTING" #This is set to false when player velocity y vector is negative (in Body handler)
+	Body._duck(true)
+	Body.global_position.y += 0.6
+	Body.velocity_before_vault = Body.velocity
 # Crops horizontal velocity down to a defined maximum threshold.
 func _bunnyhop_capmode_threshold() -> void:
 	var spd : float

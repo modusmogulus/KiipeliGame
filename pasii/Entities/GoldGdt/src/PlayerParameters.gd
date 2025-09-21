@@ -49,3 +49,5 @@ enum BunnyhopCapMode {
 @export_subgroup("Third Person Settings (If Enabled)") ## Ignore if third-person camera is off.
 @export var ARM_LENGTH : float = 2 ## How far the camera arm extends in meters.
 @export var ARM_OFFSET_DEGREES : Vector2 = Vector2.ZERO ## Offsets position of camera using rotation in degrees.
+
+@export var VAULT_CHECK_DISTANCE : float = 4.1

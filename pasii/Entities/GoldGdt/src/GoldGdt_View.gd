@@ -10,16 +10,18 @@ class_name GoldGdt_View extends Node
 @export var camera_mount : Node3D ## Used for player view aesthetics such as view tilt and bobbing.
 @export var camera_animation_mount : Node3D ##Used to give a layer to rotation that is controlled by the rig animation
 @export var camera : Camera3D
+@export var animation_camera : Camera3D
 @export var speedlines : ColorRect
 @export var legs : Node
 @export var zoneout : ColorRect
 @export var g_loc_curve : Curve
 @export var afterimage : TextureRect
-
+var initial_anim_camera_rot : Vector3
 var original_fov : float = 0.0
 var previous_velocity : Vector3
 var _frm = 0
 func _ready() -> void:
+	initial_anim_camera_rot = animation_camera.global_rotation
 	original_fov = camera.fov
 func _process(delta: float) -> void:
 	_frm += 1
@@ -40,8 +42,12 @@ func _physics_process(_delta) -> void:
 	var _lt = legs.rotation.x
 	camera_mount.rotation.x = lerpf(_ct, (_calc_pitch_overshoot(Parameters.ROLL_ANGLE*0.2, Parameters.ROLL_SPEED*0.1)*2), 0.2)
 	#legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
-	
+	var _ft
+	_ft = camera.fov
 	camera.fov = lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.1)
+	if _ft > camera.fov:
+		lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.8)
+	animation_camera.fov = camera.fov
 	if speedlines.modulate.a + 0.1 < _calc_g_fx():
 		
 		speedlines.modulate.a = lerpf(speedlines.modulate.a, _calc_g_fx(), 0.1)
@@ -53,7 +59,8 @@ func _physics_process(_delta) -> void:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.02) #Speedlines by using same function as fov
 	else:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.002) #Lazy way to make braking lose speedlines faster
-		
+	
+	animation_camera.rotation = camera.rotation + initial_anim_camera_rot
 func _handle_camera_input(look_input: Vector2) -> void:
 	horizontal_view.rotate_object_local(Vector3.DOWN, look_input.x)
 	horizontal_view.orthonormalize()
