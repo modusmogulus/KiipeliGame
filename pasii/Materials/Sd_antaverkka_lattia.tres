@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ddj7yjen858ae"]
+
+[ext_resource type="Texture2D" uid="uid://bb1hjkoc6ik5j" path="res://textures/antaverktex_lattia.png" id="1_c6nae"]
+
+[sub_resource type="Gradient" id="Gradient_1ha7n"]
+offsets = PackedFloat32Array(0.45, 0.9, 0.980769, 1)
+colors = PackedColorArray(0.201527, 0.201527, 0.201527, 1, 0.0338533, 0.0338533, 0.0338533, 1, 0.557183, 0.557183, 0.557183, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_74b3q"]
+gradient = SubResource("Gradient_1ha7n")
+fill = 2
+fill_from = Vector2(0.495726, 0.512821)
+fill_to = Vector2(0.491453, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6n7r4"]
+gradient = SubResource("Gradient_1ha7n")
+fill = 2
+fill_from = Vector2(0.495726, 0.512821)
+fill_to = Vector2(0.491453, 0)
+
+[resource]
+albedo_texture = ExtResource("1_c6nae")
+metallic_specular = 0.4
+roughness_texture = SubResource("GradientTexture2D_6n7r4")
+normal_scale = 0.02
+normal_texture = SubResource("GradientTexture2D_74b3q")
+uv1_scale = Vector3(2, 2, 2)

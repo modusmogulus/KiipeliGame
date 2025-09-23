@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-render_mode blend_mix;
+render_mode blend_mix, unshaded;
 uniform sampler2D screentex: hint_screen_texture;
 uniform sampler2D vignette: repeat_enable;
 //unifmr sampler2D canvatex:
@@ -42,11 +42,15 @@ void fragment() {
 	//col = mix(col2, col3, col.g);
 	//col = yiq2rgb(col);
 	vec3 col2 = texture(TEXTURE, UV).rgb;
+	if (length(col2) > length(col)) {
+		discard;
+	}
 	col = rgb2hsv(col);
 	col2 = rgb2hsv(col2*col2);
 	vec2 distort_uv = texture(uvnoise, vec2(UV.x+sin(TIME*0.2) * 0.1, UV.y+cos(TIME*0.3)*-0.565)).xy;
 	vec4 vignettecolor = texture(vignette, SCREEN_UV * distort_uv);
 	col = hsv2rgb(vec3(col2.r, (col2.g*0.5), 0.5+col.g*0.8));
-	COLOR.rgb *= col;
+	COLOR.rgb = col;
+	//COLOR.a = length(col.rgb);
 	// Called for every pixel the material is visible on.
 }

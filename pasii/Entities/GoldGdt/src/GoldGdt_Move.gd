@@ -12,14 +12,19 @@ class_name GoldGdt_Move extends Node
 
 func request_vault(wishdir) -> enumsKP.vault_states:
 	if !Body: return enumsKP.vault_states.NONE
+	if !Body.current_vault_state == enumsKP.vault_states.NONE:
+		return enumsKP.vault_states.NONE
 	if !Body.current_wallrun_state == enumsKP.wallrun_states.NONE:
 		return enumsKP.vault_states.NONE
-	var query = PhysicsRayQueryParameters3D.create(Body.View.camera.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE * wishdir.length())
+	var query = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE * wishdir.normalized().length())
+	var query2 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE * wishdir.normalized().length())
+	
 	query.exclude = [Body.collision_hull]
+	query2.exclude = [Body.collision_hull]
 	var space_state = Body.get_world_3d().direct_space_state
 	var result = space_state.intersect_ray(query)
-	
-	if result.size() > 1:
+	var result2 = space_state.intersect_ray(query2)
+	if result.size() > 1 && result2.size() < 1:
 		_vault(get_process_delta_time())
 		print("vaulted")
 		return enumsKP.vault_states.INITIAL_VAULT
@@ -154,7 +159,7 @@ func _jump(delta: float) -> void:
 			_bunnyhop_capmode_drop()
 
 func _vault(delta: float) -> void:
-	Body.velocity.y = sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.1))
+	Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
 	Body.current_vault_state = enumsKP.vault_states.NONE
 	AnimHandler.vaultstate = "VAULTING" #This is set to false when player velocity y vector is negative (in Body handler)
 	Body._duck(true)

@@ -133,9 +133,11 @@ func _gather_input() -> void:
 	roll_on = Input.is_action_just_pressed("pm_roll")
 	Body.request_roll(roll_on)
 	
-	if (Input.is_action_just_pressed("pm_jump")) && !Body.is_on_floor(): #just_pressed is important on this one!
+	if jump_on && !Body.is_on_floor():
 		Body.current_wallrun_state = Move.request_wallrun()
-		Body.current_vault_state = Move.request_vault(movement_input)
+	#if jump_on:
+	if (Input.is_action_just_pressed("pm_jump")) && !Body.is_on_floor(): #just_pressed is important on this one!
+		Body.current_vault_state = Move.request_vault(Vector3(move_dir.x, move_dir.x, move_dir.x))
 		
 	if (Input.is_action_just_pressed("kp_die")):
 		get_parent().die()

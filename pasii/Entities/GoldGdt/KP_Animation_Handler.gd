@@ -7,6 +7,7 @@ var is_moving: bool = false
 var is_grounded: bool = true
 var player_velocity: Vector3 = Vector3.ZERO
 var reloading: bool = false
+var beer_opened: bool = false
 var item = ""
 var current_animation_node: String
 var rolling : bool = false
@@ -19,7 +20,9 @@ var vaultstate : String #This is set from move controller
 @export var Dense: Node
 @export var Phone: Node
 @export var Liukuri: Node
+@export var Paahdin: Node
 @export var AnimationSound: AudioStreamPlayer3D
+@export var Beer: Node
 
 @export var PaahdinReloadSound: AudioStream
 @export var PhoneReloadSound: AudioStream
@@ -42,6 +45,8 @@ func _process(delta: float) -> void:
 	#print(AnimTree.animation_finished)
 	Dense.visible = false
 	Liukuri.visible = false
+	Beer.visible = false
+	Paahdin.visible = false
 	if !("RELOAD" in current_animation_node):
 		AnimationSound.stop()
 	
@@ -49,11 +54,14 @@ func _process(delta: float) -> void:
 		enumsKP.items.DENSE:
 			Dense.visible = true
 		enumsKP.items.TOASTER:
+			Paahdin.visible = true
 			if reloading && !AnimationSound.playing:
 				AnimationSound.stream = PaahdinReloadSound
 				AnimationSound.play()
+				
 		enumsKP.items.PHONE:
 			Phone.visible = true
+			
 			if reloading && !AnimationSound.playing:
 				AnimationSound.stream = PhoneReloadSound
 				AnimationSound.play()
@@ -62,3 +70,6 @@ func _process(delta: float) -> void:
 			#if reloading && !AnimationSound.playing:
 				#AnimationSound.stream = PhoneReloadSound
 			#	AnimationSound.play()
+		enumsKP.items.BEER:
+			Beer.visible = true
+			beer_opened = true

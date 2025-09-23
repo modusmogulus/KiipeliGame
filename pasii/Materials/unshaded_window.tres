@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2hn804eujvkm"]
+
+[ext_resource type="Texture2D" uid="uid://dp4m1n1we8hgi" path="res://textures/ikkuna-transparent-3-actual-transparent.png" id="1_byto1"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_byto1")

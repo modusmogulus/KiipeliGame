@@ -114,6 +114,7 @@ func request_roll(start_or_stop : bool):
 
 func roll():
 	AnimHandler.rolling = true
+	velocity += (pre_landing_fall_speed*velocity)*0.1
 	pre_landing_fall_speed = 0.0
 	
 func landing(last_fall_speed : float):

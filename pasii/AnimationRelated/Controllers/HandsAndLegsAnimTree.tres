@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=69 format=3 uid="uid://deyk8dc4b4isj"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=87 format=3 uid="uid://deyk8dc4b4isj"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1lc20"]
 animation = &"Fall"
@@ -16,10 +16,46 @@ start_offset = 0.0
 loop_mode = 2
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_27krj"]
-animation = &"Jump"
+animation = &"JumpNew"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nk1dt"]
 animation = &"Liukurointi"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_wgq4e"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qwhsl"]
+animation = &"ITEM_KaljaB_tolkki"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_and1u"]
+animation = &"ITEM_KaljaB"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5tb2a"]
+graph_offset = Vector2(-254, 79)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_wgq4e")
+nodes/Add2/position = Vector2(80, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_and1u")
+nodes/Animation/position = Vector2(-100, 140)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_qwhsl")
+"nodes/Animation 2/position" = Vector2(-100, 320)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_6n7lh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dca5h"]
+animation = &"ITEM_KaljaA_tolkki"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s12e5"]
+animation = &"ITEM_KaljaA"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qwhsl"]
+graph_offset = Vector2(-416, 54)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_6n7lh")
+nodes/Add2/position = Vector2(80, 120)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_s12e5")
+nodes/Animation/position = Vector2(-120, 100)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_dca5h")
+"nodes/Animation 2/position" = Vector2(-120, 260)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_27krj"]
 
@@ -50,14 +86,14 @@ animation = &"PaahdinReloadH"
 animation = &"PaahdinReload"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y2mib"]
-graph_offset = Vector2(-260, 75)
+graph_offset = Vector2(-276, 251)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_1lc20")
 nodes/Add2/position = Vector2(160, 280)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_oityk")
 nodes/Animation/position = Vector2(-100, 200)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_44c2v")
 "nodes/Animation 2/position" = Vector2(-80, 380)
-node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
+node_connections = [&"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation", &"output", 0, &"Add2"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_vk1hu"]
 
@@ -90,7 +126,7 @@ start_offset = 0.0
 loop_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vk1hu"]
-animation = &"VaultA"
+animation = &"VaultC"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e6ukd"]
 priority = 0
@@ -112,10 +148,12 @@ advance_expression = "player_velocity.y > 0.5"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oityk"]
 xfade_time = 0.1
+switch_mode = 1
 advance_mode = 2
-advance_expression = "player_velocity.y < -0.1 && item != \"LIUKURI\""
+advance_expression = "player_velocity.y < -3.1 && item != \"LIUKURI\""
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y2mib"]
+xfade_time = 0.1
 advance_mode = 2
 advance_expression = "player_velocity.y > 0.5"
 
@@ -303,23 +341,69 @@ advance_mode = 2
 advance_expression = "vaultstate == \"VAULTING\""
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wn1ye"]
+xfade_time = 0.1
 break_loop_at_end = true
 priority = 0
+advance_mode = 2
 advance_expression = "player_velocity.y > 0.3 && item != \"LIUKURI\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nw5lv"]
+advance_mode = 2
+advance_expression = "reloading && item == \"BEER\" && !beer_opened"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjlgy"]
+advance_mode = 2
+advance_expression = "item != \"BEER\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rfo4c"]
+advance_mode = 2
+advance_expression = "reloading && item == \"BEER\" && beer_opened"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f6t3g"]
+advance_mode = 2
+advance_expression = "item != \"BEER\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ghoy"]
+advance_mode = 2
+advance_expression = "reloading && item == \"BEER\" && !beer_opened"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8b2s"]
+advance_mode = 2
+advance_expression = "reloading && item == \"BEER\" && beer_opened"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fkark"]
+advance_mode = 2
+advance_expression = "item != \"BEER\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i31xr"]
+advance_mode = 2
+advance_expression = "item != \"BEER\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2b0dl"]
+advance_mode = 2
+advance_expression = "player_velocity.y < -0.1 && item != \"LIUKURI\""
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_exnmj"]
+advance_mode = 2
+advance_expression = "rolling == true"
 
 [resource]
 allow_transition_to_self = true
 states/End/position = Vector2(1010, -20)
 states/Fall/node = SubResource("AnimationNodeAnimation_1lc20")
-states/Fall/position = Vector2(582, 211)
+states/Fall/position = Vector2(579, 165)
 states/FallWithLiukuri/node = SubResource("AnimationNodeAnimation_tlyua")
 states/FallWithLiukuri/position = Vector2(438, 454)
 states/Idle/node = SubResource("AnimationNodeAnimation_3k6kj")
-states/Idle/position = Vector2(509, -38)
+states/Idle/position = Vector2(447, 35)
 states/Jump/node = SubResource("AnimationNodeAnimation_27krj")
 states/Jump/position = Vector2(999, 56)
 states/Liukurointi/node = SubResource("AnimationNodeAnimation_nk1dt")
 states/Liukurointi/position = Vector2(679, 372)
+states/RELOAD_BeerOpened/node = SubResource("AnimationNodeBlendTree_5tb2a")
+states/RELOAD_BeerOpened/position = Vector2(1044, -131)
+states/RELOAD_BeerUnopened/node = SubResource("AnimationNodeBlendTree_qwhsl")
+states/RELOAD_BeerUnopened/position = Vector2(864, -197)
 states/RELOAD_Dense/node = SubResource("AnimationNodeBlendTree_1lc20")
 states/RELOAD_Dense/position = Vector2(438, -131)
 states/RELOAD_Paahdin/node = SubResource("AnimationNodeBlendTree_y2mib")
@@ -329,9 +413,9 @@ states/RELOAD_Phone/position = Vector2(622, -131)
 states/Roll/node = SubResource("AnimationNodeAnimation_6a77n")
 states/Roll/position = Vector2(484, 325)
 states/RunCycle/node = SubResource("AnimationNodeAnimation_twd47")
-states/RunCycle/position = Vector2(304, 379)
+states/RunCycle/position = Vector2(338, 127)
 states/Start/position = Vector2(-252, 121)
 states/VaultA/node = SubResource("AnimationNodeAnimation_vk1hu")
-states/VaultA/position = Vector2(703, 51)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e6ukd"), "Idle", "RunCycle", SubResource("AnimationNodeStateMachineTransition_qqsqc"), "RunCycle", "Idle", SubResource("AnimationNodeStateMachineTransition_cgx03"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_44c2v"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_oityk"), "RunCycle", "Jump", SubResource("AnimationNodeStateMachineTransition_y2mib"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_1lc20"), "Fall", "RunCycle", SubResource("AnimationNodeStateMachineTransition_27krj"), "Idle", "RELOAD_Paahdin", SubResource("AnimationNodeStateMachineTransition_kv3ht"), "RELOAD_Paahdin", "Idle", SubResource("AnimationNodeStateMachineTransition_pajro"), "Idle", "RELOAD_Dense", SubResource("AnimationNodeStateMachineTransition_52rky"), "RELOAD_Dense", "Idle", SubResource("AnimationNodeStateMachineTransition_axyne"), "RELOAD_Dense", "RunCycle", SubResource("AnimationNodeStateMachineTransition_o5sai"), "RunCycle", "RELOAD_Dense", SubResource("AnimationNodeStateMachineTransition_chcr7"), "RunCycle", "RELOAD_Paahdin", SubResource("AnimationNodeStateMachineTransition_8d4tw"), "RELOAD_Paahdin", "RunCycle", SubResource("AnimationNodeStateMachineTransition_8o6ai"), "Start", "RunCycle", SubResource("AnimationNodeStateMachineTransition_vk1hu"), "Jump", "VaultA", SubResource("AnimationNodeStateMachineTransition_6n7lh"), "VaultA", "Idle", SubResource("AnimationNodeStateMachineTransition_wgq4e"), "Idle", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_6a77n"), "RELOAD_Phone", "Idle", SubResource("AnimationNodeStateMachineTransition_nk1dt"), "Fall", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_tlyua"), "RELOAD_Phone", "Fall", SubResource("AnimationNodeStateMachineTransition_dca5h"), "RELOAD_Phone", "VaultA", SubResource("AnimationNodeStateMachineTransition_s12e5"), "VaultA", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_qwhsl"), "Jump", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_and1u"), "RELOAD_Phone", "Jump", SubResource("AnimationNodeStateMachineTransition_5tb2a"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_druxi"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_vrvgv"), "Roll", "RunCycle", SubResource("AnimationNodeStateMachineTransition_p5pf2"), "Jump", "Roll", SubResource("AnimationNodeStateMachineTransition_oxd2f"), "RunCycle", "Roll", SubResource("AnimationNodeStateMachineTransition_q2pbx"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_k4os8"), "Jump", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_r1c4n"), "Liukurointi", "RunCycle", SubResource("AnimationNodeStateMachineTransition_bfbmk"), "Liukurointi", "Idle", SubResource("AnimationNodeStateMachineTransition_no4se"), "Fall", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_qpgy8"), "Liukurointi", "Fall", SubResource("AnimationNodeStateMachineTransition_rym6c"), "RunCycle", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_q23s0"), "RunCycle", "FallWithLiukuri", SubResource("AnimationNodeStateMachineTransition_e87kp"), "Liukurointi", "FallWithLiukuri", SubResource("AnimationNodeStateMachineTransition_li8nl"), "FallWithLiukuri", "RunCycle", SubResource("AnimationNodeStateMachineTransition_o3tll"), "FallWithLiukuri", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_6vjod"), "Idle", "VaultA", SubResource("AnimationNodeStateMachineTransition_887tl"), "Fall", "VaultA", SubResource("AnimationNodeStateMachineTransition_p8h7d"), "Fall", "Jump", SubResource("AnimationNodeStateMachineTransition_wn1ye")]
-graph_offset = Vector2(217, -12)
+states/VaultA/position = Vector2(761, 56)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e6ukd"), "Idle", "RunCycle", SubResource("AnimationNodeStateMachineTransition_qqsqc"), "RunCycle", "Idle", SubResource("AnimationNodeStateMachineTransition_cgx03"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_44c2v"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_oityk"), "RunCycle", "Jump", SubResource("AnimationNodeStateMachineTransition_y2mib"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_1lc20"), "Fall", "RunCycle", SubResource("AnimationNodeStateMachineTransition_27krj"), "Idle", "RELOAD_Paahdin", SubResource("AnimationNodeStateMachineTransition_kv3ht"), "RELOAD_Paahdin", "Idle", SubResource("AnimationNodeStateMachineTransition_pajro"), "Idle", "RELOAD_Dense", SubResource("AnimationNodeStateMachineTransition_52rky"), "RELOAD_Dense", "Idle", SubResource("AnimationNodeStateMachineTransition_axyne"), "RELOAD_Dense", "RunCycle", SubResource("AnimationNodeStateMachineTransition_o5sai"), "RunCycle", "RELOAD_Dense", SubResource("AnimationNodeStateMachineTransition_chcr7"), "RunCycle", "RELOAD_Paahdin", SubResource("AnimationNodeStateMachineTransition_8d4tw"), "RELOAD_Paahdin", "RunCycle", SubResource("AnimationNodeStateMachineTransition_8o6ai"), "Start", "RunCycle", SubResource("AnimationNodeStateMachineTransition_vk1hu"), "Jump", "VaultA", SubResource("AnimationNodeStateMachineTransition_6n7lh"), "VaultA", "Idle", SubResource("AnimationNodeStateMachineTransition_wgq4e"), "Idle", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_6a77n"), "RELOAD_Phone", "Idle", SubResource("AnimationNodeStateMachineTransition_nk1dt"), "Fall", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_tlyua"), "RELOAD_Phone", "Fall", SubResource("AnimationNodeStateMachineTransition_dca5h"), "RELOAD_Phone", "VaultA", SubResource("AnimationNodeStateMachineTransition_s12e5"), "VaultA", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_qwhsl"), "Jump", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_and1u"), "RELOAD_Phone", "Jump", SubResource("AnimationNodeStateMachineTransition_5tb2a"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_druxi"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_vrvgv"), "Roll", "RunCycle", SubResource("AnimationNodeStateMachineTransition_p5pf2"), "Jump", "Roll", SubResource("AnimationNodeStateMachineTransition_oxd2f"), "RunCycle", "Roll", SubResource("AnimationNodeStateMachineTransition_q2pbx"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_k4os8"), "Jump", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_r1c4n"), "Liukurointi", "RunCycle", SubResource("AnimationNodeStateMachineTransition_bfbmk"), "Liukurointi", "Idle", SubResource("AnimationNodeStateMachineTransition_no4se"), "Fall", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_qpgy8"), "Liukurointi", "Fall", SubResource("AnimationNodeStateMachineTransition_rym6c"), "RunCycle", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_q23s0"), "RunCycle", "FallWithLiukuri", SubResource("AnimationNodeStateMachineTransition_e87kp"), "Liukurointi", "FallWithLiukuri", SubResource("AnimationNodeStateMachineTransition_li8nl"), "FallWithLiukuri", "RunCycle", SubResource("AnimationNodeStateMachineTransition_o3tll"), "FallWithLiukuri", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_6vjod"), "Idle", "VaultA", SubResource("AnimationNodeStateMachineTransition_887tl"), "Fall", "VaultA", SubResource("AnimationNodeStateMachineTransition_p8h7d"), "Fall", "Jump", SubResource("AnimationNodeStateMachineTransition_wn1ye"), "Idle", "RELOAD_BeerUnopened", SubResource("AnimationNodeStateMachineTransition_nw5lv"), "RELOAD_BeerUnopened", "Idle", SubResource("AnimationNodeStateMachineTransition_vjlgy"), "Idle", "RELOAD_BeerOpened", SubResource("AnimationNodeStateMachineTransition_rfo4c"), "RELOAD_BeerOpened", "Idle", SubResource("AnimationNodeStateMachineTransition_f6t3g"), "RunCycle", "RELOAD_BeerUnopened", SubResource("AnimationNodeStateMachineTransition_5ghoy"), "RunCycle", "RELOAD_BeerOpened", SubResource("AnimationNodeStateMachineTransition_b8b2s"), "RELOAD_BeerOpened", "RunCycle", SubResource("AnimationNodeStateMachineTransition_fkark"), "RELOAD_BeerUnopened", "RunCycle", SubResource("AnimationNodeStateMachineTransition_i31xr"), "VaultA", "Fall", SubResource("AnimationNodeStateMachineTransition_2b0dl"), "VaultA", "Roll", SubResource("AnimationNodeStateMachineTransition_exnmj")]
+graph_offset = Vector2(15, 49)

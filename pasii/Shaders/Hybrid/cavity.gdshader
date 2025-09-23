@@ -18,7 +18,7 @@ uniform float width = 2.0;
 uniform bool addDepth = false;
 
 vec3 overlay(vec3 base, vec3 blend) {
-    return mix(2.0 * base * blend, 
+    return mix(2.0 * base * blend,
 		1.0 - 2.0 * (1.0 - base) * (1.0 - blend), clamp(base, 0.0, 1.0));
 }
 
@@ -48,7 +48,7 @@ float random (vec2 uv) {
 void fragment() {
 	vec4 origin = texture(SCREEN_TEXTURE, SCREEN_UV);
 	vec2 SCREEN_PIXEL_SIZE = 1.0 / VIEWPORT_SIZE;
-	
+
 	float res = textureCavity(NORMAL_TEXTURE, SCREEN_UV, SCREEN_PIXEL_SIZE, width);
 	for (int i = 1; i < blur_strength; i++){
 		res = mix(res, textureCavity(NORMAL_TEXTURE, SCREEN_UV, SCREEN_PIXEL_SIZE, width*float(i*i)*random(SCREEN_UV*sin(TIME))), 0.2/float(i*i));
@@ -59,7 +59,7 @@ void fragment() {
 	//res /= 5.0;
 	float scaled_depth = scaledDepth(DEPTH_TEXTURE, SCREEN_UV, INV_PROJECTION_MATRIX);
 	vec4 blur_color = vec4(0.0);
-	
+
 	if (addDepth) {
 		ALBEDO = overlay(overlay(origin.rgb, vec3(res)), vec3(scaled_depth));
 	} else {

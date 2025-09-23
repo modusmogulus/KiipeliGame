@@ -19,13 +19,22 @@ var update : bool = false
 
 var grounded = false
 
+func search_and_set_viewmodel_fov_to_all_shaders_in_tree(node, fov):
+	for i in node.get_children():
+		search_and_set_viewmodel_fov_to_all_shaders_in_tree(i, fov)
+		if i is MeshInstance3D:
+			for j in range(i.mesh.get_surface_count()):
+				var temp = i.mesh.surface_get_material(j)
+				if temp is ShaderMaterial:
+					temp.set_shader_parameter("fov", fov)
+
 func _ready() -> void:
 	set_as_top_level(true) # Detach from pawn node.
 	# Initialize interpolation transforms.
 	global_transform = target.global_transform
 	t_prev = target.global_transform
 	t_curr = target.global_transform
-
+	
 func _process(delta_) -> void:
 	_interpolate()
 	# Modify camera nodes to conform with Player Parameters.

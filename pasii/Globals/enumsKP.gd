@@ -6,7 +6,8 @@ enum items {
 	DENSE = 2,
 	GLOVES = 3,
 	PHONE = 112,
-	LIUKURI = 4
+	LIUKURI = 4,
+	BEER = 5
 }
 
 enum powerups {

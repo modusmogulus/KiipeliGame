@@ -11,21 +11,26 @@ class_name GoldGdt_View extends Node
 @export var camera_animation_mount : Node3D ##Used to give a layer to rotation that is controlled by the rig animation
 @export var camera : Camera3D
 @export var animation_camera : Camera3D
+@export var g_loc_filter : ColorRect
 @export var speedlines : ColorRect
 @export var legs : Node
 @export var zoneout : ColorRect
 @export var g_loc_curve : Curve
 @export var afterimage : TextureRect
+@export var viewmodel_shader_target_parent : Node3D
+
 var initial_anim_camera_rot : Vector3
 var original_fov : float = 0.0
 var previous_velocity : Vector3
 var _frm = 0
+
 func _ready() -> void:
-	initial_anim_camera_rot = animation_camera.global_rotation
+	#initial_anim_camera_rot = animation_camera.global_rotation
 	original_fov = camera.fov
+	
 func _process(delta: float) -> void:
 	_frm += 1
-	if _frm > 30:
+	if _frm > 30 && Body.g_forces > 0.9:
 		var _atimg = get_viewport().get_texture().get_image()
 		var _attex = ImageTexture.create_from_image(_atimg)
 		afterimage.texture = _attex
@@ -36,6 +41,7 @@ func _physics_process(_delta) -> void:
 	
 	if Body.current_wallrun_state !=  enumsKP.wallrun_states.NONE && Body.current_wallrun_state != enumsKP.wallrun_states.BOTH:
 		camera_mount.rotation.z = lerpf(camera_mount.rotation.z, deg_to_rad(Body.current_wallrun_state * 12.0), 0.2)
+		
 	else:
 		camera_mount.rotation.z = lerpf(camera_mount.rotation.z, _calc_roll(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED)*1.2, 0.2)
 	var _ct = camera_mount.rotation.x
@@ -44,23 +50,27 @@ func _physics_process(_delta) -> void:
 	#legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
 	var _ft
 	_ft = camera.fov
-	camera.fov = lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.1)
-	if _ft > camera.fov:
+	
+	if _ft < camera.fov:
+		speedlines.modulate.a = lerpf(speedlines.modulate.a, 1.0, 0.1)
 		lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.8)
+	else:
+		camera.fov = lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.1)
+		speedlines.modulate.a = lerpf(speedlines.modulate.a , 0.0, 0.1)
 	animation_camera.fov = camera.fov
-	if speedlines.modulate.a + 0.1 < _calc_g_fx():
+	if g_loc_filter.modulate.a + 0.1 < _calc_g_fx():
 		
-		speedlines.modulate.a = lerpf(speedlines.modulate.a, _calc_g_fx(), 0.1)
+		g_loc_filter.modulate.a = lerpf(g_loc_filter.modulate.a, _calc_g_fx(), 0.1)
 	else:
 		#if randi_range(0, 10) > 5:
-		speedlines.modulate.a = lerpf(speedlines.modulate.a, _calc_g_fx(), 0.05)
+		g_loc_filter.modulate.a = lerpf(g_loc_filter.modulate.a, _calc_g_fx(), 0.05)
 	previous_velocity = Body.velocity
 	if Vector2(Body.velocity.x, Body.velocity.y).length() > 0:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.02) #Speedlines by using same function as fov
 	else:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.002) #Lazy way to make braking lose speedlines faster
-	
-	animation_camera.rotation = camera.rotation + initial_anim_camera_rot
+	camera_animation_mount.rotation = camera.rotation
+	#animation_camera.rotation = camera.rotation + initial_anim_camera_rot
 func _handle_camera_input(look_input: Vector2) -> void:
 	horizontal_view.rotate_object_local(Vector3.DOWN, look_input.x)
 	horizontal_view.orthonormalize()
