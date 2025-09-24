@@ -18,7 +18,7 @@ class_name GoldGdt_View extends Node
 @export var g_loc_curve : Curve
 @export var afterimage : TextureRect
 @export var viewmodel_shader_target_parent : Node3D
-
+@export var adrenaline_effect : ColorRect
 var initial_anim_camera_rot : Vector3
 var original_fov : float = 0.0
 var previous_velocity : Vector3
@@ -50,13 +50,12 @@ func _physics_process(_delta) -> void:
 	#legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
 	var _ft
 	_ft = camera.fov
-	
+	speedlines.modulate.a = _calc_speed_fx(0.0, 1.0, 4.0)
+	adrenaline_effect.modulate.a = lerpf(adrenaline_effect.modulate.a, _calc_speed_fx(0.0, 1.0, 4.0), 0.1)
 	if _ft < camera.fov:
-		speedlines.modulate.a = lerpf(speedlines.modulate.a, 1.0, 0.1)
-		lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.8)
+		lerpf(camera.fov, _calc_speed_fov(original_fov, 20.0), 0.8)
 	else:
-		camera.fov = lerpf(camera.fov, _calc_speed_fx(original_fov, 20.0), 0.1)
-		speedlines.modulate.a = lerpf(speedlines.modulate.a , 0.0, 0.1)
+		camera.fov = lerpf(camera.fov, _calc_speed_fov(original_fov, 20.0), 0.1)
 	animation_camera.fov = camera.fov
 	if g_loc_filter.modulate.a + 0.1 < _calc_g_fx():
 		
@@ -66,9 +65,9 @@ func _physics_process(_delta) -> void:
 		g_loc_filter.modulate.a = lerpf(g_loc_filter.modulate.a, _calc_g_fx(), 0.05)
 	previous_velocity = Body.velocity
 	if Vector2(Body.velocity.x, Body.velocity.y).length() > 0:
-		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.02) #Speedlines by using same function as fov
+		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0, 0.01), 0.1) #Speedlines by using same function as fov
 	else:
-		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0), 0.002) #Lazy way to make braking lose speedlines faster
+		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0, 0.01), 0.002) #Lazy way to make braking lose speedlines faster
 	camera_animation_mount.rotation = camera.rotation
 	#animation_camera.rotation = camera.rotation + initial_anim_camera_rot
 func _handle_camera_input(look_input: Vector2) -> void:
@@ -142,10 +141,16 @@ func _calc_pitch_overshoot(rollangle: float, rollspeed: float) -> float:
 	return front * roll_sign + clampf(Body.velocity.y * 0.01, -1.5, 1.5)
 
 
-func _calc_speed_fx(original: float, max_change: float) -> float:
+func _calc_speed_fov(original: float, max_change: float) -> float:
 	var fov = (Body.velocity.length() / Parameters.MAX_SPEED*16.0) * max_change
 	return original+clampf(fov, 0.0, max_change)
 
+func _calc_speed_fx(original: float, max_change: float, max_speed : float) -> float:
+	if Body.velocity.length() > max_speed:
+		return 1.0
+	var a = (Body.velocity.length() / max_speed)
+	return clampf(a, 0.0, max_change)
+	
 func _calc_g_fx() -> float:
 	var gs = Body.g_forces
 	var fx_strength = g_loc_curve.sample_baked(gs)

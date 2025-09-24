@@ -1,4 +1,4 @@
-[gd_scene load_steps=191 format=4 uid="uid://e23uigtm2f3j"]
+[gd_scene load_steps=195 format=4 uid="uid://e23uigtm2f3j"]
 
 [ext_resource type="LightmapGIData" uid="uid://ctrntdc7jfpb" path="res://Scenes/gameplaytests01.lmbake" id="1_f17og"]
 [ext_resource type="Material" uid="uid://cvxohyg1314ik" path="res://3p_lumi_aniso_stochastic.tres" id="3_djyk4"]
@@ -20,11 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://dhugqig8jkh28" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_clip_spruce_02.png" id="10_f288j"]
 [ext_resource type="Material" uid="uid://dfoqlm8nfowm3" path="res://Materials/tree_stylized_partB.tres" id="10_fqyyi"]
 [ext_resource type="Material" uid="uid://xf2mic4kmyhk" path="res://Materials/3D-fake-interior-building-05.tres" id="10_wboeo"]
-[ext_resource type="Texture2D" uid="uid://bb1hjkoc6ik5j" path="res://textures/antaverktex_lattia.png" id="11_74b3q"]
+[ext_resource type="Material" uid="uid://ddj7yjen858ae" path="res://Materials/Sd_antaverkka_lattia.tres" id="11_2kcld"]
 [ext_resource type="Texture2D" uid="uid://ja411bi30liy" path="res://Models/Props/FoliagetJaLiikennemerkit_ykp_tree_leaves_plane_02.png" id="11_fqyyi"]
 [ext_resource type="Material" uid="uid://cjfpvs0jmqeue" path="res://Materials/invicivle.tres" id="12_8blhk"]
 [ext_resource type="Texture2D" uid="uid://gxwa6lo1tiyt" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_clip_tree_01_dith.png" id="12_np0f2"]
 [ext_resource type="Texture2D" uid="uid://bxr3gocx7qw3g" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_clip_spruce_03.png" id="13_hl2cm"]
+[ext_resource type="Texture2D" uid="uid://bacn1lbfdnuug" path="res://Models/Blender/aikuislukio_perhontalo xd godot_perho-laudat.png" id="13_jt367"]
 [ext_resource type="PackedScene" uid="uid://bu7ghudg4bc8v" path="res://Entities/PropEntites/lamppu.tscn" id="13_np0f2"]
 [ext_resource type="Material" uid="uid://b2hn804eujvkm" path="res://Materials/unshaded_window.tres" id="14_1ha7n"]
 [ext_resource type="Texture2D" uid="uid://b5lhqlopbtdlq" path="res://Models/Props/FoliagetJaLiikennemerkit_ba_log.png" id="14_6vsef"]
@@ -60,32 +61,32 @@
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p27gu"]
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_adath"]
-
-[sub_resource type="Gradient" id="Gradient_sa26n"]
+[sub_resource type="Gradient" id="Gradient_p27gu"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.322314, 0.438017, 0.553719)
 colors = PackedColorArray(0.492002, 0.611214, 0.699496, 1, 0.402079, 0.639984, 0.736175, 1, 0.138273, 0.10655, 0.260228, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_djyk4"]
-gradient = SubResource("Gradient_sa26n")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2kcld"]
+gradient = SubResource("Gradient_p27gu")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0.0162162)
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f288j"]
-panorama = SubResource("GradientTexture2D_djyk4")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jt367"]
+panorama = SubResource("GradientTexture2D_2kcld")
 
-[sub_resource type="Sky" id="Sky_s2rwh"]
-sky_material = SubResource("PanoramaSkyMaterial_f288j")
+[sub_resource type="Sky" id="Sky_vjlk4"]
+sky_material = SubResource("PanoramaSkyMaterial_jt367")
 
-[sub_resource type="Environment" id="Environment_mes1l"]
+[sub_resource type="Environment" id="Environment_ncoui"]
 background_mode = 2
-sky = SubResource("Sky_s2rwh")
+sky = SubResource("Sky_vjlk4")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.8
 ssr_enabled = true
+ssao_enabled = true
 ssao_radius = 2.8
 ssao_intensity = 3.08
+ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_bounce_feedback = 0.95
 glow_normalized = true
@@ -99,7 +100,6 @@ fog_density = 0.0045
 fog_aerial_perspective = 0.125
 fog_sky_affect = 0.0
 fog_depth_end = 474.0
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.008
 volumetric_fog_albedo = Color(0.815152, 0.628486, 0.665845, 1)
 volumetric_fog_gi_inject = 1.6
@@ -107,11 +107,8 @@ volumetric_fog_anisotropy = -0.7
 volumetric_fog_detail_spread = 6.0
 volumetric_fog_ambient_inject = 1.9
 adjustment_enabled = true
-adjustment_saturation = 1.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_74b3q"]
-auto_exposure_enabled = true
-auto_exposure_max_sensitivity = 6993.2
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_adath"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f288j"]
 albedo_color = Color(0, 1, 0, 1)
@@ -123,29 +120,13 @@ albedo_texture = ExtResource("10_2kcld")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4qj4"]
 albedo_texture = ExtResource("10_f17og")
 
-[sub_resource type="Gradient" id="Gradient_1ha7n"]
-offsets = PackedFloat32Array(0.45, 0.9, 0.980769, 1)
-colors = PackedColorArray(0.201527, 0.201527, 0.201527, 1, 0.0338533, 0.0338533, 0.0338533, 1, 0.557183, 0.557183, 0.557183, 1, 1, 1, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0gy5"]
+albedo_texture = ExtResource("13_jt367")
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_74b3q"]
-gradient = SubResource("Gradient_1ha7n")
-fill = 2
-fill_from = Vector2(0.495726, 0.512821)
-fill_to = Vector2(0.491453, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6n7r4"]
-gradient = SubResource("Gradient_1ha7n")
-fill = 2
-fill_from = Vector2(0.495726, 0.512821)
-fill_to = Vector2(0.491453, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pcdk"]
-albedo_texture = ExtResource("11_74b3q")
-metallic_specular = 0.4
-roughness_texture = SubResource("GradientTexture2D_6n7r4")
-normal_scale = 0.02
-normal_texture = SubResource("GradientTexture2D_74b3q")
-uv1_scale = Vector3(2, 2, 2)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pm2sl"]
+emission_enabled = true
+emission = Color(0.999454, 0.76143, 0.508501, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kcld"]
 transparency = 2
@@ -201,6 +182,69 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6vr5c")
+
+[sub_resource type="BoxMesh" id="BoxMesh_p27gu"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjlk4"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.760272, 0.427611, 1)
+emission_energy_multiplier = 32.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p27gu"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.792695, 0.789321, 0.96694, 1)
+emission_energy_multiplier = 8.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncoui"]
+albedo_color = Color(0, 0, 0, 1)
+emission = Color(0.487971, 0, 0.125543, 1)
+emission_energy_multiplier = 8.3
+
+[sub_resource type="Environment" id="Environment_pm2sl"]
+background_mode = 2
+sky = SubResource("Sky_vjlk4")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.8
+ssr_enabled = true
+ssao_radius = 0.4
+ssao_intensity = 5.43
+ssil_radius = 5.82
+ssil_intensity = 1.5
+ssil_sharpness = 0.0
+sdfgi_bounce_feedback = 1.04
+sdfgi_cascades = 2
+sdfgi_min_cell_size = 0.03125
+sdfgi_cascade0_distance = 2.0
+sdfgi_max_distance = 8.0
+glow_intensity = 0.04
+glow_strength = 1.02
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_hdr_threshold = 2.57
+glow_hdr_luminance_cap = 256.0
+fog_light_color = Color(0.125547, 0.117663, 0.142856, 1)
+fog_light_energy = 0.0
+fog_density = 0.0045
+fog_aerial_perspective = 0.125
+fog_sky_affect = 0.0
+fog_depth_end = 474.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0275
+volumetric_fog_albedo = Color(0.467409, 0.34433, 0.43873, 1)
+volumetric_fog_anisotropy = -0.7
+volumetric_fog_detail_spread = 1.06066
+volumetric_fog_ambient_inject = 2.13
+volumetric_fog_temporal_reprojection_enabled = false
+adjustment_enabled = true
+adjustment_saturation = 1.05
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_74b3q"]
+auto_exposure_enabled = true
+auto_exposure_max_sensitivity = 6993.2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_x8768"]
 _surfaces = [{
@@ -2147,34 +2191,31 @@ root_node = NodePath("../LightmapGI")
 tree_root = SubResource("AnimationNodeBlendTree_p27gu")
 
 [node name="Camera3D" type="Camera3D" parent="AnimationTree"]
-transform = Transform3D(-0.998317, 0, -0.0579996, 0, 1, 0, 0.0579996, 0, -0.998317, 5.18495, -401.434, -15.3006)
-fov = 110.0
+transform = Transform3D(-0.998317, 0, -0.0579996, 0, 1, 0, 0.0579996, 0, -0.998317, 5.185, -401.809, -16.6366)
+environment = SubResource("Environment_ncoui")
+projection = 2
+current = true
+fov = 70.0
+size = 0.225
+frustum_offset = Vector2(0, -0.05)
+far = 18.37
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -400, 0)
-bounces = 9
+quality = 0
+bounces = 8
+denoiser_strength = 0.3
 camera_attributes = SubResource("CameraAttributesPractical_adath")
-generate_probes_subdiv = 3
 light_data = ExtResource("1_f17og")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightmapGI"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28.1363, -13.5433)
 light_energy = 0.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="LightmapGI"]
-environment = SubResource("Environment_mes1l")
-camera_attributes = SubResource("CameraAttributesPractical_74b3q")
-
 [node name="YKPTASO1uusin" parent="LightmapGI" instance=ExtResource("3_gace5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.82075, -12.5673, -9.09508)
 
-[node name="Plane_005" parent="LightmapGI/YKPTASO1uusin" index="14"]
-material_override = ExtResource("4_f288j")
-
 [node name="Plane_006" parent="LightmapGI/YKPTASO1uusin" index="17"]
-material_override = ExtResource("5_ks06f")
-
-[node name="Plane_007" parent="LightmapGI/YKPTASO1uusin" index="18"]
 material_override = ExtResource("5_ks06f")
 
 [node name="Cube_009" parent="LightmapGI/YKPTASO1uusin" index="19"]
@@ -2198,6 +2239,10 @@ material_override = ExtResource("5_f288j")
 [node name="Plane_021" parent="LightmapGI/YKPTASO1uusin" index="51"]
 surface_material_override/1 = ExtResource("3_djyk4")
 
+[node name="Plane_023" parent="LightmapGI/YKPTASO1uusin" index="52"]
+visible = false
+material_override = ExtResource("12_8blhk")
+
 [node name="Plane_001_001" parent="LightmapGI/YKPTASO1uusin" index="53"]
 material_override = ExtResource("5_f288j")
 
@@ -2214,85 +2259,224 @@ material_override = ExtResource("9_p27gu")
 [node name="Plane_003" parent="LightmapGI/YKPTASO1uusin" index="64"]
 surface_material_override/0 = SubResource("StandardMaterial3D_jt367")
 
-[node name="roomA" parent="LightmapGI/YKPTASO1uusin" index="71"]
-gi_lightmap_texel_scale = 0.5
-surface_material_override/0 = SubResource("StandardMaterial3D_a4qj4")
-surface_material_override/2 = SubResource("StandardMaterial3D_1pcdk")
+[node name="Plane_005" parent="LightmapGI/YKPTASO1uusin" index="66"]
+material_override = ExtResource("4_f288j")
 
-[node name="outer_building" parent="LightmapGI/YKPTASO1uusin" index="78"]
+[node name="Plane_007" parent="LightmapGI/YKPTASO1uusin" index="68"]
+material_override = ExtResource("5_ks06f")
+
+[node name="stairway-mid" parent="LightmapGI/YKPTASO1uusin" index="70"]
+surface_material_override/2 = ExtResource("11_2kcld")
+
+[node name="roomA" parent="LightmapGI/YKPTASO1uusin" index="75"]
+gi_lightmap_texel_scale = 4.0
+surface_material_override/0 = SubResource("StandardMaterial3D_a4qj4")
+surface_material_override/2 = SubResource("StandardMaterial3D_l0gy5")
+surface_material_override/8 = SubResource("StandardMaterial3D_pm2sl")
+
+[node name="outer_building" parent="LightmapGI/YKPTASO1uusin" index="82"]
 surface_material_override/1 = ExtResource("7_hl2cm")
 surface_material_override/3 = ExtResource("12_8blhk")
 surface_material_override/4 = ExtResource("12_8blhk")
 
-[node name="doomertalo" parent="LightmapGI/YKPTASO1uusin" index="79"]
+[node name="doomertalo" parent="LightmapGI/YKPTASO1uusin" index="83"]
 surface_material_override/0 = ExtResource("10_wboeo")
 
-[node name="doomertalo_001" parent="LightmapGI/YKPTASO1uusin" index="80"]
+[node name="doomertalo_001" parent="LightmapGI/YKPTASO1uusin" index="84"]
 surface_material_override/0 = ExtResource("10_wboeo")
 
-[node name="Cube" parent="LightmapGI/YKPTASO1uusin" index="84"]
+[node name="Cube" parent="LightmapGI/YKPTASO1uusin" index="88"]
 transform = Transform3D(0.0200588, 0, 0.515209, 0, 0.515599, 0, -0.515209, 0, 0.0200588, 15.3182, 10.1461, -3.90524)
 
-[node name="Cube_001" parent="LightmapGI/YKPTASO1uusin" index="85"]
+[node name="Cube_001" parent="LightmapGI/YKPTASO1uusin" index="89"]
 transform = Transform3D(0.474372, 0, 0.0526944, 0, 0.47729, 0, -0.0526944, 0, 0.474372, 14.8078, 10.1699, -4.01404)
 
-[node name="Cube_002" parent="LightmapGI/YKPTASO1uusin" index="86"]
+[node name="Cube_002" parent="LightmapGI/YKPTASO1uusin" index="90"]
 transform = Transform3D(-0.38724, -0.158731, -0.229043, -0.192006, -0.00345077, 0.501518, -0.116774, 0.532048, -0.0650799, 15.1864, 9.96637, -4.07581)
 
-[node name="roomA_001" parent="LightmapGI/YKPTASO1uusin" index="87"]
-surface_material_override/0 = ExtResource("12_8blhk")
-
-[node name="roomA_002" parent="LightmapGI/YKPTASO1uusin" index="88"]
+[node name="roomA_002" parent="LightmapGI/YKPTASO1uusin" index="92"]
 material_override = ExtResource("14_1ha7n")
 surface_material_override/0 = SubResource("StandardMaterial3D_2kcld")
 
 [node name="Cube2" type="MeshInstance3D" parent="LightmapGI/YKPTASO1uusin"]
-transform = Transform3D(0.0178193, 0, 0.784472, 0, 1.11987, 0, -0.457688, 0, 0.0305421, 16.9905, 10.0775, -3.90547)
+transform = Transform3D(0.0178193, 0, 0.784472, 0, 1.11987, 0, -0.457688, 0, 0.0305421, 16.1696, 10.0775, -3.90547)
 mesh = SubResource("ArrayMesh_h1des")
 skeleton = NodePath("")
 
-[node name="OmniLight3D room light huonelamppu" type="OmniLight3D" parent="LightmapGI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64987, -0.11026, -14.7645)
-light_color = Color(1, 0.8385, 0.49, 1)
-light_energy = 5.273
-light_size = 0.155
-shadow_enabled = true
+[node name="Huonelamppu Mesh" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.390106, 0, 0, 0, 0.180311, 0, 0, 0, 1.24842, 5.6155, 0.411591, -13.9852)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
 
-[node name="OmniLight3D room light huonelamppu2" type="OmniLight3D" parent="LightmapGI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22728, -0.11026, -16.7369)
-light_color = Color(0.858376, 0.742827, 0.522827, 1)
-light_energy = 6.594
-light_indirect_energy = 3.0
-light_bake_mode = 1
-shadow_enabled = true
+[node name="Huonelamppu Mesh20" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(14.277, 0, 0, 0, 0.180311, 0, 0, 0, 0.78475, 2.09859, -14.2365, 38.1957)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
 
-[node name="OmniLight3D room light huonelamppu3" type="OmniLight3D" parent="LightmapGI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22728, -0.11026, -21.8261)
-light_color = Color(0.858376, 0.742827, 0.522827, 1)
-light_energy = 6.594
-light_size = 0.155
-light_bake_mode = 1
-shadow_enabled = true
+[node name="Huonelamppu Mesh21" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(14.277, 0, 0, 0, 0.180311, 0, 0, 0, 0.78475, 2.09859, -14.2365, 42.4253)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
 
-[node name="OmniLight3D room light huonelamppu4" type="OmniLight3D" parent="LightmapGI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.445512, -1.6098, -21.8261)
-light_color = Color(0.858376, 0.742827, 0.522827, 1)
-light_energy = 6.594
-light_size = 0.155
-light_bake_mode = 1
-shadow_enabled = true
+[node name="Huonelamppu Mesh22" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.84771, -4.57076e-05, -0.000175341, 0.000214553, 0.18038, -0.00104942, 0.000189633, 0.000241125, 0.785013, 2.66736, -9.43188, 42.4253)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
 
-[node name="OmniLight3D room light huonelamppu5" type="OmniLight3D" parent="LightmapGI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.445512, -3.96506, -14.2471)
-light_color = Color(0.858376, 0.742827, 0.522827, 1)
-light_energy = 6.594
-light_size = 0.155
-light_bake_mode = 1
-shadow_enabled = true
+[node name="Huonelamppu Mesh23" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.84771, -4.57076e-05, -0.000175341, 0.000214553, 0.18038, -0.00104942, 0.000189633, 0.000241125, 0.785013, 2.66736, -14.1178, 54.1838)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+
+[node name="Huonelamppu Mesh24" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.84771, -4.57076e-05, -0.000175341, 0.000214553, 0.18038, -0.00104942, 0.000189633, 0.000241125, 0.785013, 6.41277, -14.1178, 45.0961)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+
+[node name="Huonelamppu Mesh25" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.84771, -4.57076e-05, -0.000175341, 0.000214553, 0.18038, -0.00104942, 0.000189633, 0.000241125, 0.785013, 6.41277, -14.1178, 48.4485)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+
+[node name="Huonelamppu Mesh4" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.070897, 0, 0, 0, 1.24842, 3.40002, 0.243439, -15.4648)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh5" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.070897, 0, 0, 0, 1.24842, 3.40002, 0.243439, -19.8156)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh6" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.070897, 0, 0, 0, 1.24842, 3.40002, -3.09174, -15.4648)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh7" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.070897, 0, 0, 0, 1.24842, 3.40002, -3.09174, -19.8156)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh8" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.070897, 0, 0, 0, 1.24842, 3.40002, -6.45908, -15.4648)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh9" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.070897, 0, 0, 0, 1.24842, 3.40002, -6.45908, -19.8156)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh15" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.063763, -0.545781, 0, 0.0309947, 1.12279, 0.250216, -7.02832, -19.8156)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh16" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.063763, -0.545781, 0, 0.0309947, 1.12279, 0.250216, -3.62704, -19.8156)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh17" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.063763, -0.545781, 0, 0.0309947, 1.12279, 0.250216, 3.07813, -19.8156)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh18" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.063763, -0.545781, 0, 0.0309947, 1.12279, 0.250216, 6.40784, -19.8156)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh10" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.070897, 0, 0, 0, 1.24842, 3.40002, -9.81989, -15.4648)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh11" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 0.070897, 0, 0, 0, 1.24842, 3.40002, -9.81989, -19.8156)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh12" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 20.2176, 0, 0, 0, 3.43347, 4.52564, -3.81644, -18.9168)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_p27gu")
+
+[node name="Huonelamppu Mesh19" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 3.63918, 0, 0, 0, 3.43347, 4.52564, 2.54092, -15.6435)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_p27gu")
+
+[node name="Huonelamppu Mesh14" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 20.2176, 0, 0, 0, 3.43347, 4.52564, -12.7195, -15.7086)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ncoui")
+
+[node name="Huonelamppu Mesh13" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(0.164198, 0, 0, 0, 20.2176, 0, 0, 0, 3.43347, 6.7352, -3.82904, -21.7883)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_p27gu")
+
+[node name="Huonelamppu Mesh2" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(-4.51771e-09, 0, 1.64679, 0, 0.180311, 0, -0.103353, 0, -7.19835e-08, 7.57641, -0.978821, -15.6271)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="Huonelamppu Mesh3" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(-1.77885e-08, 0, 2.11567, 0, 0.0869777, 0, -0.406953, 0, -9.24787e-08, 7.89263, 0.413879, -13.1815)
+material_override = SubResource("StandardMaterial3D_pm2sl")
+mesh = SubResource("BoxMesh_p27gu")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="LightmapGI"]
+environment = SubResource("Environment_pm2sl")
+camera_attributes = SubResource("CameraAttributesPractical_74b3q")
 
 [node name="Pawn" parent="." instance=ExtResource("3_tw0lh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83089, -401.253, -14.7511)
-visible = false
 start_view_yaw = -183.085
 
 [node name="Props" type="Node3D" parent="."]
@@ -2602,7 +2786,7 @@ mesh = SubResource("ArrayMesh_2wppr")
 skeleton = NodePath("")
 
 [node name="birchB_winter3" type="MeshInstance3D" parent="FoliagetJaLiikennemerkit"]
-transform = Transform3D(-5.65685, 5.65685, 3.37175e-07, 0, 4.76837e-07, -8, -5.65686, -5.65685, -3.37175e-07, 34.0877, 37.0494, 4.99052)
+transform = Transform3D(-5.65685, 5.65685, 3.37175e-07, 0, 4.76837e-07, -8, -5.65686, -5.65685, -3.37175e-07, 31.5769, 37.0494, 6.54529)
 mesh = SubResource("ArrayMesh_2wppr")
 skeleton = NodePath("")
 
@@ -2770,6 +2954,7 @@ bones/3/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/3/scale = Vector3(1, 1, 1)
 
 [node name="Plane_018" type="MeshInstance3D" parent="ykp_mummokeinu_mob/Mummokeinu-goggly/Skeleton3D"]
+transform = Transform3D(0.809433, 0, 0, 0, 0.720355, 0, 0, 0, 0.759106, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gxi47")
 skin = SubResource("Skin_e6v8q")
 
@@ -2782,7 +2967,7 @@ libraries = {
 transform = Transform3D(-0.0552209, 0, -0.0430192, 0, 0.07, 0, 0.0430192, 0, -0.0552209, 7.28861, -401.62, -14.7906)
 
 [node name="ykp_lonkero2" parent="." instance=ExtResource("49_74b3q")]
-transform = Transform3D(0.00415876, 0, -0.0698764, 0, 0.07, 0, 0.0698764, 0, 0.00415876, 8.288, -401.668, -12.7661)
+transform = Transform3D(0.066543, 0, 0.0217265, 0, 0.07, 0, -0.0217265, 0, 0.066543, 8.288, -401.811, -12.612)
 
 [node name="ykp_kallio" parent="." instance=ExtResource("51_v2yg1")]
 transform = Transform3D(0.977029, 2.43222e-08, 1.17803, 0.025263, 1.94165, -0.0373167, -0.882359, 0.055592, 1.30335, -24.1322, -416.062, 76.1916)

@@ -21,7 +21,7 @@ vec2 f_random(float co){
 void vertex(){
 	// scale the UVs by the amount of rooms
 	UV = UV*rooms;
-	
+
 	// Get camera position in World space coordinates
 	vec3 cam_pos = (inverse(MODELVIEW_MATRIX) * vec4(0, 0, 0, 1)).xyz; //object space
 	vec3 view_dir = VERTEX - cam_pos;

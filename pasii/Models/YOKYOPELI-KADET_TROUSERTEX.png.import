@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl0xxnwvelaig"
-path.s3tc="res://.godot/imported/YOKYOPELI-KADET_TROUSERTEX.png-bb52c7f533feb913ee7c9b27ac17abc4.s3tc.ctex"
+path="res://.godot/imported/YOKYOPELI-KADET_TROUSERTEX.png-bb52c7f533feb913ee7c9b27ac17abc4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "da1f73d1381cdc173248e1508c970652"
@@ -15,17 +14,17 @@ generator_parameters={
 [deps]
 
 source_file="res://Models/YOKYOPELI-KADET_TROUSERTEX.png"
-dest_files=["res://.godot/imported/YOKYOPELI-KADET_TROUSERTEX.png-bb52c7f533feb913ee7c9b27ac17abc4.s3tc.ctex"]
+dest_files=["res://.godot/imported/YOKYOPELI-KADET_TROUSERTEX.png-bb52c7f533feb913ee7c9b27ac17abc4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

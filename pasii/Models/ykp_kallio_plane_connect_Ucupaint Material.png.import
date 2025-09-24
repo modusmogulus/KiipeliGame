@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf1tytcubxpt7"
-path.s3tc="res://.godot/imported/ykp_kallio_plane_connect_Ucupaint Material.png-7875e763fc99be544fa5c4470d39d3c8.s3tc.ctex"
+path="res://.godot/imported/ykp_kallio_plane_connect_Ucupaint Material.png-7875e763fc99be544fa5c4470d39d3c8.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "cc04464e7890f102d8b79c3ea605304d"
@@ -15,17 +14,17 @@ generator_parameters={
 [deps]
 
 source_file="res://Models/ykp_kallio_plane_connect_Ucupaint Material.png"
-dest_files=["res://.godot/imported/ykp_kallio_plane_connect_Ucupaint Material.png-7875e763fc99be544fa5c4470d39d3c8.s3tc.ctex"]
+dest_files=["res://.godot/imported/ykp_kallio_plane_connect_Ucupaint Material.png-7875e763fc99be544fa5c4470d39d3c8.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=1
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=1
 roughness/src_normal="res://Models/ykp_kallio_plane_connect_Ucupaint Material.png"

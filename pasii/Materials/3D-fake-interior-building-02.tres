@@ -16,7 +16,7 @@ color_ramp = SubResource("Gradient_qds3k")
 noise = SubResource("FastNoiseLite_kwci3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eg0o4"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("2_qds3k")
 shader_parameter/rooms = Vector2(2.62, 2.33)
 shader_parameter/room_seed = 0.0

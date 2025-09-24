@@ -3,26 +3,25 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kei1k25unacu"
-path.s3tc="res://.godot/imported/ikkuna-transparent-2.png-caa68d8d9c844f4442e9bc29d0803767.s3tc.ctex"
+path="res://.godot/imported/ikkuna-transparent-2.png-caa68d8d9c844f4442e9bc29d0803767.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/ikkuna-transparent-2.png"
-dest_files=["res://.godot/imported/ikkuna-transparent-2.png-caa68d8d9c844f4442e9bc29d0803767.s3tc.ctex"]
+dest_files=["res://.godot/imported/ikkuna-transparent-2.png-caa68d8d9c844f4442e9bc29d0803767.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

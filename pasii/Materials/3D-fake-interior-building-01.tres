@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ccewk273mx3f1" path="res://textures/ykp/Textures/yk_reflection_rappukaytaytava.png" id="3_i7tgp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eg0o4"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("2_l4reg")
 shader_parameter/rooms = Vector2(2.62, 2.33)
 shader_parameter/room_seed = 0.0
