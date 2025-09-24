@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bur38jlr75ybs"
-path.s3tc="res://.godot/imported/yk_lumipenkkaB.png-1e4d2587912966fc372bb707848fe416.s3tc.ctex"
+uid="uid://dsi4l4kx2rk2q"
+path.s3tc="res://.godot/imported/hervanta_tie_blendable.png-306354e5a64eb57ae40e1c06182b3056.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/ykp/Textures/yk_lumipenkkaB.png"
-dest_files=["res://.godot/imported/yk_lumipenkkaB.png-1e4d2587912966fc372bb707848fe416.s3tc.ctex"]
+source_file="res://Models/Blender/hervanta_tie_blendable.png"
+dest_files=["res://.godot/imported/hervanta_tie_blendable.png-306354e5a64eb57ae40e1c06182b3056.s3tc.ctex"]
 
 [params]
 

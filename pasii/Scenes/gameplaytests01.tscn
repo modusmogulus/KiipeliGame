@@ -1,14 +1,16 @@
-[gd_scene load_steps=195 format=4 uid="uid://e23uigtm2f3j"]
+[gd_scene load_steps=201 format=4 uid="uid://e23uigtm2f3j"]
 
 [ext_resource type="LightmapGIData" uid="uid://ctrntdc7jfpb" path="res://Scenes/gameplaytests01.lmbake" id="1_f17og"]
 [ext_resource type="Material" uid="uid://cvxohyg1314ik" path="res://3p_lumi_aniso_stochastic.tres" id="3_djyk4"]
 [ext_resource type="PackedScene" uid="uid://c5xfvg4063s1v" path="res://Models/Blender/YKPTASO1uusin.blend" id="3_gace5"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="3_tw0lh"]
+[ext_resource type="Material" uid="uid://c0avin5moulcf" path="res://Materials/stoc_snow.tres" id="3_vjlk4"]
 [ext_resource type="Material" uid="uid://dttwot724jrd6" path="res://Materials/3p_tie.tres" id="4_f288j"]
 [ext_resource type="Material" uid="uid://bcapo2bpwexuk" path="res://Materials/3D-fake-interior-building-01.tres" id="4_fqyyi"]
 [ext_resource type="Material" uid="uid://c4x74yeh8ikqd" path="res://Materials/3D-fake-interior-building-02.tres" id="4_gllkj"]
 [ext_resource type="Material" uid="uid://co1gtv7arvr1" path="res://Materials/3p_talo01.tres" id="5_f288j"]
 [ext_resource type="Material" uid="uid://bsjdy17yt1c1w" path="res://Materials/3p_talo_katos.tres" id="5_ks06f"]
+[ext_resource type="Material" uid="uid://lcg46nhlvtus" path="res://Materials/ses_test.tres" id="5_l0gy5"]
 [ext_resource type="Material" uid="uid://7clbqxka4rxm" path="res://Materials/3p_kalliolumessa.tres" id="7_hl2cm"]
 [ext_resource type="Texture2D" uid="uid://bfm0l4hiattqv" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_leppa_01.png" id="7_xg67b"]
 [ext_resource type="Texture2D" uid="uid://e4e8egse6y5d" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_clip_birch_01.png" id="8_sa26n"]
@@ -33,12 +35,14 @@
 [ext_resource type="Texture2D" uid="uid://53lqgptl08w7" path="res://Models/Props/hd-puut_ykp_mtw_bark01_256.png" id="15_ni0y0"]
 [ext_resource type="Texture2D" uid="uid://cn4w6kfpl488a" path="res://Models/Props/hd-puut_depth_ykp_mtw_bark01_256_n.png" id="16_gllkj"]
 [ext_resource type="Texture2D" uid="uid://d4ippx5ammdof" path="res://textures/ykp/Textures/yk_rappuikkuna.png" id="16_m0l27"]
+[ext_resource type="Texture2D" uid="uid://kio0opve1c7i" path="res://Models/Blender/YKPTASO1uusin_antaverktex_puu_koriste_karmi.png" id="16_ncoui"]
 [ext_resource type="Texture2D" uid="uid://blaqxqg7vgavi" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_clip_birch_winter_02.png" id="16_ni0y0"]
 [ext_resource type="PackedScene" uid="uid://cfjlxrhqek6fb" path="res://Entities/PropEntites/lamppu_oranssi.tscn" id="16_u0ook"]
 [ext_resource type="Texture2D" uid="uid://7hrp1rdu4euh" path="res://Models/Props/FoliagetJaLiikennemerkit_ykp_tree_leaves_plane_01_winter.png" id="17_gllkj"]
 [ext_resource type="Texture2D" uid="uid://kgqeq87r6n2o" path="res://textures/ykp/Textures/karhu olut.png" id="17_m0l27"]
 [ext_resource type="Texture2D" uid="uid://dnjx73nwko0xp" path="res://Models/Props/hd-puut_branches_tree_snowy_256_ball_I.png" id="17_u0ook"]
 [ext_resource type="Texture2D" uid="uid://duki6etop6q5r" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_ruoho_clip_01.png" id="18_u0ook"]
+[ext_resource type="Material" uid="uid://ww28oedmwpek" path="res://Materials/Sd_tie.tres" id="19_jt367"]
 [ext_resource type="Texture2D" uid="uid://c0haikyobbpiy" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_nokkoset_2A.png" id="19_wboeo"]
 [ext_resource type="Texture2D" uid="uid://b2cqdp4fab10s" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_nokkoset_B.png" id="20_y76wn"]
 [ext_resource type="Texture2D" uid="uid://pthlqehqdjvn" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_mustikka3.png" id="21_kymrl"]
@@ -47,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://c8c2r36evu842" path="res://Models/Props/FoliagetJaLiikennemerkit_95.jpg" id="23_dt3d0"]
 [ext_resource type="Texture2D" uid="uid://dt46cl4hy4lbe" path="res://Models/Props/FoliagetJaLiikennemerkit_121.jpg" id="24_a4qj4"]
 [ext_resource type="Texture2D" uid="uid://bktkcuhdx8jiu" path="res://Models/Props/FoliagetJaLiikennemerkit_17.jpg" id="25_3apfq"]
+[ext_resource type="PackedScene" uid="uid://dhbjvad22ngw6" path="res://Models/Props/ykp_lumipenkka.glb" id="25_cfcwo"]
 [ext_resource type="Texture2D" uid="uid://dn6ptwob0d5yr" path="res://Models/Props/FoliagetJaLiikennemerkit_120.jpg" id="26_r34lu"]
 [ext_resource type="Texture2D" uid="uid://cs6v4o6q1e8eb" path="res://Models/Props/FoliagetJaLiikennemerkit_44.jpg" id="27_joq6d"]
 [ext_resource type="Texture2D" uid="uid://cdbp6yq6sup12" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_3dtex_grass_128.png" id="28_aq5nt"]
@@ -127,6 +132,9 @@ albedo_texture = ExtResource("13_jt367")
 emission_enabled = true
 emission = Color(0.999454, 0.76143, 0.508501, 1)
 emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfcwo"]
+albedo_texture = ExtResource("16_ncoui")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kcld"]
 transparency = 2
@@ -210,8 +218,12 @@ sky = SubResource("Sky_vjlk4")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.8
 ssr_enabled = true
-ssao_radius = 0.4
-ssao_intensity = 5.43
+ssr_max_steps = 256
+ssr_fade_in = 0.117688
+ssr_fade_out = 0.466517
+ssr_depth_tolerance = 128.0
+ssao_radius = 0.15
+ssao_intensity = 75.33
 ssil_radius = 5.82
 ssil_intensity = 1.5
 ssil_sharpness = 0.0
@@ -2215,8 +2227,14 @@ light_energy = 0.0
 [node name="YKPTASO1uusin" parent="LightmapGI" instance=ExtResource("3_gace5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.82075, -12.5673, -9.09508)
 
+[node name="Plane_001-col" parent="LightmapGI/YKPTASO1uusin" index="11"]
+material_override = ExtResource("3_vjlk4")
+
 [node name="Plane_006" parent="LightmapGI/YKPTASO1uusin" index="17"]
 material_override = ExtResource("5_ks06f")
+
+[node name="Plane_007-col" parent="LightmapGI/YKPTASO1uusin" index="18"]
+surface_material_override/0 = ExtResource("5_l0gy5")
 
 [node name="Cube_009" parent="LightmapGI/YKPTASO1uusin" index="19"]
 surface_material_override/0 = SubResource("StandardMaterial3D_f288j")
@@ -2231,7 +2249,7 @@ surface_material_override/0 = ExtResource("4_fqyyi")
 material_override = ExtResource("4_gllkj")
 
 [node name="Plane_017" parent="LightmapGI/YKPTASO1uusin" index="47"]
-material_override = ExtResource("3_djyk4")
+material_override = ExtResource("3_vjlk4")
 
 [node name="Plane_018" parent="LightmapGI/YKPTASO1uusin" index="48"]
 material_override = ExtResource("5_f288j")
@@ -2273,6 +2291,7 @@ gi_lightmap_texel_scale = 4.0
 surface_material_override/0 = SubResource("StandardMaterial3D_a4qj4")
 surface_material_override/2 = SubResource("StandardMaterial3D_l0gy5")
 surface_material_override/8 = SubResource("StandardMaterial3D_pm2sl")
+surface_material_override/9 = SubResource("StandardMaterial3D_cfcwo")
 
 [node name="outer_building" parent="LightmapGI/YKPTASO1uusin" index="82"]
 surface_material_override/1 = ExtResource("7_hl2cm")
@@ -2284,6 +2303,9 @@ surface_material_override/0 = ExtResource("10_wboeo")
 
 [node name="doomertalo_001" parent="LightmapGI/YKPTASO1uusin" index="84"]
 surface_material_override/0 = ExtResource("10_wboeo")
+
+[node name="lumi-vis-lightcatchr" parent="LightmapGI/YKPTASO1uusin" index="85"]
+material_override = ExtResource("3_vjlk4")
 
 [node name="Cube" parent="LightmapGI/YKPTASO1uusin" index="88"]
 transform = Transform3D(0.0200588, 0, 0.515209, 0, 0.515599, 0, -0.515209, 0, 0.0200588, 15.3182, 10.1461, -3.90524)
@@ -2297,6 +2319,18 @@ transform = Transform3D(-0.38724, -0.158731, -0.229043, -0.192006, -0.00345077, 
 [node name="roomA_002" parent="LightmapGI/YKPTASO1uusin" index="92"]
 material_override = ExtResource("14_1ha7n")
 surface_material_override/0 = SubResource("StandardMaterial3D_2kcld")
+
+[node name="tie_full_001" parent="LightmapGI/YKPTASO1uusin/tie" index="0"]
+material_override = ExtResource("19_jt367")
+
+[node name="tie_full_001_001" parent="LightmapGI/YKPTASO1uusin/tie_001" index="0"]
+material_override = ExtResource("19_jt367")
+
+[node name="tie_full_001_002" parent="LightmapGI/YKPTASO1uusin/tie_002-COL" index="0"]
+material_override = ExtResource("19_jt367")
+
+[node name="tie_full_001_003" parent="LightmapGI/YKPTASO1uusin/tie_003" index="0"]
+material_override = ExtResource("19_jt367")
 
 [node name="Cube2" type="MeshInstance3D" parent="LightmapGI/YKPTASO1uusin"]
 transform = Transform3D(0.0178193, 0, 0.784472, 0, 1.11987, 0, -0.457688, 0, 0.0305421, 16.1696, 10.0775, -3.90547)
@@ -2475,6 +2509,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vjlk4")
 environment = SubResource("Environment_pm2sl")
 camera_attributes = SubResource("CameraAttributesPractical_74b3q")
 
+[node name="ReflectionProbe" type="ReflectionProbe" parent="LightmapGI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4352, -11.3817, 0)
+size = Vector3(200, 200, 200)
+box_projection = true
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="LightmapGI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3642, -11.3817, 37.212)
+size = Vector3(200, 200, 200)
+box_projection = true
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="LightmapGI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3378, -8.02679, 87.1842)
+size = Vector3(200, 200, 200)
+box_projection = true
+
 [node name="Pawn" parent="." instance=ExtResource("3_tw0lh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83089, -401.253, -14.7511)
 start_view_yaw = -183.085
@@ -2482,8 +2531,67 @@ start_view_yaw = -183.085
 [node name="Props" type="Node3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 12.2476, 0, 0, 0, 8, -18.6717, -413.377, 5.03989)
 
+[node name="ykp_lumipenkka" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.125, 0, 0, 0, 0.0816487, 0, 0, 0, 0.125, 2.59481, 0.063755, -2.00056)
+
+[node name="ykp_lumipenkka3" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 3.16501, 0.063755, -1.97396)
+
+[node name="ykp_lumipenkka4" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 3.16501, 0.063755, -1.57443)
+
+[node name="ykp_lumipenkka5" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 3.16501, 0.063755, -1.11527)
+
+[node name="ykp_lumipenkka6" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 3.16501, 0.063755, -0.597632)
+
+[node name="ykp_lumipenkka7" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 3.16501, 0.063755, -0.0754328)
+
+[node name="ykp_lumipenkka8" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.124182, 0, 0.0142805, 0, 0.0816487, 0, -0.0142805, 0, 0.124182, 3.16501, 0.063755, 0.40415)
+
+[node name="ykp_lumipenkka12" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 0.85869, 0.063755, -1.37436)
+
+[node name="ykp_lumipenkka13" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 0.85869, 0.063755, -0.85216)
+
+[node name="ykp_lumipenkka14" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 0.687299, 0.063755, -1.37436)
+
+[node name="ykp_lumipenkka15" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 0.0676472, 0.063755, -0.775608)
+
+[node name="ykp_lumipenkka18" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0404746, 0, 0.618032, 0, 0.727465, 0, -0.38049, 0, 0.0657431, 3.18436, 0.0345802, -0.931136)
+
+[node name="ykp_lumipenkka16" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 0.0676472, 0.063755, -0.343674)
+
+[node name="ykp_lumipenkka17" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0132223, 0, 0.124299, 0, 0.0816487, 0, -0.124299, 0, 0.0132223, 0.0676472, 0.063755, 0.182422)
+
+[node name="ykp_lumipenkka9" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.124805, 0, 0.00697333, 0, 0.0816486, 0, -0.00697333, 0, 0.124805, 2.74326, 0.063755, 0.461604)
+
+[node name="ykp_lumipenkka10" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0877039, 0, -0.0890676, 0, 0.0816486, 0, 0.0890676, 0, 0.0877039, 2.29429, 0.063755, 0.523127)
+
+[node name="ykp_lumipenkka11" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.0877039, 0, -0.0890676, 0, 0.172828, 0, 0.0890676, 0, 0.0877039, 2.14952, 0.063755, 0.388919)
+
+[node name="ykp_lumipenkka2" parent="Props" instance=ExtResource("25_cfcwo")]
+transform = Transform3D(0.01381, 0, -0.124235, 0, 0.0816487, 0, 0.124235, 0, 0.01381, 2.59481, 0.063755, -2.00056)
+
 [node name="birchA_winter9" type="MeshInstance3D" parent="Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40148, 0, -0.422687)
+mesh = SubResource("ArrayMesh_yfybs")
+skeleton = NodePath("")
+
+[node name="birchA_winter11" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89152, 0, 0.866769)
 mesh = SubResource("ArrayMesh_yfybs")
 skeleton = NodePath("")
 
@@ -2787,11 +2895,6 @@ skeleton = NodePath("")
 
 [node name="birchB_winter3" type="MeshInstance3D" parent="FoliagetJaLiikennemerkit"]
 transform = Transform3D(-5.65685, 5.65685, 3.37175e-07, 0, 4.76837e-07, -8, -5.65686, -5.65685, -3.37175e-07, 31.5769, 37.0494, 6.54529)
-mesh = SubResource("ArrayMesh_2wppr")
-skeleton = NodePath("")
-
-[node name="birchB_winter4" type="MeshInstance3D" parent="FoliagetJaLiikennemerkit"]
-transform = Transform3D(-5.65685, 5.65685, 3.37175e-07, 0, 4.76837e-07, -8, -5.65686, -5.65685, -3.37175e-07, 19.3882, 36.6033, 24.8445)
 mesh = SubResource("ArrayMesh_2wppr")
 skeleton = NodePath("")
 

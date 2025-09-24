@@ -45,6 +45,10 @@ _subresources={
 "BLO3": {
 "use_external/enabled": true,
 "use_external/path": "uid://c4x74yeh8ikqd"
+},
+"tie-blendable": {
+"use_external/enabled": true,
+"use_external/path": "uid://ww28oedmwpek"
 }
 }
 }
