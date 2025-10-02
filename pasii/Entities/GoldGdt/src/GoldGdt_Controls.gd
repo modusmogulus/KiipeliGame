@@ -131,14 +131,15 @@ func _gather_input() -> void:
 	jump_on = Input.is_action_pressed("pm_jump") if Parameters.AUTOHOP else Input.is_action_just_pressed("pm_jump")
 	duck_on = Input.is_action_pressed("pm_duck")
 	roll_on = Input.is_action_just_pressed("pm_roll")
+	Move.jump_on = jump_on
 	Body.request_roll(roll_on)
 	
-	if jump_on && !Body.is_on_floor():
-		Body.current_wallrun_state = Move.request_wallrun()
 	#if jump_on:
 	if (Input.is_action_just_pressed("pm_jump")) && !Body.is_on_floor(): #just_pressed is important on this one!
 		Body.current_vault_state = Move.request_vault(Vector3(move_dir.x, move_dir.x, move_dir.x))
-		
+		Body.current_wallrun_state = Move.request_wallrun()
+	if (Input.is_action_just_released("pm_jump")):
+		Body.current_wallrun_state = enumsKP.wallrun_states.NONE
 	if (Input.is_action_just_pressed("kp_die")):
 		get_parent().die()
 	
@@ -163,22 +164,6 @@ func _act_on_input() -> void:
 			Move._friction(delta, 1.0)
 			Move._accelerate(delta, move_dir.normalized(), move_dir.length(), Parameters.ACCELERATION)
 			
-	else: 
-		
-		print(Move.request_wallrun())
+	if Body.is_on_floor() == false: 
 		Move._airaccelerate(delta, move_dir.normalized(), move_dir.length(), Parameters.AIR_ACCELERATION)
-		if jump_on:
-			if Body.current_wallrun_state != 0:
-				#re-request wallrun because otherwise player will float when wall ends
-				Body.current_wallrun_state = Move.request_wallrun()
-				if !Move.request_wallrun():
-					Body.current_wallrun_state = enumsKP.wallrun_states.NONE
-					Move._jump(delta)
-					
-					#Move._accelerate(delta, Vector3(0.0, 0.0, 1.0).rotated(Vector3.UP, View.horizontal_view.rotation.y), -100.0, 200.0)
-				Move._accelerate(delta, move_dir.normalized(), 8.0, 20.0)
-				
-				#print(move_dir.normalized().dot(Body.velocity.normalized()))
-				
-		else:
-			Body.current_wallrun_state = enumsKP.wallrun_states.NONE
+		

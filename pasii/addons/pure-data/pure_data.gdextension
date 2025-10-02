@@ -1,0 +1,17 @@
+[configuration]
+
+entry_symbol = "example_library_init"
+compatibility_minimum = "4.2"
+
+[libraries]
+
+linux.debug.x86_64 = "res://addons/pure-data/bin/libpd-godot.linux.x86_64.so"
+linux.release.x86_64 = "res://addons/pure-data/bin/libpd-godot.linux.x86_64.so"
+linux.debug.arm64 = "res://addons/pure-data/bin/libpd-godot.linux.aarch64.so"
+linux.release.arm64 = "res://addons/pure-data/bin/libpd-godot.linux.aarch64.so"
+
+windows.debug.x86_64 = "res://addons/pure-data/bin/pd-godot.windows.x86_64.dll"
+windows.release.x86_64 = "res://addons/pure-data/bin/pd-godot.windows.x86_64.dll"
+
+macos.debug = "res://addons/pure-data/bin/libpd-godot.macos.universal.dylib"
+macos.release = "res://addons/pure-data/bin/libpd-godot.macos.universal.dylib"

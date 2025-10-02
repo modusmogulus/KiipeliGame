@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=74 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" uid="uid://2j4wuk4aq4mg" path="res://Entities/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ckwvtl26ejmp5" path="res://Models/Characters/YOKYOPELI-KADET_skintex.png" id="13_1lc20"]
 [ext_resource type="Texture2D" uid="uid://dsc0o40pwev32" path="res://textures/matcaps/9B9994_E1E0DB_474643_544C4C-64px.png" id="13_qqsqc"]
 [ext_resource type="Texture2D" uid="uid://byvkdkldsx5jh" path="res://textures/matcaps/7D6651_F8E3BF_CEA987_E7C29C-64px.png" id="14_1lc20"]
+[ext_resource type="Script" uid="uid://cm6ig2e5yi27d" path="res://Entities/GoldGdt/make_leg_tree_unique_autom.gd" id="14_03y38"]
 [ext_resource type="Texture2D" uid="uid://cgmtwfnf11dni" path="res://textures/matcaps/9AA8B6_313133_4E5055_D7EBF8-64px.png" id="14_26nuu"]
 [ext_resource type="Material" uid="uid://th31dfqf6l3k" path="res://Models/Characters/skin.tres" id="18_kam8o"]
 [ext_resource type="Texture2D" uid="uid://qxfbw6ajma36" path="res://textures/matcaps/mc_roadman4.png" id="20_axyne"]
@@ -49,339 +50,6 @@ point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.609, 0.813)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1lc20"]
-animation = &"Fall"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tlyua"]
-animation = &"FallWithLiukuri"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3k6kj"]
-animation = &"Idle"
-advance_on_start = true
-use_custom_timeline = true
-timeline_length = 3.0
-stretch_time_scale = false
-start_offset = 0.0
-loop_mode = 2
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_27krj"]
-animation = &"JumpNew"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nk1dt"]
-animation = &"Liukurointi"
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_27krj"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y2mib"]
-animation = &"denssiAction"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kv3ht"]
-animation = &"denssiAction2"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1lc20"]
-graph_offset = Vector2(-98.8467, 63.3929)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_27krj")
-nodes/Add2/position = Vector2(260, 220)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_kv3ht")
-nodes/Animation/position = Vector2(100, 260)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_y2mib")
-"nodes/Animation 2/position" = Vector2(100, 80)
-nodes/output/position = Vector2(320, 120)
-node_connections = [&"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation", &"output", 0, &"Add2"]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_1lc20"]
-sync = true
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_44c2v"]
-animation = &"PaahdinReloadH"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oityk"]
-animation = &"PaahdinReload"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y2mib"]
-graph_offset = Vector2(-370, 223)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_1lc20")
-nodes/Add2/position = Vector2(160, 280)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_oityk")
-nodes/Animation/position = Vector2(-80, 220)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_44c2v")
-"nodes/Animation 2/position" = Vector2(-80, 380)
-node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_vk1hu"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6n7lh"]
-animation = &"luuriFlippiA"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wgq4e"]
-animation = &"luurinHeitto"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nk1dt"]
-graph_offset = Vector2(-12.9506, 88.2866)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_vk1hu")
-nodes/Add2/position = Vector2(280, 260)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_wgq4e")
-nodes/Animation/position = Vector2(80, 80)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6n7lh")
-"nodes/Animation 2/position" = Vector2(60, 260)
-nodes/output/position = Vector2(400, 160)
-node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6a77n"]
-animation = &"rollAltern2"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_twd47"]
-animation = &"RunCycle"
-use_custom_timeline = true
-timeline_length = 1.0
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vk1hu"]
-animation = &"VaultA"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e6ukd"]
-priority = 0
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qqsqc"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cgx03"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "is_moving == false"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_44c2v"]
-advance_mode = 2
-advance_expression = "player_velocity.y > 0.5"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oityk"]
-xfade_time = 0.1
-advance_mode = 2
-advance_expression = "player_velocity.y < -0.1 && item != \"LIUKURI\""
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y2mib"]
-advance_mode = 2
-advance_expression = "player_velocity.y > 0.5"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1lc20"]
-xfade_time = 0.1
-advance_mode = 2
-advance_expression = "player_velocity.y > -0.1 && !is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_27krj"]
-xfade_time = 0.1
-advance_mode = 2
-advance_expression = "player_velocity.y > -0.1 && is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kv3ht"]
-advance_mode = 2
-advance_expression = "reloading && item == \"TOASTER\"
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pajro"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_52rky"]
-advance_mode = 2
-advance_expression = "reloading && item == \"DENSE\"
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_axyne"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5sai"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_chcr7"]
-advance_mode = 2
-advance_expression = "reloading && item == \"DENSE\"
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8d4tw"]
-advance_mode = 2
-advance_expression = "reloading && item == \"TOASTER\""
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8o6ai"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vk1hu"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6n7lh"]
-switch_mode = 2
-advance_mode = 2
-advance_expression = "player_velocity.y == 0 "
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wgq4e"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6a77n"]
-advance_mode = 2
-advance_expression = "reloading && item == \"PHONE\"
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nk1dt"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tlyua"]
-advance_mode = 2
-advance_expression = "reloading && item == \"PHONE\"
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dca5h"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s12e5"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qwhsl"]
-advance_mode = 2
-advance_expression = "reloading && item == \"PHONE\"
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_and1u"]
-advance_mode = 2
-advance_expression = "reloading && item == \"PHONE\"
-"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5tb2a"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_druxi"]
-priority = 0
-advance_mode = 2
-advance_expression = "rolling == true"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vrvgv"]
-switch_mode = 2
-advance_mode = 2
-advance_expression = "!pm_roll"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p5pf2"]
-switch_mode = 2
-advance_mode = 2
-advance_expression = "is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oxd2f"]
-priority = 0
-advance_mode = 2
-advance_expression = "rolling == true"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q2pbx"]
-advance_mode = 2
-advance_expression = "rolling == true"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k4os8"]
-advance_mode = 2
-advance_expression = "rolling == true"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r1c4n"]
-xfade_time = 0.05
-advance_mode = 2
-advance_expression = "player_velocity.y > 0.5 && item == \"LIUKURI\""
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bfbmk"]
-xfade_time = 0.1
-reset = false
-advance_mode = 2
-advance_expression = "player_velocity.y == 0 && is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_no4se"]
-advance_mode = 2
-advance_expression = "player_velocity.y > -0.1 && !is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qpgy8"]
-xfade_time = 0.05
-advance_mode = 2
-advance_expression = "item == \"LIUKURI\""
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rym6c"]
-advance_mode = 2
-advance_expression = "item != \"LIUKURI\""
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q23s0"]
-advance_mode = 2
-advance_expression = "player_velocity.y < -0.1 && item == \"LIUKURI\""
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e87kp"]
-advance_mode = 2
-advance_expression = "player_velocity.y > 1.0 && item == \"LIUKURI\""
-
-[sub_resource type="Curve" id="Curve_6n7lh"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.280156, 0.840164), 0.88817, 0.88817, 0, 0, Vector2(0.996109, 1), 2.47071e-07, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_li8nl"]
-xfade_time = 0.5
-xfade_curve = SubResource("Curve_6n7lh")
-advance_mode = 2
-advance_expression = "player_velocity.y > 1.0 && item == \"LIUKURI\""
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o3tll"]
-xfade_time = 0.2
-advance_mode = 2
-advance_expression = "player_velocity.y == 0"
-
-[sub_resource type="Curve" id="Curve_vk1hu"]
-_data = [Vector2(0, 0.00901651), 0.0, 0.0, 0, 0, Vector2(0.680934, 0.211475), 0.724903, 0.724903, 0, 0, Vector2(1, 1), -0.679324, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6vjod"]
-xfade_time = 0.2
-xfade_curve = SubResource("Curve_vk1hu")
-advance_mode = 2
-advance_expression = "player_velocity.y < -6.3 && item == \"LIUKURI\""
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kam8o"]
-priority = 0
-advance_expression = "player_velocity.y > 0.5"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_on1w3"]
-advance_mode = 2
-advance_expression = "player_velocity.y < -0.1 && item != \"LIUKURI\""
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2s55v"]
-allow_transition_to_self = true
-states/End/position = Vector2(986, -16)
-states/Fall/node = SubResource("AnimationNodeAnimation_1lc20")
-states/Fall/position = Vector2(548, 46)
-states/FallWithLiukuri/node = SubResource("AnimationNodeAnimation_tlyua")
-states/FallWithLiukuri/position = Vector2(438, 454)
-states/Idle/node = SubResource("AnimationNodeAnimation_3k6kj")
-states/Idle/position = Vector2(233, 217)
-states/Jump/node = SubResource("AnimationNodeAnimation_27krj")
-states/Jump/position = Vector2(940, 85)
-states/Liukurointi/node = SubResource("AnimationNodeAnimation_nk1dt")
-states/Liukurointi/position = Vector2(679, 372)
-states/RELOAD_Dense/node = SubResource("AnimationNodeBlendTree_1lc20")
-states/RELOAD_Dense/position = Vector2(438, -131)
-states/RELOAD_Paahdin/node = SubResource("AnimationNodeBlendTree_y2mib")
-states/RELOAD_Paahdin/position = Vector2(254, -131)
-states/RELOAD_Phone/node = SubResource("AnimationNodeBlendTree_nk1dt")
-states/RELOAD_Phone/position = Vector2(622, -131)
-states/Roll/node = SubResource("AnimationNodeAnimation_6a77n")
-states/Roll/position = Vector2(732, 148)
-states/RunCycle/node = SubResource("AnimationNodeAnimation_twd47")
-states/RunCycle/position = Vector2(293, 408)
-states/Start/position = Vector2(75, 77)
-states/VaultA/node = SubResource("AnimationNodeAnimation_vk1hu")
-states/VaultA/position = Vector2(701, 7)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e6ukd"), "Idle", "RunCycle", SubResource("AnimationNodeStateMachineTransition_qqsqc"), "RunCycle", "Idle", SubResource("AnimationNodeStateMachineTransition_cgx03"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_44c2v"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_oityk"), "RunCycle", "Jump", SubResource("AnimationNodeStateMachineTransition_y2mib"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_1lc20"), "Fall", "RunCycle", SubResource("AnimationNodeStateMachineTransition_27krj"), "Idle", "RELOAD_Paahdin", SubResource("AnimationNodeStateMachineTransition_kv3ht"), "RELOAD_Paahdin", "Idle", SubResource("AnimationNodeStateMachineTransition_pajro"), "Idle", "RELOAD_Dense", SubResource("AnimationNodeStateMachineTransition_52rky"), "RELOAD_Dense", "Idle", SubResource("AnimationNodeStateMachineTransition_axyne"), "RELOAD_Dense", "RunCycle", SubResource("AnimationNodeStateMachineTransition_o5sai"), "RunCycle", "RELOAD_Dense", SubResource("AnimationNodeStateMachineTransition_chcr7"), "RunCycle", "RELOAD_Paahdin", SubResource("AnimationNodeStateMachineTransition_8d4tw"), "RELOAD_Paahdin", "RunCycle", SubResource("AnimationNodeStateMachineTransition_8o6ai"), "Start", "RunCycle", SubResource("AnimationNodeStateMachineTransition_vk1hu"), "Jump", "VaultA", SubResource("AnimationNodeStateMachineTransition_6n7lh"), "VaultA", "Idle", SubResource("AnimationNodeStateMachineTransition_wgq4e"), "Idle", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_6a77n"), "RELOAD_Phone", "Idle", SubResource("AnimationNodeStateMachineTransition_nk1dt"), "Fall", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_tlyua"), "RELOAD_Phone", "Fall", SubResource("AnimationNodeStateMachineTransition_dca5h"), "RELOAD_Phone", "VaultA", SubResource("AnimationNodeStateMachineTransition_s12e5"), "VaultA", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_qwhsl"), "Jump", "RELOAD_Phone", SubResource("AnimationNodeStateMachineTransition_and1u"), "RELOAD_Phone", "Jump", SubResource("AnimationNodeStateMachineTransition_5tb2a"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_druxi"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_vrvgv"), "Roll", "RunCycle", SubResource("AnimationNodeStateMachineTransition_p5pf2"), "Jump", "Roll", SubResource("AnimationNodeStateMachineTransition_oxd2f"), "RunCycle", "Roll", SubResource("AnimationNodeStateMachineTransition_q2pbx"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_k4os8"), "Jump", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_r1c4n"), "Liukurointi", "RunCycle", SubResource("AnimationNodeStateMachineTransition_bfbmk"), "Liukurointi", "Idle", SubResource("AnimationNodeStateMachineTransition_no4se"), "Fall", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_qpgy8"), "Liukurointi", "Fall", SubResource("AnimationNodeStateMachineTransition_rym6c"), "RunCycle", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_q23s0"), "RunCycle", "FallWithLiukuri", SubResource("AnimationNodeStateMachineTransition_e87kp"), "Liukurointi", "FallWithLiukuri", SubResource("AnimationNodeStateMachineTransition_li8nl"), "FallWithLiukuri", "RunCycle", SubResource("AnimationNodeStateMachineTransition_o3tll"), "FallWithLiukuri", "Liukurointi", SubResource("AnimationNodeStateMachineTransition_6vjod"), "Fall", "Jump", SubResource("AnimationNodeStateMachineTransition_kam8o"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_on1w3")]
-graph_offset = Vector2(136, -40)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u4rs7"]
 custom_solver_bias = 1.0
@@ -986,9 +654,9 @@ Body = NodePath("../Body")
 horizontal_view = NodePath("../Body/Horizontal View")
 vertical_view = NodePath("../Body/Horizontal View/Vertical View")
 camera_mount = NodePath("../Body/Horizontal View/Vertical View/Camera Mount")
-camera_animation_mount = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/Node3D")
+camera_animation_mount = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/CameraAnimationMount")
 camera = NodePath("../Display Body/Arm/Arm Anchor/Camera")
-animation_camera = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/Node3D/AnimationCamera")
+animation_camera = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/CameraAnimationMount/AnimationCamera")
 g_loc_filter = NodePath("../VFX/G-Loc")
 speedlines = NodePath("../VFX/Speedlines2Normal")
 legs = NodePath("../Display Body/HorizontalOnly/LegsPelvis")
@@ -1068,7 +736,7 @@ root_node = NodePath("../../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET")
 tree_root = ExtResource("11_y2mib")
 advance_expression_base_node = NodePath("../../Animation Handler")
 anim_player = NodePath("../../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/AnimationPlayer")
-parameters/RELOAD_BeerOpened/Add2/add_amount = 0
+parameters/RELOAD_BeerOpened/Add2/add_amount = 1.0
 parameters/RELOAD_BeerUnopened/Add2/add_amount = 1.0
 parameters/RELOAD_Dense/Add2/add_amount = 1.0
 parameters/RELOAD_Paahdin/Add2/add_amount = 1.0
@@ -1077,12 +745,15 @@ parameters/RELOAD_Phone/Add2/add_amount = 1.0
 [node name="AnimationTreeForLegs" type="AnimationTree" parent="Body"]
 reset_on_save = false
 root_node = NodePath("../../Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT")
-tree_root = SubResource("AnimationNodeStateMachine_2s55v")
+tree_root = ExtResource("11_y2mib")
 advance_expression_base_node = NodePath("../../Animation Handler")
 anim_player = NodePath("../../Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/AnimationPlayer")
+parameters/RELOAD_BeerOpened/Add2/add_amount = 1.0
+parameters/RELOAD_BeerUnopened/Add2/add_amount = 1.0
 parameters/RELOAD_Dense/Add2/add_amount = 1.0
 parameters/RELOAD_Paahdin/Add2/add_amount = 1.0
 parameters/RELOAD_Phone/Add2/add_amount = 0
+script = ExtResource("14_03y38")
 
 [node name="Display Body" type="Node3D" parent="." node_paths=PackedStringArray("target", "camera_arm", "camera_anchor", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711003, 2.75671e-07)
@@ -1156,7 +827,7 @@ bones/1/rotation = Quaternion(0.0347857, -2.13292e-14, -1.35461e-08, 0.999395)
 [node name="luuri" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/luuririg/Skeleton3D" index="0"]
 layers = 2
 
-[node name="Skeleton3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig" index="3"]
+[node name="Skeleton3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig" index="4"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/1/position = Vector3(0, -0.0247001, 1.7813)
 bones/1/rotation = Quaternion(0.707107, 0, 0, 0.707107)
@@ -3097,21 +2768,21 @@ transform = Transform3D(1, 0, 0, 0, 0.999999, -4.76837e-07, 0, 4.76837e-07, 0.99
 bone_name = "head"
 bone_idx = 404
 
-[node name="Node3D" type="Node3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D"]
+[node name="CameraAnimationMount" type="Node3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(1.04167, 0, 0, 0, 1.04167, 0, 0, 0, 1.04167, 4.44089e-16, 0.123864, -3.72529e-09)
 
-[node name="AnimationCamera" type="Camera3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/Node3D"]
+[node name="AnimationCamera" type="Camera3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/CameraAnimationMount"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.02922e-09, -0.159651, 0.0804049)
 current = true
 near = 0.003
 
-[node name="AnamorphicLensFlaresShader" type="MeshInstance3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/Node3D/AnimationCamera"]
+[node name="AnamorphicLensFlaresShader" type="MeshInstance3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/CameraAnimationMount/AnimationCamera"]
 transform = Transform3D(1, -4.16864e-14, -1.74846e-07, -4.16865e-14, 1, -4.76837e-07, 1.74846e-07, 4.76837e-07, 1, 5.67334e-09, 1.54723e-08, -0.0324477)
 material_override = SubResource("ShaderMaterial_4cnbn")
 mesh = SubResource("QuadMesh_8o6ai")
 skeleton = NodePath("../../../../../../../../../../..")
 
-[node name="DrunkShader" type="MeshInstance3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/Node3D/AnimationCamera"]
+[node name="DrunkShader" type="MeshInstance3D" parent="Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D/BoneAttachment3D/CameraAnimationMount/AnimationCamera"]
 transform = Transform3D(1, -4.16864e-14, -1.74846e-07, -4.16865e-14, 1, -4.76837e-07, 1.74846e-07, 4.76837e-07, 1, 1.36346e-08, 3.71841e-08, -0.0779807)
 visible = false
 material_override = SubResource("ShaderMaterial_r4n6a")
@@ -3207,7 +2878,10 @@ transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 
 [node name="Cylinder" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig/denssi/base" index="0"]
 layers = 2
 
-[node name="luuririg" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig" index="1"]
+[node name="liukuriRig" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig" index="1"]
+visible = false
+
+[node name="luuririg" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig" index="2"]
 visible = false
 
 [node name="Skeleton3D" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig/luuririg" index="0"]
@@ -3216,7 +2890,10 @@ bones/1/rotation = Quaternion(0.0347857, -2.13292e-14, -1.35461e-08, 0.999395)
 [node name="luuri" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig/luuririg/Skeleton3D" index="0"]
 layers = 2
 
-[node name="Skeleton3D" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig" index="3"]
+[node name="tolkki-rig" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig" index="3"]
+visible = false
+
+[node name="Skeleton3D" parent="Display Body/HorizontalOnly/LegsPelvis/LegsTransform/YOKYOPELI-JALAT/rig" index="4"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/1/position = Vector3(0, -0.0247001, 1.7813)
 bones/1/rotation = Quaternion(0.707107, 0, 0, 0.707107)

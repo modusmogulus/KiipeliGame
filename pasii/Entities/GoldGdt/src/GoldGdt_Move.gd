@@ -9,12 +9,11 @@ class_name GoldGdt_Move extends Node
 @export var AnimHandler : KiipeliAnimHandler
 @onready var state_machine = anim_tree["parameters/playback"]
 # Adds to the player's velocity based on direction, speed and acceleration.
+var jump_on : bool #set from controls.gd
 
 func request_vault(wishdir) -> enumsKP.vault_states:
 	if !Body: return enumsKP.vault_states.NONE
 	if !Body.current_vault_state == enumsKP.vault_states.NONE:
-		return enumsKP.vault_states.NONE
-	if !Body.current_wallrun_state == enumsKP.wallrun_states.NONE:
 		return enumsKP.vault_states.NONE
 	var query = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE * wishdir.normalized().length())
 	var query2 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE * wishdir.normalized().length())
@@ -33,26 +32,25 @@ func request_vault(wishdir) -> enumsKP.vault_states:
 
 func request_wallrun() -> enumsKP.wallrun_states:
 	if !Body: return enumsKP.wallrun_states.NONE
-	var query = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * -1)
-	var query2 = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * 1)
+	var query = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * -1.1)
+	var query2 = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position + Body.View.camera.global_basis.x * 1.1)
 	query.exclude = [Body.collision_hull]
 	query2.exclude = [Body.collision_hull]
 	
 	var space_state = Body.get_world_3d().direct_space_state
 	var result = space_state.intersect_ray(query)
-	
-	if result.size() > 0:
-		print("LEFT WALLRUN")
-		return enumsKP.wallrun_states.LEFT
-	
-	result = space_state.intersect_ray(query2)
-	if result.size() > 0:
-		
-		print("RIGHT WALLRUN")
-		return enumsKP.wallrun_states.RIGHT
-	else:
-		
-		return enumsKP.wallrun_states.NONE
+	var result2 = space_state.intersect_ray(query2)
+	#FIXME: im touch-starved
+	if result.size() > 0 or result2.size() > 0: #is there runnable walls?
+		#there is
+		if result.size() > 0: #is there runnable left wall?
+			print("LEFT WALLRUN")
+			return enumsKP.wallrun_states.LEFT #exit function and tell em its left
+		if result2.size() > 0: #is there runnable right wall?
+			print("RIGHT WALLRUN")
+			return enumsKP.wallrun_states.RIGHT #exit function and tell em its right
+	print("NO WALLRUn")
+	return enumsKP.wallrun_states.NONE #if we didnt exit func due to wall found, no wall available
 		
 
 func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float) -> void:
@@ -114,6 +112,20 @@ func _airaccelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: flo
 	
 	# Adjust velocity.
 	Body.velocity += accelspeed * wishdir
+	if jump_on:
+		if Body.current_wallrun_state != enumsKP.wallrun_states.NONE:
+			#re-request wallrun because otherwise player will float when wall ends
+			Body.current_wallrun_state = request_wallrun()
+			if !request_wallrun():
+				Body.current_wallrun_state = enumsKP.wallrun_states.NONE
+				_jump(delta)
+				#Move._accelerate(delta, Vector3(0.0, 0.0, 1.0).rotated(Vector3.UP, View.horizontal_view.rotation.y), -100.0, 200.0)
+			#_accelerate(delta, move_dir.normalized(), 8.0, 20.0)
+			
+			#print(move_dir.normalized().dot(Body.velocity.normalized()))
+			
+	else:
+		Body.current_wallrun_state = enumsKP.wallrun_states.NONE
 
 # Applies friction to the player's horizontal velocity
 func _friction(delta: float, strength: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=4 uid="uid://e23uigtm2f3j"]
+[gd_scene load_steps=202 format=4 uid="uid://e23uigtm2f3j"]
 
 [ext_resource type="LightmapGIData" uid="uid://ctrntdc7jfpb" path="res://Scenes/gameplaytests01.lmbake" id="1_f17og"]
 [ext_resource type="Material" uid="uid://cvxohyg1314ik" path="res://3p_lumi_aniso_stochastic.tres" id="3_djyk4"]
@@ -63,6 +63,7 @@
 [ext_resource type="PackedScene" uid="uid://cwmr8rrmox46u" path="res://Models/Props/ykp_lonkero.glb" id="49_74b3q"]
 [ext_resource type="PackedScene" uid="uid://ck08pefjkgfje" path="res://Models/ykp_kallio.glb" id="51_v2yg1"]
 [ext_resource type="PackedScene" uid="uid://dqklxaq6h5d46" path="res://Models/Blender/ykp_ovi_animoitava.blend" id="52_74b3q"]
+[ext_resource type="PackedScene" uid="uid://c7xq4xxj1n1m2" path="res://Entities/Triggers/trigger_base.tscn" id="64_cfcwo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p27gu"]
 
@@ -2309,6 +2310,7 @@ material_override = ExtResource("3_vjlk4")
 
 [node name="Cube" parent="LightmapGI/YKPTASO1uusin" index="88"]
 transform = Transform3D(0.0200588, 0, 0.515209, 0, 0.515599, 0, -0.515209, 0, 0.0200588, 15.3182, 10.1461, -3.90524)
+visible = false
 
 [node name="Cube_001" parent="LightmapGI/YKPTASO1uusin" index="89"]
 transform = Transform3D(0.474372, 0, 0.0526944, 0, 0.47729, 0, -0.0526944, 0, 0.474372, 14.8078, 10.1699, -4.01404)
@@ -2334,6 +2336,7 @@ material_override = ExtResource("19_jt367")
 
 [node name="Cube2" type="MeshInstance3D" parent="LightmapGI/YKPTASO1uusin"]
 transform = Transform3D(0.0178193, 0, 0.784472, 0, 1.11987, 0, -0.457688, 0, 0.0305421, 16.1696, 10.0775, -3.90547)
+visible = false
 mesh = SubResource("ArrayMesh_h1des")
 skeleton = NodePath("")
 
@@ -3013,7 +3016,7 @@ transform = Transform3D(0.284139, 0, 0, 0, 0.284139, 0, 0, 0, 0.284139, -0.91971
 mesh = SubResource("ArrayMesh_g6c6s")
 skeleton = NodePath("")
 
-[node name="DEPTHFUK SHADER" type="MeshInstance3D" parent="."]
+[node name="shaderss" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.999356, 0, -0.0358936, 0, 1, 0, 0.0358936, 0, -0.999356, 0, 0, 0)
 visible = false
 cast_shadow = 0
@@ -3068,9 +3071,11 @@ libraries = {
 
 [node name="ykp_lonkero" parent="." instance=ExtResource("49_74b3q")]
 transform = Transform3D(-0.0552209, 0, -0.0430192, 0, 0.07, 0, 0.0430192, 0, -0.0552209, 7.28861, -401.62, -14.7906)
+visible = false
 
 [node name="ykp_lonkero2" parent="." instance=ExtResource("49_74b3q")]
 transform = Transform3D(0.066543, 0, 0.0217265, 0, 0.07, 0, -0.0217265, 0, 0.066543, 8.288, -401.811, -12.612)
+visible = false
 
 [node name="ykp_kallio" parent="." instance=ExtResource("51_v2yg1")]
 transform = Transform3D(0.977029, 2.43222e-08, 1.17803, 0.025263, 1.94165, -0.0373167, -0.882359, 0.055592, 1.30335, -24.1322, -416.062, 76.1916)
@@ -3104,5 +3109,8 @@ transform = Transform3D(-1.00271, -0.0812528, -1.45768, -0.0185872, 1.79965, -0.
 
 [node name="ykp_ovi_animoitava" parent="." instance=ExtResource("52_74b3q")]
 transform = Transform3D(-0.0379135, 0, 1.0054, 0, 1.1334, 0, -1.18405, 0, -0.0321931, 4.7522, -402.565, -15.755)
+
+[node name="trigger_base" parent="." instance=ExtResource("64_cfcwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.14247, -401.247, -13.701)
 
 [editable path="LightmapGI/YKPTASO1uusin"]

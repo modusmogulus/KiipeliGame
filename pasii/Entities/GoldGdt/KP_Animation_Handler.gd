@@ -9,6 +9,7 @@ var player_velocity: Vector3 = Vector3.ZERO
 var reloading: bool = false
 var beer_opened: bool = false
 var item = ""
+var grounded = true
 var current_animation_node: String
 var rolling : bool = false
 @export var powerup_ui_anim : AnimationPlayer
@@ -28,6 +29,7 @@ var vaultstate : String #This is set from move controller
 @export var PhoneReloadSound: AudioStream
 
 @export var item_link: Dictionary[enumsKP.items, Node]
+var diving = false #set from body script
 #tee: funktio reloadille joka travelaa animtreessä siihen ja sitten laittaa reloading = false
 func _ready() -> void:
 	state_machines.append(SyncedAnimTrees[0]["parameters/playback"])
@@ -43,6 +45,7 @@ func _process(delta: float) -> void:
 	#	print("jjjjjjjjjjjjjjjjjjjjj")
 	current_animation_node = state_machines[0].get_current_node()
 	#print(AnimTree.animation_finished)
+	
 	Dense.visible = false
 	Liukuri.visible = false
 	Beer.visible = false
@@ -72,4 +75,5 @@ func _process(delta: float) -> void:
 			#	AnimationSound.play()
 		enumsKP.items.BEER:
 			Beer.visible = true
-			beer_opened = true
+			if reloading:
+				beer_opened = true

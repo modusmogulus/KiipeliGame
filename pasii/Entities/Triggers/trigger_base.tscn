@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7xq4xxj1n1m2"]
+
+[ext_resource type="Script" uid="uid://84vfu5iuwwfw" path="res://Entities/Triggers/trigger_base.gd" id="1_pq5g3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71l6y"]
+
+[node name="trigger_base" type="Node3D"]
+script = ExtResource("1_pq5g3")
+
+[node name="TrigArea" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="TrigCollision" type="CollisionShape3D" parent="TrigArea"]
+shape = SubResource("BoxShape3D_71l6y")
+debug_color = Color(0, 1, 0.05, 1)
+
+[connection signal="body_entered" from="TrigArea" to="." method="_on_trig_area_body_entered"]
+[connection signal="body_exited" from="TrigArea" to="." method="_on_trig_area_body_exited"]

@@ -19,7 +19,5 @@ shader_parameter/emission_texture = ExtResource("3_3o776")
 
 [resource]
 next_pass = SubResource("ShaderMaterial_eg0o4")
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
+transparency = 4
 albedo_texture = ExtResource("1_erpl5")

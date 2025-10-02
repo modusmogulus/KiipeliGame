@@ -40,7 +40,7 @@ func _physics_process(_delta) -> void:
 	_camera_mount_bob()
 	
 	if Body.current_wallrun_state !=  enumsKP.wallrun_states.NONE && Body.current_wallrun_state != enumsKP.wallrun_states.BOTH:
-		camera_mount.rotation.z = lerpf(camera_mount.rotation.z, deg_to_rad(Body.current_wallrun_state * 12.0), 0.2)
+		camera_mount.rotation.z = lerpf(camera_mount.rotation.z, deg_to_rad(Body.current_wallrun_state * 42.0), 0.12)
 		
 	else:
 		camera_mount.rotation.z = lerpf(camera_mount.rotation.z, _calc_roll(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED)*1.2, 0.2)
@@ -68,7 +68,9 @@ func _physics_process(_delta) -> void:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0, 0.01), 0.1) #Speedlines by using same function as fov
 	else:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0, 0.01), 0.002) #Lazy way to make braking lose speedlines faster
-	camera_animation_mount.rotation = camera.rotation
+	#camera_animation_mount.rotation = camera_mount.rotation
+	animation_camera.rotation = camera.rotation + Vector3(0.0, deg_to_rad(180), 0.0)
+	
 	#animation_camera.rotation = camera.rotation + initial_anim_camera_rot
 func _handle_camera_input(look_input: Vector2) -> void:
 	horizontal_view.rotate_object_local(Vector3.DOWN, look_input.x)

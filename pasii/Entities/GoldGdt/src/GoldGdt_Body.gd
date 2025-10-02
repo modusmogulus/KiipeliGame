@@ -27,7 +27,7 @@ var original_parameters : PlayerParameters
 @export var g_force_damage_curve : Curve
 @export var NodesToIgnoreVertical : Node
 @export var FallDamageRollWindow : Timer
-
+var diving = false #for dive roll
 var groundnormal = Vector3.UP
 var current_wallrun_state : enumsKP.wallrun_states
 var current_vault_state : enumsKP.vault_states
@@ -108,7 +108,9 @@ func _ready() -> void:
 	original_parameters = Parameters
 
 func request_roll(start_or_stop : bool):
-	
+	if !is_on_floor() && start_or_stop == true:
+		diving = true
+		AnimHandler.diving = diving
 	if start_or_stop == true && FallDamageRollWindow.is_stopped() == false:
 		roll()
 
@@ -118,6 +120,8 @@ func roll():
 	pre_landing_fall_speed = 0.0
 	
 func landing(last_fall_speed : float):
+	diving = false
+	AnimHandler.diving = diving
 	pre_landing_fall_speed = last_fall_speed
 	FallDamageRollWindow.start()
 
@@ -125,7 +129,7 @@ func _physics_process(delta) -> void:
 	# Position the horizontal_view.
 	
 	View.horizontal_view.transform.origin.y = offset
-	
+	AnimHandler.is_moving = false
 	var spacestate = get_world_3d().direct_space_state
 	var queryparams = PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3.DOWN*10)
 	queryparams.exclude = [self, get_parent_node_3d()]
@@ -140,9 +144,14 @@ func _physics_process(delta) -> void:
 		NodesToIgnoreVertical.global_basis = NodesToIgnoreVertical.global_basis.orthonormalized()
 		
 	# Add the gravity.
-	if not is_on_floor() && current_wallrun_state == 0:
-		velocity.y -= Parameters.GRAVITY * delta
-		previous_fall_speed = absf(velocity.y)
+	if current_wallrun_state == enumsKP.wallrun_states.NONE:
+		if is_on_floor() == false:
+			velocity.y -= Parameters.GRAVITY * delta
+			previous_fall_speed = absf(velocity.y)
+	else:
+		
+		velocity += -View.camera.global_basis.z * 0.4 * delta
+		velocity.y -= Parameters.GRAVITY * delta * 0.1
 	if was_on_floor == false && is_on_floor() == true:
 		landing(previous_fall_speed)
 	
@@ -214,7 +223,6 @@ func _check_for_step() -> void:
 
 # Deforms step trace info based on wall proximity
 func _handle_step_trace_values() -> void:
-	# FIXME: I am so, so, so, so, so sorry about the magic numbers.
 	
 	match _wall_check():
 		WallCollision.NONE:
