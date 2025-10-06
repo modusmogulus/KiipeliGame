@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfctl5yhhitu3"]
+
+[ext_resource type="Script" uid="uid://bpc3574rco6ph" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_dialogue.gd" id="1_aajja"]
+
+[node name="Trigact_Dialogue" type="Node3D"]
+script = ExtResource("1_aajja")
+metadata/_custom_type_script = "uid://dhta86jc20j01"

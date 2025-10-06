@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vllfkeokwysx"
-path.s3tc="res://.godot/imported/Patjamat Color.1001.png-46e53b7ff9eac060e449c567b3c82e2e.s3tc.ctex"
+uid="uid://bbq2lk4lb0r13"
+path.s3tc="res://.godot/imported/beveler3_normals.png-d2aa46e46a0157c64ffaeb017d05e828.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/Blender/textures/Patjamat Color.1001.png"
-dest_files=["res://.godot/imported/Patjamat Color.1001.png-46e53b7ff9eac060e449c567b3c82e2e.s3tc.ctex"]
+source_file="res://textures/beveler3_normals.png"
+dest_files=["res://.godot/imported/beveler3_normals.png-d2aa46e46a0157c64ffaeb017d05e828.s3tc.ctex"]
 
 [params]
 

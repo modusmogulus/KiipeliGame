@@ -1,4 +1,4 @@
-[gd_scene load_steps=202 format=4 uid="uid://e23uigtm2f3j"]
+[gd_scene load_steps=204 format=4 uid="uid://e23uigtm2f3j"]
 
 [ext_resource type="LightmapGIData" uid="uid://ctrntdc7jfpb" path="res://Scenes/gameplaytests01.lmbake" id="1_f17og"]
 [ext_resource type="Material" uid="uid://cvxohyg1314ik" path="res://3p_lumi_aniso_stochastic.tres" id="3_djyk4"]
@@ -64,6 +64,8 @@
 [ext_resource type="PackedScene" uid="uid://ck08pefjkgfje" path="res://Models/ykp_kallio.glb" id="51_v2yg1"]
 [ext_resource type="PackedScene" uid="uid://dqklxaq6h5d46" path="res://Models/Blender/ykp_ovi_animoitava.blend" id="52_74b3q"]
 [ext_resource type="PackedScene" uid="uid://c7xq4xxj1n1m2" path="res://Entities/Triggers/trigger_base.tscn" id="64_cfcwo"]
+[ext_resource type="PackedScene" uid="uid://dfctl5yhhitu3" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_dialogue.tscn" id="65_7dbj7"]
+[ext_resource type="PackedScene" uid="uid://d4gcwambv30dg" path="res://Models/ykp toyota yaris (oikeesti corolla) car 2.glb" id="66_nfrdw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p27gu"]
 
@@ -2231,6 +2233,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.82075, -12.5673, -9.09508)
 [node name="Plane_001-col" parent="LightmapGI/YKPTASO1uusin" index="11"]
 material_override = ExtResource("3_vjlk4")
 
+[node name="Cube_008" parent="LightmapGI/YKPTASO1uusin" index="16"]
+visible = false
+
+[node name="CollisionShape3D" parent="LightmapGI/YKPTASO1uusin/Cube_008/StaticBody3D" index="0"]
+disabled = true
+
 [node name="Plane_006" parent="LightmapGI/YKPTASO1uusin" index="17"]
 material_override = ExtResource("5_ks06f")
 
@@ -2270,6 +2278,12 @@ transform = Transform3D(0.561075, 0, 0, 0, 0.561075, 0, 0, 0, 0.561075, 11.19, 9
 
 [node name="kaleva-rakennus_002" parent="LightmapGI/YKPTASO1uusin" index="57"]
 transform = Transform3D(0.561075, 0, 0, 0, 0.561075, 0, 0, 0, -0.561075, 11.19, 9.49909, 127.831)
+
+[node name="Cube_008_001" parent="LightmapGI/YKPTASO1uusin" index="61"]
+visible = false
+
+[node name="CollisionShape3D" parent="LightmapGI/YKPTASO1uusin/Cube_008_001/StaticBody3D" index="0"]
+disabled = true
 
 [node name="Plane_001" parent="LightmapGI/YKPTASO1uusin" index="62"]
 visible = false
@@ -3112,5 +3126,12 @@ transform = Transform3D(-0.0379135, 0, 1.0054, 0, 1.1334, 0, -1.18405, 0, -0.032
 
 [node name="trigger_base" parent="." instance=ExtResource("64_cfcwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.14247, -401.247, -13.701)
+
+[node name="Trigact_Dogshit" parent="trigger_base" instance=ExtResource("65_7dbj7")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="trigger_base"]
+
+[node name="ykp toyota yaris (oikeesti corolla) car 2" parent="." instance=ExtResource("66_nfrdw")]
+transform = Transform3D(-0.0847852, 0, 0.59903, 0, 0.605, 0, -0.59903, 0, -0.0847852, 2.47532, -412.227, 2.2201)
 
 [editable path="LightmapGI/YKPTASO1uusin"]

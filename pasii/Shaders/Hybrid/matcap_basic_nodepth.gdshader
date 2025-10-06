@@ -6,7 +6,7 @@
 /*
 	Edited to include hue shift and vertex lighting by
 	Modusmogulus
-	
+
 */
 
 shader_type spatial;
@@ -33,7 +33,7 @@ vec3 shift_hue(in vec3 color, in float shift) {
 }
 
 void fragment() {
-	
+
 	vec2 uv = UV;
 	vec2 matcap_uv = (NORMAL.xy * vec2(0.5, -0.5) + vec2(0.5, 0.5));
 	vec3 alb1 = texture_colorize.rgb;

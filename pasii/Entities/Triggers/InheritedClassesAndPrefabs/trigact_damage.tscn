@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dergw2omr4l7h"]
+
+[ext_resource type="Script" uid="uid://bp05yahtigwqj" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_damage.gd" id="1_6rwcd"]
+
+[node name="Trigact_Damage" type="Node3D"]
+script = ExtResource("1_6rwcd")
+metadata/_custom_type_script = "uid://dhta86jc20j01"

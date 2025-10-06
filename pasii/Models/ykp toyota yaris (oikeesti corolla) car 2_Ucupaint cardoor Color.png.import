@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vllfkeokwysx"
-path.s3tc="res://.godot/imported/Patjamat Color.1001.png-46e53b7ff9eac060e449c567b3c82e2e.s3tc.ctex"
+uid="uid://xbatff0p2hl6"
+path.s3tc="res://.godot/imported/ykp toyota yaris (oikeesti corolla) car 2_Ucupaint cardoor Color.png-a3d5245890a15a8562a697de9987078b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "7ed38839590c0f4c49d4ee5604df7cab"
+}
 
 [deps]
 
-source_file="res://Models/Blender/textures/Patjamat Color.1001.png"
-dest_files=["res://.godot/imported/Patjamat Color.1001.png-46e53b7ff9eac060e449c567b3c82e2e.s3tc.ctex"]
+source_file="res://Models/ykp toyota yaris (oikeesti corolla) car 2_Ucupaint cardoor Color.png"
+dest_files=["res://.godot/imported/ykp toyota yaris (oikeesti corolla) car 2_Ucupaint cardoor Color.png-a3d5245890a15a8562a697de9987078b.s3tc.ctex"]
 
 [params]
 
@@ -20,7 +23,7 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

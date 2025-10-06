@@ -49,7 +49,7 @@ func request_wallrun() -> enumsKP.wallrun_states:
 		if result2.size() > 0: #is there runnable right wall?
 			print("RIGHT WALLRUN")
 			return enumsKP.wallrun_states.RIGHT #exit function and tell em its right
-	print("NO WALLRUn")
+	print("NO WALLRUn") #player is stupud. there is no wall
 	return enumsKP.wallrun_states.NONE #if we didnt exit func due to wall found, no wall available
 		
 
@@ -170,6 +170,18 @@ func _jump(delta: float) -> void:
 		Parameters.BunnyhopCapMode.DROP:
 			_bunnyhop_capmode_drop()
 
+func request_walljump(delta):
+	var query = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE)
+	var query2 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE)
+	
+	query.exclude = [Body.collision_hull]
+	query2.exclude = [Body.collision_hull]
+	var space_state = Body.get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(query)
+	var result2 = space_state.intersect_ray(query2) #result 2 to make it not interfecre with vault
+	if result.size() > 1 && result2.size() > 1:
+		Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
+		Body.walljumps_left -= 1
 func _vault(delta: float) -> void:
 	Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
 	Body.current_vault_state = enumsKP.vault_states.NONE

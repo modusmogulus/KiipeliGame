@@ -1,5 +1,7 @@
 class_name enumsKP
 
+#TODO: Flunssa (cold) ja flunssalääke
+#		x-hyppy estää flunssaa, ja se tehdään painamalla x ilmassa
 enum items {
 	NO = 0,
 	TOASTER = 1,

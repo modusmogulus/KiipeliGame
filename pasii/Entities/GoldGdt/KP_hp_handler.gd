@@ -1,7 +1,7 @@
 class_name KP_HpHandler extends Node
 var hp = 100.0
 var maxhp = 100.0
-@export var godmode = true
+@export var godmode = false
 @export var regen = 0.1
 
 func _process(delta: float) -> void:

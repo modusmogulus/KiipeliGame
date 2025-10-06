@@ -31,6 +31,8 @@ var diving = false #for dive roll
 var groundnormal = Vector3.UP
 var current_wallrun_state : enumsKP.wallrun_states
 var current_vault_state : enumsKP.vault_states
+var walljumps_left : int = 0
+
 
 
 @export_group("Player View")
@@ -64,6 +66,7 @@ var previous_velocity : Vector3
 
 var velocity_lowpass_filtered: Vector3 = Vector3.ZERO #for rolling etc
 var velocity_lowpass_size: float = 16.0
+var interactables_in_reach : Array[Node3D]
 
 # Identifier for wall proximity.
 enum WallCollision {
@@ -120,6 +123,7 @@ func roll():
 	pre_landing_fall_speed = 0.0
 	
 func landing(last_fall_speed : float):
+	walljumps_left = 1
 	diving = false
 	AnimHandler.diving = diving
 	pre_landing_fall_speed = last_fall_speed
@@ -129,7 +133,7 @@ func _physics_process(delta) -> void:
 	# Position the horizontal_view.
 	
 	View.horizontal_view.transform.origin.y = offset
-	AnimHandler.is_moving = false
+	#AnimHandler.is_moving = false
 	var spacestate = get_world_3d().direct_space_state
 	var queryparams = PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3.DOWN*10)
 	queryparams.exclude = [self, get_parent_node_3d()]
@@ -431,6 +435,8 @@ func remove_powerup(pup : KP_Powerup):
 	current_powerups.erase(pup.powerup_type_enum)
 	PowerupIconContainer.texture.reset_state()
 
+func damage(damage : float):
+	HpHandler.take_damage(damage)
 
 func _on_fall_damage_roll_window_timeout() -> void:
 	var damage = pre_landing_fall_speed * 2

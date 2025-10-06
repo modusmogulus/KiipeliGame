@@ -51,3 +51,4 @@ enum BunnyhopCapMode {
 @export var ARM_OFFSET_DEGREES : Vector2 = Vector2.ZERO ## Offsets position of camera using rotation in degrees.
 
 @export var VAULT_CHECK_DISTANCE : float = 4.1
+@export var MAX_WALLJUMPS : int = 1

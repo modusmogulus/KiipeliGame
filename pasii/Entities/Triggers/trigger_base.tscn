@@ -4,15 +4,13 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71l6y"]
 
-[node name="trigger_base" type="Node3D"]
+[node name="TrigArea" type="Area3D"]
+collision_mask = 3
 script = ExtResource("1_pq5g3")
 
-[node name="TrigArea" type="Area3D" parent="."]
-collision_mask = 3
-
-[node name="TrigCollision" type="CollisionShape3D" parent="TrigArea"]
+[node name="TrigCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_71l6y")
 debug_color = Color(0, 1, 0.05, 1)
 
-[connection signal="body_entered" from="TrigArea" to="." method="_on_trig_area_body_entered"]
-[connection signal="body_exited" from="TrigArea" to="." method="_on_trig_area_body_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

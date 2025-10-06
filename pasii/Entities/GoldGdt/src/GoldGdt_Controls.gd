@@ -37,7 +37,6 @@ func _input(event) -> void:
 		if event is InputEventKey:
 			if event.is_action_released("ui_cancel"):
 				get_tree().quit()
-	
 		if event is InputEventKey:
 			if event.is_action_released("kp_mousemode"):
 				if mousing_around == true:
@@ -51,6 +50,12 @@ func _input(event) -> void:
 	if event is InputEventKey:
 		if event.is_action_released("ui_cancel"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if event.is_action_released("kp_interact"):
+				if Body.interactables_in_reach.size() > 0:
+					for interactable in Body.interactables_in_reach:
+						#nothing special, all node3ds that have method interact() are interactables automatically
+						if interactable.has_method("interact"):
+							interactable.interact()
 		if event.is_action_released("kp_mousemode"):
 			if mousing_around == false:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -97,6 +102,9 @@ func _gather_mouse_input(event: InputEventMouseMotion) -> void:
 	View._handle_camera_input(mouse_input)
 
 func _gather_input() -> void:
+	if Dialogic.current_timeline != null:
+		move_dir = Vector3.ZERO
+		return #to disable input oif theres dialogic shit
 	# Get input strength on the horizontal axes.
 	var ix = Input.get_action_raw_strength("pm_moveright") - Input.get_action_raw_strength("pm_moveleft")
 	var iy = Input.get_action_raw_strength("pm_movebackward") - Input.get_action_raw_strength("pm_moveforward")
@@ -164,6 +172,9 @@ func _act_on_input() -> void:
 			Move._friction(delta, 1.0)
 			Move._accelerate(delta, move_dir.normalized(), move_dir.length(), Parameters.ACCELERATION)
 			
-	if Body.is_on_floor() == false: 
+	if Body.is_on_floor() == false:
+		if jump_on:
+			if Body.walljumps_left > 0:
+				Move.request_walljump(delta)
 		Move._airaccelerate(delta, move_dir.normalized(), move_dir.length(), Parameters.AIR_ACCELERATION)
 		

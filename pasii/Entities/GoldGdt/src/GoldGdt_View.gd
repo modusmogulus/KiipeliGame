@@ -19,16 +19,22 @@ class_name GoldGdt_View extends Node
 @export var afterimage : TextureRect
 @export var viewmodel_shader_target_parent : Node3D
 @export var adrenaline_effect : ColorRect
+
 var initial_anim_camera_rot : Vector3
 var original_fov : float = 0.0
 var previous_velocity : Vector3
 var _frm = 0
+@export var interact_label : Label
 
 func _ready() -> void:
 	#initial_anim_camera_rot = animation_camera.global_rotation
 	original_fov = camera.fov
 	
 func _process(delta: float) -> void:
+	if Body.interactables_in_reach.size() > 0:
+		interact_label.visible = true
+	else:
+		interact_label.visible = false
 	_frm += 1
 	if _frm > 30 && Body.g_forces > 0.9:
 		var _atimg = get_viewport().get_texture().get_image()

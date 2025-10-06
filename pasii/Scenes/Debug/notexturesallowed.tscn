@@ -1,0 +1,131 @@
+[gd_scene load_steps=7 format=3 uid="uid://c328xpxpi4l11"]
+
+[ext_resource type="Material" uid="uid://cdk2i81q10akk" path="res://Materials/3p_prototype.tres" id="1_32k0p"]
+[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="2_uj6ra"]
+[ext_resource type="Script" uid="uid://84vfu5iuwwfw" path="res://Entities/Triggers/trigger_base.gd" id="3_uj6ra"]
+[ext_resource type="PackedScene" uid="uid://dergw2omr4l7h" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_damage.tscn" id="4_6f3fw"]
+
+[sub_resource type="Environment" id="Environment_32k0p"]
+background_mode = 1
+background_color = Color(0.82642, 0.831011, 0.880186, 1)
+tonemap_mode = 2
+tonemap_exposure = 0.25
+tonemap_white = 0.3
+ssr_enabled = true
+sdfgi_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71l6y"]
+size = Vector3(800, 1, 800)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87708, -13.5, -0.504181)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(15.4587, 29, 6.99164)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73504, -20.607, -11.2876)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(16, 41.186, 10.9029)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73504, -17.607, -12.7391)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(10, 41.186, 6)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 5.96046e-08, 0, -5.96046e-08, -1, -1.73504, 5.48597, -12.7391)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(10, 5, 6)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGBox3D11"]
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 2.5, 0)
+material_override = ExtResource("1_32k0p")
+operation = 1
+use_collision = true
+size = Vector3(10, 4, 6)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGBox3D11"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2.5, 0)
+material_override = ExtResource("1_32k0p")
+operation = 1
+use_collision = true
+size = Vector3(10, 4, 6)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16086, -15.5974, -27.1519)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(13.9737, 32, 7)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825984, -13.5974, -25.6519)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(10, 36, 10)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.174, -15.5974, -25.6519)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(10, 36, 10)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.839137, -3.09744, -23.9107)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(13.974, 0.105, 9.482)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1609, -3.09744, -24.9107)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(13.974, 0.105, 9.482)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00123, 0.306991, 2.51402)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(15.707, 4.53125, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3955, 0.306991, -0.978455)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(0.913574, 4.53125, 8.04309)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.47929, 0.306991, -0.978455)
+material_override = ExtResource("1_32k0p")
+use_collision = true
+size = Vector3(0.913574, 4.53125, 8.04309)
+
+[node name="Pawn" parent="." instance=ExtResource("2_uj6ra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.10408, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_32k0p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.025985, 0.999662, 0, -0.999662, 0.025985, 0, 0, 0)
+
+[node name="trigger_base" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -24.317, -2.03249)
+top_level = true
+collision_mask = 3
+script = ExtResource("3_uj6ra")
+
+[node name="Trigact_Damage" parent="trigger_base" instance=ExtResource("4_6f3fw")]
+
+[node name="TrigCollision" type="CollisionShape3D" parent="trigger_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.9658)
+shape = SubResource("BoxShape3D_71l6y")
+debug_color = Color(0, 1, 0.05, 1)
+
+[connection signal="body_entered" from="trigger_base" to="trigger_base" method="_on_body_entered"]
+[connection signal="body_exited" from="trigger_base" to="trigger_base" method="_on_body_exited"]
