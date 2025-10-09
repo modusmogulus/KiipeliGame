@@ -118,15 +118,18 @@ func request_roll(start_or_stop : bool):
 		roll()
 
 func roll():
+	HpHandler.remove_damage_threat()
 	AnimHandler.rolling = true
 	velocity += (pre_landing_fall_speed*velocity)*0.1
 	pre_landing_fall_speed = 0.0
 	
 func landing(last_fall_speed : float):
 	walljumps_left = 1
+	AnimHandler.grounded = true
 	diving = false
 	AnimHandler.diving = diving
 	pre_landing_fall_speed = last_fall_speed
+	HpHandler.threaten_with_damage(calculate_fall_damage(pre_landing_fall_speed))
 	FallDamageRollWindow.start()
 
 func _physics_process(delta) -> void:
@@ -437,8 +440,11 @@ func remove_powerup(pup : KP_Powerup):
 
 func damage(damage : float):
 	HpHandler.take_damage(damage)
-
-func _on_fall_damage_roll_window_timeout() -> void:
+func calculate_fall_damage(fall_speed : float):
 	var damage = pre_landing_fall_speed * 2
+	return pre_landing_fall_speed * 2
+func _on_fall_damage_roll_window_timeout() -> void:
+	var damage = calculate_fall_damage(pre_landing_fall_speed)
+	
 	HpHandler.take_damage(damage)
 	AnimHandler.rolling = false

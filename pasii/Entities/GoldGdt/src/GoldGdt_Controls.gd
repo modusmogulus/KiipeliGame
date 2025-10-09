@@ -166,6 +166,7 @@ func _act_on_input() -> void:
 		if jump_on:
 			# Not running friction on ground if you press jump fast enough allows you to preserve all speed.
 			Move._jump(delta)
+			move_dir = move_dir * Vector3(1.0, 0.0, 0.0)
 			# NOTE: This is sort of a band-aid to make bunny-hopping on walkable slopes feel a lot nicer.
 			Move._airaccelerate(delta, move_dir.normalized(), move_dir.length(), Parameters.AIR_ACCELERATION)
 		else:

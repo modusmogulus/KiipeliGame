@@ -4,6 +4,7 @@ class_name KiipeliAnimHandler extends Node
 #AnimationTree's advance_expression_base_node needs to point
 #to a node that has this script 
 var is_moving: bool = false
+var wallrunning = "NO"
 var is_grounded: bool = true
 var player_velocity: Vector3 = Vector3.ZERO
 var reloading: bool = false

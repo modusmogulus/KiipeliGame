@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bk1u5bvjqvlyx"]
+
+[ext_resource type="Shader" uid="uid://c85hh6ie50dkr" path="res://Shaders/Hybrid/3p_retro_beveled.gdshader" id="1_cg0s4"]
+[ext_resource type="Texture2D" uid="uid://bbq2lk4lb0r13" path="res://textures/beveler3_normals.png" id="2_0ii2k"]
+[ext_resource type="Texture2D" uid="uid://de4jx2xrdta1w" path="res://textures/ykp/Textures/prototyyppi-teras2.png" id="3_8awk4"]
+[ext_resource type="Texture2D" uid="uid://cjb5ig0iilp4u" path="res://textures/beveler3_overlay.png" id="4_uckib"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cg0s4")
+shader_parameter/albedo_ceiling = Color(0.984269, 0.567163, 0.342302, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("3_8awk4")
+shader_parameter/roughness = 0.03
+shader_parameter/metalness = 0.231
+shader_parameter/albedo_wall = Color(0.953594, 0.56321, 0.528216, 1)
+shader_parameter/texture_albedo_wall = ExtResource("3_8awk4")
+shader_parameter/bevel_normal = ExtResource("2_0ii2k")
+shader_parameter/texture_bevel_overlay = ExtResource("4_uckib")
+shader_parameter/albedo_floor = Color(0.781552, 0.523962, 0.155236, 1)
+shader_parameter/texture_albedo_floor = ExtResource("3_8awk4")
+shader_parameter/ground_threshold = 0.25
+shader_parameter/blend_smoothness = 0.0
+shader_parameter/uv1_blend_sharpness = 8.654
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv_global = true
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false

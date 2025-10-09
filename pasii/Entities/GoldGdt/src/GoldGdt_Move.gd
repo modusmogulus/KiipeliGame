@@ -45,11 +45,14 @@ func request_wallrun() -> enumsKP.wallrun_states:
 		#there is
 		if result.size() > 0: #is there runnable left wall?
 			print("LEFT WALLRUN")
+			AnimHandler.wallrunning = "LEFT"
 			return enumsKP.wallrun_states.LEFT #exit function and tell em its left
 		if result2.size() > 0: #is there runnable right wall?
 			print("RIGHT WALLRUN")
+			AnimHandler.wallrunning = "RIGHT"
 			return enumsKP.wallrun_states.RIGHT #exit function and tell em its right
 	print("NO WALLRUn") #player is stupud. there is no wall
+	AnimHandler.wallrunning = "NO"
 	return enumsKP.wallrun_states.NONE #if we didnt exit func due to wall found, no wall available
 		
 
@@ -157,7 +160,7 @@ func _jump(delta: float) -> void:
 	#print(request_wallrun())
 	# Apply the jump impulse
 	Body.velocity.y = sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
-	AnimHandler.is_grounded = false
+	AnimHandler.grounded = false
 	# Add in some gravity correction
 	Body.velocity.y -= (Parameters.GRAVITY * delta * 0.5 )
 	

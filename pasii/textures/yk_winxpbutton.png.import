@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btj284uvs0u58"
-path="res://.godot/imported/yk_winxpbutton.png-8a529fc3d93126e393ee45d79aa841d4.ctex"
+path="res://.godot/imported/yk_winxpbutton.png-32035206a712b2af4a9e02e1853a52d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ykp/Textures/yk_winxpbutton.png"
-dest_files=["res://.godot/imported/yk_winxpbutton.png-8a529fc3d93126e393ee45d79aa841d4.ctex"]
+source_file="res://textures/yk_winxpbutton.png"
+dest_files=["res://.godot/imported/yk_winxpbutton.png-32035206a712b2af4a9e02e1853a52d4.ctex"]
 
 [params]
 
