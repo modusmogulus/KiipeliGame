@@ -67,6 +67,7 @@ var previous_velocity : Vector3
 var velocity_lowpass_filtered: Vector3 = Vector3.ZERO #for rolling etc
 var velocity_lowpass_size: float = 16.0
 var interactables_in_reach : Array[Node3D]
+var interaction_text #set from interactables
 
 # Identifier for wall proximity.
 enum WallCollision {
@@ -74,6 +75,13 @@ enum WallCollision {
 	NEAR,
 	ON
 }
+
+func notice_interactable(interactable : Node3D):
+	interactables_in_reach.append(interactable)
+	View.interact_label.text = interaction_text
+
+func forget_interactable(interactable : Node3D):
+	interactables_in_reach.erase(interactable)
 
 func calculate_g_forces(current_velocity: Vector3, previous_velocity, axes: Vector3, delta_time: float) -> float:
 	var cur_vel = current_velocity * axes
@@ -264,6 +272,7 @@ func _duck(duck_on: bool) -> void:
 	if duck_on:
 		if !ducked and !ducking:
 			ducking = true
+			floor_max_angle *= 0.25
 			duck_timer.start(1.0)
 		
 		time = max(0, (1.0 - duck_timer.time_left))
@@ -298,6 +307,7 @@ func _unduck() -> void:
 		ducked = true
 		return
 	else: # Otherwise, unduck.
+		floor_max_angle *= 4
 		ducked = false
 		ducking = false
 		if is_on_floor(): position.y += crouch_dist + 0.001

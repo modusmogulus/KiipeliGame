@@ -6,7 +6,7 @@
 
 [sub_resource type="Gradient" id="Gradient_h5vjl"]
 offsets = PackedFloat32Array(0.802721, 0.911565, 0.993197)
-colors = PackedColorArray(0.59411, 0.655397, 0.850131, 1, 0.0834845, 0.0479038, 0.0703962, 1, 0.507967, 0.914751, 0.930536, 1)
+colors = PackedColorArray(0.701995, 0.750157, 0.89778, 1, 0.0834845, 0.0479038, 0.0703962, 1, 0.507967, 0.914751, 0.930536, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_upvgs"]
 gradient = SubResource("Gradient_h5vjl")
@@ -28,8 +28,8 @@ shader = ExtResource("1_ejrer")
 shader_parameter/albedo_ceiling = Color(0, 0.703383, 0.968658, 1)
 shader_parameter/texture_albedo_ceiling = ExtResource("3_d1kc8")
 shader_parameter/roughness = 0.03
-shader_parameter/metalness = 0.231
-shader_parameter/albedo_wall = Color(0.301477, 0.769581, 1, 1)
+shader_parameter/metalness = 0.0
+shader_parameter/albedo_wall = Color(0.93408, 0.93408, 0.93408, 1)
 shader_parameter/texture_albedo_wall = ExtResource("3_d1kc8")
 shader_parameter/bevel_normal = ExtResource("2_l7ove")
 shader_parameter/texture_bevel_overlay = SubResource("GradientTexture2D_ejrer")

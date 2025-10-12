@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://n7s8gfkr2uq3"]
+
+[ext_resource type="Texture2D" uid="uid://cdej1o2ssrqtr" path="res://GUIAndSprites/ykp_7button_focused.png" id="1_djjgt"]
+[ext_resource type="Texture2D" uid="uid://l0385m5xnalx" path="res://GUIAndSprites/ykp_7button_depressed.png" id="2_ug7u3"]
+[ext_resource type="Texture2D" uid="uid://cv23fx2dhupl0" path="res://GUIAndSprites/ykp_7button_pressed.png" id="3_4fe1n"]
+[ext_resource type="FontFile" uid="uid://dyhtb4vs6vx2g" path="res://GUIAndSprites/tahoma.ttf" id="4_ug7u3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f32qq"]
+texture = ExtResource("1_djjgt")
+texture_margin_left = 16.0
+texture_margin_top = 2.0
+texture_margin_right = 16.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_20uso"]
+texture = ExtResource("2_ug7u3")
+texture_margin_left = 16.0
+texture_margin_top = 2.0
+texture_margin_right = 16.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0sidh"]
+texture = ExtResource("3_4fe1n")
+texture_margin_left = 16.0
+texture_margin_top = 2.0
+texture_margin_right = 16.0
+texture_margin_bottom = 2.0
+
+[resource]
+default_font = ExtResource("4_ug7u3")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 0)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/hover = SubResource("StyleBoxTexture_f32qq")
+Button/styles/normal = SubResource("StyleBoxTexture_20uso")
+Button/styles/pressed = SubResource("StyleBoxTexture_0sidh")

@@ -1,15 +1,3 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://lcg46nhlvtus"]
-
-[ext_resource type="Shader" uid="uid://yqiw6k1721cs" path="res://Shaders/Hybrid/surface_embedded_sprites.gdshader" id="1_lgjdo"]
-[ext_resource type="Texture2D" uid="uid://dadg7ls2cav82" path="res://textures/ykp/Textures/yk_lumipenkka 2.png" id="2_iwfsg"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://lcg46nhlvtus"]
 
 [resource]
-render_priority = 0
-shader = ExtResource("1_lgjdo")
-shader_parameter/tiling = Vector2(1, 1)
-shader_parameter/offset = Vector2(0, 0)
-shader_parameter/uv_map = ExtResource("2_iwfsg")
-shader_parameter/sprite = ExtResource("2_iwfsg")
-shader_parameter/uv_tiling = Vector2(0.945, 1.285)
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/depth = -0.115

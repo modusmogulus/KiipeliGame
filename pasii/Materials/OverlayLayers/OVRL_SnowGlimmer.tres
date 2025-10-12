@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://pe62lpi00ke0"]
+
+[ext_resource type="Shader" uid="uid://cty525nissi7d" path="res://Shaders/Hybrid/surface_embedded_sprites_overlay_pass_emi.gdshader" id="1_tw8xe"]
+[ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="2_qnvo5"]
+
+[sub_resource type="Gradient" id="Gradient_c0v6d"]
+offsets = PackedFloat32Array(0.749141, 0.752577, 0.910653, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ktdah"]
+frequency = 0.0759
+domain_warp_enabled = true
+domain_warp_amplitude = 800.0
+domain_warp_frequency = -0.009
+domain_warp_fractal_octaves = 2
+domain_warp_fractal_gain = 3.144
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2npsd"]
+width = 64
+height = 64
+generate_mipmaps = false
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_c0v6d")
+noise = SubResource("FastNoiseLite_ktdah")
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_tw8xe")
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/uv_map = ExtResource("2_qnvo5")
+shader_parameter/sprite = SubResource("NoiseTexture2D_2npsd")
+shader_parameter/uv_tiling = Vector2(0.48, 0.48)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/emissive_strength = 3.0
+shader_parameter/depth = 0.62

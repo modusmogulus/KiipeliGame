@@ -2,6 +2,7 @@ class_name TriggerBase
 extends Area3D
 
 var actions: Array[TriggerAction]
+@export var interaction_description : String
 
 enum Triggertypes {
 	ENTER = 0, #do_shit() on enter
@@ -32,11 +33,14 @@ func _ready() -> void:
 	
 func _on_body_entered(body: Node3D) -> void:
 	last_body = body
+	if !("Player" in body.get_groups()):
+		return
+	
 	if this_triggertype == Triggertypes.ENTER:
-		if "Player" in body.get_groups():
-			execute_actions(body)
-			return
+		execute_actions(body)
+		return
 	if this_triggertype == Triggertypes.INTERACTED:
+		body.interaction_text = interaction_description
 		body.interactables_in_reach.append(self)
 func _on_body_exited(body: Node3D) -> void:
 

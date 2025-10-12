@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://mmu5repc2oyl"]
+
+[ext_resource type="Shader" uid="uid://yqiw6k1721cs" path="res://Shaders/Hybrid/surface_embedded_sprites_opaq.gdshader" id="1_lelk3"]
+[ext_resource type="Texture2D" uid="uid://bluo3inta3m67" path="res://textures/ykp/Textures/yk_lumipenkka 1.png" id="2_d6d52"]
+[ext_resource type="Texture2D" uid="uid://b84ss6exvmm51" path="res://textures/uvsphere_weird_matcap2.png" id="3_d6d52"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lelk3")
+shader_parameter/albedo = ExtResource("2_d6d52")
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/uv_map = ExtResource("3_d6d52")
+shader_parameter/sprite = ExtResource("2_d6d52")
+shader_parameter/uv_tiling = Vector2(4, 4)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/depth = 1.0

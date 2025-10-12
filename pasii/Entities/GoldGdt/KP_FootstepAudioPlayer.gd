@@ -104,8 +104,8 @@ func playFootstepSound():
 				#AudioPlayer.play()
 				play_auralized()
 		for i in echo_players.size():
-			echo_players[i].stream = current_sound_tex.footsteps
-			echo_players[i].volume_linear *= current_sound_tex.footstep_running_loudness_linear / (rays/1)
+			echo_players[i].stream = AudioPlayer.stream
+			echo_players[i].volume_linear *= AudioPlayer.volume_linear / (rays/1)
 		#var gr = col.get_groups()
 		#print(getMaterial())
 		#if AudioManager.SoundPassMappings.find_key(getMaterial()):

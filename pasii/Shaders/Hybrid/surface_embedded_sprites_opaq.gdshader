@@ -1,11 +1,11 @@
 shader_type spatial;
-
+render_mode depth_draw_opaque;
 uniform sampler2D albedo : source_color;
 uniform vec2 tiling = vec2(1.0);
 uniform vec2 offset = vec2(0.0);
 
 group_uniforms sprite_mapping;
-uniform sampler2D uv_map;
+uniform sampler2D uv_map : filter_linear;
 uniform sampler2D sprite : source_color, repeat_disable;
 uniform vec2 uv_tiling = vec2(1.0);
 uniform vec2 uv_offset = vec2(0.0);
@@ -32,4 +32,5 @@ void fragment() {
 	float sprite_mask = sprite_uv_map.a * surface_embedded_sprite.a;
 	ALBEDO = texture(albedo, UV * tiling + offset).rgb;
 	ALBEDO = mix(ALBEDO, surface_embedded_sprite.rgb, sprite_mask);
-}
+	ALPHA = texture(albedo, UV * tiling + offset).a;
+	}

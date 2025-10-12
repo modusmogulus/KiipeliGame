@@ -910,6 +910,10 @@ editor_description = "
 fov = 80.0
 near = 0.001
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Display Body/Arm/Arm Anchor/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.711003, -2.75671e-07)
+current = true
+
 [node name="AnimationSound" type="AudioStreamPlayer3D" parent="Display Body/Arm/Arm Anchor/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.711, 0)
 volume_db = -16.689

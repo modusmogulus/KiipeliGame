@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://iltatmgnnf3n"]
+
+[ext_resource type="Texture2D" uid="uid://dxhlxbhx10w50" path="res://../../../noenpatiija-master/noenpatiija-master/Textures/yk_rappujenovi.png" id="1_uti51"]
+
+[resource]
+resource_name = "rappuovi"
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_uti51")
+metadata/extras = {
+"yp": {
+"active_ypaint_node": ""
+}
+}

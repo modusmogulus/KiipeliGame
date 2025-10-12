@@ -1,4 +1,4 @@
-[gd_scene load_steps=204 format=4 uid="uid://e23uigtm2f3j"]
+[gd_scene load_steps=220 format=4 uid="uid://e23uigtm2f3j"]
 
 [ext_resource type="LightmapGIData" uid="uid://ctrntdc7jfpb" path="res://Scenes/gameplaytests01.lmbake" id="1_f17og"]
 [ext_resource type="Material" uid="uid://cvxohyg1314ik" path="res://3p_lumi_aniso_stochastic.tres" id="3_djyk4"]
@@ -8,12 +8,20 @@
 [ext_resource type="Material" uid="uid://dttwot724jrd6" path="res://Materials/3p_tie.tres" id="4_f288j"]
 [ext_resource type="Material" uid="uid://bcapo2bpwexuk" path="res://Materials/3D-fake-interior-building-01.tres" id="4_fqyyi"]
 [ext_resource type="Material" uid="uid://c4x74yeh8ikqd" path="res://Materials/3D-fake-interior-building-02.tres" id="4_gllkj"]
+[ext_resource type="Material" uid="uid://nd3ebjlvcfww" path="res://Materials/OverlayLayers/OVRL_Frost.tres" id="4_pgneu"]
+[ext_resource type="Shader" uid="uid://cty525nissi7d" path="res://Shaders/Hybrid/surface_embedded_sprites_overlay_pass_emi.gdshader" id="5_6lknn"]
 [ext_resource type="Material" uid="uid://co1gtv7arvr1" path="res://Materials/3p_talo01.tres" id="5_f288j"]
 [ext_resource type="Material" uid="uid://bsjdy17yt1c1w" path="res://Materials/3p_talo_katos.tres" id="5_ks06f"]
-[ext_resource type="Material" uid="uid://lcg46nhlvtus" path="res://Materials/ses_test.tres" id="5_l0gy5"]
+[ext_resource type="Shader" uid="uid://c0q03lh56wtbr" path="res://Shaders/Hybrid/surface_embedded_sprites_overlay_pass.gdshader" id="5_pgneu"]
+[ext_resource type="Shader" uid="uid://bms4qqjj0o7c0" path="res://Shaders/Hybrid/3p_retro_stochastic.gdshader" id="6_48146"]
+[ext_resource type="Texture2D" uid="uid://cvllyngjiw5am" path="res://textures/texturebloat/ykp_64x64_ice_flake_2_snow_flake5.png" id="6_c0v6d"]
+[ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="6_jfb4b"]
+[ext_resource type="Texture2D" uid="uid://dadg7ls2cav82" path="res://textures/ykp/Textures/yk_lumipenkka 2.png" id="7_go2kq"]
 [ext_resource type="Material" uid="uid://7clbqxka4rxm" path="res://Materials/3p_kalliolumessa.tres" id="7_hl2cm"]
 [ext_resource type="Texture2D" uid="uid://bfm0l4hiattqv" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_leppa_01.png" id="7_xg67b"]
+[ext_resource type="Texture2D" uid="uid://bluo3inta3m67" path="res://textures/ykp/Textures/yk_lumipenkka 1.png" id="8_ampxm"]
 [ext_resource type="Texture2D" uid="uid://e4e8egse6y5d" path="res://Models/Props/FoliagetJaLiikennemerkit_foliage_clip_birch_01.png" id="8_sa26n"]
+[ext_resource type="Material" uid="uid://pe62lpi00ke0" path="res://Materials/OverlayLayers/OVRL_SnowGlimmer.tres" id="9_ampxm"]
 [ext_resource type="Texture2D" uid="uid://csd77dxygml2k" path="res://Models/Props/FoliagetJaLiikennemerkit_ykp_tree_leaves_plane_01.png" id="9_djyk4"]
 [ext_resource type="Material" uid="uid://0j6irjbrjldq" path="res://Materials/tree_stylized.tres" id="9_f288j"]
 [ext_resource type="Material" uid="uid://c43lxdo781af2" path="res://Materials/tv_shader.tres" id="9_p27gu"]
@@ -66,6 +74,9 @@
 [ext_resource type="PackedScene" uid="uid://c7xq4xxj1n1m2" path="res://Entities/Triggers/trigger_base.tscn" id="64_cfcwo"]
 [ext_resource type="PackedScene" uid="uid://dfctl5yhhitu3" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_dialogue.tscn" id="65_7dbj7"]
 [ext_resource type="PackedScene" uid="uid://d4gcwambv30dg" path="res://Models/ykp toyota yaris (oikeesti corolla) car 2.glb" id="66_nfrdw"]
+[ext_resource type="Material" uid="uid://mmu5repc2oyl" path="res://Materials/SES_psyche_lumi.tres" id="67_dthp8"]
+[ext_resource type="Texture2D" uid="uid://dkhngnv8iqdjr" path="res://Models/Props/REAL_mirroring_uv_1024.png" id="69_go2kq"]
+[ext_resource type="Texture2D" uid="uid://c5mr45wks1qc6" path="res://textures/ykp/Textures/AINO_Frutiger_sky2.png" id="69_ycrow"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p27gu"]
 
@@ -118,9 +129,33 @@ adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_adath"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfb4b"]
+render_priority = 0
+next_pass = ExtResource("4_pgneu")
+shader = ExtResource("6_48146")
+shader_parameter/albedo_ceiling = Color(0.441587, 0.605966, 0.859659, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("7_go2kq")
+shader_parameter/roughness = 1.0
+shader_parameter/albedo_wall = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_wall = ExtResource("7_go2kq")
+shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("7_go2kq")
+shader_parameter/ground_threshold = 0.8
+shader_parameter/blend_smoothness = 0.28
+shader_parameter/uv1_blend_sharpness = 29.167
+shader_parameter/uv1_scale = Vector3(0.325, 0.2, 0.2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv_global = true
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f288j"]
 albedo_color = Color(0, 1, 0, 1)
 roughness = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elj2h"]
+albedo_texture = ExtResource("8_ampxm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jt367"]
 albedo_texture = ExtResource("10_2kcld")
@@ -519,6 +554,18 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ubmqo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c0v6d"]
+render_priority = 1
+shader = ExtResource("5_6lknn")
+shader_parameter/tiling = Vector2(0.92, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/uv_map = ExtResource("6_jfb4b")
+shader_parameter/sprite = ExtResource("6_c0v6d")
+shader_parameter/uv_tiling = Vector2(0, 0)
+shader_parameter/uv_offset = Vector2(0, 0.208)
+shader_parameter/emissive_strength = 1.0
+shader_parameter/depth = -2.62
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm56k"]
 resource_name = "foliage_clip_tree_oak_01"
@@ -2199,6 +2246,24 @@ _data = {
 &"Rage_001": SubResource("Animation_mcg2m")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgneu"]
+render_priority = 0
+shader = ExtResource("5_pgneu")
+shader_parameter/albedo = ExtResource("69_ycrow")
+shader_parameter/tiling = Vector2(4, 4)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/uv_map = ExtResource("69_go2kq")
+shader_parameter/sprite = ExtResource("69_ycrow")
+shader_parameter/uv_tiling = Vector2(5.995, 2)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/depth = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_dthp8"]
+material = SubResource("ShaderMaterial_pgneu")
+flip_faces = true
+radius = 320.0
+height = 320.0
+
 [node name="Node3D" type="Node3D"]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -2209,7 +2274,6 @@ tree_root = SubResource("AnimationNodeBlendTree_p27gu")
 transform = Transform3D(-0.998317, 0, -0.0579996, 0, 1, 0, 0.0579996, 0, -0.998317, 5.185, -401.809, -16.6366)
 environment = SubResource("Environment_ncoui")
 projection = 2
-current = true
 fov = 70.0
 size = 0.225
 frustum_offset = Vector2(0, -0.05)
@@ -2243,10 +2307,16 @@ disabled = true
 material_override = ExtResource("5_ks06f")
 
 [node name="Plane_007-col" parent="LightmapGI/YKPTASO1uusin" index="18"]
-surface_material_override/0 = ExtResource("5_l0gy5")
+surface_material_override/0 = SubResource("ShaderMaterial_jfb4b")
 
 [node name="Cube_009" parent="LightmapGI/YKPTASO1uusin" index="19"]
 surface_material_override/0 = SubResource("StandardMaterial3D_f288j")
+
+[node name="SNOWPILE_001" parent="LightmapGI/YKPTASO1uusin" index="26"]
+surface_material_override/0 = SubResource("StandardMaterial3D_elj2h")
+
+[node name="SNOWPILE_002" parent="LightmapGI/YKPTASO1uusin" index="27"]
+material_override = ExtResource("67_dthp8")
 
 [node name="Cube_015" parent="LightmapGI/YKPTASO1uusin" index="28"]
 surface_material_override/0 = ExtResource("4_fqyyi")
@@ -2321,6 +2391,7 @@ surface_material_override/0 = ExtResource("10_wboeo")
 
 [node name="lumi-vis-lightcatchr" parent="LightmapGI/YKPTASO1uusin" index="85"]
 material_override = ExtResource("3_vjlk4")
+material_overlay = ExtResource("9_ampxm")
 
 [node name="Cube" parent="LightmapGI/YKPTASO1uusin" index="88"]
 transform = Transform3D(0.0200588, 0, 0.515209, 0, 0.515599, 0, -0.515209, 0, 0.0200588, 15.3182, 10.1461, -3.90524)
@@ -2774,16 +2845,19 @@ transform = Transform3D(0.752989, 0, 0, 0, 0.609394, 0, 0, 0, 0.999525, 8.39812,
 
 [node name="tree_003" type="MeshInstance3D" parent="Props/hd-puut/tree-pihlaja-snoey"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0879011, -0.334472, 0.0496184)
+material_overlay = ExtResource("4_pgneu")
 mesh = SubResource("ArrayMesh_vntre")
 skeleton = NodePath("")
 
 [node name="leaves_002" type="MeshInstance3D" parent="Props/hd-puut/tree-pihlaja-snoey/tree_003"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231315, 0.769217, -0.100208)
+material_overlay = SubResource("ShaderMaterial_c0v6d")
 mesh = SubResource("ArrayMesh_sodtr")
 skeleton = NodePath("")
 
 [node name="tree_004" type="MeshInstance3D" parent="Props/hd-puut/tree-pihlaja-snoey"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0555124, -0.100274, 0.000970926)
+material_overlay = ExtResource("4_pgneu")
 mesh = SubResource("ArrayMesh_382wt")
 skeleton = NodePath("")
 
@@ -3133,5 +3207,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.14247, -401.247, -13.701)
 
 [node name="ykp toyota yaris (oikeesti corolla) car 2" parent="." instance=ExtResource("66_nfrdw")]
 transform = Transform3D(-0.0847852, 0, 0.59903, 0, 0.605, 0, -0.59903, 0, -0.0847852, 2.47532, -412.227, 2.2201)
+
+[node name="Skydome" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -399, 34)
+mesh = SubResource("SphereMesh_dthp8")
 
 [editable path="LightmapGI/YKPTASO1uusin"]

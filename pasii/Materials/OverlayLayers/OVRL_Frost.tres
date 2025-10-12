@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://nd3ebjlvcfww"]
+
+[ext_resource type="Shader" uid="uid://cty525nissi7d" path="res://Shaders/Hybrid/surface_embedded_sprites_overlay_pass_emi.gdshader" id="1_sbgxe"]
+[ext_resource type="Texture2D" uid="uid://cvllyngjiw5am" path="res://textures/texturebloat/ykp_64x64_ice_flake_2_snow_flake5.png" id="2_66k5g"]
+[ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="3_h54ir"]
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_sbgxe")
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/uv_map = ExtResource("3_h54ir")
+shader_parameter/sprite = ExtResource("2_66k5g")
+shader_parameter/uv_tiling = Vector2(0.255, 0.73)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/emissive_strength = 0.505
+shader_parameter/depth = 0.0
