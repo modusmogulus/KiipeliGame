@@ -13,16 +13,19 @@ Groundcast = NodePath("Groundcast")
 MaterialCamera = NodePath("Control/SubViewportContainer/SubViewport/MaterialCamera")
 MaterialViewportTexture = SubResource("ViewportTexture_3e288")
 DefaultSoundTexture = ExtResource("2_bk6if")
+rays = 8
+reflection_probability = 0.1
+max_reflection_octaves = 3
 
 [node name="Groundcast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 attenuation_model = 1
-max_polyphony = 16
+max_polyphony = 32
 bus = &"Footsteps"
-playback_type = 2
-attenuation_filter_db = 0.0
+attenuation_filter_db = -1.0
+metadata/_custom_type_script = "uid://dkb8ltjc6067n"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

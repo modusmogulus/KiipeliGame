@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnisqmtp28nmy"
+path="res://.godot/imported/Beefy Climb Sounds - Marker #5.wav-29055c18fd1f5f5571efd66af443a77e.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Beefy Climb Sounds - Marker #5.wav"
+dest_files=["res://.godot/imported/Beefy Climb Sounds - Marker #5.wav-29055c18fd1f5f5571efd66af443a77e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

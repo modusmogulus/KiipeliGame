@@ -14,7 +14,7 @@ class_name GoldGdt_Body extends CharacterBody3D
 @export var Parameters : PlayerParameters
 var original_parameters : PlayerParameters
 @export var View : GoldGdt_View
-
+var in_dialogue : bool = false
 @export var anim_tree : AnimationTree
 @export var AnimHandler : KiipeliAnimHandler
 @export var HpHandler : KP_HpHandler
@@ -136,13 +136,18 @@ func landing(last_fall_speed : float):
 	AnimHandler.grounded = true
 	diving = false
 	AnimHandler.diving = diving
+	AnimHandler.FootstepPlayer.playLandingSound()
 	pre_landing_fall_speed = last_fall_speed
 	HpHandler.threaten_with_damage(calculate_fall_damage(pre_landing_fall_speed))
 	FallDamageRollWindow.start()
 
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
-	
+	if Dialogic.current_timeline != null:
+		in_dialogue = true
+	else:
+		in_dialogue = false
+	AnimHandler.in_dialogue = in_dialogue
 	View.horizontal_view.transform.origin.y = offset
 	#AnimHandler.is_moving = false
 	var spacestate = get_world_3d().direct_space_state

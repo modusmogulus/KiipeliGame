@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cf3337nsol0v4"
+path="res://.godot/imported/Real Parkour Roll On A roof C.ogg-5532ae833d99e01d2e65f3c73614527f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SFX/Real Parkour Roll On A roof C.ogg"
+dest_files=["res://.godot/imported/Real Parkour Roll On A roof C.ogg-5532ae833d99e01d2e65f3c73614527f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

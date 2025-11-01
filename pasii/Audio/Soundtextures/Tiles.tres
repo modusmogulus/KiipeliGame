@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SoundTexture" load_steps=12 format=3 uid="uid://di6yrvg53kj2"]
+[gd_resource type="Resource" script_class="SoundTexture" load_steps=13 format=3 uid="uid://di6yrvg53kj2"]
 
 [ext_resource type="AudioStream" uid="uid://dgu0756drg7uk" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 01.wav" id="1_b4sdf"]
 [ext_resource type="Script" uid="uid://c243vjtr0b4ee" path="res://Globals/SoundTexture.gd" id="1_u8vr1"]
@@ -10,8 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://cj5ijuavluecj" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 07.wav" id="7_boahn"]
 [ext_resource type="AudioStream" uid="uid://bdcghira6tnq4" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 08.wav" id="8_54glk"]
 [ext_resource type="AudioStream" uid="uid://cam01rgvphji8" path="res://Audio/Footsteps/06 Tiles Outdoors/FT Stable tiles from 1m 09.wav" id="9_khhnj"]
+[ext_resource type="AudioStream" uid="uid://bfqse48l8dsi4" path="res://Audio/SFX/Beefy Climb Sounds - Marker #1.wav" id="10_ualjv"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_shgxi"]
+playback_mode = 2
 streams_count = 9
 stream_0/stream = ExtResource("1_b4sdf")
 stream_1/stream = ExtResource("2_ualjv")
@@ -29,6 +31,7 @@ ingame_name = "Tiles"
 footsteps = SubResource("AudioStreamRandomizer_shgxi")
 footstep_loudness_linear = 0.263
 footstep_running_loudness_linear = 0.8
+landing = ExtResource("10_ualjv")
 landing_loudness_linear = 0.8
 slide_loudness_linear = 0.8
 wallrun_loudness_linear = 0.8

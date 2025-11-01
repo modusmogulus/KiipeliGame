@@ -78,7 +78,7 @@ func _physics_process(delta) -> void:
 	_gather_input()
 	_act_on_input()
 	
-	if movement_input:
+	if movement_input && !Body.in_dialogue:
 		AnimHandler.is_moving = true
 		#for a in state_machines:
 		#	a.travel("RunCycle")
@@ -104,7 +104,7 @@ func _gather_mouse_input(event: InputEventMouseMotion) -> void:
 func _gather_input() -> void:
 	if Dialogic.current_timeline != null:
 		move_dir = Vector3.ZERO
-		return #to disable input oif theres dialogic shit
+		return #to disable input if theres dialogic shit
 	# Get input strength on the horizontal axes.
 	var ix = Input.get_action_raw_strength("pm_moveright") - Input.get_action_raw_strength("pm_moveleft")
 	var iy = Input.get_action_raw_strength("pm_movebackward") - Input.get_action_raw_strength("pm_moveforward")

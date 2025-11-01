@@ -4,6 +4,7 @@ class_name KiipeliAnimHandler extends Node
 #AnimationTree's advance_expression_base_node needs to point
 #to a node that has this script 
 var is_moving: bool = false
+var in_dialogue: bool = false
 var wallrunning = "NO"
 var is_grounded: bool = true
 var player_velocity: Vector3 = Vector3.ZERO
@@ -16,6 +17,7 @@ var rolling : bool = false
 @export var powerup_ui_anim : AnimationPlayer
 @export var InvHandler : KP_InventoryHandler
 @export var SyncedAnimTrees : Array[AnimationTree]
+@export var FootstepPlayer : Node3D #This VARIABLE is only for the landings etc. Fotsteps are handled straight from animplayer
 var state_machines : Array[AnimationNodeStateMachinePlayback]
 @export var AnimPlayer : AnimationPlayer
 var vaultstate : String #This is set from move controller
@@ -39,8 +41,6 @@ func _ready() -> void:
 func animate_powerup_ui():
 	powerup_ui_anim.play("powerup_added")
 func _process(delta: float) -> void:
-	if rolling:
-		print("ROLLED")
 	#if InvHandler.currently_holding in item_link.keys():
 	#	print(item_link[item_link.find_key(InvHandler.currently_holding)])
 	#	print("jjjjjjjjjjjjjjjjjjjjj")
