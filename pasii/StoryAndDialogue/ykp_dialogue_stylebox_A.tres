@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dxyl4v826gkr8"]
+
+[ext_resource type="Texture2D" uid="uid://c87srun1b1yh6" path="res://GUIAndSprites/ykp_speechballoon.png" id="1_7k7uc"]
+
+[resource]
+texture = ExtResource("1_7k7uc")
+texture_margin_left = 94.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0

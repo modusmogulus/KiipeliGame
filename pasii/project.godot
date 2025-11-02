@@ -107,6 +107,7 @@ folder_colors={
 "res://Globals/": "orange",
 "res://Models/": "purple",
 "res://Shaders/": "yellow",
+"res://StoryAndDialogue/": "yellow",
 "res://Tools/": "blue"
 }
 

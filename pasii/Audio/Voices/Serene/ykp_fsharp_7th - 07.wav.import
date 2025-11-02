@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djtk4ygphjbxl"
+path="res://.godot/imported/ykp_fsharp_7th - 07.wav-f31e997e18c6aa553396a9b5f92b947a.sample"
+
+[deps]
+
+source_file="res://Audio/Voices/Serene/ykp_fsharp_7th - 07.wav"
+dest_files=["res://.godot/imported/ykp_fsharp_7th - 07.wav-f31e997e18c6aa553396a9b5f92b947a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
