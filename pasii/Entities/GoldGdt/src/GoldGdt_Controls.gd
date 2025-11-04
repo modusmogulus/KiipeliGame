@@ -102,16 +102,14 @@ func _gather_mouse_input(event: InputEventMouseMotion) -> void:
 	View._handle_camera_input(mouse_input)
 
 func _gather_input() -> void:
-	if Dialogic.current_timeline != null:
-		move_dir = Vector3.ZERO
-		return #to disable input if theres dialogic shit
+	
 	# Get input strength on the horizontal axes.
 	var ix = Input.get_action_raw_strength("pm_moveright") - Input.get_action_raw_strength("pm_moveleft")
 	var iy = Input.get_action_raw_strength("pm_movebackward") - Input.get_action_raw_strength("pm_moveforward")
 	
 	# Collect input.
 	movement_input = Vector2(ix, iy).normalized()
-	
+		
 	# Gather the horizontal speeds.
 	var speeds := Vector2(Parameters.SIDE_SPEED, Parameters.FORWARD_SPEED)
 	
@@ -121,7 +119,11 @@ func _gather_input() -> void:
 			speeds[i] *= Parameters.MAX_SPEED / speeds[i]
 	
 	# Create vector that stores speed and direction.
-	move_dir = Vector3(movement_input.x * speeds.x, 0, movement_input.y * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)
+	if Dialogic.current_timeline == null:
+		move_dir = Vector3(movement_input.x * speeds.x, 0, movement_input.y * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)
+	else:
+		move_dir = Vector3.ZERO
+		return
 	
 	# Overwrite movement input on wallrun
 	if Body.current_wallrun_state != 0:
@@ -163,6 +165,7 @@ func _act_on_input() -> void:
 	
 	# Check if we are on ground
 	if Body.is_on_floor():
+		
 		if jump_on:
 			# Not running friction on ground if you press jump fast enough allows you to preserve all speed.
 			Move._jump(delta)
