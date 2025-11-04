@@ -19,6 +19,8 @@ class_name GoldGdt_View extends Node
 @export var afterimage : TextureRect
 @export var viewmodel_shader_target_parent : Node3D
 @export var adrenaline_effect : ColorRect
+@export var wind_sfx_player : AudioStreamPlayer3D
+var wind_sfx_vol_original : float
 
 var initial_anim_camera_rot : Vector3
 var original_fov : float = 0.0
@@ -29,6 +31,7 @@ var _frm = 0
 func _ready() -> void:
 	#initial_anim_camera_rot = animation_camera.global_rotation
 	original_fov = camera.fov
+	wind_sfx_vol_original = wind_sfx_player.volume_linear
 	
 func _process(delta: float) -> void:
 	if Body.interactables_in_reach.size() > 0:
@@ -56,8 +59,16 @@ func _physics_process(_delta) -> void:
 	#legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
 	var _ft
 	_ft = camera.fov
-	speedlines.modulate.a = _calc_speed_fx(0.0, 1.0, 4.0)
-	adrenaline_effect.modulate.a = lerpf(adrenaline_effect.modulate.a, _calc_speed_fx(0.0, 1.0, 4.0), 0.1)
+	#speedlines.modulate.a = _calc_speed_fx(0.0, 1.0, 4.0)
+	adrenaline_effect.modulate.a = lerpf(adrenaline_effect.modulate.a, _calc_speed_fx(0.0, 1.0, 12.0), 0.1)
+	if abs(Body.velocity.length()) > 7.0:
+		speedlines.modulate.a = lerpf(speedlines.modulate.a, 1.0, 0.1)
+		wind_sfx_player.volume_linear = lerpf(wind_sfx_player.volume_linear, wind_sfx_vol_original, 0.05)
+		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 1.4, 0.01)
+	else:
+		wind_sfx_player.volume_linear = lerpf(wind_sfx_player.volume_linear, 0.0, 0.15)
+		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 1.0, 0.1)
+		speedlines.modulate.a = lerpf(speedlines.modulate.a, 0.0, 0.15)
 	if _ft < camera.fov:
 		lerpf(camera.fov, _calc_speed_fov(original_fov, 20.0), 0.8)
 	else:
@@ -156,7 +167,7 @@ func _calc_speed_fov(original: float, max_change: float) -> float:
 func _calc_speed_fx(original: float, max_change: float, max_speed : float) -> float:
 	if Body.velocity.length() > max_speed:
 		return 1.0
-	var a = (Body.velocity.length() / max_speed)
+	var a = (abs(Body.velocity.length()) / max_speed)
 	return clampf(a, 0.0, max_change)
 	
 func _calc_g_fx() -> float:

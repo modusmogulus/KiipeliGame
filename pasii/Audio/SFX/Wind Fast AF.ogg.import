@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bwu6y2lu3mh7n"
+path="res://.godot/imported/Wind Fast AF.ogg-9af9a258f82be368ce0aaa91cd4c5cf6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SFX/Wind Fast AF.ogg"
+dest_files=["res://.godot/imported/Wind Fast AF.ogg-9af9a258f82be368ce0aaa91cd4c5cf6.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -12,6 +12,7 @@ class_name GoldGdt_Body extends CharacterBody3D
 @export var current_powerups : Array[enumsKP.powerups] = []
 @export_group("Components")
 @export var Parameters : PlayerParameters
+var diving_unlocked : bool = false
 var original_parameters : PlayerParameters
 @export var View : GoldGdt_View
 var in_dialogue : bool = false
@@ -33,6 +34,7 @@ var current_wallrun_state : enumsKP.wallrun_states
 var current_vault_state : enumsKP.vault_states
 var walljumps_left : int = 0
 
+@export var sfx_roll_boom_player : AudioStreamPlayer3D
 
 
 @export_group("Player View")
@@ -120,8 +122,9 @@ func _ready() -> void:
 
 func request_roll(start_or_stop : bool):
 	if !is_on_floor() && start_or_stop == true:
-		diving = true
-		AnimHandler.diving = diving
+		if diving_unlocked:
+			diving = true
+			AnimHandler.diving = diving
 	if start_or_stop == true && FallDamageRollWindow.is_stopped() == false:
 		roll()
 
@@ -130,6 +133,7 @@ func roll():
 	AnimHandler.rolling = true
 	velocity += (pre_landing_fall_speed*velocity)*0.1
 	pre_landing_fall_speed = 0.0
+	sfx_roll_boom_player.play(0.0)
 	
 func landing(last_fall_speed : float):
 	walljumps_left = 1

@@ -1,4 +1,11 @@
-[gd_resource type="AudioBusLayout" load_steps=14 format=3 uid="uid://bwwuocwv88m6c"]
+[gd_resource type="AudioBusLayout" load_steps=17 format=3 uid="uid://bwwuocwv88m6c"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_dqt2m"]
+resource_name = "Compressor"
+threshold = -37.8
+ratio = 38.3
+release_ms = 884.0
+sidechain = &"ImportantEffects"
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_n8wo2"]
 resource_name = "Compressor"
@@ -17,6 +24,10 @@ threshold = -8.8
 ratio = 14.4
 gain = -2.3
 attack_us = 274.0
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_5t1r3"]
+resource_name = "Compressor"
+sidechain = &"ImportantEffects"
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
 resource_name = "Compressor"
@@ -79,54 +90,75 @@ room_size = 0.1
 damping = 0.61
 spread = 0.18
 
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_cenje"]
+resource_name = "Compressor"
+
 [resource]
-bus/1/name = &"FTReverbMix"
+bus/1/name = &"Premaster"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectCompressor_n8wo2")
-bus/1/effect/0/enabled = false
-bus/2/name = &"Footsteps"
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_dqt2m")
+bus/1/effect/0/enabled = true
+bus/2/name = &"FTReverbMix"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -4.76812
+bus/2/volume_db = 0.0
 bus/2/send = &"Master"
-bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
+bus/2/effect/0/effect = SubResource("AudioEffectCompressor_n8wo2")
 bus/2/effect/0/enabled = false
-bus/2/effect/1/effect = SubResource("AudioEffectCompressor_g28q7")
-bus/2/effect/1/enabled = false
-bus/3/name = &"RTReverb"
+bus/3/name = &"Footsteps"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
-bus/3/volume_db = -2.51026
-bus/3/send = &"FTReverbMix"
-bus/3/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/3/volume_db = -4.76812
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
 bus/3/effect/0/enabled = false
-bus/3/effect/1/effect = SubResource("AudioEffectPitchShift_j3pel")
+bus/3/effect/1/effect = SubResource("AudioEffectCompressor_g28q7")
 bus/3/effect/1/enabled = false
-bus/3/effect/2/effect = SubResource("AudioEffectBandPassFilter_g28q7")
+bus/3/effect/2/effect = SubResource("AudioEffectCompressor_5t1r3")
 bus/3/effect/2/enabled = true
-bus/3/effect/3/effect = SubResource("AudioEffectPitchShift_5t1r3")
-bus/3/effect/3/enabled = false
-bus/4/name = &"RTReverbRefl"
+bus/4/name = &"RTReverb"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -37.0789
+bus/4/volume_db = -2.51026
 bus/4/send = &"FTReverbMix"
-bus/4/effect/0/effect = SubResource("AudioEffectPitchShift_g28q7")
+bus/4/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
 bus/4/effect/0/enabled = false
-bus/4/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
-bus/4/effect/1/enabled = true
-bus/4/effect/2/effect = SubResource("AudioEffectPitchShift_n8wo2")
-bus/4/effect/2/enabled = false
-bus/4/effect/3/effect = SubResource("AudioEffectBandPassFilter_j3pel")
+bus/4/effect/1/effect = SubResource("AudioEffectPitchShift_j3pel")
+bus/4/effect/1/enabled = false
+bus/4/effect/2/effect = SubResource("AudioEffectBandPassFilter_g28q7")
+bus/4/effect/2/enabled = true
+bus/4/effect/3/effect = SubResource("AudioEffectPitchShift_5t1r3")
 bus/4/effect/3/enabled = false
-bus/4/effect/4/effect = SubResource("AudioEffectNotchFilter_j3pel")
-bus/4/effect/4/enabled = false
-bus/4/effect/5/effect = SubResource("AudioEffectReverb_j3pel")
-bus/4/effect/5/enabled = false
+bus/5/name = &"RTReverbRefl"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = -37.0789
+bus/5/send = &"FTReverbMix"
+bus/5/effect/0/effect = SubResource("AudioEffectPitchShift_g28q7")
+bus/5/effect/0/enabled = false
+bus/5/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
+bus/5/effect/1/enabled = true
+bus/5/effect/2/effect = SubResource("AudioEffectPitchShift_n8wo2")
+bus/5/effect/2/enabled = false
+bus/5/effect/3/effect = SubResource("AudioEffectBandPassFilter_j3pel")
+bus/5/effect/3/enabled = false
+bus/5/effect/4/effect = SubResource("AudioEffectNotchFilter_j3pel")
+bus/5/effect/4/enabled = false
+bus/5/effect/5/effect = SubResource("AudioEffectReverb_j3pel")
+bus/5/effect/5/enabled = false
+bus/6/name = &"ImportantEffects"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"Master"
+bus/6/effect/0/effect = SubResource("AudioEffectCompressor_cenje")
+bus/6/effect/0/enabled = true

@@ -66,6 +66,8 @@ NECK_LIMIT_UPPER = 89.0
 NECK_LIMIT_LOWER = -40.0
 ARM_LENGTH = 2.0
 ARM_OFFSET_DEGREES = Vector2(0, 0)
+VAULT_CHECK_DISTANCE = 4.1
+MAX_WALLJUMPS = 1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qxsbm"]
 size = Vector2(2000, 500)

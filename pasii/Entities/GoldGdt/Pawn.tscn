@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=96 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" uid="uid://2j4wuk4aq4mg" path="res://Entities/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://byvkdkldsx5jh" path="res://textures/matcaps/7D6651_F8E3BF_CEA987_E7C29C-64px.png" id="14_1lc20"]
 [ext_resource type="Script" uid="uid://cm6ig2e5yi27d" path="res://Entities/GoldGdt/make_leg_tree_unique_autom.gd" id="14_03y38"]
 [ext_resource type="Texture2D" uid="uid://cgmtwfnf11dni" path="res://textures/matcaps/9AA8B6_313133_4E5055_D7EBF8-64px.png" id="14_26nuu"]
+[ext_resource type="AudioStream" uid="uid://bwu6y2lu3mh7n" path="res://Audio/SFX/Wind Fast AF.ogg" id="16_8hjv0"]
 [ext_resource type="Material" uid="uid://th31dfqf6l3k" path="res://Models/Characters/skin.tres" id="18_kam8o"]
 [ext_resource type="Texture2D" uid="uid://qxfbw6ajma36" path="res://textures/matcaps/mc_roadman4.png" id="20_axyne"]
 [ext_resource type="Texture2D" uid="uid://c0ol8vqpt4m17" path="res://Models/Characters/YOKYOPELI-KADET_jackettex.png" id="20_o5sai"]
@@ -39,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://dav2tqjekob74" path="res://textures/palettes/lospec500-1x.png" id="34_u0g1q"]
 [ext_resource type="Texture2D" uid="uid://l0rn00nyy7lx" path="res://textures/ykp_button_E.png" id="38_3nw4e"]
 [ext_resource type="Texture2D" uid="uid://du1k0ssemky41" path="res://textures/ykp/Textures/yk_healthearts.png" id="39_87vy8"]
+[ext_resource type="AudioStream" uid="uid://c7lyatx2yuv7f" path="res://Audio/SFX/Roll Boom Success.wav" id="40_4cnbn"]
 
 [sub_resource type="Curve" id="Curve_2s55v"]
 _limits = [0.0, 1.0, 0.0, 12.0]
@@ -781,7 +783,7 @@ script = ExtResource("5_27krj")
 hotbar = Array[int]([0, 4, 1, 112, 5])
 AnimHandler = NodePath("../Animation Handler")
 
-[node name="View Control" type="Node" parent="." node_paths=PackedStringArray("Body", "horizontal_view", "vertical_view", "camera_mount", "camera_animation_mount", "camera", "animation_camera", "g_loc_filter", "speedlines", "legs", "zoneout", "afterimage", "viewmodel_shader_target_parent", "adrenaline_effect", "interact_label")]
+[node name="View Control" type="Node" parent="." node_paths=PackedStringArray("Body", "horizontal_view", "vertical_view", "camera_mount", "camera_animation_mount", "camera", "animation_camera", "g_loc_filter", "speedlines", "legs", "zoneout", "afterimage", "viewmodel_shader_target_parent", "adrenaline_effect", "wind_sfx_player", "interact_label")]
 script = ExtResource("5_say2d")
 Parameters = ExtResource("2_m0ukv")
 Body = NodePath("../Body")
@@ -799,6 +801,7 @@ g_loc_curve = SubResource("Curve_2s55v")
 afterimage = NodePath("../VFX/G-Loc/Afterimage")
 viewmodel_shader_target_parent = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D")
 adrenaline_effect = NodePath("../VFX/Adrenaline")
+wind_sfx_player = NodePath("../Body/SFX WindFast")
 interact_label = NodePath("../GameUI/InteractLabel")
 
 [node name="Move Functions" type="Node" parent="." node_paths=PackedStringArray("Body", "anim_tree", "AnimHandler")]
@@ -830,7 +833,7 @@ Beer = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/tolkk
 PaahdinReloadSound = ExtResource("9_44c2v")
 PhoneReloadSound = ExtResource("10_chcr7")
 
-[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "FallDamageRollWindow", "collision_hull", "duck_timer") groups=["Player"]]
+[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "FallDamageRollWindow", "sfx_roll_boom_player", "collision_hull", "duck_timer") groups=["Player"]]
 collision_layer = 2
 wall_min_slide_angle = 0.802851
 floor_constant_speed = true
@@ -849,6 +852,7 @@ UserInput = NodePath("../User Input")
 g_force_damage_curve = SubResource("Curve_kam8o")
 NodesToIgnoreVertical = NodePath("../Display Body/HorizontalOnly")
 FallDamageRollWindow = NodePath("FallDamageRollWindow")
+sfx_roll_boom_player = NodePath("SFX RollBoom")
 collision_hull = NodePath("Collision Hull")
 duck_timer = NodePath("Duck Timer")
 
@@ -893,6 +897,19 @@ parameters/RELOAD_Dense/Add2/add_amount = 1.0
 parameters/RELOAD_Paahdin/Add2/add_amount = 1.0
 parameters/RELOAD_Phone/Add2/add_amount = 0
 script = ExtResource("14_03y38")
+
+[node name="SFX RollBoom" type="AudioStreamPlayer3D" parent="Body"]
+stream = ExtResource("40_4cnbn")
+unit_size = 48.54
+panning_strength = 0.0
+bus = &"ImportantEffects"
+
+[node name="SFX WindFast" type="AudioStreamPlayer3D" parent="Body"]
+stream = ExtResource("16_8hjv0")
+attenuation_model = 3
+autoplay = true
+panning_strength = 0.0
+bus = &"Premaster"
 
 [node name="Display Body" type="Node3D" parent="." node_paths=PackedStringArray("target", "camera_arm", "camera_anchor", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711003, 2.75671e-07)

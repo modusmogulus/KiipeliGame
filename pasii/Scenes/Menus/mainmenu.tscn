@@ -1,34 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://ruoxyli2qntl"]
+[gd_scene load_steps=6 format=3 uid="uid://ruoxyli2qntl"]
 
-[ext_resource type="Theme" uid="uid://n7s8gfkr2uq3" path="res://GUIAndSprites/7dsgui.tres" id="1_flfoa"]
+[ext_resource type="PackedScene" uid="uid://cis27cwh2v6o2" path="res://Models/ykp_corkboard_menu.glb" id="1_flfoa"]
+[ext_resource type="Script" uid="uid://lomasvl0diqw" path="res://Scenes/Menus/mainmenu.gd" id="1_k538w"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="PlaneMesh" id="PlaneMesh_flfoa"]
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 25.0
-grow_horizontal = 2
-theme = ExtResource("1_flfoa")
-text = "VITU URPO PAINU VITTUU"
+[sub_resource type="BoxShape3D" id="BoxShape3D_k538w"]
+size = Vector3(2.00681, 0.54895, 2.0144)
 
-[node name="Button2" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = -111.5
-offset_top = -32.0
-offset_right = 111.5
-offset_bottom = -7.0
-grow_horizontal = 2
-theme = ExtResource("1_flfoa")
-text = "JAJAJA LOLOL "
+[sub_resource type="Environment" id="Environment_lxkb1"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.45
+
+[node name="Mainmenu" type="Node3D"]
+script = ExtResource("1_k538w")
+
+[node name="ykp_corkboard_menu" parent="." instance=ExtResource("1_flfoa")]
+
+[node name="Camera3D" type="Camera3D" parent="ykp_corkboard_menu"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.7456, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_flfoa")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00917053, -0.225525, 0.0196533)
+shape = SubResource("BoxShape3D_k538w")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lxkb1")
+
+[connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

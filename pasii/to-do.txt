@@ -1,0 +1,3 @@
+[] Vaulttaaminen on vitun rasittavaa -> vaultin korjaus
+[] Wallrun jatkuu seinän lpppumisen jälkeen &
+ Wallrun menee joskus seinästä viistoon -> wallrunnin korjaus

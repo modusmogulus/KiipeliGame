@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7lyatx2yuv7f"
+path="res://.godot/imported/Roll Boom Success.wav-b9039268d243affa0d8c7d52c849bcff.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Roll Boom Success.wav"
+dest_files=["res://.godot/imported/Roll Boom Success.wav-b9039268d243affa0d8c7d52c849bcff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
