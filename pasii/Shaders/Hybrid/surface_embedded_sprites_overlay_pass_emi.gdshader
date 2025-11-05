@@ -18,17 +18,17 @@ void fragment() {
 	mat3 sprite_matrix = mat3(vec3(1, 0, 0) * tangent_view_matrix, vec3(0), -VIEW * tangent_view_matrix);
 	sprite_matrix[1] = normalize(cross(sprite_matrix[0], sprite_matrix[2]));
 	sprite_matrix[0] = cross(sprite_matrix[2], sprite_matrix[1]);
-	
+
 	// Apply UV map and parallax
 	vec4 sprite_uv_map = texture(uv_map, UV * uv_tiling + uv_offset);
 	vec2 sprite_uv = sprite_uv_map.xy;
 	sprite_uv -= sprite_matrix[2].xy / sprite_matrix[2].z * depth;
-	
+
 	// Rotate UV coordinates
 	sprite_uv -= 0.5;
 	vec2 transformed_uv = vec2(dot(sprite_matrix[0].xy, sprite_uv), dot(sprite_matrix[1].xy, sprite_uv));
 	transformed_uv += 0.5;
-	
+
 	vec4 surface_embedded_sprite = texture(sprite, transformed_uv);
 	float sprite_mask = sprite_uv_map.a * surface_embedded_sprite.a;
 	EMISSION = texture(albedo, UV * tiling + offset).rgb;

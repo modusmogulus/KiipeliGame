@@ -24,6 +24,9 @@ func request_vault(wishdir) -> enumsKP.vault_states:
 	var result = space_state.intersect_ray(query)
 	var result2 = space_state.intersect_ray(query2)
 	if result.size() > 1 && result2.size() < 1:
+		if Body.vault_cooldown_timer > 0:
+			return enumsKP.vault_states.NONE
+		Body.vault_cooldown_timer = Body.vault_cooldown_duration
 		_vault(get_process_delta_time())
 		print("vaulted")
 		return enumsKP.vault_states.INITIAL_VAULT
@@ -186,11 +189,11 @@ func request_walljump(delta):
 		Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
 		Body.walljumps_left -= 1
 func _vault(delta: float) -> void:
-	Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
+	Body.velocity.y = sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 0.5))
 	Body.current_vault_state = enumsKP.vault_states.NONE
 	AnimHandler.vaultstate = "VAULTING" #This is set to false when player velocity y vector is negative (in Body handler)
 	Body._duck(true)
-	Body.global_position.y += 0.6
+	Body.global_position.y += 1.6
 	Body.velocity_before_vault = Body.velocity
 # Crops horizontal velocity down to a defined maximum threshold.
 func _bunnyhop_capmode_threshold() -> void:

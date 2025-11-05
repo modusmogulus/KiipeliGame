@@ -33,9 +33,10 @@ var groundnormal = Vector3.UP
 var current_wallrun_state : enumsKP.wallrun_states
 var current_vault_state : enumsKP.vault_states
 var walljumps_left : int = 0
-
+var vault_cooldown_duration = 0.1
+var vault_cooldown_timer = 0.0
 @export var sfx_roll_boom_player : AudioStreamPlayer3D
-
+@export var sfx_rollable_landing : AudioStreamPlayer3D
 
 @export_group("Player View")
 var offset : float = 0.711 # Current offset from player's origin.
@@ -144,7 +145,7 @@ func landing(last_fall_speed : float):
 	pre_landing_fall_speed = last_fall_speed
 	HpHandler.threaten_with_damage(calculate_fall_damage(pre_landing_fall_speed))
 	FallDamageRollWindow.start()
-
+	sfx_rollable_landing.play()
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
 	if Dialogic.current_timeline != null:
@@ -153,6 +154,8 @@ func _physics_process(delta) -> void:
 		in_dialogue = false
 	AnimHandler.in_dialogue = in_dialogue
 	View.horizontal_view.transform.origin.y = offset
+	if vault_cooldown_timer > 0:
+		vault_cooldown_timer -= delta
 	#AnimHandler.is_moving = false
 	var spacestate = get_world_3d().direct_space_state
 	var queryparams = PhysicsRayQueryParameters3D.create(global_position, global_position + Vector3.DOWN*10)

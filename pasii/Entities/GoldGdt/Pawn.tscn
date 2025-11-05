@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=97 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" uid="uid://2j4wuk4aq4mg" path="res://Entities/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://cm6ig2e5yi27d" path="res://Entities/GoldGdt/make_leg_tree_unique_autom.gd" id="14_03y38"]
 [ext_resource type="Texture2D" uid="uid://cgmtwfnf11dni" path="res://textures/matcaps/9AA8B6_313133_4E5055_D7EBF8-64px.png" id="14_26nuu"]
 [ext_resource type="AudioStream" uid="uid://bwu6y2lu3mh7n" path="res://Audio/SFX/Wind Fast AF.ogg" id="16_8hjv0"]
+[ext_resource type="AudioStream" uid="uid://jfdmypa4vfpy" path="res://Audio/SFX/Roll Landing.wav" id="16_kwefg"]
 [ext_resource type="Material" uid="uid://th31dfqf6l3k" path="res://Models/Characters/skin.tres" id="18_kam8o"]
 [ext_resource type="Texture2D" uid="uid://qxfbw6ajma36" path="res://textures/matcaps/mc_roadman4.png" id="20_axyne"]
 [ext_resource type="Texture2D" uid="uid://c0ol8vqpt4m17" path="res://Models/Characters/YOKYOPELI-KADET_jackettex.png" id="20_o5sai"]
@@ -833,7 +834,7 @@ Beer = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/tolkk
 PaahdinReloadSound = ExtResource("9_44c2v")
 PhoneReloadSound = ExtResource("10_chcr7")
 
-[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "FallDamageRollWindow", "sfx_roll_boom_player", "collision_hull", "duck_timer") groups=["Player"]]
+[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "FallDamageRollWindow", "sfx_roll_boom_player", "sfx_rollable_landing", "collision_hull", "duck_timer") groups=["Player"]]
 collision_layer = 2
 wall_min_slide_angle = 0.802851
 floor_constant_speed = true
@@ -853,6 +854,7 @@ g_force_damage_curve = SubResource("Curve_kam8o")
 NodesToIgnoreVertical = NodePath("../Display Body/HorizontalOnly")
 FallDamageRollWindow = NodePath("FallDamageRollWindow")
 sfx_roll_boom_player = NodePath("SFX RollBoom")
+sfx_rollable_landing = NodePath("SFX RollableLanding")
 collision_hull = NodePath("Collision Hull")
 duck_timer = NodePath("Duck Timer")
 
@@ -900,6 +902,15 @@ script = ExtResource("14_03y38")
 
 [node name="SFX RollBoom" type="AudioStreamPlayer3D" parent="Body"]
 stream = ExtResource("40_4cnbn")
+attenuation_model = 3
+unit_size = 48.54
+panning_strength = 0.0
+bus = &"ImportantEffects"
+
+[node name="SFX RollableLanding" type="AudioStreamPlayer3D" parent="Body"]
+stream = ExtResource("16_kwefg")
+attenuation_model = 3
+volume_db = -16.807
 unit_size = 48.54
 panning_strength = 0.0
 bus = &"ImportantEffects"
