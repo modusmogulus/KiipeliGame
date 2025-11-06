@@ -132,7 +132,8 @@ func request_roll(start_or_stop : bool):
 			diving = true
 			AnimHandler.diving = diving
 	if start_or_stop == true && FallDamageRollWindow.is_stopped() == false:
-		roll()
+		if previous_fall_speed > 5.0:
+			roll()
 
 func roll():
 	HpHandler.remove_damage_threat()

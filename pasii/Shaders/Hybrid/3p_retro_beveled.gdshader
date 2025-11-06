@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, vertex_lighting;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
 uniform vec4 albedo_ceiling : source_color;
 uniform sampler2D texture_albedo_ceiling : source_color, filter_linear, repeat_enable;
@@ -8,7 +8,7 @@ uniform float metalness : hint_range(0.0, 1.0);
 uniform vec4 albedo_wall : source_color;
 uniform sampler2D texture_albedo_wall : source_color, filter_linear, repeat_enable;
 uniform sampler2D bevel_normal : hint_normal, filter_linear;
-
+uniform sampler2D texture_normal : hint_normal, filter_linear, repeat_enable;
 uniform sampler2D texture_bevel_overlay : source_color;
 uniform vec4 albedo_floor : source_color;
 uniform sampler2D texture_albedo_floor : hint_default_transparent, filter_linear, repeat_enable;
@@ -24,7 +24,7 @@ varying vec3 uv1_power_normal;
 
 uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
-
+uniform float normal_bevel_blend;
 varying vec3 vertex_normal;
 
 uniform bool uv_global = true;
@@ -123,10 +123,12 @@ void fragment() {
 	}
 
 	vec4 albedo_tex_wall = vec4(0.0);
+	vec3 normal_tex_wall = vec3(0.0);
 	if(use_uv_on_wall){
 		albedo_tex_wall = texture(texture_albedo_wall,UV * uv1_scale.xy + uv1_offset.xy);
 	}else{
 		albedo_tex_wall = triplanar_texture(texture_albedo_wall, uv1_power_normal, uv1_triplanar_pos);
+		normal_tex_wall = triplanar_texture(texture_normal, uv1_power_normal, uv1_triplanar_pos).xyz;
 	}
 
 	vec4 albedo_tex_ceiling = vec4(0.0);
@@ -143,7 +145,7 @@ void fragment() {
 	vec4 albedo_tex =  mix(mix(albedo_tex_wall, albedo_tex_floor, blend_factor_floor),albedo_tex_ceiling,blend_factor_cealing);
 	vec4 albedo_color = mix(mix(albedo_wall, albedo_floor, blend_factor_floor),albedo_ceiling,blend_factor_cealing);
 
-	NORMAL_MAP = bevel_normal_tex;
+	NORMAL_MAP = mix(bevel_normal_tex, normal_tex_wall, normal_bevel_blend);
 	ALBEDO = mix(albedo_color.rgb * albedo_tex.rgb, bevel_overlay_tex.rgb, bevel_overlay_tex.a);
 
 	METALLIC = metalness;

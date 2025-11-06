@@ -1,8 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bqlpuc1wh6y6n"]
+[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://bqlpuc1wh6y6n"]
 
 [ext_resource type="Shader" uid="uid://c85hh6ie50dkr" path="res://Shaders/Hybrid/3p_retro_beveled.gdshader" id="1_ejrer"]
 [ext_resource type="Texture2D" uid="uid://bbq2lk4lb0r13" path="res://textures/beveler3_normals.png" id="2_l7ove"]
 [ext_resource type="Texture2D" uid="uid://de4jx2xrdta1w" path="res://textures/ykp/Textures/prototyyppi-teras2.png" id="3_d1kc8"]
+[ext_resource type="Texture2D" uid="uid://cdbv3l8hqwf2v" path="res://textures/ykp/Textures/prototyyppi-paperi1.png" id="4_ul43j"]
+[ext_resource type="Texture2D" uid="uid://cvgi8dkck1ly3" path="res://textures/ykp/Textures/prototyyppi-polypropeeni2.png" id="5_h5vjl"]
+[ext_resource type="Texture2D" uid="uid://d1wkfqdaue60f" path="res://Models/Blender/textures/ailuseina_normal.png" id="6_d1kc8"]
 
 [sub_resource type="Gradient" id="Gradient_ljehw"]
 colors = PackedColorArray(1, 1, 1, 0.313726, 1, 1, 1, 0.145098)
@@ -15,19 +18,21 @@ render_priority = 0
 shader = ExtResource("1_ejrer")
 shader_parameter/albedo_ceiling = Color(0, 0.703383, 0.968658, 1)
 shader_parameter/texture_albedo_ceiling = ExtResource("3_d1kc8")
-shader_parameter/roughness = 0.03
+shader_parameter/roughness = 0.655
 shader_parameter/metalness = 0.0
 shader_parameter/albedo_wall = Color(0.93408, 0.93408, 0.93408, 1)
-shader_parameter/texture_albedo_wall = ExtResource("3_d1kc8")
+shader_parameter/texture_albedo_wall = ExtResource("5_h5vjl")
 shader_parameter/bevel_normal = ExtResource("2_l7ove")
+shader_parameter/texture_normal = ExtResource("6_d1kc8")
 shader_parameter/texture_bevel_overlay = SubResource("GradientTexture1D_ejrer")
 shader_parameter/albedo_floor = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo_floor = ExtResource("3_d1kc8")
+shader_parameter/texture_albedo_floor = ExtResource("4_ul43j")
 shader_parameter/ground_threshold = 0.25
 shader_parameter/blend_smoothness = 0.0
 shader_parameter/uv1_blend_sharpness = 8.654
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/normal_bevel_blend = 1.275
 shader_parameter/uv_global = true
 shader_parameter/use_uv_on_wall = false
 shader_parameter/use_uv_on_floor = false
