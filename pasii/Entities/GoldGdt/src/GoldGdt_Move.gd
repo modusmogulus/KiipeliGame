@@ -177,17 +177,36 @@ func _jump(delta: float) -> void:
 			_bunnyhop_capmode_drop()
 
 func request_walljump(delta):
+	if request_wallrun() != enumsKP.wallrun_states.NONE:
+		return
+	#for walljump
 	var query = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE)
 	var query2 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE)
+	#for wallkicks
+	var query3 = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * 0.1, Body.global_position + Body.View.horizontal_view.global_basis.z * Parameters.VAULT_CHECK_DISTANCE * 2)
+	#var query4 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * 0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * Parameters.VAULT_CHECK_DISTANCE)
 	
 	query.exclude = [Body.collision_hull]
 	query2.exclude = [Body.collision_hull]
+	query3.exclude = [Body.collision_hull]
+	#query4.exclude = [Body.collision_hull]
 	var space_state = Body.get_world_3d().direct_space_state
 	var result = space_state.intersect_ray(query)
 	var result2 = space_state.intersect_ray(query2) #result 2 to make it not interfecre with vault
+	var result3 = space_state.intersect_ray(query3)
+	#var result4 = space_state.intersect_ray(query4)
+	#walljump
 	if result.size() > 1 && result2.size() > 1:
-		Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
-		Body.walljumps_left -= 1
+		if Body.walljumps_left > 0:
+			Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
+			Body.walljumps_left -= 1
+		
+	#wallkick
+	if result3.size() > 1:
+		if Body.wallkicks_left > 0:
+			Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
+			Body.velocity +=  Body.View.horizontal_view.global_basis.z * -3.2
+			Body.wallkicks_left -= 1
 func _vault(delta: float) -> void:
 	Body.velocity.y = sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 0.5))
 	Body.current_vault_state = enumsKP.vault_states.NONE

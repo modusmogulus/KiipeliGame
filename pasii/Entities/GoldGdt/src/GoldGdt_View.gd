@@ -20,6 +20,10 @@ class_name GoldGdt_View extends Node
 @export var viewmodel_shader_target_parent : Node3D
 @export var adrenaline_effect : ColorRect
 @export var wind_sfx_player : AudioStreamPlayer3D
+@export var damage_flash_node : Control
+@export var pre_damage_flash_node : Control
+@export var pre_damage_flash_col_node : Control
+
 var wind_sfx_vol_original : float
 
 var initial_anim_camera_rot : Vector3
@@ -61,14 +65,17 @@ func _physics_process(_delta) -> void:
 	_ft = camera.fov
 	#speedlines.modulate.a = _calc_speed_fx(0.0, 1.0, 4.0)
 	adrenaline_effect.modulate.a = lerpf(adrenaline_effect.modulate.a, _calc_speed_fx(0.0, 1.0, 12.0), 0.1)
+	var _currentamount = speedlines.material.get("shader_parameter/blur_power")
 	if abs(Body.velocity.length()) > 7.0:
-		speedlines.modulate.a = lerpf(speedlines.modulate.a, 1.0, 0.1)
+		#speedlines.modulate.a = lerpf(speedlines.modulate.a, 1.0, 0.1)
+		speedlines.material.set("shader_parameter/blur_power", lerpf(_currentamount, 0.006, 0.1))
 		wind_sfx_player.volume_linear = lerpf(wind_sfx_player.volume_linear, wind_sfx_vol_original, 0.05)
 		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 1.4, 0.01)
 	else:
 		wind_sfx_player.volume_linear = lerpf(wind_sfx_player.volume_linear, 0.0, 0.15)
 		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 1.0, 0.1)
-		speedlines.modulate.a = lerpf(speedlines.modulate.a, 0.0, 0.15)
+		#speedlines.modulate.a = lerpf(speedlines.modulate.a, 0.0, 0.15)
+		speedlines.material.set("shader_parameter/blur_power", lerpf(_currentamount, 0.0, 0.1))
 	if _ft < camera.fov:
 		lerpf(camera.fov, _calc_speed_fov(original_fov, 20.0), 0.8)
 	else:
@@ -100,6 +107,13 @@ func _physics_process(_delta) -> void:
 	#camera_animation_mount.rotation = camera_mount.rotation
 	animation_camera.rotation = camera.rotation + Vector3(0.0, deg_to_rad(180), 0.0)
 	
+	pre_damage_flash_col_node.modulate.a = clampf(pre_damage_flash_col_node.modulate.a * 0.95, 0.0, 1.0)
+	damage_flash_node.modulate.a = clampf(damage_flash_node.modulate.a * 0.95, 0.0, 1.0)
+	_currentamount = pre_damage_flash_node.material.get("shader_parameter/blur_power")
+	pre_damage_flash_node.material.set("shader_parameter/blur_power", clampf(_currentamount*0.95, 0.0, 1.0))
+	if _currentamount < 0.001:
+		pre_damage_flash_node.visible = false
+	else: pre_damage_flash_node.visible = true
 	#animation_camera.rotation = camera.rotation + initial_anim_camera_rot
 func _handle_camera_input(look_input: Vector2) -> void:
 	horizontal_view.rotate_object_local(Vector3.DOWN, look_input.x)
@@ -186,3 +200,11 @@ func _calc_g_fx() -> float:
 	var gs = Body.g_forces
 	var fx_strength = g_loc_curve.sample_baked(gs)
 	return fx_strength
+
+func do_damage_flash_thing(damage : float):
+	if damage < 0.1: return
+	damage_flash_node.modulate.a = damage
+func do_pre_damage_flash_thing(damage : float):
+	if damage < 0.1: return
+	pre_damage_flash_node.material.set("shader_parameter/blur_power", 0.006)
+	pre_damage_flash_col_node.modulate.a = 0.5

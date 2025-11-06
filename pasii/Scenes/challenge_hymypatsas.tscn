@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://qxw1i1m5a766"]
+[gd_scene load_steps=17 format=3 uid="uid://qxw1i1m5a766"]
 
 [ext_resource type="Material" uid="uid://bqlpuc1wh6y6n" path="res://Materials/3p_prototype_cyan.tres" id="1_hx2ke"]
 [ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="2_cjtk7"]
@@ -6,7 +6,8 @@
 [ext_resource type="Material" uid="uid://mmu5repc2oyl" path="res://Materials/SES_psyche_lumi.tres" id="4_s1ab2"]
 [ext_resource type="Script" uid="uid://dcgimy2fx7rok" path="res://Entities/play_animation_on_start.gd" id="5_1bh7o"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="6_s8ijs"]
-[ext_resource type="Texture2D" uid="uid://d4k4iq0o6uedu" path="res://textures/yk_pulkka_liukuri.png" id="8_rg35p"]
+[ext_resource type="Texture2D" uid="uid://cmo6dk51mie5r" path="res://textures/texturebloat/ykp_psychepattern04.png" id="8_askdh"]
+[ext_resource type="Texture2D" uid="uid://trxf1mk1u3fd" path="res://textures/texturebloat/ykp_transparent_acidsmiley_uv_tresh.png" id="9_d66bx"]
 [ext_resource type="Shader" uid="uid://yqiw6k1721cs" path="res://Shaders/Hybrid/surface_embedded_sprites_opaq.gdshader" id="12_ekyf0"]
 [ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="14_wukyu"]
 
@@ -56,35 +57,22 @@ ssr_enabled = true
 
 [sub_resource type="TorusMesh" id="TorusMesh_rg35p"]
 flip_faces = true
-inner_radius = 65.008
-outer_radius = 0.117
+inner_radius = 525.065
+outer_radius = 2.185
 rings = 4
 ring_segments = 4
-
-[sub_resource type="Gradient" id="Gradient_17r4v"]
-interpolation_mode = 1
-interpolation_color_space = 1
-offsets = PackedFloat32Array(0.0792079, 0.148515, 0.244068, 0.38983, 0.610169, 0.80678, 0.940594)
-colors = PackedColorArray(0.860313, 0.577479, 1, 1, 0.0666666, 0, 1, 1, 0, 0.716667, 1, 1, 0, 1, 0.0999999, 1, 1, 0.933333, 0, 1, 0.99267, 0.423776, 0, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fut6v"]
-gradient = SubResource("Gradient_17r4v")
-width = 32
-height = 32
-fill = 2
-fill_from = Vector2(0.495726, 0.512821)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fut6v"]
 render_priority = 0
 shader = ExtResource("12_ekyf0")
-shader_parameter/albedo = SubResource("GradientTexture2D_fut6v")
-shader_parameter/tiling = Vector2(14, 2.825)
-shader_parameter/offset = Vector2(0, 0)
+shader_parameter/albedo = ExtResource("8_askdh")
+shader_parameter/tiling = Vector2(40, 40)
+shader_parameter/offset = Vector2(2.1, 0)
 shader_parameter/uv_map = ExtResource("14_wukyu")
-shader_parameter/sprite = ExtResource("8_rg35p")
-shader_parameter/uv_tiling = Vector2(0.15, 0.08)
-shader_parameter/uv_offset = Vector2(0.24, -0.008)
-shader_parameter/depth = -2.215
+shader_parameter/sprite = ExtResource("9_d66bx")
+shader_parameter/uv_tiling = Vector2(4, 4)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/depth = 0.348
 
 [node name="Node3D" type="Node3D"]
 
@@ -182,6 +170,6 @@ transform = Transform3D(1, 0, 0, 0, 0.025985, 0.999662, 0, -0.999662, 0.025985, 
 light_energy = 0.505
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
 mesh = SubResource("TorusMesh_rg35p")
 material = SubResource("ShaderMaterial_fut6v")

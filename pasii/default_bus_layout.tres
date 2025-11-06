@@ -9,9 +9,10 @@ feedback = 0.3
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
 resource_name = "Reverb"
 predelay_msec = 20.0
-predelay_feedback = 0.22
+predelay_feedback = 0.98
 room_size = 0.01
-damping = 0.9
+damping = 1.0
+hipass = 0.53
 dry = 0.0
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_g28q7"]

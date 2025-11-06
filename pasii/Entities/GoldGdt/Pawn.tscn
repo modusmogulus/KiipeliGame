@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=101 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" uid="uid://2j4wuk4aq4mg" path="res://Entities/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -35,13 +35,13 @@
 [ext_resource type="Shader" uid="uid://c3nr6m68st5eh" path="res://Shaders/Hybrid/Zoomblur.gdshader" id="28_8o6ai"]
 [ext_resource type="PackedScene" uid="uid://cx8lyfe42b3y7" path="res://Entities/GoldGdt/KP_FootstepAudioPlayer.tscn" id="29_on1w3"]
 [ext_resource type="Shader" uid="uid://bfrhloeogfum8" path="res://Shaders/colorblend.gdshader" id="31_on1w3"]
-[ext_resource type="Texture2D" uid="uid://c6nk7ic50eq8l" path="res://textures/animatedimages/Näyttökuva 2025-07-04 175336.png" id="32_on1w3"]
 [ext_resource type="Shader" uid="uid://bppmmd88vrxwj" path="res://Shaders/Hybrid/rtx.gdshader" id="33_521hp"]
 [ext_resource type="Shader" uid="uid://bvrlj878c8g5p" path="res://Shaders/Hybrid/palette_dither.gdshader" id="33_r4n6a"]
 [ext_resource type="Texture2D" uid="uid://dav2tqjekob74" path="res://textures/palettes/lospec500-1x.png" id="34_u0g1q"]
 [ext_resource type="Texture2D" uid="uid://l0rn00nyy7lx" path="res://textures/ykp_button_E.png" id="38_3nw4e"]
 [ext_resource type="Texture2D" uid="uid://du1k0ssemky41" path="res://textures/ykp/Textures/yk_healthearts.png" id="39_87vy8"]
 [ext_resource type="AudioStream" uid="uid://c7lyatx2yuv7f" path="res://Audio/SFX/Roll Boom Success.wav" id="40_4cnbn"]
+[ext_resource type="Texture2D" uid="uid://cmwepmxjpphy3" path="res://textures/texturebloat/ykp_sussiunakkoo.png" id="41_fhq0g"]
 
 [sub_resource type="Curve" id="Curve_2s55v"]
 _limits = [0.0, 1.0, 0.0, 12.0]
@@ -50,12 +50,12 @@ point_count = 4
 
 [sub_resource type="Curve" id="Curve_kam8o"]
 _limits = [0.0, 1.0, 0.0, 200.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(68.1564, 0), 0.0, 0.0, 0, 0, Vector2(200, 0.303371), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(139.71, 0), 0.0, 0.0, 0, 0, Vector2(200, 0.303371), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_kwefg"]
 _limits = [0.0, 100.0, 0.0, 20.0]
-_data = [Vector2(0, 0), 0.0, 0.122673, 0, 0, Vector2(1.73913, 0), 0.0, 0.0, 0, 0, Vector2(5.97101, 0), 0.0, 0.0, 0, 0, Vector2(6.6087, 13.73), 0.0, 0.0, 0, 0, Vector2(7.53623, 14.4737), 0.337603, 0.337603, 0, 0, Vector2(9.15942, 47.9405), 0.0, 0.0, 0, 0, Vector2(12.9275, 100), 0.0, 0.0, 0, 0, Vector2(20, 100), -0.00557942, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.122673, 0, 0, Vector2(1.73913, 0), 0.0, 0.0, 0, 0, Vector2(6.66667, 0), 0.0, 0.0, 0, 0, Vector2(6.84058, 13.73), 0.0, 0.0, 0, 0, Vector2(7.53623, 14.4737), 0.337603, 0.337603, 0, 0, Vector2(9.15942, 47.9405), 0.0, 0.0, 0, 0, Vector2(12.9275, 100), 0.0, 0.0, 0, 0, Vector2(20, 100), -0.00557942, 0.0, 0, 0]
 point_count = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
@@ -261,6 +261,12 @@ shader_parameter/resolution_scale = 1
 shader_parameter/quantization_level = 16
 shader_parameter/alpha = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhq0g"]
+shader = ExtResource("28_8o6ai")
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_power = 0.006
+shader_parameter/sampling_count = 32
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_on1w3"]
 shader = ExtResource("28_4yj34")
 shader_parameter/blur_sharp = 1.0
@@ -273,7 +279,7 @@ shader_parameter/blur_power = 0.098
 shader_parameter/sampling_count = 4
 
 [sub_resource type="Gradient" id="Gradient_on1w3"]
-offsets = PackedFloat32Array(0, 0.424, 1)
+offsets = PackedFloat32Array(0, 0.718213, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.485703, 0.485704, 0.485703, 1, 0.485703, 0.485704, 0.485703, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_r4n6a"]
@@ -288,9 +294,17 @@ seamless_blend_skirt = 0.345
 color_ramp = SubResource("Gradient_on1w3")
 noise = SubResource("FastNoiseLite_r4n6a")
 
+[sub_resource type="Gradient" id="Gradient_kwefg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fhq0g"]
+gradient = SubResource("Gradient_kwefg")
+fill = 1
+fill_from = Vector2(0.508547, 0.5)
+fill_to = Vector2(0.517094, 0.380342)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_521hp"]
 shader = ExtResource("31_on1w3")
-shader_parameter/vignette = ExtResource("32_on1w3")
+shader_parameter/vignette = SubResource("GradientTexture2D_fhq0g")
 shader_parameter/uvnoise = SubResource("NoiseTexture2D_u0g1q")
 
 [sub_resource type="Animation" id="Animation_r4n6a"]
@@ -789,7 +803,7 @@ script = ExtResource("5_27krj")
 hotbar = Array[int]([0, 4, 1, 112, 5])
 AnimHandler = NodePath("../Animation Handler")
 
-[node name="View Control" type="Node" parent="." node_paths=PackedStringArray("Body", "horizontal_view", "vertical_view", "camera_mount", "camera_animation_mount", "camera", "animation_camera", "g_loc_filter", "speedlines", "legs", "zoneout", "afterimage", "viewmodel_shader_target_parent", "adrenaline_effect", "wind_sfx_player", "interact_label")]
+[node name="View Control" type="Node" parent="." node_paths=PackedStringArray("Body", "horizontal_view", "vertical_view", "camera_mount", "camera_animation_mount", "camera", "animation_camera", "g_loc_filter", "speedlines", "legs", "zoneout", "afterimage", "viewmodel_shader_target_parent", "adrenaline_effect", "wind_sfx_player", "damage_flash_node", "pre_damage_flash_node", "pre_damage_flash_col_node", "interact_label")]
 script = ExtResource("5_say2d")
 Parameters = ExtResource("2_m0ukv")
 Body = NodePath("../Body")
@@ -808,6 +822,9 @@ afterimage = NodePath("../VFX/G-Loc/Afterimage")
 viewmodel_shader_target_parent = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/Skeleton3D")
 adrenaline_effect = NodePath("../VFX/Adrenaline")
 wind_sfx_player = NodePath("../Body/SFX WindFast")
+damage_flash_node = NodePath("../VFX/DamageFlash")
+pre_damage_flash_node = NodePath("../VFX/PreDamageFlash")
+pre_damage_flash_col_node = NodePath("../VFX/PreDamageFlashCol")
 interact_label = NodePath("../GameUI/InteractLabel")
 
 [node name="Move Functions" type="Node" parent="." node_paths=PackedStringArray("Body", "anim_tree", "AnimHandler")]
@@ -817,11 +834,12 @@ Body = NodePath("../Body")
 anim_tree = NodePath("../Body/AnimationTreeForHands")
 AnimHandler = NodePath("../Animation Handler")
 
-[node name="Hp Handler" type="Node" parent="." node_paths=PackedStringArray("hp_hearts")]
+[node name="Hp Handler" type="Node" parent="." node_paths=PackedStringArray("hp_hearts", "View")]
 script = ExtResource("8_on1w3")
 hp_hearts = [NodePath("../GameUI/HpHearts/HpHearts1/healthheart"), NodePath("../GameUI/HpHearts/HpHearts2/healthheart"), NodePath("../GameUI/HpHearts/HpHearts3/healthheart"), NodePath("../GameUI/HpHearts/HpHearts4/healthheart"), NodePath("../GameUI/HpHearts/HpHearts5/healthheart")]
 frame_empty_heart = 5
 frame_damage_pending_heart = 9
+View = NodePath("../View Control")
 
 [node name="Animation Handler" type="Node" parent="." node_paths=PackedStringArray("powerup_ui_anim", "InvHandler", "SyncedAnimTrees", "FootstepPlayer", "AnimPlayer", "Dense", "Phone", "Liukuri", "Paahdin", "AnimationSound", "Beer")]
 script = ExtResource("7_3k6kj")
@@ -5068,7 +5086,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Speedlines2Normal" type="ColorRect" parent="VFX"]
-z_index = -15
+z_index = 2
 material = SubResource("ShaderMaterial_03y38")
 layout_mode = 1
 anchors_preset = -1
@@ -5132,6 +5150,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DamageFlash" type="TextureRect" parent="VFX"]
+modulate = Color(1, 0.352, 0.28, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("41_fhq0g")
+
+[node name="PreDamageFlash" type="ColorRect" parent="VFX"]
+modulate = Color(1, 0.24, 0.24, 1)
+self_modulate = Color(0.66, 0, 0, 1)
+z_index = 16
+material = SubResource("ShaderMaterial_fhq0g")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.059375
+anchor_right = 1.07344
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PreDamageFlashCol" type="ColorRect" parent="VFX"]
+modulate = Color(1, 0.8, 0, 1)
+z_index = 17
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.059375
+anchor_right = 1.07344
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="G-Loc" type="ColorRect" parent="VFX"]
 self_modulate = Color(1, 1, 1, 0.509804)
 material = SubResource("ShaderMaterial_on1w3")
@@ -5154,6 +5208,8 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Afterimage" type="TextureRect" parent="VFX/G-Loc"]
+modulate = Color(1, 1, 1, 0.584314)
+z_index = 15
 material = SubResource("ShaderMaterial_521hp")
 layout_mode = 1
 anchors_preset = 15

@@ -33,7 +33,8 @@ var diving = false #for dive roll
 var groundnormal = Vector3.UP
 var current_wallrun_state : enumsKP.wallrun_states
 var current_vault_state : enumsKP.vault_states
-var walljumps_left : int = 0
+var walljumps_left : int = 1
+var wallkicks_left : int = 1
 var vault_cooldown_duration = 0.1
 var vault_cooldown_timer = 0.0
 @export var sfx_roll_boom_player : AudioStreamPlayer3D
@@ -133,12 +134,13 @@ func request_roll(start_or_stop : bool):
 func roll():
 	HpHandler.remove_damage_threat()
 	AnimHandler.rolling = true
-	velocity += (pre_landing_fall_speed*velocity)*0.1
+	#velocity += (pre_landing_fall_speed*velocity)*0.1
 	pre_landing_fall_speed = 0.0
 	sfx_roll_boom_player.play(0.0)
 	
 func landing(last_fall_speed : float):
 	walljumps_left = 1
+	wallkicks_left = 1
 	AnimHandler.grounded = true
 	diving = false
 	AnimHandler.diving = diving

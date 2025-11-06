@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1yywi4my6oym"
-path.s3tc="res://.godot/imported/ykp_perfect2.png-eeae1427d818dfdefc8d2fde1dbc3957.s3tc.ctex"
+uid="uid://bouhief3lvlce"
+path.s3tc="res://.godot/imported/ykp_psychepattern05.png-5441d1a3e91950aa60035fa786b3639a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/texturebloat/ykp_perfect2.png"
-dest_files=["res://.godot/imported/ykp_perfect2.png-eeae1427d818dfdefc8d2fde1dbc3957.s3tc.ctex"]
+source_file="res://textures/texturebloat/ykp_psychepattern05.png"
+dest_files=["res://.godot/imported/ykp_psychepattern05.png-5441d1a3e91950aa60035fa786b3639a.s3tc.ctex"]
 
 [params]
 

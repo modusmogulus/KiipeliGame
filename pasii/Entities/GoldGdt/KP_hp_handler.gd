@@ -8,6 +8,7 @@ var damage_pending = 0.0
 @export var frame_empty_heart : int
 @export var frame_healthy_heart : int
 @export var frame_damage_pending_heart : int
+@export var View : GoldGdt_View
 func _process(delta: float) -> void:
 	for i in hp_hearts.size():
 		var heart_section = maxhp / hp_hearts.size() * i-1
@@ -27,10 +28,10 @@ func take_damage(damage : float):
 	hp -= damage
 	damage_pending -= damage
 	damage_pending = clampf(damage, 0.0, 0.0)
-
+	View.do_damage_flash_thing(damage)
 func threaten_with_damage(damage : float):
 	damage_pending += damage
-	
+	View.do_pre_damage_flash_thing(damage)
 
 func remove_damage_threat():
 	damage_pending = 0
