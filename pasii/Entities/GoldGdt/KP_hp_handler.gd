@@ -3,7 +3,7 @@ var hp = 100.0
 var maxhp = 100.0
 var damage_pending = 0.0
 @export var godmode = false
-@export var regen = 0.1
+@export var regen_per_second = 10.0
 @export var hp_hearts : Array[AnimatedSprite2D]
 @export var frame_empty_heart : int
 @export var frame_healthy_heart : int
@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 				hp_hearts[i].frame = frame_damage_pending_heart
 			else:
 				hp_hearts[i].frame = frame_healthy_heart
-	hp += regen*delta
+	hp += regen_per_second*delta
 	hp = clampf(hp, 0.0, maxhp)
 	if hp == 0 && !godmode:
 		get_parent().die()

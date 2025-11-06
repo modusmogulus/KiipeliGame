@@ -1,10 +1,30 @@
-[gd_resource type="AudioBusLayout" load_steps=17 format=3 uid="uid://bwwuocwv88m6c"]
+[gd_resource type="AudioBusLayout" load_steps=20 format=3 uid="uid://bwwuocwv88m6c"]
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_j3pel"]
+resource_name = "Phaser"
+range_min_hz = 1128.96
+rate_hz = 0.01
+feedback = 0.3
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
+resource_name = "Reverb"
+predelay_msec = 20.0
+predelay_feedback = 0.22
+room_size = 0.01
+damping = 0.9
+dry = 0.0
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_g28q7"]
+resource_name = "LowPassFilter"
+cutoff_hz = 20500.0
+resonance = 1.0
+db = 3
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_dqt2m"]
 resource_name = "Compressor"
 threshold = -37.8
 ratio = 38.3
-release_ms = 884.0
+release_ms = 611.0
 sidechain = &"ImportantEffects"
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_n8wo2"]
@@ -100,14 +120,20 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectCompressor_dqt2m")
-bus/1/effect/0/enabled = true
+bus/1/effect/0/effect = SubResource("AudioEffectPhaser_j3pel")
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource("AudioEffectReverb_g28q7")
+bus/1/effect/1/enabled = false
+bus/1/effect/2/effect = SubResource("AudioEffectLowPassFilter_g28q7")
+bus/1/effect/2/enabled = true
+bus/1/effect/3/effect = SubResource("AudioEffectCompressor_dqt2m")
+bus/1/effect/3/enabled = true
 bus/2/name = &"FTReverbMix"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
-bus/2/send = &"Master"
+bus/2/send = &"Premaster"
 bus/2/effect/0/effect = SubResource("AudioEffectCompressor_n8wo2")
 bus/2/effect/0/enabled = false
 bus/3/name = &"Footsteps"
@@ -115,7 +141,7 @@ bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = -4.76812
-bus/3/send = &"Master"
+bus/3/send = &"Premaster"
 bus/3/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
 bus/3/effect/0/enabled = false
 bus/3/effect/1/effect = SubResource("AudioEffectCompressor_g28q7")

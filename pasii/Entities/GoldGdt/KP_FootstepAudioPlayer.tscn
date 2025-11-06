@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx8lyfe42b3y7"]
 
 [ext_resource type="Script" uid="uid://cp22lpbvd77nc" path="res://Entities/GoldGdt/KP_FootstepAudioPlayer.gd" id="1_n5squ"]
-[ext_resource type="Resource" uid="uid://beesu0jqytwj7" path="res://Audio/Soundtextures/Ice.tres" id="2_bk6if"]
+[ext_resource type="Resource" uid="uid://baamvfr3jtfeq" path="res://Audio/Soundtextures/Generic.tres" id="2_bk6if"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3e288"]
 viewport_path = NodePath("Control/SubViewportContainer/SubViewport")
@@ -21,11 +21,11 @@ max_reflection_octaves = 3
 target_position = Vector3(0, -2, 0)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-attenuation_model = 1
+attenuation_model = 3
+volume_db = -0.6
 max_polyphony = 32
 bus = &"Footsteps"
 attenuation_filter_db = -1.0
-metadata/_custom_type_script = "uid://dkb8ltjc6067n"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

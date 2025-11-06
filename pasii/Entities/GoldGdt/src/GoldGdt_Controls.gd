@@ -14,7 +14,7 @@ var move_dir : Vector3
 var jump_on : bool
 var duck_on : bool
 var roll_on : bool
-
+var was_last_jump_pressed_midair : bool = false
 @export var SyncedAnimTrees : Array[AnimationTree]
 @export var AnimHandler : KiipeliAnimHandler
 #@onready var state_machines = anim_tree["parameters/playback"]
@@ -137,17 +137,20 @@ func _gather_input() -> void:
 	if (move_dir.length() > Parameters.MAX_SPEED):
 		move_dir *= Parameters.MAX_SPEED / move_dir.length()
 	
+	if Input.is_action_just_pressed("pm_jump"):
+		was_last_jump_pressed_midair = !Body.is_on_floor()
 	# Gather jumping and crouching input.
 	jump_on = Input.is_action_pressed("pm_jump") if Parameters.AUTOHOP else Input.is_action_just_pressed("pm_jump")
 	duck_on = Input.is_action_pressed("pm_duck")
 	roll_on = Input.is_action_just_pressed("pm_roll")
 	Move.jump_on = jump_on
 	Body.request_roll(roll_on)
-	
-	#if jump_on:
+	if Input.is_action_pressed("pm_jump"): #mere if jump_on doesnt cut it because there is autohop rule
+		if was_last_jump_pressed_midair:
+			Body.current_wallrun_state = Move.request_wallrun()
 	if (Input.is_action_just_pressed("pm_jump")) && !Body.is_on_floor(): #just_pressed is important on this one!
 		Body.current_vault_state = Move.request_vault(Vector3(move_dir.x, move_dir.x, move_dir.x))
-		Body.current_wallrun_state = Move.request_wallrun()
+		
 	if (Input.is_action_just_released("pm_jump")):
 		Body.current_wallrun_state = enumsKP.wallrun_states.NONE
 	if (Input.is_action_just_pressed("kp_die")):

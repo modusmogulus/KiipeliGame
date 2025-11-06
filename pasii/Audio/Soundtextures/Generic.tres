@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="SoundTexture" load_steps=11 format=3 uid="uid://baamvfr3jtfeq"]
+
+[ext_resource type="AudioStream" uid="uid://b3nhqpndu548h" path="res://Audio/Footsteps/08 Generic/FT Generic - 01.wav" id="1_l4i75"]
+[ext_resource type="AudioStream" uid="uid://q7dopn6d1jl6" path="res://Audio/Footsteps/08 Generic/FT Generic - 02.wav" id="2_n0oj6"]
+[ext_resource type="AudioStream" uid="uid://trrrhcuu6hm3" path="res://Audio/Footsteps/08 Generic/FT Generic - 03.wav" id="3_qekbw"]
+[ext_resource type="AudioStream" uid="uid://bhewdxtxwhdd6" path="res://Audio/Footsteps/08 Generic/FT Generic - 04.wav" id="4_pn4ud"]
+[ext_resource type="AudioStream" uid="uid://bv3fxv7pcp07e" path="res://Audio/Footsteps/08 Generic/FT Generic - 05.wav" id="5_hr8iy"]
+[ext_resource type="AudioStream" uid="uid://drwvkfpcy0fmt" path="res://Audio/Footsteps/08 Generic/FT Generic - 06.wav" id="6_mxdld"]
+[ext_resource type="AudioStream" uid="uid://bu3awnod0sd08" path="res://Audio/Footsteps/08 Generic/FT Generic - 07.wav" id="7_6x73h"]
+[ext_resource type="Script" uid="uid://c243vjtr0b4ee" path="res://Globals/SoundTexture.gd" id="10_klchv"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oe12j"]
+playback_mode = 2
+streams_count = 7
+stream_0/stream = ExtResource("1_l4i75")
+stream_1/stream = ExtResource("2_n0oj6")
+stream_2/stream = ExtResource("3_qekbw")
+stream_3/stream = ExtResource("4_pn4ud")
+stream_4/stream = ExtResource("5_hr8iy")
+stream_5/stream = ExtResource("6_mxdld")
+stream_6/stream = ExtResource("7_6x73h")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l4i75"]
+playback_mode = 2
+streams_count = 7
+stream_0/stream = ExtResource("1_l4i75")
+stream_1/stream = ExtResource("2_n0oj6")
+stream_2/stream = ExtResource("3_qekbw")
+stream_3/stream = ExtResource("4_pn4ud")
+stream_4/stream = ExtResource("5_hr8iy")
+stream_5/stream = ExtResource("6_mxdld")
+stream_6/stream = ExtResource("7_6x73h")
+
+[resource]
+script = ExtResource("10_klchv")
+ingame_name = "Generic"
+footsteps = SubResource("AudioStreamRandomizer_oe12j")
+footstep_loudness_linear = 0.8
+footsteps_running = SubResource("AudioStreamRandomizer_l4i75")
+footstep_running_loudness_linear = 0.8
+landing_loudness_linear = 0.8
+slide_loudness_linear = 0.8
+wallrun_loudness_linear = 0.8
+roll_loudness_linear = 0.8
+subtitles = Array[String]([])
+metadata/_custom_type_script = "uid://c243vjtr0b4ee"

@@ -74,12 +74,24 @@ func _physics_process(_delta) -> void:
 	else:
 		camera.fov = lerpf(camera.fov, _calc_speed_fov(original_fov, 20.0), 0.1)
 	animation_camera.fov = camera.fov
-	if g_loc_filter.modulate.a + 0.1 < _calc_g_fx():
-		
-		g_loc_filter.modulate.a = lerpf(g_loc_filter.modulate.a, _calc_g_fx(), 0.1)
+	var grayout = (Body.HpHandler.maxhp - Body.HpHandler.hp) * 1/Body.HpHandler.maxhp
+	g_loc_filter.modulate.a = grayout
+	if grayout == 0:
+		AudioServer.set_bus_effect_enabled(1, 1, false)
+		AudioServer.set_bus_effect_enabled(1, 2, false)
 	else:
-		#if randi_range(0, 10) > 5:
-		g_loc_filter.modulate.a = lerpf(g_loc_filter.modulate.a, _calc_g_fx(), 0.05)
+		AudioServer.set_bus_effect_enabled(1, 1, true)
+		AudioServer.set_bus_effect_enabled(1, 2, true)
+		AudioServer.get_bus_effect(1, 1).dry = 1.0-grayout
+		AudioServer.get_bus_effect(1, 1).wet = grayout
+		AudioServer.get_bus_effect(1, 2).cutoff_hz = 20500-(20500*grayout)
+
+	#if g_loc_filter.modulate.a + 0.1 < _calc_g_fx():
+		
+	#	g_loc_filter.modulate.a = lerpf(g_loc_filter.modulate.a, _calc_g_fx(), 0.1)
+	#else:
+		
+	#	g_loc_filter.modulate.a = lerpf(g_loc_filter.modulate.a, _calc_g_fx(), 0.05)
 	previous_velocity = Body.velocity
 	if Vector2(Body.velocity.x, Body.velocity.y).length() > 0:
 		zoneout.modulate.a = lerpf(zoneout.modulate.a, 1-_calc_speed_fx(0.0, 1.0, 0.01), 0.1) #Speedlines by using same function as fov

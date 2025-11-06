@@ -26,6 +26,7 @@ var in_dialogue : bool = false
 @export var UserInput : GoldGdt_Controls
 @onready var state_machine = anim_tree["parameters/playback"]
 @export var g_force_damage_curve : Curve
+@export var fall_damage_curve : Curve
 @export var NodesToIgnoreVertical : Node
 @export var FallDamageRollWindow : Timer
 var diving = false #for dive roll
@@ -176,14 +177,14 @@ func _physics_process(delta) -> void:
 			velocity.y -= Parameters.GRAVITY * delta
 			previous_fall_speed = absf(velocity.y)
 	else:
-		
-		velocity += -View.camera.global_basis.z * 0.4 * delta
+		#THIS IS THE WALLRUN CODE!!
+		velocity += -View.camera.global_basis.z * 1.8 * delta
 		velocity.y -= Parameters.GRAVITY * delta * 0.1
 	if was_on_floor == false && is_on_floor() == true:
 		landing(previous_fall_speed)
-	
+	if !is_on_floor() && HpHandler.damage_pending > 0.0:
+		HpHandler.take_damage(HpHandler.damage_pending) #To prevent fall damage cancellation by jumping, wallrunning etc.
 	velocity_lowpass_filtered = (lerp(previous_velocity, velocity, (1 / velocity_lowpass_size)*delta))
-
 	was_on_floor = is_on_floor()
 	_handle_step_trace_values()
 	# Create deformed collision hull for use in _move_step()
@@ -463,10 +464,13 @@ func remove_powerup(pup : KP_Powerup):
 func damage(damage : float):
 	HpHandler.take_damage(damage)
 func calculate_fall_damage(fall_speed : float):
-	var damage = pre_landing_fall_speed * 2
-	return pre_landing_fall_speed * 2
-func _on_fall_damage_roll_window_timeout() -> void:
+
+	var damage = fall_damage_curve.sample(absf(previous_fall_speed))
+	return damage
+func apply_fall_damage():
 	var damage = calculate_fall_damage(pre_landing_fall_speed)
-	
 	HpHandler.take_damage(damage)
 	AnimHandler.rolling = false
+
+func _on_fall_damage_roll_window_timeout() -> void:
+	apply_fall_damage()

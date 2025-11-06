@@ -22,6 +22,7 @@ shader_parameter/texture_albedo_wall = ExtResource("3_d1kc8")
 shader_parameter/bevel_normal = ExtResource("2_l7ove")
 shader_parameter/texture_bevel_overlay = SubResource("GradientTexture1D_ejrer")
 shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("3_d1kc8")
 shader_parameter/ground_threshold = 0.25
 shader_parameter/blend_smoothness = 0.0
 shader_parameter/uv1_blend_sharpness = 8.654
