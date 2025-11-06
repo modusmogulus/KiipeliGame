@@ -39,6 +39,9 @@ var vault_cooldown_duration = 0.1
 var vault_cooldown_timer = 0.0
 @export var sfx_roll_boom_player : AudioStreamPlayer3D
 @export var sfx_rollable_landing : AudioStreamPlayer3D
+@export var sfx_wallrun : AudioStreamPlayer3D
+@export var sfx_vault : AudioStreamPlayer3D
+var sfx_wallrun_original_volume : float
 
 @export_group("Player View")
 var offset : float = 0.711 # Current offset from player's origin.
@@ -114,7 +117,7 @@ class Trace extends RefCounted:
 func _ready() -> void:
 	# Detach the body from the pawn node.
 	set_as_top_level(true)
-	
+	sfx_wallrun_original_volume = sfx_wallrun.volume_linear
 	# Set bounding box dimensions.
 	_set_shape_bounds(BBOX_STANDING, Parameters.HULL_STANDING_BOUNDS)
 	_set_shape_bounds(BBOX_DUCKING, Parameters.HULL_DUCKING_BOUNDS)
@@ -148,6 +151,8 @@ func landing(last_fall_speed : float):
 	pre_landing_fall_speed = last_fall_speed
 	HpHandler.threaten_with_damage(calculate_fall_damage(pre_landing_fall_speed))
 	FallDamageRollWindow.start()
+	var landingvolume = calculate_fall_damage(pre_landing_fall_speed) / 100.0
+	sfx_rollable_landing.volume_linear = landingvolume
 	sfx_rollable_landing.play()
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
@@ -175,11 +180,14 @@ func _physics_process(delta) -> void:
 		
 	# Add the gravity.
 	if current_wallrun_state == enumsKP.wallrun_states.NONE:
+		#wallrun sound is faded in phys process
 		if is_on_floor() == false:
 			velocity.y -= Parameters.GRAVITY * delta
 			previous_fall_speed = absf(velocity.y)
 	else:
 		#THIS IS THE WALLRUN CODE!!
+		
+		#sfx volume is handled in phys process
 		velocity += -View.camera.global_basis.z * 1.8 * delta
 		velocity.y -= Parameters.GRAVITY * delta * 0.1
 	if was_on_floor == false && is_on_floor() == true:
@@ -211,6 +219,11 @@ func _physics_process(delta) -> void:
 			velocity = velocity_before_vault
 	if current_vault_state != enumsKP.vault_states.NONE:
 		_duck(true)
+		
+	if current_wallrun_state == enumsKP.wallrun_states.NONE:
+		sfx_wallrun.volume_linear = lerpf(sfx_wallrun.volume_linear, 0.0, 0.1)
+	else:
+		sfx_wallrun.volume_linear = lerpf(sfx_wallrun.volume_linear, sfx_wallrun_original_volume, 0.1)
 # Function for changing shape bounds, only here for when I add collision shape changing.
 func _set_shape_bounds(shape: BoxShape3D, size: Vector3) -> void:
 	shape.size = size

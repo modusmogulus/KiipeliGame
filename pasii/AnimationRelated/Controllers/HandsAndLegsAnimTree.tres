@@ -423,7 +423,7 @@ advance_expression = "diving == true"
 xfade_time = 0.5
 priority = 0
 advance_mode = 2
-advance_expression = "player_velocity.x > 10.0 || player_velocity.y > 10.0"
+advance_expression = "player_velocity.x > 100.0 || player_velocity.y > 100.0 || diving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vw7b5"]
 xfade_time = 0.5
@@ -471,7 +471,7 @@ advance_expression = "player_velocity.y > 0.5 && item != \"LIUKURI\""
 
 [resource]
 states/Dive/node = SubResource("AnimationNodeAnimation_5tb2a")
-states/Dive/position = Vector2(672, 3)
+states/Dive/position = Vector2(654, 14)
 states/End/position = Vector2(1078, 102)
 states/Fall/node = SubResource("AnimationNodeAnimation_1lc20")
 states/Fall/position = Vector2(752, 261)

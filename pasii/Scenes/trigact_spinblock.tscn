@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3gsyvbjlicbq"]
+
+[ext_resource type="Script" uid="uid://c5sm2cqy83d6x" path="res://Scenes/trigact_spinblock.gd" id="1_43oea"]
+
+[node name="trigact_spinblock" type="Node3D"]
+script = ExtResource("1_43oea")

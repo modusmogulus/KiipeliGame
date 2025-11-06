@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=109 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" uid="uid://2j4wuk4aq4mg" path="res://Entities/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -20,9 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://byvkdkldsx5jh" path="res://textures/matcaps/7D6651_F8E3BF_CEA987_E7C29C-64px.png" id="14_1lc20"]
 [ext_resource type="Script" uid="uid://cm6ig2e5yi27d" path="res://Entities/GoldGdt/make_leg_tree_unique_autom.gd" id="14_03y38"]
 [ext_resource type="Texture2D" uid="uid://cgmtwfnf11dni" path="res://textures/matcaps/9AA8B6_313133_4E5055_D7EBF8-64px.png" id="14_26nuu"]
+[ext_resource type="AudioStream" uid="uid://fmvtka6buqn4" path="res://Audio/Footsteps/PopKick 02.wav" id="16_2jyy0"]
 [ext_resource type="AudioStream" uid="uid://bwu6y2lu3mh7n" path="res://Audio/SFX/Wind Fast AF.ogg" id="16_8hjv0"]
-[ext_resource type="AudioStream" uid="uid://beunc1ihum0rl" path="res://Audio/Footsteps/01 Carpet/06 FT Sisal Carpet.wav" id="16_kwefg"]
+[ext_resource type="AudioStream" uid="uid://cq1l1ybb52qrq" path="res://Audio/Footsteps/PopKick 03.wav" id="17_58pp4"]
+[ext_resource type="AudioStream" uid="uid://b72hpx3kwl7ww" path="res://Audio/SFX/Beefy Climb Sounds - Marker #2.wav" id="17_tyx00"]
+[ext_resource type="AudioStream" uid="uid://fuqgp050qqev" path="res://Audio/Footsteps/PopKick 04.wav" id="18_4cx60"]
+[ext_resource type="AudioStream" uid="uid://c6ob4jm3pbblc" path="res://Audio/SFX/07 Parkour Wallrun Loop Seamless.wav" id="18_fhq0g"]
 [ext_resource type="Material" uid="uid://th31dfqf6l3k" path="res://Models/Characters/skin.tres" id="18_kam8o"]
+[ext_resource type="AudioStream" uid="uid://b70o0gtucxx87" path="res://Audio/SFX/Beefy Climb Sounds - Marker #3.wav" id="19_2jyy0"]
+[ext_resource type="AudioStream" uid="uid://bnisqmtp28nmy" path="res://Audio/SFX/Beefy Climb Sounds - Marker #5.wav" id="20_58pp4"]
 [ext_resource type="Texture2D" uid="uid://qxfbw6ajma36" path="res://textures/matcaps/mc_roadman4.png" id="20_axyne"]
 [ext_resource type="Texture2D" uid="uid://c0ol8vqpt4m17" path="res://Models/Characters/YOKYOPELI-KADET_jackettex.png" id="20_o5sai"]
 [ext_resource type="Texture2D" uid="uid://udpimmiwpe3f" path="res://Models/Characters/YOKYOPELI-KADET_custom-toaster-skin-01.png" id="22_o5sai"]
@@ -60,6 +66,19 @@ point_count = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.609, 0.813)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0a2ro"]
+random_pitch = 1.05
+streams_count = 3
+stream_0/stream = ExtResource("16_2jyy0")
+stream_1/stream = ExtResource("17_58pp4")
+stream_2/stream = ExtResource("18_4cx60")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4cx60"]
+streams_count = 3
+stream_0/stream = ExtResource("17_tyx00")
+stream_1/stream = ExtResource("19_2jyy0")
+stream_2/stream = ExtResource("20_58pp4")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u4rs7"]
 custom_solver_bias = 1.0
@@ -857,7 +876,7 @@ Beer = NodePath("../Display Body/Arm/Arm Anchor/Camera/YOKYOPELI-KADET/rig/tolkk
 PaahdinReloadSound = ExtResource("9_44c2v")
 PhoneReloadSound = ExtResource("10_chcr7")
 
-[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "FallDamageRollWindow", "sfx_roll_boom_player", "sfx_rollable_landing", "collision_hull", "duck_timer") groups=["Player"]]
+[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "anim_tree", "AnimHandler", "HpHandler", "InvHandler", "PowerupInfo", "PowerupIconContainer", "Move", "UserInput", "NodesToIgnoreVertical", "FallDamageRollWindow", "sfx_roll_boom_player", "sfx_rollable_landing", "sfx_wallrun", "sfx_vault", "collision_hull", "duck_timer") groups=["Player"]]
 collision_layer = 2
 wall_min_slide_angle = 0.802851
 floor_constant_speed = true
@@ -879,6 +898,8 @@ NodesToIgnoreVertical = NodePath("../Display Body/HorizontalOnly")
 FallDamageRollWindow = NodePath("FallDamageRollWindow")
 sfx_roll_boom_player = NodePath("SFX RollBoom")
 sfx_rollable_landing = NodePath("SFX RollableLanding")
+sfx_wallrun = NodePath("SFX Wallrun")
+sfx_vault = NodePath("SFX Vault")
 collision_hull = NodePath("Collision Hull")
 duck_timer = NodePath("Duck Timer")
 
@@ -932,15 +953,34 @@ panning_strength = 0.0
 bus = &"ImportantEffects"
 
 [node name="SFX RollableLanding" type="AudioStreamPlayer3D" parent="Body"]
-stream = ExtResource("16_kwefg")
+stream = SubResource("AudioStreamRandomizer_0a2ro")
 attenuation_model = 3
-volume_db = -16.807
+volume_db = -4.948
 unit_size = 48.54
 panning_strength = 0.0
 bus = &"ImportantEffects"
+attenuation_filter_cutoff_hz = 1354.0
+
+[node name="SFX Vault" type="AudioStreamPlayer3D" parent="Body"]
+stream = SubResource("AudioStreamRandomizer_4cx60")
+attenuation_model = 3
+volume_db = -20.304
+unit_size = 48.54
+panning_strength = 0.0
+bus = &"Premaster"
+attenuation_filter_cutoff_hz = 20500.0
 
 [node name="SFX WindFast" type="AudioStreamPlayer3D" parent="Body"]
 stream = ExtResource("16_8hjv0")
+attenuation_model = 3
+volume_db = -8.67
+pitch_scale = 4.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Premaster"
+
+[node name="SFX Wallrun" type="AudioStreamPlayer3D" parent="Body"]
+stream = ExtResource("18_fhq0g")
 attenuation_model = 3
 autoplay = true
 panning_strength = 0.0
@@ -5220,6 +5260,7 @@ grow_vertical = 2
 expand_mode = 1
 
 [node name="GameUI" type="Control" parent="."]
+z_index = 64
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

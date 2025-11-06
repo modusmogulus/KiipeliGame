@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://fuqgp050qqev"
+path="res://.godot/imported/PopKick 04.wav-6b98443646a8315f85ef1f7d32d52ae1.sample"
+
+[deps]
+
+source_file="res://Audio/Footsteps/PopKick 04.wav"
+dest_files=["res://.godot/imported/PopKick 04.wav-6b98443646a8315f85ef1f7d32d52ae1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -29,6 +29,7 @@ func request_vault(wishdir) -> enumsKP.vault_states:
 		Body.vault_cooldown_timer = Body.vault_cooldown_duration
 		_vault(get_process_delta_time())
 		print("vaulted")
+		Body.sfx_vault.play()
 		return enumsKP.vault_states.INITIAL_VAULT
 	else:
 		return enumsKP.vault_states.NONE
@@ -200,13 +201,14 @@ func request_walljump(delta):
 		if Body.walljumps_left > 0:
 			Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
 			Body.walljumps_left -= 1
-		
+			Body.sfx_vault.play()
 	#wallkick
 	if result3.size() > 1:
 		if Body.wallkicks_left > 0:
 			Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
 			Body.velocity +=  Body.View.horizontal_view.global_basis.z * -3.2
 			Body.wallkicks_left -= 1
+			Body.sfx_vault.play()
 func _vault(delta: float) -> void:
 	Body.velocity.y = sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 0.5))
 	Body.current_vault_state = enumsKP.vault_states.NONE

@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://c243vjtr0b4ee" path="res://Globals/SoundTexture.gd" id="10_klchv"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oe12j"]
-playback_mode = 2
+random_pitch = 1.1
 streams_count = 7
 stream_0/stream = ExtResource("1_l4i75")
 stream_1/stream = ExtResource("2_n0oj6")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cj7bil0em8hqh"
+path="res://.godot/imported/156 Damage Body Impact.wav-3126cd9d2f001b2bdff6266d830bbcf7.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/156 Damage Body Impact.wav"
+dest_files=["res://.godot/imported/156 Damage Body Impact.wav-3126cd9d2f001b2bdff6266d830bbcf7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

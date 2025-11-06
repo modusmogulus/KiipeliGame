@@ -60,7 +60,7 @@ func _physics_process(_delta) -> void:
 	var _ct = camera_mount.rotation.x
 	var _lt = legs.rotation.x
 	camera_mount.rotation.x = lerpf(_ct, (_calc_pitch_overshoot(Parameters.ROLL_ANGLE*0.2, Parameters.ROLL_SPEED*0.1)*2), 0.2)
-	#legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
+	legs.rotation.x = lerpf(_lt, _calc_pitch_overshoot(Parameters.ROLL_ANGLE*Parameters.ROLL_ANGLE, Parameters.ROLL_SPEED*0.2)*0.1, 0.2)
 	var _ft
 	_ft = camera.fov
 	#speedlines.modulate.a = _calc_speed_fx(0.0, 1.0, 4.0)
@@ -70,7 +70,7 @@ func _physics_process(_delta) -> void:
 		#speedlines.modulate.a = lerpf(speedlines.modulate.a, 1.0, 0.1)
 		speedlines.material.set("shader_parameter/blur_power", lerpf(_currentamount, 0.006, 0.1))
 		wind_sfx_player.volume_linear = lerpf(wind_sfx_player.volume_linear, wind_sfx_vol_original, 0.05)
-		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 1.4, 0.01)
+		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 4.0, 0.01)
 	else:
 		wind_sfx_player.volume_linear = lerpf(wind_sfx_player.volume_linear, 0.0, 0.15)
 		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 1.0, 0.1)
@@ -84,13 +84,13 @@ func _physics_process(_delta) -> void:
 	var grayout = (Body.HpHandler.maxhp - Body.HpHandler.hp) * 1/Body.HpHandler.maxhp
 	g_loc_filter.modulate.a = grayout
 	if grayout == 0:
-		AudioServer.set_bus_effect_enabled(1, 1, false)
+		AudioServer.set_bus_effect_enabled(1, 4, false)
 		AudioServer.set_bus_effect_enabled(1, 2, false)
 	else:
-		AudioServer.set_bus_effect_enabled(1, 1, true)
+		AudioServer.set_bus_effect_enabled(1, 4, true)
 		AudioServer.set_bus_effect_enabled(1, 2, true)
-		AudioServer.get_bus_effect(1, 1).dry = 1.0-grayout
-		AudioServer.get_bus_effect(1, 1).wet = grayout
+		AudioServer.get_bus_effect(1, 4).dry = 1.0-(grayout*0.5)
+		AudioServer.get_bus_effect(1, 4).wet = grayout*0.5
 		AudioServer.get_bus_effect(1, 2).cutoff_hz = 20500-(20500*grayout)
 
 	#if g_loc_filter.modulate.a + 0.1 < _calc_g_fx():
