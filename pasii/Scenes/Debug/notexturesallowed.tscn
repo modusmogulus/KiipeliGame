@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://c328xpxpi4l11"]
+[gd_scene load_steps=37 format=4 uid="uid://c328xpxpi4l11"]
 
 [ext_resource type="Material" uid="uid://bqlpuc1wh6y6n" path="res://Materials/3p_prototype_cyan.tres" id="1_xsb8q"]
 [ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="2_e1y1r"]
@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dfctl5yhhitu3" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_dialogue.tscn" id="9_e1y1r"]
 [ext_resource type="Texture2D" uid="uid://bv1fd0waxk810" path="res://Models/Characters/ykp-ulo-sotto_yk_rappujenovi.png" id="10_m6xih"]
 [ext_resource type="Texture2D" uid="uid://6cj7o8it3paj" path="res://Models/Characters/ykp-ulo-sotto_ulosottotex256.png" id="11_raj1c"]
+[ext_resource type="Shader" uid="uid://yqiw6k1721cs" path="res://Shaders/Hybrid/surface_embedded_sprites_opaq.gdshader" id="12_l0u8g"]
 [ext_resource type="Script" uid="uid://dcgimy2fx7rok" path="res://Entities/play_animation_on_start.gd" id="12_raj1c"]
+[ext_resource type="Texture2D" uid="uid://u6bubtbyfq4g" path="res://textures/texturebloat/happomusahalleluja.png" id="13_l0u8g"]
+[ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="14_afapy"]
 
 [sub_resource type="Animation" id="Animation_m6xih"]
 length = 0.001
@@ -9335,6 +9338,38 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_raj1c"]
 size = Vector3(4, 4, 4)
 
+[sub_resource type="Gradient" id="Gradient_17r4v"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.152542, 0.244068, 0.38983, 0.610169, 0.80678, 0.949153)
+colors = PackedColorArray(0.0666666, 0, 1, 1, 0, 0.716667, 1, 1, 0, 1, 0.0999999, 1, 1, 0.933333, 0, 1, 1, 0.6, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fut6v"]
+gradient = SubResource("Gradient_17r4v")
+width = 32
+height = 32
+fill = 2
+fill_from = Vector2(0.504274, 0.508547)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fut6v"]
+render_priority = 0
+shader = ExtResource("12_l0u8g")
+shader_parameter/albedo = SubResource("GradientTexture2D_fut6v")
+shader_parameter/tiling = Vector2(14, 2.825)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/uv_map = ExtResource("14_afapy")
+shader_parameter/sprite = ExtResource("13_l0u8g")
+shader_parameter/uv_tiling = Vector2(2, 2)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/depth = -1.065
+
+[sub_resource type="SphereMesh" id="SphereMesh_m6xih"]
+material = SubResource("ShaderMaterial_fut6v")
+flip_faces = true
+radius = 50.0
+height = 100.0
+radial_segments = 11
+rings = 11
+
 [node name="Node3D" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -15559,3 +15594,6 @@ script = ExtResource("12_raj1c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 2.5)
 shape = SubResource("BoxShape3D_raj1c")
 debug_color = Color(0.866667, 1, 0, 1)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("SphereMesh_m6xih")

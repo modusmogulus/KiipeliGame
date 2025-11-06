@@ -1,0 +1,187 @@
+[gd_scene load_steps=18 format=3 uid="uid://qxw1i1m5a766"]
+
+[ext_resource type="Material" uid="uid://bqlpuc1wh6y6n" path="res://Materials/3p_prototype_cyan.tres" id="1_hx2ke"]
+[ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="2_cjtk7"]
+[ext_resource type="Resource" uid="uid://baamvfr3jtfeq" path="res://Audio/Soundtextures/Generic.tres" id="3_gvaap"]
+[ext_resource type="Material" uid="uid://mmu5repc2oyl" path="res://Materials/SES_psyche_lumi.tres" id="4_s1ab2"]
+[ext_resource type="Script" uid="uid://dcgimy2fx7rok" path="res://Entities/play_animation_on_start.gd" id="5_1bh7o"]
+[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="6_s8ijs"]
+[ext_resource type="Texture2D" uid="uid://d4k4iq0o6uedu" path="res://textures/yk_pulkka_liukuri.png" id="8_rg35p"]
+[ext_resource type="Shader" uid="uid://yqiw6k1721cs" path="res://Shaders/Hybrid/surface_embedded_sprites_opaq.gdshader" id="12_ekyf0"]
+[ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="14_wukyu"]
+
+[sub_resource type="Animation" id="Animation_m6xih"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1, 14.5, -6.5)
+
+[sub_resource type="Animation" id="Animation_kmuda"]
+resource_name = "moving"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1, 14.5, -6.5)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 8, 1, 0, 0, 1, -4.37114e-08)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_raj1c"]
+_data = {
+&"RESET": SubResource("Animation_m6xih"),
+&"moving": SubResource("Animation_kmuda")
+}
+
+[sub_resource type="Environment" id="Environment_rg35p"]
+background_mode = 1
+background_color = Color(0.5236, 0.57052, 0.68, 1)
+background_energy_multiplier = 1.35
+tonemap_mode = 2
+tonemap_exposure = 0.25
+tonemap_white = 0.3
+ssr_enabled = true
+
+[sub_resource type="TorusMesh" id="TorusMesh_rg35p"]
+flip_faces = true
+inner_radius = 65.008
+outer_radius = 0.117
+rings = 4
+ring_segments = 4
+
+[sub_resource type="Gradient" id="Gradient_17r4v"]
+interpolation_mode = 1
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.0792079, 0.148515, 0.244068, 0.38983, 0.610169, 0.80678, 0.940594)
+colors = PackedColorArray(0.860313, 0.577479, 1, 1, 0.0666666, 0, 1, 1, 0, 0.716667, 1, 1, 0, 1, 0.0999999, 1, 1, 0.933333, 0, 1, 0.99267, 0.423776, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fut6v"]
+gradient = SubResource("Gradient_17r4v")
+width = 32
+height = 32
+fill = 2
+fill_from = Vector2(0.495726, 0.512821)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fut6v"]
+render_priority = 0
+shader = ExtResource("12_ekyf0")
+shader_parameter/albedo = SubResource("GradientTexture2D_fut6v")
+shader_parameter/tiling = Vector2(14, 2.825)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/uv_map = ExtResource("14_wukyu")
+shader_parameter/sprite = ExtResource("8_rg35p")
+shader_parameter/uv_tiling = Vector2(0.15, 0.08)
+shader_parameter/uv_offset = Vector2(0.24, -0.008)
+shader_parameter/depth = -2.215
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
+use_collision = true
+size = Vector3(15.4587, 29, 6.99164)
+material = ExtResource("1_hx2ke")
+
+[node name="SoundMaterial" type="Node" parent="CSGBox3D"]
+script = ExtResource("2_cjtk7")
+sound_texture = ExtResource("3_gvaap")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -14)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 10, 10)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 16, -18.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 4, 1)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 9, -2)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 16, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 19, -2)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(3, 4, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D9Mv" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 14.5, -6.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 1, 5)
+material = ExtResource("4_s1ab2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CSGBox3D/CSGBox3D9Mv"]
+reset_on_save = false
+libraries = {
+&"": SubResource("AnimationLibrary_raj1c")
+}
+speed_scale = 0.515
+script = ExtResource("5_1bh7o")
+StartAnimationName = &"moving"
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 15, -17)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 2, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 15, -13)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(2, 2, 6)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, -8)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 7, 4)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 14, -9)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 4, 4)
+material = ExtResource("1_hx2ke")
+
+[node name="Pawn" parent="." instance=ExtResource("6_s8ijs")]
+transform = Transform3D(1, -0.000415868, 0.000498151, 0.000415742, 1, 0.000257564, -0.000498256, -0.000257361, 1, 3, 2.10408, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rg35p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.025985, 0.999662, 0, -0.999662, 0.025985, 0, 0, 0)
+light_energy = 0.505
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27)
+mesh = SubResource("TorusMesh_rg35p")
+material = SubResource("ShaderMaterial_fut6v")

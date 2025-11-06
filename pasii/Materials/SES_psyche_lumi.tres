@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://b84ss6exvmm51" path="res://textures/uvsphere_weird_matcap2.png" id="3_d6d52"]
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_lelk3")
 shader_parameter/albedo = ExtResource("2_d6d52")
 shader_parameter/tiling = Vector2(1, 1)
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/uv_map = ExtResource("3_d6d52")
 shader_parameter/sprite = ExtResource("2_d6d52")
-shader_parameter/uv_tiling = Vector2(4, 4)
+shader_parameter/uv_tiling = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/depth = 1.0
+shader_parameter/depth = 0.485

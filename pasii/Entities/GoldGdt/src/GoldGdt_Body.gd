@@ -182,7 +182,7 @@ func _physics_process(delta) -> void:
 		velocity.y -= Parameters.GRAVITY * delta * 0.1
 	if was_on_floor == false && is_on_floor() == true:
 		landing(previous_fall_speed)
-	if !is_on_floor() && HpHandler.damage_pending > 0.0:
+	if (!was_on_floor && !is_on_floor()) && HpHandler.damage_pending > 0.0:
 		HpHandler.take_damage(HpHandler.damage_pending) #To prevent fall damage cancellation by jumping, wallrunning etc.
 	velocity_lowpass_filtered = (lerp(previous_velocity, velocity, (1 / velocity_lowpass_size)*delta))
 	was_on_floor = is_on_floor()
