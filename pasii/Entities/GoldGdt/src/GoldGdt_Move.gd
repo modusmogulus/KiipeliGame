@@ -10,6 +10,7 @@ class_name GoldGdt_Move extends Node
 @onready var state_machine = anim_tree["parameters/playback"]
 # Adds to the player's velocity based on direction, speed and acceleration.
 var jump_on : bool #set from controls.gd
+var wallrun_wall_normal : Vector3 = Vector3.ZERO
 
 func request_vault(wishdir) -> enumsKP.vault_states:
 	if !Body: return enumsKP.vault_states.NONE
@@ -50,9 +51,11 @@ func request_wallrun() -> enumsKP.wallrun_states:
 		if result.size() > 0: #is there runnable left wall?
 			print("LEFT WALLRUN")
 			AnimHandler.wallrunning = "LEFT"
+			wallrun_wall_normal = result.normal
 			return enumsKP.wallrun_states.LEFT #exit function and tell em its left
 		if result2.size() > 0: #is there runnable right wall?
 			print("RIGHT WALLRUN")
+			wallrun_wall_normal = result2.normal
 			AnimHandler.wallrunning = "RIGHT"
 			return enumsKP.wallrun_states.RIGHT #exit function and tell em its right
 	print("NO WALLRUn") #player is stupud. there is no wall
@@ -89,16 +92,17 @@ func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float)
 
 # Adds to the player's velocity based on direction, speed and acceleration. 
 # The difference between _accelerate() and this function is it caps the maximum speed you can accelerate to.
-func _airaccelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float) -> void:
+func _airaccelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float, max_speed_multiplier = null) -> void:
 	if !Body: return
 	
 	var addspeed : float
 	var accelspeed : float
 	var currentspeed : float
 	var wishspd : float = wishspeed
-	
-	if (wishspd > Parameters.MAX_AIR_SPEED):
-		wishspd = Parameters.MAX_AIR_SPEED
+	if max_speed_multiplier == null:
+		max_speed_multiplier = 1.0
+	if (wishspd > Parameters.MAX_AIR_SPEED * max_speed_multiplier):
+		wishspd = Parameters.MAX_AIR_SPEED * max_speed_multiplier
 	
 	# See if we are changing direction a bit
 	currentspeed = Body.velocity.dot(wishdir)
@@ -206,6 +210,7 @@ func request_walljump(delta):
 	if result3.size() > 1:
 		if Body.wallkicks_left > 0:
 			Body.velocity.y = 1.5*sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
+			
 			Body.velocity +=  Body.View.horizontal_view.global_basis.z * -3.2
 			Body.wallkicks_left -= 1
 			Body.sfx_vault.play()

@@ -23,7 +23,6 @@ class_name GoldGdt_View extends Node
 @export var damage_flash_node : Control
 @export var pre_damage_flash_node : Control
 @export var pre_damage_flash_col_node : Control
-
 var wind_sfx_vol_original : float
 
 var initial_anim_camera_rot : Vector3
@@ -32,6 +31,9 @@ var previous_velocity : Vector3
 var _frm = 0
 @export var interact_label : Label
 
+func get_wishdir():
+	return
+	
 func _ready() -> void:
 	#initial_anim_camera_rot = animation_camera.global_rotation
 	original_fov = camera.fov

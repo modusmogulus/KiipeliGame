@@ -20,6 +20,7 @@ var was_last_jump_pressed_midair : bool = false
 #@onready var state_machines = anim_tree["parameters/playback"]
 var state_machines : Array[AnimationNodeStateMachinePlayback]
 var mousing_around = false
+var wishdir : Vector3 = Vector3.ZERO #This shorthands probably not used in this code, but handy for future use
 
 func _ready() -> void:
 	for a in SyncedAnimTrees:
@@ -28,10 +29,6 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # Capture the mouse.
 
 func _input(event) -> void:
-	
-	#---------------------
-	# Replace with your own implementation of MOUSE_MODE switching!!
-	#---------------------
 	
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventKey:
@@ -107,6 +104,8 @@ func _gather_input() -> void:
 	var ix = Input.get_action_raw_strength("pm_moveright") - Input.get_action_raw_strength("pm_moveleft")
 	var iy = Input.get_action_raw_strength("pm_movebackward") - Input.get_action_raw_strength("pm_moveforward")
 	
+	wishdir = Vector3(ix, 0, iy)
+	Body.wishdir = wishdir
 	# Collect input.
 	movement_input = Vector2(ix, iy).normalized()
 		

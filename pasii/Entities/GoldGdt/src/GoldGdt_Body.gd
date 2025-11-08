@@ -79,7 +79,7 @@ var velocity_lowpass_filtered: Vector3 = Vector3.ZERO #for rolling etc
 var velocity_lowpass_size: float = 16.0
 var interactables_in_reach : Array[Node3D]
 var interaction_text #set from interactables
-
+var wishdir : Vector3 #Body controller scope wishdir is probably not used in player movement code, but its useful for future maybe
 # Identifier for wall proximity.
 enum WallCollision {
 	NONE,
@@ -158,9 +158,12 @@ func landing(last_fall_speed : float):
 	var landingvolume = calculate_fall_damage(pre_landing_fall_speed) / 100.0
 	sfx_rollable_landing.volume_linear = landingvolume
 	sfx_rollable_landing.play()
+	
+func get_camera_look_dir() -> Vector3:
+	return -View.camera.global_basis.z
+
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
-	
 	AnimHandler.grounded = is_on_floor()
 	if Dialogic.current_timeline != null:
 		in_dialogue = true
@@ -196,6 +199,20 @@ func _physics_process(delta) -> void:
 		#sfx volume is handled in phys process
 		velocity += -View.camera.global_basis.z * 1.8 * delta
 		velocity.y -= Parameters.GRAVITY * delta * 0.1
+		
+		#----------------------------
+		#-Notes on planar projection-
+		#----------------------------
+		#Vector3.project is different than Plane.project()
+		#Vec project works as if the normal is the tangent...
+		#Which is why I used to implement 
+		#planar projection by myself before learning
+		#about Godot's Plane class.
+		#No more trigonometric masturbation needed
+		#this is the way now.
+		velocity = Plane(result.normal).project(velocity)
+		#----------------------------
+		
 	if was_on_floor == false && is_on_floor() == true:
 		landing(previous_fall_speed)
 	if (!was_on_floor && !is_on_floor()) && HpHandler.damage_pending > 0.0:
