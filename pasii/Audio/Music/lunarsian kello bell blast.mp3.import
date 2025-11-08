@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsbwmqsor3qol"
+path="res://.godot/imported/lunarsian kello bell blast.mp3-e63a64c303b1ba5026751a7bfcde98b2.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/lunarsian kello bell blast.mp3"
+dest_files=["res://.godot/imported/lunarsian kello bell blast.mp3-e63a64c303b1ba5026751a7bfcde98b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

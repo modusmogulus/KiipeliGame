@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	else:
 		interact_label.visible = false
 	_frm += 1
-	if _frm > 30 && Body.g_forces > 0.9:
+	if _frm > 1: #&& Body.g_forces > 0.9:
 		var _atimg = get_viewport().get_texture().get_image()
 		var _attex = ImageTexture.create_from_image(_atimg)
 		afterimage.texture = _attex

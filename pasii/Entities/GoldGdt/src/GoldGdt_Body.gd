@@ -33,10 +33,13 @@ var diving = false #for dive roll
 var groundnormal = Vector3.UP
 var current_wallrun_state : enumsKP.wallrun_states
 var current_vault_state : enumsKP.vault_states
+var current_walljump_state : enumsKP.walljump_states
 var walljumps_left : int = 1
 var wallkicks_left : int = 1
 var vault_cooldown_duration = 0.1
 var vault_cooldown_timer = 0.0
+var external_velocity : Vector3
+
 @export var sfx_roll_boom_player : AudioStreamPlayer3D
 @export var sfx_rollable_landing : AudioStreamPlayer3D
 @export var sfx_wallrun : AudioStreamPlayer3D
@@ -145,7 +148,7 @@ func roll():
 func landing(last_fall_speed : float):
 	walljumps_left = 1
 	wallkicks_left = 1
-	AnimHandler.grounded = true
+	
 	diving = false
 	AnimHandler.diving = diving
 	AnimHandler.FootstepPlayer.playLandingSound()
@@ -157,6 +160,8 @@ func landing(last_fall_speed : float):
 	sfx_rollable_landing.play()
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
+	
+	AnimHandler.grounded = is_on_floor()
 	if Dialogic.current_timeline != null:
 		in_dialogue = true
 	else:
@@ -216,6 +221,7 @@ func _physics_process(delta) -> void:
 	if velocity.y < 0.0 && AnimHandler:
 		AnimHandler.vaultstate = "NONE"
 		current_vault_state = enumsKP.vault_states.NONE
+		current_walljump_state = enumsKP.walljump_states.NONE
 		if current_vault_state != enumsKP.vault_states.NONE:
 			velocity = velocity_before_vault
 	if current_vault_state != enumsKP.vault_states.NONE:
@@ -281,9 +287,11 @@ func _handle_step_trace_values() -> void:
 
 # Hacks move_and_slide() to make slopes behave a little more like GoldSrc.
 func _move_body() -> void:
+	velocity += external_velocity
 	var collided := move_and_slide()
 	if collided and not get_floor_normal():
 		var slide_direction := get_last_slide_collision().get_normal()
+		
 		velocity = velocity.slide(slide_direction)
 		floor_block_on_wall = false
 	else: # Hacky McHack to restore wallstrafing behaviour which doesn't work unless 'floor_block_on_wall' is true

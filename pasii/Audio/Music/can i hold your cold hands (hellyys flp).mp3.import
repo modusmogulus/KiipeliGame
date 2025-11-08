@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brpx6iveo7kwb"
+path="res://.godot/imported/can i hold your cold hands (hellyys flp).mp3-9b0ca430525ed2d71e734fb7e7c71812.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/can i hold your cold hands (hellyys flp).mp3"
+dest_files=["res://.godot/imported/can i hold your cold hands (hellyys flp).mp3-9b0ca430525ed2d71e734fb7e7c71812.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

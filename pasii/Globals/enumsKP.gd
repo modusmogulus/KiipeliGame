@@ -25,6 +25,11 @@ enum wallrun_states {
 	BOTH = 2
 }
 
+enum walljump_states {
+	NONE = 0,
+	WALLKICK = -1,
+	WALLJUMP = 1,
+}
 enum vault_states {
 	NONE = 0,
 	INITIAL_VAULT = 1

@@ -10,7 +10,7 @@ var original_loudness
 var auralization_count : int
 var echo_players : Array[AudioStreamPlayer3D]
 var echo_wait_times : Array[float]
-@export var player_hull : CharacterBody3D
+@export var player_hull : CollisionShape3D
 @export var rays : int = 128
 @export_range(0.0, 1.0) var reflection_probability : float = 0.8
 @export var max_reflection_octaves = 2
@@ -31,12 +31,19 @@ func _reset_echo_players():
 			echo_wait_times[i] = -1.0
 			
 func _random_dir() -> Vector3:
-	randomize()
 	var rx = randf_range(-1, 1)
 	var ry = randf_range(0.1, 1) #hemispherical trace
 	var rz = randf_range(-1, 1)
 	var dir = Vector3(rx, ry, rz)
 	return Vector3(rx, ry, rz)
+	
+func get_room_size() -> float:
+	var average: float = 0.0
+	for i in echo_wait_times.size():
+		if echo_wait_times[i] > 0:
+			average += echo_wait_times[i]
+	average = average/(echo_wait_times.size()-1)
+	return average
 func play_auralized(start_pos : Vector3, refl_index : int):
 	_reset_echo_players()
 	var space_state = get_world_3d().direct_space_state
@@ -49,6 +56,7 @@ func play_auralized(start_pos : Vector3, refl_index : int):
 	for i in echo_players.size():
 		if echo_wait_times[i] > 0.0 or echo_players[i].playing: return
 		echo_players[i].volume_linear /= refl_index+1
+		
 		var dir = _random_dir()
 		var query = PhysicsRayQueryParameters3D.create(global_position + dir*1.2, global_position+dir*1000)
 		query.exclude = [player_hull]
@@ -64,6 +72,7 @@ func play_auralized(start_pos : Vector3, refl_index : int):
 				else:
 					echo_players[i].global_position = global_position + travel*2
 					echo_wait_times[i] = (2*travel.length()/343.0)*refl_index
+		#print("ROOM SIZE: " + str(get_room_size()))
 func getMaterial() -> Color:
 	var image = MaterialViewportTexture.get_image()
 	var pixel_0_0 = image.get_pixel(0, 0)
@@ -124,8 +133,13 @@ func _process(delta: float) -> void:
 	MaterialCamera.global_position = global_position
 	#MaterialCamera.global_rotation = global_rotation
 	#MaterialCamera.global_basis = global_basis
-
+var counter : int = 0
 func _physics_process(delta: float) -> void:
+	counter += 1
+	if counter >= 10:
+		counter = 0
+		AudioServer.get_bus_effect(4,1).room_size = get_room_size()*10
+		AudioServer.get_bus_effect(4,1).predelay_msec = get_room_size()
 	for i in echo_wait_times.size():
 		if echo_wait_times[i] > 0.0:
 			echo_wait_times[i] -= delta

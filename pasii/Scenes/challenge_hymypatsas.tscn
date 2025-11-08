@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://qxw1i1m5a766"]
+[gd_scene load_steps=30 format=3 uid="uid://qxw1i1m5a766"]
 
 [ext_resource type="Material" uid="uid://bqlpuc1wh6y6n" path="res://Materials/3p_prototype_cyan.tres" id="1_hx2ke"]
 [ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="2_cjtk7"]
+[ext_resource type="Script" uid="uid://dcgimy2fx7rok" path="res://Entities/play_animation_on_start.gd" id="3_cjtk7"]
 [ext_resource type="Resource" uid="uid://baamvfr3jtfeq" path="res://Audio/Soundtextures/Generic.tres" id="3_gvaap"]
 [ext_resource type="Material" uid="uid://mmu5repc2oyl" path="res://Materials/SES_psyche_lumi.tres" id="4_s1ab2"]
 [ext_resource type="Script" uid="uid://84vfu5iuwwfw" path="res://Entities/Triggers/trigger_base.gd" id="6_d66bx"]
@@ -11,7 +12,10 @@
 [ext_resource type="Script" uid="uid://8xkegk7auyqj" path="res://Entities/spinny_block.gd" id="9_askdh"]
 [ext_resource type="Texture2D" uid="uid://trxf1mk1u3fd" path="res://textures/texturebloat/ykp_transparent_acidsmiley_uv_tresh.png" id="9_d66bx"]
 [ext_resource type="Shader" uid="uid://yqiw6k1721cs" path="res://Shaders/Hybrid/surface_embedded_sprites_opaq.gdshader" id="12_ekyf0"]
+[ext_resource type="Script" uid="uid://dws2jf1eb8fro" path="res://Entities/powerup.gd" id="13_gvaap"]
+[ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="14_gvaap"]
 [ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="14_wukyu"]
+[ext_resource type="Texture2D" uid="uid://dw15w2s5h83n2" path="res://textures/ykp/Textures/yk_bottlebags2.png" id="15_1bh7o"]
 
 [sub_resource type="Environment" id="Environment_rg35p"]
 background_mode = 1
@@ -23,11 +27,12 @@ sdfgi_enabled = true
 sdfgi_cascades = 8
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.87, 0.87, 0.87, 1)
+fog_light_color = Color(0.673802, 0.649483, 0.71747, 1)
 fog_light_energy = 0.2
 fog_density = 1.0
 fog_sky_affect = 0.0
-fog_depth_end = 20.0
+fog_depth_begin = 5.0
+fog_depth_end = 32.0
 adjustment_enabled = true
 adjustment_contrast = 0.94
 adjustment_saturation = 2.95
@@ -59,6 +64,88 @@ inner_radius = 0.516
 outer_radius = 4.831
 rings = 6
 ring_segments = 6
+
+[sub_resource type="QuadMesh" id="QuadMesh_el8vv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrukl"]
+render_priority = 22
+no_depth_test = true
+shading_mode = 0
+billboard_mode = 1
+proximity_fade_distance = 30.9
+distance_fade_mode = 3
+distance_fade_min_distance = 24.0
+distance_fade_max_distance = 12.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_el8vv"]
+
+[sub_resource type="Animation" id="Animation_s1ab2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.72251, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatableBody3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gvaap"]
+resource_name = "mvv"
+length = 3.1075
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(0.143587, 0.143587),
+"update": 0,
+"values": [Vector3(-2.72251, -7.17434e-08, -1.6413), Vector3(-5.02111, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatableBody3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.26667, 2.3),
+"transitions": PackedFloat32Array(0.143588, 0.535886, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(-1.13097, 0, 0), Vector3(-6.28319, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bh7o"]
+_data = {
+&"RESET": SubResource("Animation_s1ab2"),
+&"mvv": SubResource("Animation_gvaap")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1ab2"]
+size = Vector3(16, 16, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gvaap"]
+size = Vector3(16, 16, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -101,6 +188,62 @@ use_collision = true
 size = Vector3(10, 2, 8)
 material = ExtResource("1_hx2ke")
 
+[node name="CSGBox3D39" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 71)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 2, 8)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.5, 63)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 9, 8)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 15.5, 74)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 9, 8)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9295, 11.2755, 37.8221)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 20.3521, 34.8643)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D45" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5427, 34.3189, 49.3392)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(33.989, 16.0471, 57.8985)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D46" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5427, 6.36875, 31.8183)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(33.989, 16.0471, 57.8985)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6853, 18.0919, 24.4348)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 35.198, 107.13)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 21.5, 71)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 3, 2)
+material = ExtResource("1_hx2ke")
+
 [node name="CSGBox3D32" type="CSGBox3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 78)
 material_override = ExtResource("1_hx2ke")
@@ -134,6 +277,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 112)
 material_override = ExtResource("1_hx2ke")
 use_collision = true
 size = Vector3(10, 2, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 21, 118.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 2, 15)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 16, 112)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(2, 2, 2)
 material = ExtResource("1_hx2ke")
 
 [node name="CSGBox3D36" type="CSGBox3D" parent="CSGBox3D"]
@@ -187,10 +344,10 @@ size = Vector3(5, 1, 4)
 material = ExtResource("1_hx2ke")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 18, 107.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 13.5, 107.5)
 material_override = ExtResource("1_hx2ke")
 use_collision = true
-size = Vector3(1, 8, 33)
+size = Vector3(1, 17, 35)
 material = ExtResource("1_hx2ke")
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="CSGBox3D"]
@@ -340,10 +497,17 @@ material = SubResource("ShaderMaterial_fut6v")
 
 [node name="LightsAndGuiding" type="Node3D" parent="."]
 
+[node name="SpotLight3D" type="SpotLight3D" parent="LightsAndGuiding"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6, 10, 108)
+light_energy = 0.652
+light_negative = true
+spot_range = 15.764
+spot_attenuation = 0.0
+
 [node name="OmniLight3D" type="OmniLight3D" parent="LightsAndGuiding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 97)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 98)
 light_color = Color(0.859554, 0.68192, 0.639595, 1)
-light_energy = 4.412
+light_energy = 3.14
 omni_range = 9.419
 
 [node name="CSGBox3D30" type="CSGBox3D" parent="."]
@@ -393,5 +557,60 @@ script = ExtResource("9_askdh")
 rotate_per_second_local = Vector3(1, 1, 1)
 spinning = false
 
+[node name="Powerup_ES" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 112)
+mesh = SubResource("QuadMesh_el8vv")
+surface_material_override/0 = SubResource("StandardMaterial3D_rrukl")
+script = ExtResource("13_gvaap")
+player_params = ExtResource("14_gvaap")
+powerup_icon = ExtResource("15_1bh7o")
+powerup_sprite_3d = ExtResource("15_1bh7o")
+
+[node name="Area3D" type="Area3D" parent="Powerup_ES"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Powerup_ES/Area3D"]
+shape = SubResource("SphereShape3D_el8vv")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Powerup_ES"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 0.0
+
+[node name="MovingPlats" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45921, -1, 68)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlats"]
+deterministic = true
+libraries = {
+&"": SubResource("AnimationLibrary_1bh7o")
+}
+script = ExtResource("3_cjtk7")
+StartAnimationName = &"mvv"
+
+[node name="AnimatableBody3D2" type="AnimatableBody3D" parent="MovingPlats"]
+transform = Transform3D(0.4, 0, 0, 0, -1.448e-06, 0.4, 0, -0.4, -1.448e-06, -12.4095, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlats/AnimatableBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 3.55271e-15, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_s1ab2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingPlats/AnimatableBody3D2"]
+material_override = ExtResource("4_s1ab2")
+mesh = SubResource("BoxMesh_gvaap")
+skeleton = NodePath("../../AnimationPlayer")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="MovingPlats"]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, -2.72251, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlats/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 3.55271e-15, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_s1ab2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingPlats/AnimatableBody3D"]
+material_override = ExtResource("4_s1ab2")
+mesh = SubResource("BoxMesh_gvaap")
+skeleton = NodePath("../../AnimationPlayer")
+
 [connection signal="body_entered" from="TrigArea" to="TrigArea" method="_on_body_entered"]
 [connection signal="body_exited" from="TrigArea" to="TrigArea" method="_on_body_exited"]
+[connection signal="body_entered" from="Powerup_ES/Area3D" to="Powerup_ES" method="_on_area_3d_body_entered"]

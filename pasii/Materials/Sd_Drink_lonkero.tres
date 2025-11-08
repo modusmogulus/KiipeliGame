@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://1abfpuj1x2m6"]
+
+[ext_resource type="Texture2D" uid="uid://bojhsbc65mnou" path="res://Models/Characters/YOKYOPELI-KADET_ykp_lonkero_tex_indexed_allpart2.png" id="1_mvcyx"]
+
+[resource]
+resource_name = "Material.003"
+cull_mode = 2
+albedo_texture = ExtResource("1_mvcyx")
+metallic = 0.650794
+roughness = 0.166667

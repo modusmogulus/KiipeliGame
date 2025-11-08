@@ -164,7 +164,7 @@ func _jump(delta: float) -> void:
 	#print(request_wallrun())
 	# Apply the jump impulse
 	Body.velocity.y = sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
-	AnimHandler.grounded = false
+	
 	# Add in some gravity correction
 	Body.velocity.y -= (Parameters.GRAVITY * delta * 0.5 )
 	
@@ -199,13 +199,13 @@ func request_walljump(delta):
 	#walljump
 	if result.size() > 1 && result2.size() > 1:
 		if Body.walljumps_left > 0:
-			Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
+			Body.velocity.y = 2*sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
 			Body.walljumps_left -= 1
 			Body.sfx_vault.play()
 	#wallkick
 	if result3.size() > 1:
 		if Body.wallkicks_left > 0:
-			Body.velocity.y += sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 1.5))
+			Body.velocity.y = 1.5*sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
 			Body.velocity +=  Body.View.horizontal_view.global_basis.z * -3.2
 			Body.wallkicks_left -= 1
 			Body.sfx_vault.play()

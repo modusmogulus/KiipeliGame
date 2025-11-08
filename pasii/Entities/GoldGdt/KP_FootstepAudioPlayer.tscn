@@ -13,9 +13,9 @@ Groundcast = NodePath("Groundcast")
 MaterialCamera = NodePath("Control/SubViewportContainer/SubViewport/MaterialCamera")
 MaterialViewportTexture = SubResource("ViewportTexture_3e288")
 DefaultSoundTexture = ExtResource("2_bk6if")
-rays = 8
-reflection_probability = 0.1
-max_reflection_octaves = 3
+rays = 32
+reflection_probability = 0.062
+max_reflection_octaves = 4
 
 [node name="Groundcast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)
