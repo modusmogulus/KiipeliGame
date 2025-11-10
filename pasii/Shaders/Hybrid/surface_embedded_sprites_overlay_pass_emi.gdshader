@@ -5,8 +5,8 @@ uniform vec2 tiling = vec2(1.0);
 uniform vec2 offset = vec2(0.0);
 
 group_uniforms sprite_mapping;
-uniform sampler2D uv_map : filter_linear;
-uniform sampler2D sprite : source_color, repeat_enable;
+uniform sampler2D uv_map : filter_nearest;
+uniform sampler2D sprite : source_color, repeat_disable;
 uniform vec2 uv_tiling = vec2(1.0);
 uniform vec2 uv_offset = vec2(0.0);
 uniform float emissive_strength;

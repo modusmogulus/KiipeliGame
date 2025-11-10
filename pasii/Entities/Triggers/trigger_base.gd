@@ -27,6 +27,12 @@ func execute_actions(body: Node3D):
 	for action in actions:
 		action.do_shit(body)
 
+func stop_actions(body: Node3D):
+	for action in actions:
+		if action.has_method("stop_shit"):
+			action.stop_shit(body)
+
+
 
 func _ready() -> void:
 	scan_action_nodes()

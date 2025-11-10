@@ -1,0 +1,9 @@
+audio music "res://Audio/Music/Hammaspesu dubstep.mp3" [volume="-20.0" sync=""]
+join main_character center
+hoviharri: Ilmeisesti ollaan jo helvetin lähellä Pers-mudan kolmiota kun vedessä kimaltaa kirkasta öljypaskaa
+hoviharri: Jos nyt oikein muistan, haaksirikkoutunut lantalaiva sijaitsee ulapalla [mood=Boom]Koilisessa?[mood=Default]
+- Missä vitussa on Koilinen
+	main_character: Missä vitussa on Koilinen?
+	hoviharri: Älä minulta kysy
+- Älä puhu paskaa
+	main_character: Eihän Suomella ole rantaviivaa Koilisessa?

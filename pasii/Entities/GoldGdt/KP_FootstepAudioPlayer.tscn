@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx8lyfe42b3y7"]
 
 [ext_resource type="Script" uid="uid://cp22lpbvd77nc" path="res://Entities/GoldGdt/KP_FootstepAudioPlayer.gd" id="1_n5squ"]
-[ext_resource type="Resource" uid="uid://baamvfr3jtfeq" path="res://Audio/Soundtextures/Generic.tres" id="2_bk6if"]
+[ext_resource type="Resource" uid="uid://d00hj5vplug0d" path="res://Audio/Soundtextures/GenericHard.tres" id="2_bk6if"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3e288"]
 viewport_path = NodePath("Control/SubViewportContainer/SubViewport")
@@ -14,8 +14,8 @@ MaterialCamera = NodePath("Control/SubViewportContainer/SubViewport/MaterialCame
 MaterialViewportTexture = SubResource("ViewportTexture_3e288")
 DefaultSoundTexture = ExtResource("2_bk6if")
 rays = 32
-reflection_probability = 0.062
-max_reflection_octaves = 4
+reflection_probability = 0.427
+max_reflection_octaves = 5
 
 [node name="Groundcast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)
@@ -26,7 +26,7 @@ volume_db = -0.6
 max_polyphony = 32
 bus = &"Footsteps"
 attenuation_filter_cutoff_hz = 20500.0
-attenuation_filter_db = -1.0
+attenuation_filter_db = 0.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

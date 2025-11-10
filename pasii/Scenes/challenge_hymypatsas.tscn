@@ -1,10 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://qxw1i1m5a766"]
+[gd_scene load_steps=70 format=3 uid="uid://qxw1i1m5a766"]
 
 [ext_resource type="Material" uid="uid://bqlpuc1wh6y6n" path="res://Materials/3p_prototype_cyan.tres" id="1_hx2ke"]
 [ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="2_cjtk7"]
 [ext_resource type="Script" uid="uid://dcgimy2fx7rok" path="res://Entities/play_animation_on_start.gd" id="3_cjtk7"]
 [ext_resource type="Resource" uid="uid://baamvfr3jtfeq" path="res://Audio/Soundtextures/Generic.tres" id="3_gvaap"]
+[ext_resource type="Material" uid="uid://g0alxn6n7kl8" path="res://Materials/3p_prototype_pink.tres" id="4_1bh7o"]
 [ext_resource type="Material" uid="uid://mmu5repc2oyl" path="res://Materials/SES_psyche_lumi.tres" id="4_s1ab2"]
+[ext_resource type="Material" uid="uid://7clbqxka4rxm" path="res://Materials/3p_kalliolumessa.tres" id="5_ttefj"]
 [ext_resource type="Script" uid="uid://84vfu5iuwwfw" path="res://Entities/Triggers/trigger_base.gd" id="6_d66bx"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="6_s8ijs"]
 [ext_resource type="PackedScene" uid="uid://b3gsyvbjlicbq" path="res://Scenes/trigact_spinblock.tscn" id="7_1t7pr"]
@@ -16,6 +18,24 @@
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://Entities/GoldGdt/Default.tres" id="14_gvaap"]
 [ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="14_wukyu"]
 [ext_resource type="Texture2D" uid="uid://dw15w2s5h83n2" path="res://textures/ykp/Textures/yk_bottlebags2.png" id="15_1bh7o"]
+[ext_resource type="Material" uid="uid://ddj7yjen858ae" path="res://Materials/Sd_antaverkka_lattia.tres" id="15_tu8yn"]
+[ext_resource type="Shader" uid="uid://422wpurshq0j" path="res://Shaders/luna_vesishader.gdshader" id="18_1bh7o"]
+[ext_resource type="Shader" uid="uid://sk1lwd8fc2hl" path="res://Shaders/Hybrid/matcap_basic_textured_normal.gdshader" id="18_y5h5v"]
+[ext_resource type="LightmapGIData" uid="uid://s3sgdowd4mxd" path="res://Scenes/challenge_hymypatsas.lmbake" id="19_7n85v"]
+[ext_resource type="Texture2D" uid="uid://cq2xxttel32w7" path="res://textures/texturebloat/ykp_psychepattern02.png" id="19_ndk3a"]
+[ext_resource type="Shader" uid="uid://cty525nissi7d" path="res://Shaders/Hybrid/surface_embedded_sprites_overlay_pass_emi.gdshader" id="20_fcp86"]
+[ext_resource type="Texture2D" uid="uid://1ncchdsgo0p2" path="res://textures/UV_foam_capsules.png" id="21_fcp86"]
+[ext_resource type="Shader" uid="uid://c85hh6ie50dkr" path="res://Shaders/Hybrid/3p_retro_beveled.gdshader" id="22_0ugdj"]
+[ext_resource type="Texture2D" uid="uid://cp75b0500pg5k" path="res://textures/2k_ykp_crazymatcap02.png" id="22_fibj0"]
+[ext_resource type="Texture2D" uid="uid://h6uvs6p8y6bh" path="res://textures/beveler4_normals.png" id="23_bn8cs"]
+[ext_resource type="PackedScene" uid="uid://cuiqjohvpnqng" path="res://Entities/PropEntites/lamppu_moderni_himmeampi.tscn" id="24_ekyf0"]
+[ext_resource type="Texture2D" uid="uid://d0wvx6dueceap" path="res://textures/mustavuorikivi-kaleido3.png" id="24_tu8yn"]
+[ext_resource type="Texture2D" uid="uid://bkxndmmb56mmd" path="res://textures/mustavuorikivi-kaleido3_n.png" id="25_l431f"]
+[ext_resource type="PackedScene" uid="uid://c7xq4xxj1n1m2" path="res://Entities/Triggers/trigger_base.tscn" id="31_bn8cs"]
+[ext_resource type="PackedScene" uid="uid://bg6qcn6powchs" path="res://Entities/NPCs/prefab_NPC_billboard.tscn" id="31_md21i"]
+[ext_resource type="Script" uid="uid://bp05yahtigwqj" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_damage.gd" id="32_l431f"]
+[ext_resource type="Script" uid="uid://bpc3574rco6ph" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_dialogue.gd" id="33_tu8yn"]
+[ext_resource type="Script" uid="uid://c32lxhlchckdv" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_swim.gd" id="33_vvy4w"]
 
 [sub_resource type="Environment" id="Environment_rg35p"]
 background_mode = 1
@@ -27,9 +47,9 @@ sdfgi_enabled = true
 sdfgi_cascades = 8
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.673802, 0.649483, 0.71747, 1)
+fog_light_color = Color(0.4721, 0.65879, 1, 1)
 fog_light_energy = 0.2
-fog_density = 1.0
+fog_density = 0.5405
 fog_sky_affect = 0.0
 fog_depth_begin = 5.0
 fog_depth_end = 32.0
@@ -147,340 +167,174 @@ size = Vector3(16, 16, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_gvaap"]
 size = Vector3(16, 16, 1)
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ttefj"]
+
+[sub_resource type="Gradient" id="Gradient_vvy4w"]
+offsets = PackedFloat32Array(0.571429, 0.806122)
+colors = PackedColorArray(0.831644, 0.565634, 7.70092e-07, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lpjha"]
+gradient = SubResource("Gradient_vvy4w")
+width = 6
+height = 6
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.517094)
+fill_to = Vector2(0.465812, 0.226496)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_am84t"]
+render_priority = -32
+shader = ExtResource("20_fcp86")
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/uv_map = ExtResource("21_fcp86")
+shader_parameter/sprite = SubResource("GradientTexture2D_lpjha")
+shader_parameter/uv_tiling = Vector2(55, 55)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/emissive_strength = 1.0
+shader_parameter/depth = 0.345
+
+[sub_resource type="Gradient" id="Gradient_ljehw"]
+colors = PackedColorArray(1, 1, 1, 0.313726, 1, 1, 1, 0.145098)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ejrer"]
+gradient = SubResource("Gradient_ljehw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhxar"]
+render_priority = 6
+next_pass = SubResource("ShaderMaterial_am84t")
+shader = ExtResource("22_0ugdj")
+shader_parameter/albedo_ceiling = Color(0, 0, 0, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("24_tu8yn")
+shader_parameter/roughness = 1.0
+shader_parameter/metalness = 0.0
+shader_parameter/albedo_wall = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_wall = ExtResource("24_tu8yn")
+shader_parameter/bevel_normal = ExtResource("23_bn8cs")
+shader_parameter/texture_normal = ExtResource("25_l431f")
+shader_parameter/texture_bevel_overlay = SubResource("GradientTexture1D_ejrer")
+shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("24_tu8yn")
+shader_parameter/ground_threshold = 0.25
+shader_parameter/blend_smoothness = 0.0
+shader_parameter/uv1_blend_sharpness = 8.654
+shader_parameter/uv1_scale = Vector3(0.2, 0.2, 0.2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/normal_bevel_blend = 0.5
+shader_parameter/uv_global = true
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ekyf0"]
+noise_type = 2
+frequency = 0.0302
+fractal_octaves = 2
+fractal_lacunarity = 0.625
+domain_warp_enabled = true
+domain_warp_amplitude = 30.25
+domain_warp_frequency = 0.075
+domain_warp_fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gmyjx"]
+seamless = true
+as_normal_map = true
+bump_strength = 113.5
+noise = SubResource("FastNoiseLite_ekyf0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wukyu"]
+render_priority = 65
+shader = ExtResource("18_y5h5v")
+shader_parameter/matcap = ExtResource("22_fibj0")
+shader_parameter/matcappiness = 1.0
+shader_parameter/texture_colorize = Color(0.77084, 0.770839, 0.770839, 1)
+shader_parameter/albedo_texture = ExtResource("19_ndk3a")
+shader_parameter/normal_texture = SubResource("NoiseTexture2D_gmyjx")
+shader_parameter/vertex_shadow_strength = 0.0
+shader_parameter/matcap_hue_shift = 0.907
+shader_parameter/normal_strength = 3.0
+shader_parameter/tiling = Vector2(1, 1)
+shader_parameter/move = Vector2(0.182, 0.064)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y5h5v"]
+size = Vector2(800, 800)
+
+[sub_resource type="Gradient" id="Gradient_gajf2"]
+offsets = PackedFloat32Array(0, 0.299435, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.299547, 0.299548, 0.299547, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sgfqu"]
+noise_type = 0
+seed = 635
+frequency = 0.0073
+fractal_type = 2
+fractal_octaves = 2
+fractal_lacunarity = 1.82
+fractal_gain = 0.28
+cellular_distance_function = 3
+cellular_jitter = 1.8
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 22.375
+domain_warp_frequency = 0.01
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yhq0w"]
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_gajf2")
+noise = SubResource("FastNoiseLite_sgfqu")
+
+[sub_resource type="Gradient" id="Gradient_761wq"]
+offsets = PackedFloat32Array(0.528249, 0.683616, 0.875706)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r1bq4"]
+seed = 290
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c0spr"]
+generate_mipmaps = false
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_761wq")
+noise = SubResource("FastNoiseLite_r1bq4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8ijs"]
+render_priority = 2
+shader = ExtResource("18_1bh7o")
+shader_parameter/albedo = Color(0.94, 0.94, 0.94, 1)
+shader_parameter/water_fog_exponent = 1.438
+shader_parameter/glimmer_color = Color(0.523991, 0.167945, 0.700079, 1)
+shader_parameter/fog_color = Color(0.331315, 0.380623, 1, 1)
+shader_parameter/water_fog = 1.562
+shader_parameter/point_size = 74.5
+shader_parameter/speed = 0.014
+shader_parameter/flow_speed = -0.13
+shader_parameter/glimmer_strength = 10.404
+shader_parameter/shore_strength = 2.0
+shader_parameter/shorecol = Color(1, 0.285934, 0.470541, 1)
+shader_parameter/refraction = -0.553
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/distort_tex = SubResource("NoiseTexture2D_yhq0w")
+shader_parameter/glimmer_tex = SubResource("NoiseTexture2D_c0spr")
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/oiliness = 0.0
+shader_parameter/uv1_scale = Vector3(40, 40, 40)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vvy4w"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l431f"]
+radius = 4.2
+
 [node name="Node3D" type="Node3D"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
-use_collision = true
-size = Vector3(15.4587, 29, 6.99164)
-material = ExtResource("1_hx2ke")
-
-[node name="SoundMaterial" type="Node" parent="CSGBox3D"]
-script = ExtResource("2_cjtk7")
-sound_texture = ExtResource("3_gvaap")
-metadata/_custom_type_script = "uid://blnsht0ajtpig"
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 116)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 10, 18)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.5, 98.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 1, 17)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 84)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 4, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D31" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 79)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 2, 8)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D39" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 71)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 2, 8)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D40" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.5, 63)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 9, 8)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D41" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 15.5, 74)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(5, 9, 8)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D44" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9295, 11.2755, 37.8221)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(5, 20.3521, 34.8643)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D45" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5427, 34.3189, 49.3392)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(33.989, 16.0471, 57.8985)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D46" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5427, 6.36875, 31.8183)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(33.989, 16.0471, 57.8985)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D43" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6853, 18.0919, 24.4348)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(5, 35.198, 107.13)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D42" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 21.5, 71)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(5, 3, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D32" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 78)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 8, 8)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D/CSGBox3D32"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32425, 7)
-operation = 2
-radius = 4.868
-height = 9.3515
-sides = 16
-
-[node name="CSGBox3D30" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 13, 78.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(2, 4, 9)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 15.5, 108)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(7, 1, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D33" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 112)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 2, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D38" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 21, 118.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(1, 2, 15)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D37" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 16, 112)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(2, 2, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D36" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 16, 119)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(7, 2, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D34" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.5, 111.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 7, 0.25)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D35" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 17.75, 110)
-material_override = ExtResource("1_hx2ke")
-operation = 2
-use_collision = true
-size = Vector3(2, 1.5, 4)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 15.5, 102)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(4, 3, 4)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D24" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 15.5, 92)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(4, 3, 4)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D25" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 19.5, 90.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(5, 5, 1)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D26" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 16.5, 92)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(5, 1, 4)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D20" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 13.5, 107.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(1, 17, 35)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D27" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 17.5, 94.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(9, 7, 1)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D28" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5.5, 98.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(9, 1, 17)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D29" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 90.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 12, 1)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D19" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 17.5, 94.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(7, 7, 1)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D23" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 18.5, 94.5)
-material_override = ExtResource("1_hx2ke")
-operation = 2
-use_collision = true
-size = Vector3(3, 3, 1)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D22" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 17.5, 97.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(1, 7, 5)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 17.5, 103.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(1, 7, 7)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 16, -18.5)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(8, 4, 1)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 9, -2)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(8, 16, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 1, 7, -28)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(8, 16, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D21" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 15.25, 102)
-material_override = ExtResource("1_hx2ke")
-operation = 2
-use_collision = true
-size = Vector3(1, 2.5, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, -4, 11, -31)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(8, 16, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 11, 17, -24)
-material_override = ExtResource("1_hx2ke")
-operation = 2
-use_collision = true
-size = Vector3(16, 16, 16)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 19, -2)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(3, 4, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 15, -17)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(8, 2, 2)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 15, -13)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(2, 2, 6)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, -8)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(10, 7, 4)
-material = ExtResource("1_hx2ke")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 14, -9)
-material_override = ExtResource("1_hx2ke")
-use_collision = true
-size = Vector3(8, 4, 4)
-material = ExtResource("1_hx2ke")
-
 [node name="Pawn" parent="." instance=ExtResource("6_s8ijs")]
-transform = Transform3D(1, -0.000415868, 0.000498151, 0.000415742, 1, 0.000257564, -0.000498256, -0.000257361, 1, 3, 4.18562, 119)
+transform = Transform3D(1, -0.000415868, 0.000498151, 0.000415742, 1, 0.000257564, -0.000498256, -0.000257361, 1, 1.01893, 2.17454, 157.001)
+start_view_yaw = 90.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rg35p")
@@ -494,21 +348,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -232, 0, -156)
 visible = false
 mesh = SubResource("TorusMesh_rg35p")
 material = SubResource("ShaderMaterial_fut6v")
-
-[node name="LightsAndGuiding" type="Node3D" parent="."]
-
-[node name="SpotLight3D" type="SpotLight3D" parent="LightsAndGuiding"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6, 10, 108)
-light_energy = 0.652
-light_negative = true
-spot_range = 15.764
-spot_attenuation = 0.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="LightsAndGuiding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 98)
-light_color = Color(0.859554, 0.68192, 0.639595, 1)
-light_energy = 3.14
-omni_range = 9.419
 
 [node name="CSGBox3D30" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 83.5)
@@ -571,6 +410,7 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Powerup_ES/Area3D"]
 shape = SubResource("SphereShape3D_el8vv")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Powerup_ES"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -593,9 +433,10 @@ transform = Transform3D(0.4, 0, 0, 0, -1.448e-06, 0.4, 0, -0.4, -1.448e-06, -12.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlats/AnimatableBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 3.55271e-15, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_s1ab2")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MovingPlats/AnimatableBody3D2"]
-material_override = ExtResource("4_s1ab2")
+material_override = ExtResource("15_tu8yn")
 mesh = SubResource("BoxMesh_gvaap")
 skeleton = NodePath("../../AnimationPlayer")
 
@@ -605,12 +446,689 @@ transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, 0.4, 0, -0.4, -1.74846e-08, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlats/AnimatableBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 3.55271e-15, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_s1ab2")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MovingPlats/AnimatableBody3D"]
-material_override = ExtResource("4_s1ab2")
+material_override = ExtResource("15_tu8yn")
 mesh = SubResource("BoxMesh_gvaap")
 skeleton = NodePath("../../AnimationPlayer")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
+texel_scale = 0.5
+camera_attributes = SubResource("CameraAttributesPractical_ttefj")
+light_data = ExtResource("19_7n85v")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LightmapGI"]
+use_collision = true
+size = Vector3(15.4587, 29, 6.99164)
+material = ExtResource("1_hx2ke")
+
+[node name="SoundMaterial" type="Node" parent="LightmapGI/CSGBox3D"]
+script = ExtResource("2_cjtk7")
+sound_texture = ExtResource("3_gvaap")
+metadata/_custom_type_script = "uid://blnsht0ajtpig"
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 116)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 10, 18)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D77" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.3735, 133.099)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 0.675415, 43.8367)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D47" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.5, 134)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 1, 18)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D51" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 21, 160)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 2, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D60" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 18.5, 147)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1.11, 7, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D52" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 20.5, 160)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 1, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D67" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 23.5961, 161.876)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 7.19226, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D56" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 13, 160)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 14, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D48" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 152)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 12, 18)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D49" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 15, 163.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(42, 24, 5)
+material = ExtResource("5_ttefj")
+
+[node name="CSGBox3D50GRND" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 6.62501, 67.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(260, 1, 349)
+material = SubResource("ShaderMaterial_mhxar")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.5, 98.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 1, 17)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 84)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 4, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D53" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 17, 162.5)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(9, 10, 7)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LightmapGI/CSGBox3D/CSGBox3D53"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 1.27174)
+radius = 4.0
+height = 6.4855
+sides = 16
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D55" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 18, 164.5)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(9, 10, 7)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LightmapGI/CSGBox3D/CSGBox3D55"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0.393112)
+radius = 4.0
+height = 8.24275
+sides = 16
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D54" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5, 18, 162.5)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(9, 10, 7)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LightmapGI/CSGBox3D/CSGBox3D54"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 1.27174)
+radius = 4.0
+height = 6.4855
+sides = 16
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 79)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 2, 8)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D61" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 16.5, 160)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 7, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D62" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 17, 160)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(14, 6, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D66" type="CSGBox3D" parent="LightmapGI/CSGBox3D/CSGBox3D62"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, -0.5, -1)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(8, 3, 2.58)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 14.5, 166)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(6, 1, 10)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D72" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.905, 15.5142, 188.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(42.1901, 23.0283, 45)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D73" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 13, 161.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(41, 18, 99)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LightmapGI/CSGBox3D/CSGBox3D73"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)
+radius = 20.5
+height = 99.0
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D74" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 16, 238)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(41, 24, 18)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D65" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.345, 17.625, 156)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 8, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D66" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.345, 11.125, 156)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 21, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D68" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.845, 11.125, 156)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 21, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D75" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -28.845, 24.9786, 166.354)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(5, 22, 3)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D76" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -36.845, 17.8507, 173.953)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(3, 22, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D69" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.845, 11.125, 156)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 21, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D70" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.845, 11.125, 148)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 21, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D71" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.845, 11.125, 148)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 21, 2)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 71)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 2, 8)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.5, 63)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 9, 8)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 15.5, 74)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 9, 8)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9295, 11.2755, 37.8221)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 20.3521, 34.8643)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D45" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5427, 34.3189, 49.3392)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(33.989, 16.0471, 57.8985)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D46" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5427, 6.36875, 31.8183)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(33.989, 16.0471, 57.8985)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7031, 18.0919, 24.4348)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5.03564, 35.198, 107.13)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D50" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5425, 21.3833, 24.4348)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5.03564, 41.7808, 107.13)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 21.5, 71)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 3, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 78)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 8, 8)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LightmapGI/CSGBox3D/CSGBox3D32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32425, 7)
+operation = 2
+radius = 4.868
+height = 9.3515
+sides = 16
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 13, 78.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(2, 4, 9)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 15.5, 108)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(7, 1, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 112)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 2, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 21, 118.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 2, 15)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D57" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 21, 133.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 2, 15)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D63" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 21, 143)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 2, 36)
+material = ExtResource("4_1bh7o")
+
+[node name="CSGBox3D58" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 17.5, 126.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 5, 1)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D59" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 18.5, 148)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 7, 14)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LightmapGI/CSGBox3D/CSGBox3D59"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -8.74228e-08, -2, -7)
+operation = 2
+radius = 4.0
+height = 4.0
+sides = 4
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 16, 112)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 16, 119)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(7, 2, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.5, 111.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 7, 0.25)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 17.75, 110)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(2, 1.5, 4)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 15.5, 102)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(4, 3, 4)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 15.5, 92)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(4, 3, 4)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 19.5, 90.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 5, 1)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 16.5, 92)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(5, 1, 4)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 13.5, 107.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 17, 35)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 17.5, 94.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(9, 7, 1)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5.5, 98.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(9, 1, 17)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 90.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 12, 1)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 17.5, 94.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(7, 7, 1)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 18.5, 94.5)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(3, 3, 1)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 17.5, 97.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 7, 5)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 17.5, 103.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(1, 7, 7)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 16, -18.5)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 4, 1)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 9, -2)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 16, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 1, 7, -28)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 16, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 15.25, 102)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(1, 2.5, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, -4, 11, -31)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 16, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 11, 17, -24)
+material_override = ExtResource("1_hx2ke")
+operation = 2
+use_collision = true
+size = Vector3(16, 16, 16)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 19, -2)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(3, 4, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 15, -17)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 2, 2)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 15, -13)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(2, 2, 6)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, -8)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(10, 7, 4)
+material = ExtResource("1_hx2ke")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="LightmapGI/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 14, -9)
+material_override = ExtResource("1_hx2ke")
+use_collision = true
+size = Vector3(8, 4, 4)
+material = ExtResource("1_hx2ke")
+
+[node name="Water2" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 10, 133)
+material_override = SubResource("ShaderMaterial_wukyu")
+mesh = SubResource("PlaneMesh_y5h5v")
+skeleton = NodePath("../..")
+
+[node name="Water" type="MeshInstance3D" parent="LightmapGI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 10, 133)
+material_override = SubResource("ShaderMaterial_s8ijs")
+mesh = SubResource("PlaneMesh_y5h5v")
+skeleton = NodePath("../..")
+
+[node name="Lights" type="Node3D" parent="LightmapGI"]
+
+[node name="LamppuModerni" parent="LightmapGI/Lights" instance=ExtResource("24_ekyf0")]
+transform = Transform3D(3.6006, -12.455, 0, 12.455, 3.6006, 0, 0, 0, 12.965, -4.28178, 17.6006, 126.827)
+
+[node name="LamppuModerni2" parent="LightmapGI/Lights" instance=ExtResource("24_ekyf0")]
+transform = Transform3D(3.6006, -12.455, 0, 12.455, 3.6006, 0, 0, 0, 12.965, -4.28178, 17.6006, 147.225)
+
+[node name="LightsAndGuiding" type="Node3D" parent="LightmapGI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LightmapGI/LightsAndGuiding"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6, 10, 108)
+light_energy = 0.652
+light_negative = true
+spot_range = 15.764
+spot_attenuation = 0.0
+
+[node name="Props" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
+
+[node name="DamageTrigger" type="Area3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, -9.99267, -5.41595, 145.243)
+collision_mask = 3
+linear_damp = 60.309
+script = ExtResource("6_d66bx")
+
+[node name="TrigCollision" type="CollisionShape3D" parent="DamageTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07762, 0)
+shape = SubResource("BoxShape3D_vvy4w")
+debug_color = Color(0, 1, 0.05, 1)
+
+[node name="TrigactDamage" type="Node3D" parent="DamageTrigger"]
+script = ExtResource("32_l431f")
+damage = 1
+DPS = 60.0
+SlowDPSTowardsEnd = 0.9
+
+[node name="TrigactDamage2" type="Node3D" parent="DamageTrigger"]
+script = ExtResource("33_vvy4w")
+
+[node name="TrigArea2" parent="." instance=ExtResource("31_bn8cs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.740082, 0.766764, 147.506)
+interaction_description = "Press E to talk"
+this_triggertype = 3
+
+[node name="BillboardNPC" parent="TrigArea2" instance=ExtResource("31_md21i")]
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrigArea2"]
+shape = SubResource("SphereShape3D_l431f")
+
+[node name="Node3D" type="Node3D" parent="TrigArea2"]
+script = ExtResource("33_tu8yn")
+timeline_name = "tmln_vesi"
 
 [connection signal="body_entered" from="TrigArea" to="TrigArea" method="_on_body_entered"]
 [connection signal="body_exited" from="TrigArea" to="TrigArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Powerup_ES/Area3D" to="Powerup_ES" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="DamageTrigger" to="DamageTrigger" method="_on_body_entered"]
+[connection signal="body_exited" from="DamageTrigger" to="DamageTrigger" method="_on_body_exited"]

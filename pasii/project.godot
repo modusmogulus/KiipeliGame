@@ -30,15 +30,26 @@ ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
 TriggerActionClass="*res://Entities/Triggers/trigger_action.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+settings/stdout/print_gpu_profile=true
+shapes/collision/shape_color=Color(0.99, 0, 0.165, 1)
+shapes/collision/contact_color=Color(0, 1, 0.25, 1)
+
 [dialogic]
 
 directories/dch_directory={
+"afreen": "res://StoryAndDialogue/afreen.dch",
+"hoviharri": "res://StoryAndDialogue/hoviharri.dch",
 "losotto": "res://StoryAndDialogue/losotto.dch",
+"main_character": "res://StoryAndDialogue/main_character.dch",
 "pasi": "res://StoryAndDialogue/pasi.dch"
 }
 directories/dtl_directory={
 "tmln_test": "res://StoryAndDialogue/tmln_test.dtl",
-"tmln_ulosotto": "res://StoryAndDialogue/tmln_ulosotto.dtl"
+"tmln_ulosotto": "res://StoryAndDialogue/tmln_ulosotto.dtl",
+"tmln_vesi": "res://StoryAndDialogue/tmln_vesi.dtl"
 }
 layout/style_directory={
 "": "res://StoryAndDialogue/ykp_dialogic_styleB.tres",
@@ -54,11 +65,11 @@ text/text_reveal_skip_delay=0.1
 text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
-animations/join_default_length=0.5
-animations/join_default_wait=true
-animations/leave_default_length=0.5
-animations/leave_default_wait=true
-animations/cross_fade_default_length=0.5
+animations/join_default_length=0.2
+animations/join_default_wait=false
+animations/leave_default_length=0.2
+animations/leave_default_wait=false
+animations/cross_fade_default_length=0.2
 choices/autofocus_first=true
 choices/delay=0.2
 choices/reveal_delay=0
@@ -82,6 +93,7 @@ audio/channel_defaults={
 }
 glossary/default_case_sensitive=true
 variables={}
+choices/hotkey_behaviour=1
 
 [display]
 

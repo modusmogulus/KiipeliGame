@@ -33,21 +33,14 @@ void vertex() {
 }
 
 void fragment() {
-	vec3 col = texture(screentex, SCREEN_UV).rgb;
-
-	// yiq
-	//vec3 col2 = rgb2yiq(col);
-	//vec3 col3 = vec3(1.1, 1.1, 0.9) * col + vec3(-0.1, -0.1, 0.1) * vec3(texture(TEXTURE, UV).rgb);
-	//col = mix(col2, col3, col.g);
-	//col = yiq2rgb(col);
-	vec3 col2 = texture(TEXTURE, UV).rgb;
-	col = rgb2hsv(col);
-	vec3 col3 = mix(col, rgb2hsv(col2), (col2.r+col2.g+col2.b)*0.3);
-	if (length(col2) < length(col)) {
-		discard;
-	}
-	col = hsv2rgb(vec3(col2.r, col2.g, col3.b));
-
-	COLOR.rgb = col;
+	vec3 col2 = (texture(screentex, SCREEN_UV).rgb)*2.0;
+	//col2*=col2;
+	vec3 col1 = (texture(TEXTURE, UV).rgb-col2);
+	vec3 col1h = rgb2hsv(texture(TEXTURE, UV).rgb-col2);
+	vec3 col2h = rgb2hsv(col2);
+	col2h.g = mix(col2h.g, col1h.g, col1h.b);
+	vec3 fcol;
+	fcol = vec3(col1h.r, col2h.g*0.98, col2h.b-(col1h.b*0.2));
+	COLOR.rgb = hsv2rgb(fcol);
 	// Called for every pixel the material is visible on.
 }

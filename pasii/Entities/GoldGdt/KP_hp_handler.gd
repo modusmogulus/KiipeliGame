@@ -3,12 +3,14 @@ var hp = 100.0
 var maxhp = 100.0
 var damage_pending = 0.0
 @export var godmode = false
-@export var regen_per_second = 10.0
+@export var regen_per_second = 5.0
 @export var hp_hearts : Array[AnimatedSprite2D]
 @export var frame_empty_heart : int
 @export var frame_healthy_heart : int
 @export var frame_damage_pending_heart : int
 @export var View : GoldGdt_View
+@export var SFX_Ring : AudioStreamPlayer3D
+
 func _process(delta: float) -> void:
 	for i in hp_hearts.size():
 		var heart_section = maxhp / hp_hearts.size() * i-1
@@ -21,10 +23,12 @@ func _process(delta: float) -> void:
 				hp_hearts[i].frame = frame_healthy_heart
 	hp += regen_per_second*delta
 	hp = clampf(hp, 0.0, maxhp)
+	SFX_Ring.volume_linear = ((maxhp/hp) - 1.0)
 	if hp == 0 && !godmode:
 		get_parent().die()
 
 func take_damage(damage : float):
+	if damage <= 0.0: return
 	hp -= damage
 	damage_pending -= damage
 	damage_pending = clampf(damage, 0.0, 0.0)

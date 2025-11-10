@@ -1,9 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://bqlpuc1wh6y6n"]
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://bqlpuc1wh6y6n"]
 
 [ext_resource type="Shader" uid="uid://c85hh6ie50dkr" path="res://Shaders/Hybrid/3p_retro_beveled.gdshader" id="1_ejrer"]
 [ext_resource type="Texture2D" uid="uid://de4jx2xrdta1w" path="res://textures/ykp/Textures/prototyyppi-teras2.png" id="3_d1kc8"]
 [ext_resource type="Texture2D" uid="uid://cdbv3l8hqwf2v" path="res://textures/ykp/Textures/prototyyppi-paperi1.png" id="4_ul43j"]
-[ext_resource type="Texture2D" uid="uid://h6uvs6p8y6bh" path="res://textures/beveler4_normals.png" id="5_d1kc8"]
 [ext_resource type="Texture2D" uid="uid://b5bhtyty6r1sm" path="res://Models/Blender/textures/Patjamat Normal.1001.png" id="5_l7ove"]
 [ext_resource type="Texture2D" uid="uid://cyqc2uukk8h1x" path="res://textures/ykp/Textures/yk_jptile12.png" id="5_ul43j"]
 
@@ -18,12 +17,12 @@ render_priority = 0
 shader = ExtResource("1_ejrer")
 shader_parameter/albedo_ceiling = Color(0, 0.703383, 0.968658, 1)
 shader_parameter/texture_albedo_ceiling = ExtResource("3_d1kc8")
-shader_parameter/roughness = 0.01
+shader_parameter/roughness = 0.47
 shader_parameter/metalness = 0.0
 shader_parameter/albedo_wall = Color(1, 0.816667, 0, 1)
 shader_parameter/texture_albedo_wall = ExtResource("5_ul43j")
 shader_parameter/bevel_normal = ExtResource("5_l7ove")
-shader_parameter/texture_normal = ExtResource("5_d1kc8")
+shader_parameter/texture_normal = ExtResource("5_l7ove")
 shader_parameter/texture_bevel_overlay = SubResource("GradientTexture1D_ejrer")
 shader_parameter/albedo_floor = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo_floor = ExtResource("4_ul43j")

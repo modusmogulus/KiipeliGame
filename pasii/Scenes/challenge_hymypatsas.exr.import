@@ -1,0 +1,27 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://des2kn0k0iyc6"
+path.bptc="res://.godot/imported/challenge_hymypatsas.exr-58de3965721bfbc622dd90a010a61d9e.bptc.ctexarray"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Scenes/challenge_hymypatsas.exr"
+dest_files=["res://.godot/imported/challenge_hymypatsas.exr-58de3965721bfbc622dd90a010a61d9e.bptc.ctexarray"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

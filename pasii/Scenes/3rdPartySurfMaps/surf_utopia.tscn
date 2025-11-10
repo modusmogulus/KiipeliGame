@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cndn1swgcrq84" path="res://Models/Blender/omasurfmap.glb" id="4_tf40n"]
 [ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="4_x3wu7"]
 [ext_resource type="Resource" uid="uid://beesu0jqytwj7" path="res://Audio/Soundtextures/Ice.tres" id="5_3ikpb"]
+[ext_resource type="Material" uid="uid://7icdrsgfiatf" path="res://Shaders/-AA-YKP_VESI.tres" id="6_3ikpb"]
 [ext_resource type="PackedScene" uid="uid://dq3p6jsb61qyn" path="res://Entities/Powerups/powerup_liukuri.tscn" id="6_qva2f"]
-[ext_resource type="Material" uid="uid://d00v6e3n7j0iq" path="res://Shaders/-AA-IHANA-MERI-VESI3.tres" id="6_x3wu7"]
 [ext_resource type="Environment" uid="uid://bg6bl1l0qk5dw" path="res://Materials/WORLD_ENV_Morning.tres" id="7_3ikpb"]
 [ext_resource type="Script" uid="uid://svdh0nyihu6v" path="res://Entities/GoldGdt/src/PlayerParameters.gd" id="7_qva2f"]
 [ext_resource type="Texture2D" uid="uid://cx7qqixfjty02" path="res://textures/decal_shadowfade.tres" id="7_somx4"]
@@ -288,7 +288,7 @@ metadata/_custom_type_script = "uid://blnsht0ajtpig"
 [node name="omasurfmap" parent="LightmapGI" instance=ExtResource("4_tf40n")]
 
 [node name="water" parent="LightmapGI/omasurfmap" index="13"]
-material_override = ExtResource("6_x3wu7")
+material_override = ExtResource("6_3ikpb")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="LightmapGI"]
 environment = ExtResource("7_3ikpb")

@@ -16,9 +16,8 @@ func request_vault(wishdir) -> enumsKP.vault_states:
 	if !Body: return enumsKP.vault_states.NONE
 	if !Body.current_vault_state == enumsKP.vault_states.NONE:
 		return enumsKP.vault_states.NONE
-	var query = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE * wishdir.normalized().length())
-	var query2 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE * wishdir.normalized().length())
-	
+	var query = PhysicsRayQueryParameters3D.create(Body.global_position, Body.global_position+Body.get_camera_look_dir()*1.5)
+	var query2 = PhysicsRayQueryParameters3D.create(Body.global_position + Vector3(0, 1.8, 0), Body.global_position+1.5*Body.get_camera_look_dir() * Vector3(1.0, 0.0, 1.0) + Vector3(0, 1.8, 0))
 	query.exclude = [Body.collision_hull]
 	query2.exclude = [Body.collision_hull]
 	var space_state = Body.get_world_3d().direct_space_state
@@ -29,8 +28,8 @@ func request_vault(wishdir) -> enumsKP.vault_states:
 			return enumsKP.vault_states.NONE
 		Body.vault_cooldown_timer = Body.vault_cooldown_duration
 		_vault(get_process_delta_time())
-		print("vaulted")
 		Body.sfx_vault.play()
+		AnimHandler.snap_hands_to(result.position, 0.8, 0.8)
 		return enumsKP.vault_states.INITIAL_VAULT
 	else:
 		return enumsKP.vault_states.NONE
@@ -49,17 +48,14 @@ func request_wallrun() -> enumsKP.wallrun_states:
 	if result.size() > 0 or result2.size() > 0: #is there runnable walls?
 		#there is
 		if result.size() > 0: #is there runnable left wall?
-			print("LEFT WALLRUN")
-			AnimHandler.wallrunning = "LEFT"
 			wallrun_wall_normal = result.normal
 			return enumsKP.wallrun_states.LEFT #exit function and tell em its left
 		if result2.size() > 0: #is there runnable right wall?
-			print("RIGHT WALLRUN")
 			wallrun_wall_normal = result2.normal
-			AnimHandler.wallrunning = "RIGHT"
+			
 			return enumsKP.wallrun_states.RIGHT #exit function and tell em its right
 	print("NO WALLRUn") #player is stupud. there is no wall
-	AnimHandler.wallrunning = "NO"
+	
 	return enumsKP.wallrun_states.NONE #if we didnt exit func due to wall found, no wall available
 		
 
@@ -185,10 +181,10 @@ func request_walljump(delta):
 	if request_wallrun() != enumsKP.wallrun_states.NONE:
 		return
 	#for walljump
-	var query = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE)
-	var query2 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE)
+	var query = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * -0.1, Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE*0.5)
+	var query2 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * -0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * -Parameters.VAULT_CHECK_DISTANCE*0.5)
 	#for wallkicks
-	var query3 = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * 0.1, Body.global_position + Body.View.horizontal_view.global_basis.z * Parameters.VAULT_CHECK_DISTANCE * 2)
+	var query3 = PhysicsRayQueryParameters3D.create(Body.global_position - Body.View.horizontal_view.global_basis.z * 0.1, Body.global_position + Body.View.horizontal_view.global_basis.z * Parameters.VAULT_CHECK_DISTANCE *0.5)
 	#var query4 = PhysicsRayQueryParameters3D.create(Vector3.UP + Body.global_position - Body.View.horizontal_view.global_basis.z * 0.2, Vector3.UP + Body.global_position + Body.View.horizontal_view.global_basis.z * Parameters.VAULT_CHECK_DISTANCE)
 	
 	query.exclude = [Body.collision_hull]
@@ -203,9 +199,13 @@ func request_walljump(delta):
 	#walljump
 	if result.size() > 1 && result2.size() > 1:
 		if Body.walljumps_left > 0:
-			Body.velocity.y = 2*sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
+			Body.velocity.y = sqrt(2 * Parameters.GRAVITY * Parameters.JUMP_HEIGHT)
 			Body.walljumps_left -= 1
 			Body.sfx_vault.play()
+			AnimHandler.walljumpstate = "WALLJUMP"
+			AnimHandler.snap_hands_to(result.position, 0.8, 0.3)
+			AnimHandler.switch_hand()
+			Body.current_walljump_state = enumsKP.walljump_states.WALLJUMP
 	#wallkick
 	if result3.size() > 1:
 		if Body.wallkicks_left > 0:
@@ -214,8 +214,12 @@ func request_walljump(delta):
 			Body.velocity +=  Body.View.horizontal_view.global_basis.z * -3.2
 			Body.wallkicks_left -= 1
 			Body.sfx_vault.play()
+			AnimHandler.walljumpstate = "WALLKICK"
+			AnimHandler.switch_hand()
+			Body.current_walljump_state = enumsKP.walljump_states.WALLKICK
 func _vault(delta: float) -> void:
-	Body.velocity.y = sqrt(4 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 0.5))
+	Body.velocity.y = sqrt(2 * Parameters.GRAVITY * (Parameters.JUMP_HEIGHT * 0.5))
+	Body.velocity += Body.get_camera_look_dir() * 3.0
 	Body.current_vault_state = enumsKP.vault_states.NONE
 	AnimHandler.vaultstate = "VAULTING" #This is set to false when player velocity y vector is negative (in Body handler)
 	Body._duck(true)

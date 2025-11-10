@@ -3,13 +3,13 @@ class_name SoundTexture extends Resource
 @export var ingame_name : String
 @export_group("Audio properties")
 @export var footsteps : AudioStream
-@export_range(0.0, 2.0) var footstep_loudness_linear : float = 0.8
+@export_range(0.0, 20.0) var footstep_loudness_linear : float = 0.8
 @export var footsteps_running : AudioStream
-@export_range(0.0, 2.0) var footstep_running_loudness_linear : float = 0.8
+@export_range(0.0, 20.0) var footstep_running_loudness_linear : float = 0.8
 @export var landing : AudioStream
-@export_range(0.0, 2.0) var landing_loudness_linear : float = 0.8
+@export_range(0.0, 20.0) var landing_loudness_linear : float = 0.8
 @export var slide : AudioStream
-@export_range(0.0, 2.0) var slide_loudness_linear : float = 0.8
+@export_range(0.0, 20.0) var slide_loudness_linear : float = 0.8
 @export var wallrun : AudioStream
 @export_range(0.0, 2.0) var wallrun_loudness_linear : float = 0.8
 @export var roll : AudioStream

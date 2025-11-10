@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7faihbxhqt72"
+path="res://.godot/imported/yk_footstep_hardsufrace_slideland_A.ogg-d5f876a4fcaebc3d2a19d4ee3dd93a76.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Footsteps/09 Hard/yk_footstep_hardsufrace_slideland_A.ogg"
+dest_files=["res://.godot/imported/yk_footstep_hardsufrace_slideland_A.ogg-d5f876a4fcaebc3d2a19d4ee3dd93a76.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

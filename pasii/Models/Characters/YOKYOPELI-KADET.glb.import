@@ -3634,30 +3634,6 @@ _subresources={
 }
 },
 "materials": {
-"Material.002": {
-"use_external/enabled": true,
-"use_external/path": "res://Models/Characters/Material.002.tres"
-},
-"Material.004": {
-"use_external/enabled": true,
-"use_external/path": "res://Models/Characters/Material.004.tres"
-},
-"Material.005": {
-"use_external/enabled": true,
-"use_external/path": "res://Models/Characters/Material.005.tres"
-},
-"Material.006": {
-"use_external/enabled": true,
-"use_external/path": "res://Models/Characters/Material.006.tres"
-},
-"namiskuukkeli01.001": {
-"use_external/enabled": true,
-"use_external/path": "res://Models/Characters/namiskuukkeli01.001.tres"
-},
-"namiskuukkeli02.001": {
-"use_external/enabled": true,
-"use_external/path": "res://Models/Characters/namiskuukkeli02.001.tres"
-},
 "shirt": {
 "use_external/enabled": true,
 "use_external/path": "res://Models/Characters/shirt.tres"

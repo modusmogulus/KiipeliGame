@@ -17,6 +17,9 @@ class_name GoldGdt_View extends Node
 @export var zoneout : ColorRect
 @export var g_loc_curve : Curve
 @export var afterimage : TextureRect
+
+@export var afterimage2 : TextureRect
+@export var afterimage_loaders : Array[TextureRect]
 @export var viewmodel_shader_target_parent : Node3D
 @export var adrenaline_effect : ColorRect
 @export var wind_sfx_player : AudioStreamPlayer3D
@@ -44,11 +47,20 @@ func _process(delta: float) -> void:
 		interact_label.visible = true
 	else:
 		interact_label.visible = false
-	_frm += 1
-	if _frm > 1: #&& Body.g_forces > 0.9:
+	_frm += 1 
+	if _frm > int(Body.HpHandler.hp*0.5) && Body.HpHandler.hp < 100: #&& Body.g_forces > 0.9:
+		
 		var _atimg = get_viewport().get_texture().get_image()
 		var _attex = ImageTexture.create_from_image(_atimg)
+		afterimage2.texture = _attex
+		afterimage.visible = false
+		_atimg = get_viewport().get_texture().get_image()
+		_attex = ImageTexture.create_from_image(_atimg)
+		afterimage.visible = true
 		afterimage.texture = _attex
+		
+		for alo in afterimage_loaders:
+			alo.texture = _attex
 		_frm = 0
 func _physics_process(_delta) -> void:
 	# Add some view bobbing to the Camera Mount
@@ -83,7 +95,8 @@ func _physics_process(_delta) -> void:
 	else:
 		camera.fov = lerpf(camera.fov, _calc_speed_fov(original_fov, 20.0), 0.1)
 	animation_camera.fov = camera.fov
-	var grayout = (Body.HpHandler.maxhp - Body.HpHandler.hp) * 1/Body.HpHandler.maxhp
+	var grayout = ((Body.HpHandler.maxhp - Body.HpHandler.hp) * 1/Body.HpHandler.maxhp)
+	animation_camera.attributes.dof_blur_amount = grayout*0.1
 	g_loc_filter.modulate.a = grayout
 	if grayout == 0:
 		AudioServer.set_bus_effect_enabled(1, 4, false)

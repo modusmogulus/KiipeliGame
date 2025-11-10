@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cw60e5vnm6eyn"
+path="res://.godot/imported/yk_footstep_landing_bigshoes.ogg-ddd1336b8974c93fd02ea9747a582fc0.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Footsteps/09 Hard/yk_footstep_landing_bigshoes.ogg"
+dest_files=["res://.godot/imported/yk_footstep_landing_bigshoes.ogg-ddd1336b8974c93fd02ea9747a582fc0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

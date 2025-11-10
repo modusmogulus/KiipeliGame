@@ -34,7 +34,7 @@ vec3 quantize_color(vec3 color, int levels) {
 
 void fragment() {
 	vec4 final_color;
-	
+
 	if (!shader_enabled) {
 		final_color = texture(screentex, SCREEN_UV);
 	} else {

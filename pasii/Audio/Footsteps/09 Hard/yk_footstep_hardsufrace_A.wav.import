@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfkocsys86umm"
+path="res://.godot/imported/yk_footstep_hardsufrace_A.wav-678999b7d8a2b37eb2c44f9537c62cc0.sample"
+
+[deps]
+
+source_file="res://Audio/Footsteps/09 Hard/yk_footstep_hardsufrace_A.wav"
+dest_files=["res://.godot/imported/yk_footstep_hardsufrace_A.wav-678999b7d8a2b37eb2c44f9537c62cc0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -80,6 +80,12 @@ var velocity_lowpass_size: float = 16.0
 var interactables_in_reach : Array[Node3D]
 var interaction_text #set from interactables
 var wishdir : Vector3 #Body controller scope wishdir is probably not used in player movement code, but its useful for future maybe
+
+@export var IK_right_hand : SkeletonIK3D
+@export var IK_left_hand : SkeletonIK3D
+@export var IK_right_hand_target : Node3D
+@export var IK_left_hand_target : Node3D
+
 # Identifier for wall proximity.
 enum WallCollision {
 	NONE,
@@ -146,8 +152,8 @@ func roll():
 	sfx_roll_boom_player.play(0.0)
 	
 func landing(last_fall_speed : float):
-	walljumps_left = 1
-	wallkicks_left = 1
+	walljumps_left = Parameters.MAX_WALLJUMPS
+	wallkicks_left = Parameters.MAX_WALLJUMPS
 	
 	diving = false
 	AnimHandler.diving = diving
@@ -210,7 +216,9 @@ func _physics_process(delta) -> void:
 		#about Godot's Plane class.
 		#No more trigonometric masturbation needed
 		#this is the way now.
-		velocity = Plane(result.normal).project(velocity)
+		
+		velocity = Plane(Move.wallrun_wall_normal).project(velocity)
+		velocity -= Move.wallrun_wall_normal * 2.1 #move toward wall to not cause glitching
 		#----------------------------
 		
 	if was_on_floor == false && is_on_floor() == true:
@@ -235,10 +243,11 @@ func _physics_process(delta) -> void:
 	
 	AnimHandler.player_velocity = velocity
 	
-	if velocity.y < 0.0 && AnimHandler:
+	if velocity.y <= 0.0 && AnimHandler:
 		AnimHandler.vaultstate = "NONE"
 		current_vault_state = enumsKP.vault_states.NONE
 		current_walljump_state = enumsKP.walljump_states.NONE
+		AnimHandler.walljumpstate = "NONE"
 		if current_vault_state != enumsKP.vault_states.NONE:
 			velocity = velocity_before_vault
 	if current_vault_state != enumsKP.vault_states.NONE:

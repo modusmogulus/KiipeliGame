@@ -6,3 +6,6 @@
 [node name="Powerup_Liukuri" instance=ExtResource("1_080ma")]
 powerup_icon = ExtResource("2_4xve8")
 powerup_sprite_3d = ExtResource("2_4xve8")
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+debug_color = Color(0, 0.6, 0.7, 0.42)

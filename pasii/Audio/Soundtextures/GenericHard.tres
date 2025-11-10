@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="SoundTexture" load_steps=11 format=3 uid="uid://d00hj5vplug0d"]
+
+[ext_resource type="AudioStream" uid="uid://dfkocsys86umm" path="res://Audio/Footsteps/09 Hard/yk_footstep_hardsufrace_A.wav" id="1_sv2o6"]
+[ext_resource type="AudioStream" uid="uid://bd86hh6ruq0vv" path="res://Audio/Footsteps/09 Hard/yk_footstep_hardsufrace_B.wav" id="2_fjqja"]
+[ext_resource type="AudioStream" uid="uid://bao8lffk0icd4" path="res://Audio/Footsteps/09 Hard/yk_footstep_hardsufrace_slideland_A.wav" id="5_dk5vn"]
+[ext_resource type="AudioStream" uid="uid://bojuylxjj44gm" path="res://Audio/Footsteps/09 Hard/yk_footstep_hardsufrace_slideland_B.wav" id="6_3eyas"]
+[ext_resource type="Script" uid="uid://c243vjtr0b4ee" path="res://Globals/SoundTexture.gd" id="8_evw3n"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8a7lj"]
+streams_count = 2
+stream_0/stream = ExtResource("1_sv2o6")
+stream_1/stream = ExtResource("2_fjqja")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2qu8m"]
+random_pitch = 1.59
+streams_count = 2
+stream_0/stream = ExtResource("1_sv2o6")
+stream_1/stream = ExtResource("2_fjqja")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kpndm"]
+playback_mode = 2
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_8a7lj")
+stream_1/stream = SubResource("AudioStreamRandomizer_2qu8m")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_04ps5"]
+playback_mode = 2
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = SubResource("AudioStreamRandomizer_8a7lj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x6jbv"]
+streams_count = 2
+stream_0/stream = ExtResource("5_dk5vn")
+stream_1/stream = ExtResource("6_3eyas")
+
+[resource]
+script = ExtResource("8_evw3n")
+ingame_name = "Generic"
+footsteps = SubResource("AudioStreamRandomizer_kpndm")
+footstep_loudness_linear = 2.0
+footsteps_running = SubResource("AudioStreamRandomizer_04ps5")
+footstep_running_loudness_linear = 8.524
+landing = SubResource("AudioStreamRandomizer_x6jbv")
+landing_loudness_linear = 2.084
+slide_loudness_linear = 0.8
+wallrun_loudness_linear = 0.8
+roll_loudness_linear = 0.8
+subtitles = Array[String]([])
+metadata/_custom_type_script = "uid://c243vjtr0b4ee"

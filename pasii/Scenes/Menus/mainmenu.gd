@@ -7,7 +7,6 @@ func _ready() -> void:
 	original_camera_rotation = camera.rotation
 	
 func _on_static_body_3d_mouse_entered() -> void:
-	print("MOUSENTERED")
 	selected_node = $StaticBody3D
 	selected_node.scale *= size_multiplier_on_select
 

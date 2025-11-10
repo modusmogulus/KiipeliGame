@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmi85gfkjkt4e"
+path="res://.godot/imported/yk_footstep_hardsufrace_A.ogg-a1bdc0c8ac7bbc4aa4b635f95e65a103.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Footsteps/09 Hard/yk_footstep_hardsufrace_A.ogg"
+dest_files=["res://.godot/imported/yk_footstep_hardsufrace_A.ogg-a1bdc0c8ac7bbc4aa4b635f95e65a103.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
