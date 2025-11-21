@@ -18,7 +18,7 @@ func _process(delta):
 	
 func _ready():
 	_override_view_rotation(Vector2(deg_to_rad(start_view_yaw), deg_to_rad(start_view_pitch)))
-
+	CGG.local_player_pawn = self
 ## Forces camera rotation based on a Vector2 containing yaw and pitch, in degrees.
 func _override_view_rotation(rotation : Vector2) -> void:
 	View.horizontal_view.rotation.y = rotation.x

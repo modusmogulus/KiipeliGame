@@ -12,8 +12,8 @@ frequency = 0.0685
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0c4ts"]
 width = 64
 height = 64
-color_ramp = SubResource("Gradient_qds3k")
 noise = SubResource("FastNoiseLite_kwci3")
+color_ramp = SubResource("Gradient_qds3k")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eg0o4"]
 render_priority = -1

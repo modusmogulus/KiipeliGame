@@ -7,3 +7,11 @@ hoviharri: Jos nyt oikein muistan, haaksirikkoutunut lantalaiva sijaitsee ulapal
 	hoviharri: Älä minulta kysy
 - Älä puhu paskaa
 	main_character: Eihän Suomella ole rantaviivaa Koilisessa?
+	hoviharri: Pahus, kylmä ES virkistäisi muistia. Voitko tuoda minulle ES\:n? Kuiskaan sinulle missä se on...
+	- Ok
+		do CGG.start_camera_cutscene("ES")
+		[wait time="0.2"]
+		*ES hohtaa jossain kaukana, takanasi*
+		do CGG.stop_camera_cutscene("ES")
+	- Hae ite
+		hoviharri: Haista vittu

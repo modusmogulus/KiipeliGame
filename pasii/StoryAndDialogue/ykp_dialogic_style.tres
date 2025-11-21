@@ -5,15 +5,11 @@
 
 [sub_resource type="Resource" id="Resource_lwbrt"]
 script = ExtResource("1_kijsp")
-overrides = {}
 
 [resource]
 script = ExtResource("2_1tehx")
 name = "ykp_dialogic_style"
-layer_list = Array[String]([])
 layer_info = {
 "": SubResource("Resource_lwbrt")
 }
-base_overrides = {}
-layers = Array[ExtResource("1_kijsp")]([])
 metadata/_latest_layer = ""

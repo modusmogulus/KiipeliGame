@@ -1,4 +1,4 @@
-[gd_scene load_steps=236 format=4 uid="uid://e23uigtm2f3j"]
+[gd_scene load_steps=231 format=4 uid="uid://e23uigtm2f3j"]
 
 [ext_resource type="LightmapGIData" uid="uid://ctrntdc7jfpb" path="res://Scenes/gameplaytests01.lmbake" id="1_f17og"]
 [ext_resource type="Material" uid="uid://cvxohyg1314ik" path="res://3p_lumi_aniso_stochastic.tres" id="3_djyk4"]
@@ -12,7 +12,6 @@
 [ext_resource type="Shader" uid="uid://cty525nissi7d" path="res://Shaders/Hybrid/surface_embedded_sprites_overlay_pass_emi.gdshader" id="5_6lknn"]
 [ext_resource type="Material" uid="uid://co1gtv7arvr1" path="res://Materials/3p_talo01.tres" id="5_f288j"]
 [ext_resource type="Material" uid="uid://bsjdy17yt1c1w" path="res://Materials/3p_talo_katos.tres" id="5_ks06f"]
-[ext_resource type="Shader" uid="uid://c0q03lh56wtbr" path="res://Shaders/Hybrid/surface_embedded_sprites_overlay_pass.gdshader" id="5_pgneu"]
 [ext_resource type="Shader" uid="uid://bms4qqjj0o7c0" path="res://Shaders/Hybrid/3p_retro_stochastic.gdshader" id="6_48146"]
 [ext_resource type="Texture2D" uid="uid://cvllyngjiw5am" path="res://textures/texturebloat/ykp_64x64_ice_flake_2_snow_flake5.png" id="6_c0v6d"]
 [ext_resource type="Texture2D" uid="uid://cxstp742bebg" path="res://textures/UV_Confetti_billboard_sph.png" id="6_jfb4b"]
@@ -75,8 +74,6 @@
 [ext_resource type="PackedScene" uid="uid://dfctl5yhhitu3" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_dialogue.tscn" id="65_7dbj7"]
 [ext_resource type="PackedScene" uid="uid://d4gcwambv30dg" path="res://Models/ykp toyota yaris (oikeesti corolla) car 2.glb" id="66_nfrdw"]
 [ext_resource type="Material" uid="uid://mmu5repc2oyl" path="res://Materials/SES_psyche_lumi.tres" id="67_dthp8"]
-[ext_resource type="Texture2D" uid="uid://dkhngnv8iqdjr" path="res://Models/Props/REAL_mirroring_uv_1024.png" id="69_go2kq"]
-[ext_resource type="Texture2D" uid="uid://c5mr45wks1qc6" path="res://textures/ykp/Textures/AINO_Frutiger_sky2.png" id="69_ycrow"]
 [ext_resource type="Script" uid="uid://84vfu5iuwwfw" path="res://Entities/Triggers/trigger_base.gd" id="78_56c3p"]
 [ext_resource type="PackedScene" uid="uid://beclvsdes4qjb" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_obj_animation.tscn" id="79_tpxdv"]
 [ext_resource type="Texture2D" uid="uid://bv1fd0waxk810" path="res://Models/Characters/ykp-ulo-sotto_yk_rappujenovi.png" id="80_bjgf4"]
@@ -273,8 +270,6 @@ ssil_sharpness = 0.0
 sdfgi_bounce_feedback = 1.04
 sdfgi_cascades = 2
 sdfgi_min_cell_size = 0.03125
-sdfgi_cascade0_distance = 2.0
-sdfgi_max_distance = 8.0
 glow_intensity = 0.04
 glow_strength = 1.02
 glow_bloom = 1.0
@@ -2251,24 +2246,6 @@ _data = {
 &"Rage_001": SubResource("Animation_mcg2m")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgneu"]
-render_priority = 0
-shader = ExtResource("5_pgneu")
-shader_parameter/albedo = ExtResource("69_ycrow")
-shader_parameter/tiling = Vector2(4, 4)
-shader_parameter/offset = Vector2(0, 0)
-shader_parameter/uv_map = ExtResource("69_go2kq")
-shader_parameter/sprite = ExtResource("69_ycrow")
-shader_parameter/uv_tiling = Vector2(5.995, 2)
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/depth = 0.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_dthp8"]
-material = SubResource("ShaderMaterial_pgneu")
-flip_faces = true
-radius = 320.0
-height = 320.0
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_71l6y"]
 size = Vector3(5, 3, 6)
 
@@ -3004,7 +2981,7 @@ bind/219/bone = -1
 bind/219/pose = Transform3D(-1, 7.10543e-15, 2.66316e-15, 1.14757e-13, 1.14233e-07, 1, -2.84217e-14, 1, 3.55271e-15, -0.111135, -0.169104, -2.0141)
 bind/220/name = &"ORG-eye.R"
 bind/220/bone = -1
-bind/220/pose = Transform3D(-1, -8.47033e-22, 2.52436e-29, 1.12094e-13, 1.14233e-07, 1, -3.55271e-14, 1, 8.96831e-43, -0.111135, -0.169104, -2.0141)
+bind/220/pose = Transform3D(-1, -8.47033e-22, 2.52436e-29, 1.12094e-13, 1.14233e-07, 1, -3.55271e-14, 1, 8.97e-43, -0.111135, -0.169104, -2.0141)
 bind/221/name = &"MCH-eye.R.001"
 bind/221/bone = -1
 bind/221/pose = Transform3D(1, -7.10543e-15, 6.35731e-08, -4.40512e-14, 1, 1.34083e-07, -6.3573e-08, -1.42109e-14, 1, 0.111135, -2.0141, -0.2268)
@@ -11515,7 +11492,7 @@ _data = {
 &"ovi_aukeaa90deg": SubResource("Animation_he25j")
 }
 
-[node name="Node3D" type="Node3D"]
+[node name="LevelRoot" type="Node3D" groups=["LevelRoot"]]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../LightmapGI")
@@ -12460,10 +12437,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.14247, -401.247, -13.701)
 [node name="ykp toyota yaris (oikeesti corolla) car 2" parent="." instance=ExtResource("66_nfrdw")]
 transform = Transform3D(-0.0847852, 0, 0.59903, 0, 0.605, 0, -0.59903, 0, -0.0847852, 2.47532, -412.227, 2.2201)
 
-[node name="Skydome" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -399, 34)
-mesh = SubResource("SphereMesh_dthp8")
-
 [node name="TrigArea2_ULOSOTTO" type="Area3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.74758, -402.494, -15.0629)
 collision_mask = 3
@@ -12472,6 +12445,7 @@ script = ExtResource("78_56c3p")
 [node name="TrigCollision" type="CollisionShape3D" parent="TrigArea2_ULOSOTTO"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16221, 1, 2.5)
 shape = SubResource("BoxShape3D_71l6y")
+disabled = true
 debug_color = Color(0, 1, 0.05, 1)
 
 [node name="Trigact_Dialogue" parent="TrigArea2_ULOSOTTO" instance=ExtResource("65_7dbj7")]

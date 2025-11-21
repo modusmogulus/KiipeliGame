@@ -1,11 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq3p6jsb61qyn"]
+[gd_scene load_steps=12 format=3 uid="uid://dq3p6jsb61qyn"]
 
 [ext_resource type="PackedScene" uid="uid://kahnx4222bhy" path="res://Entities/powerup.tscn" id="1_080ma"]
 [ext_resource type="Texture2D" uid="uid://d4k4iq0o6uedu" path="res://textures/yk_pulkka_liukuri.png" id="2_4xve8"]
+[ext_resource type="Script" uid="uid://84vfu5iuwwfw" path="res://Entities/Triggers/trigger_base.gd" id="3_hq5q4"]
+[ext_resource type="Script" uid="uid://d0hnejxgbcvk2" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_item.gd" id="4_w6t26"]
+[ext_resource type="Script" uid="uid://b3wx62ojfygrp" path="res://Entities/item_spatial.gd" id="5_refss"]
+[ext_resource type="Script" uid="uid://dgb7lynbjgbw0" path="res://Entities/item_data.gd" id="6_sxck7"]
+[ext_resource type="Script" uid="uid://b5rcsde83y2jc" path="res://Entities/item_display.gd" id="7_sbuhs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c5lqt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e601p"]
+radius = 0.305
+height = 0.64
+radial_segments = 4
+rings = 0
+
+[sub_resource type="Gradient" id="Gradient_e601p"]
+offsets = PackedFloat32Array(0, 0.360248, 1)
+colors = PackedColorArray(0, 1, 0.116667, 1, 1, 0, 0, 1, 0.849058, 0.000880985, 0.898253, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vyfdn"]
+gradient = SubResource("Gradient_e601p")
+fill_from = Vector2(0.444444, 0.367521)
+fill_to = Vector2(0.440171, 0.465812)
+repeat = 2
 
 [node name="Powerup_Liukuri" instance=ExtResource("1_080ma")]
 powerup_icon = ExtResource("2_4xve8")
 powerup_sprite_3d = ExtResource("2_4xve8")
 
-[node name="CollisionShape3D" parent="Area3D" index="0"]
-debug_color = Color(0, 0.6, 0.7, 0.42)
+[node name="ClaimableItem" type="Area3D" parent="." index="2"]
+collision_mask = 3
+script = ExtResource("3_hq5q4")
+interaction_description = "Press E to pick"
+
+[node name="TrigCollision" type="CollisionShape3D" parent="ClaimableItem" index="0"]
+shape = SubResource("SphereShape3D_c5lqt")
+debug_color = Color(0, 1, 0.05, 1)
+
+[node name="trigact_itemshit" type="Node3D" parent="ClaimableItem" index="1" node_paths=PackedStringArray("items")]
+script = ExtResource("4_w6t26")
+items = [NodePath("../inventory_item_base")]
+
+[node name="ItemSpatialPayload" type="Node3D" parent="ClaimableItem" index="2"]
+visible = false
+script = ExtResource("5_refss")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ClaimableItem/ItemSpatialPayload" index="0"]
+visible = false
+mesh = SubResource("CapsuleMesh_e601p")
+
+[node name="inventory_item_base" type="Node" parent="ClaimableItem" index="3" node_paths=PackedStringArray("item_model", "item_hud_display")]
+script = ExtResource("6_sxck7")
+item_type = 4
+thumbnail = SubResource("GradientTexture2D_vyfdn")
+item_model = NodePath("../ItemSpatialPayload")
+item_hud_display = NodePath("itemHUDPayload")
+in_world = true
+model_visible = true
+metadata/_custom_type_script = "uid://dgb7lynbjgbw0"
+
+[node name="itemHUDPayload" type="TextureRect" parent="ClaimableItem/inventory_item_base" index="0"]
+clip_contents = true
+custom_minimum_size = Vector2(22, 22)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_sbuhs")
+
+[connection signal="body_entered" from="ClaimableItem" to="ClaimableItem" method="_on_body_entered"]
+[connection signal="body_exited" from="ClaimableItem" to="ClaimableItem" method="_on_body_exited"]

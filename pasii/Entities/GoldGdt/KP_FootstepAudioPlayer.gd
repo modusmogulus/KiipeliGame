@@ -10,6 +10,7 @@ var original_loudness
 var auralization_count : int
 var echo_players : Array[AudioStreamPlayer3D]
 var echo_wait_times : Array[float]
+@export var owning_body : CharacterBody3D
 @export var player_hull : CollisionShape3D
 @export var rays : int = 128
 @export_range(0.0, 1.0) var reflection_probability : float = 0.8
@@ -91,7 +92,7 @@ func getMaterial() -> Color:
 
 func playFootstepSound():
 	Groundcast.force_raycast_update()
-	if Groundcast.get_collider():
+	if Groundcast.get_collider() && owning_body.is_on_floor():
 		
 		var col = Groundcast.get_collider()
 		if col == PhysicsBody3D:

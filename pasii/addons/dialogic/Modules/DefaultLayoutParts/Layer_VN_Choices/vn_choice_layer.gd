@@ -121,6 +121,7 @@ func _apply_export_overrides() -> void:
 		var new_choice : DialogicNode_ChoiceButton
 		if choices_button != null:
 			new_choice = (choices_button.instantiate() as DialogicNode_ChoiceButton)
+			new_choice.focus_mode = Control.FOCUS_ALL
 		else:
 			new_choice = DialogicNode_ChoiceButton.new()
 		choices.add_child(new_choice)

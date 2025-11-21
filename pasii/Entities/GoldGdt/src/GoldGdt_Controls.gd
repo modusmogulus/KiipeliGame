@@ -70,7 +70,6 @@ func _input(event) -> void:
 func _process(delta) -> void:
 	# Reset mouse input to avoid drift.
 	mouse_input = Vector2.ZERO
-
 func _physics_process(delta) -> void:
 	_gather_input()
 	_act_on_input()
@@ -83,7 +82,6 @@ func _physics_process(delta) -> void:
 		AnimHandler.is_moving = false
 		#for a in state_machines:
 		#	a.travel("Idle")
-
 func _gather_mouse_input(event: InputEventMouseMotion) -> void:
 	# Deform the mouse input to make it viewport size independent.
 	var viewport_transform := get_tree().root.get_final_transform()
@@ -100,15 +98,21 @@ func _gather_mouse_input(event: InputEventMouseMotion) -> void:
 
 func _gather_input() -> void:
 	
+	#if Input.is_action_just_pressed("choice_up"):
+	#	Input.action_press("ui_up")
+	#elif Input.is_action_just_pressed("choice_down"):
+	#	Input.action_press("ui_down")
+	#else:
+		#Input.action_release("ui_up")
+		#Input.action_release("ui_down")
 	# Get input strength on the horizontal axes.
 	var ix = Input.get_action_raw_strength("pm_moveright") - Input.get_action_raw_strength("pm_moveleft")
 	var iy = Input.get_action_raw_strength("pm_movebackward") - Input.get_action_raw_strength("pm_moveforward")
-	
 	wishdir = Vector3(ix, 0, iy)
 	Body.wishdir = wishdir
 	# Collect input.
 	movement_input = Vector2(ix, iy).normalized()
-		
+	
 	# Gather the horizontal speeds.
 	var speeds := Vector2(Parameters.SIDE_SPEED, Parameters.FORWARD_SPEED)
 	
@@ -117,9 +121,9 @@ func _gather_input() -> void:
 		if speeds[i] > Parameters.MAX_SPEED:
 			speeds[i] *= Parameters.MAX_SPEED / speeds[i]
 	
-	# Create vector that stores speed and direction.
 	if Dialogic.current_timeline == null:
 		move_dir = Vector3(movement_input.x * speeds.x, 0, movement_input.y * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)
+		
 	else:
 		move_dir = Vector3.ZERO
 		return

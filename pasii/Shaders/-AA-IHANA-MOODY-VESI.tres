@@ -23,9 +23,9 @@ domain_warp_frequency = 0.01
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yhq0w"]
 generate_mipmaps = false
-seamless = true
-color_ramp = SubResource("Gradient_gajf2")
 noise = SubResource("FastNoiseLite_sgfqu")
+color_ramp = SubResource("Gradient_gajf2")
+seamless = true
 
 [sub_resource type="Gradient" id="Gradient_761wq"]
 offsets = PackedFloat32Array(0.528249, 0.683616, 0.875706)
@@ -36,10 +36,10 @@ seed = 290
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c0spr"]
 generate_mipmaps = false
+noise = SubResource("FastNoiseLite_r1bq4")
+color_ramp = SubResource("Gradient_761wq")
 seamless = true
 normalize = false
-color_ramp = SubResource("Gradient_761wq")
-noise = SubResource("FastNoiseLite_r1bq4")
 
 [resource]
 render_priority = 64

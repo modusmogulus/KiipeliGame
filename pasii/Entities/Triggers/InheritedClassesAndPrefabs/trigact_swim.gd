@@ -6,3 +6,5 @@ func do_shit(body: Node3D):
 	pbody.velocity.y += 4.0
 	pbody.motion_mode = CharacterBody3D.MOTION_MODE_FLOATING
 	
+func stop_shit(body: Node3D):
+	pbody.motion_mode = CharacterBody3D.MOTION_MODE_GROUNDED

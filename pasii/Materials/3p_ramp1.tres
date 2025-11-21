@@ -1,26 +1,44 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://brwptrbxwxg1y"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://brwptrbxwxg1y"]
 
-[ext_resource type="Shader" uid="uid://e0ec8ey3ij15" path="res://Shaders/Hybrid/3p_retro.gdshader" id="1_5lmnl"]
-[ext_resource type="Texture2D" uid="uid://b24vco8tdwf8a" path="res://textures/ykp/Textures/ba_planks.png" id="2_5lmnl"]
-[ext_resource type="Texture2D" uid="uid://bluo3inta3m67" path="res://textures/ykp/Textures/yk_lumipenkka 1.png" id="3_5lmnl"]
-[ext_resource type="Texture2D" uid="uid://cgl86efmjki5j" path="res://textures/ykp/Textures/haapa_jaa_px.png" id="4_n1iyr"]
+[ext_resource type="Shader" uid="uid://bms4qqjj0o7c0" path="res://Shaders/Hybrid/3p_retro_stochastic.gdshader" id="1_20fi6"]
+[ext_resource type="Texture2D" uid="uid://c8r1r5cm2sv13" path="res://textures/haapatiles_A_albedo.png" id="2_5lmnl"]
+[ext_resource type="Texture2D" uid="uid://c16mw3kvfabdu" path="res://Models/kp_bridgething_13.png" id="3_n1iyr"]
+
+[sub_resource type="Gradient" id="Gradient_wowhg"]
+offsets = PackedFloat32Array(0.0622837, 0.411765, 0.449827, 0.525952, 0.622837, 0.851211)
+colors = PackedColorArray(0.462745, 0.462745, 1, 1, 0, 0.976471, 1, 1, 0.935185, 0.998475, 1, 1, 1, 1, 1, 1, 0.346683, 0.887484, 0.804005, 1, 0.294118, 0.878431, 0.788235, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1feqo"]
+noise_type = 2
+fractal_type = 2
+fractal_octaves = 1
+cellular_distance_function = 1
+cellular_jitter = 0.63
+domain_warp_enabled = true
+domain_warp_amplitude = 28.045
+domain_warp_fractal_octaves = 1
+domain_warp_fractal_gain = 3.98
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xubx7"]
+noise = SubResource("FastNoiseLite_1feqo")
+color_ramp = SubResource("Gradient_wowhg")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_5lmnl")
-shader_parameter/albedo_ceiling = Color(0.683077, 0.683077, 0.683077, 1)
+shader = ExtResource("1_20fi6")
+shader_parameter/albedo_ceiling = Color(0, 0, 0, 1)
 shader_parameter/texture_albedo_ceiling = ExtResource("2_5lmnl")
-shader_parameter/roughness = 0.252
+shader_parameter/roughness = 0.03
 shader_parameter/albedo_wall = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo_wall = ExtResource("4_n1iyr")
+shader_parameter/texture_albedo_wall = ExtResource("3_n1iyr")
 shader_parameter/albedo_floor = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo_floor = ExtResource("3_5lmnl")
+shader_parameter/texture_albedo_floor = SubResource("NoiseTexture2D_xubx7")
 shader_parameter/ground_threshold = 0.45
 shader_parameter/blend_smoothness = 0.5
 shader_parameter/uv1_blend_sharpness = 63.503
-shader_parameter/uv1_scale = Vector3(0.09, 0.09, 0.09)
+shader_parameter/uv1_scale = Vector3(0.21, 0.279, 0.09)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv_global = true
-shader_parameter/use_uv_on_wall = false
+shader_parameter/uv_global = false
+shader_parameter/use_uv_on_wall = true
 shader_parameter/use_uv_on_floor = false
 shader_parameter/use_uv_on_ceiling = false

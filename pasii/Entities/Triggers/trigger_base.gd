@@ -54,8 +54,8 @@ func _on_body_exited(body: Node3D) -> void:
 		if "Player" in body.get_groups():
 			execute_actions(body)
 			return
-	if this_triggertype == Triggertypes.INTERACTED:
-		body.interactables_in_reach.erase(self)
+		if this_triggertype == Triggertypes.INTERACTED:
+			body.interactables_in_reach.erase(self)
 
 func interact():
 	execute_actions(last_body)

@@ -39,7 +39,7 @@ var wallkicks_left : int = 1
 var vault_cooldown_duration = 0.1
 var vault_cooldown_timer = 0.0
 var external_velocity : Vector3
-
+var surfing : bool
 @export var sfx_roll_boom_player : AudioStreamPlayer3D
 @export var sfx_rollable_landing : AudioStreamPlayer3D
 @export var sfx_wallrun : AudioStreamPlayer3D
@@ -130,7 +130,7 @@ func _ready() -> void:
 	# Set bounding box dimensions.
 	_set_shape_bounds(BBOX_STANDING, Parameters.HULL_STANDING_BOUNDS)
 	_set_shape_bounds(BBOX_DUCKING, Parameters.HULL_DUCKING_BOUNDS)
-	
+	CGG.local_player_body = self
 	# Set hull and head position to default.
 	collision_hull.shape = BBOX_STANDING
 	original_parameters = Parameters
@@ -317,12 +317,12 @@ func _move_body() -> void:
 	var collided := move_and_slide()
 	if collided and not get_floor_normal():
 		var slide_direction := get_last_slide_collision().get_normal()
-		
+		surfing = true
 		velocity = velocity.slide(slide_direction)
 		floor_block_on_wall = false
 	else: # Hacky McHack to restore wallstrafing behaviour which doesn't work unless 'floor_block_on_wall' is true
 		floor_block_on_wall = true
-	
+		surfing = false
 	floor_stop_on_slope = false if velocity.length() > 0.001 else true
 
 # Handles crouching logic.
@@ -524,3 +524,6 @@ func apply_fall_damage():
 
 func _on_fall_damage_roll_window_timeout() -> void:
 	apply_fall_damage()
+
+func get_inventory() -> KP_InventoryHandler:
+	return InvHandler

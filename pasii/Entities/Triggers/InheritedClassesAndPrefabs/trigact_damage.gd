@@ -10,4 +10,8 @@ func do_shit(body: Node3D):
 func _process(delta: float) -> void:
 	if DPS != 0.0:
 		if pbody == null: return
-		pbody.damage(lerpf(DPS*delta, (DPS*delta)*(pbody.HpHandler.hp/pbody.HpHandler.maxhp), SlowDPSTowardsEnd))
+		pbody.damage(lerpf(DPS*delta, (DPS*delta)*(pbody.HpHandler.
+		hp/pbody.HpHandler.maxhp), SlowDPSTowardsEnd))
+
+func  stop_shit(body: Node3D):
+	pbody = null

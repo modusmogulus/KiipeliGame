@@ -12,6 +12,7 @@ var player_speed_float: float = 0.0
 var reloading: bool = false
 var beer_opened: bool = false
 var item = ""
+var fullitemdata : itemdata
 var grounded = true
 var current_animation_node: String
 var rolling : bool = false
@@ -145,7 +146,8 @@ func _process(delta: float) -> void:
 		var hvel = (Body.velocity * Vector3(1, 0, 1)).length()*0.1
 		airmvtarget.x = clampf(absf(hvel * 0.5), 0.0, 1.0)
 		ant["parameters/GroundMovement/blend_position"] = lerp(grndmvprev, grndmvtarget, 0.08)
-		ant["parameters/AirMovement/blend_position"] = lerp(airmvprev, airmvtarget, 0.11)
+		if item != "LIUKURI":
+			ant["parameters/AirMovement/blend_position"] = lerp(airmvprev, airmvtarget, 0.11)
 		ant["parameters/Walljump/blend_position"] = lerp(walljumpprev, walljumparget, 0.05)
 		
 		var vaultprev : Vector2 = ant["parameters/Manuever/blend_position"]
@@ -157,27 +159,32 @@ func _process(delta: float) -> void:
 	if !("RELOAD" in current_animation_node):
 		AnimationSound.stop()
 	
-	match InvHandler.currently_holding:
-		enumsKP.items.DENSE:
+		Dense.visible = false
+		Paahdin.visible = false
+		Phone.visible = false
+		Liukuri.visible = false
+		Beer.visible = false
+	match item:
+		"DENSE":
 			Dense.visible = true
-		enumsKP.items.TOASTER:
+		"TOASTER":
 			Paahdin.visible = true
 			if reloading && !AnimationSound.playing:
 				AnimationSound.stream = PaahdinReloadSound
 				AnimationSound.play()
 				
-		enumsKP.items.PHONE:
+		"PHONE":
 			Phone.visible = true
 			
 			if reloading && !AnimationSound.playing:
 				AnimationSound.stream = PhoneReloadSound
 				AnimationSound.play()
-		enumsKP.items.LIUKURI:
+		"LIUKURI":
 			Liukuri.visible = true
 			#if reloading && !AnimationSound.playing:
 				#AnimationSound.stream = PhoneReloadSound
 			#	AnimationSound.play()
-		enumsKP.items.BEER:
+		"BEER":
 			Beer.visible = true
 			if reloading:
 				beer_opened = true

@@ -15,22 +15,21 @@
 [sub_resource type="Resource" id="Resource_mvmpm"]
 script = ExtResource("2_dc5th")
 scene = ExtResource("1_0rpdu")
-overrides = {}
+overrides = {
+"global_font": "\"res://GUIAndSprites/TiresiasTekstitys.tres\""
+}
 
 [sub_resource type="Resource" id="Resource_11ufe"]
 script = ExtResource("2_dc5th")
 scene = ExtResource("3_u63tq")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_ncnnm"]
 script = ExtResource("2_dc5th")
 scene = ExtResource("4_p18as")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_khijp"]
 script = ExtResource("2_dc5th")
 scene = ExtResource("5_uts3a")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_m4774"]
 script = ExtResource("2_dc5th")
@@ -38,11 +37,11 @@ scene = ExtResource("6_xrgy5")
 overrides = {
 "box_animation_in": "0",
 "box_animation_out": "0",
-"box_color_custom": "Color(1, 0.95401, 0.464844, 1)",
+"box_color_custom": "Color(0.195313, 0.195313, 0.195313, 0.458824)",
 "box_color_use_global": "false",
+"box_margin_bottom": "0.0",
 "box_panel": "\"res://StoryAndDialogue/ykp_dialogue_stylebox_A.tres\"",
-"normal_font": "\"res://GUIAndSprites/PopHappiness.ttf\"",
-"text_custom_color": "Color(0, 0, 0, 1)",
+"normal_font": "\"res://GUIAndSprites/TiresiasTekstitys.tres\"",
 "text_use_global_color": "false",
 "typing_sounds_mode": "1",
 "typing_sounds_pitch_variance": "0.02",
@@ -59,17 +58,17 @@ overrides = {
 [sub_resource type="Resource" id="Resource_46ybn"]
 script = ExtResource("2_dc5th")
 scene = ExtResource("8_o0tx3")
-overrides = {}
+overrides = {
+"choices_custom_button": "\"res://GUIAndSprites/vn_custom_choice_button_ykp.tscn\""
+}
 
 [sub_resource type="Resource" id="Resource_eybuw"]
 script = ExtResource("2_dc5th")
 scene = ExtResource("9_npagv")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_6u8tf"]
 script = ExtResource("2_dc5th")
 scene = ExtResource("10_ytmnx")
-overrides = {}
 
 [resource]
 script = ExtResource("11_nsv2s")
@@ -86,6 +85,4 @@ layer_info = {
 "16": SubResource("Resource_eybuw"),
 "17": SubResource("Resource_6u8tf")
 }
-base_overrides = {}
-layers = Array[ExtResource("2_dc5th")]([])
 metadata/_latest_layer = "13"

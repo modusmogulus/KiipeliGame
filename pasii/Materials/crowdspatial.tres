@@ -23,4 +23,8 @@ frame_5/texture = ExtResource("6_d87kr")
 frame_5/duration = 1.0
 
 [resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
 albedo_texture = SubResource("AnimatedTexture_1c68j")

@@ -12,7 +12,7 @@
 shader_type spatial;
 
 //render_mode unshaded;
-render_mode vertex_lighting, blend_sub;
+render_mode vertex_lighting, blend_premul_alpha;
 uniform sampler2D matcap : source_color, hint_default_black, filter_nearest, repeat_enable;
 uniform float matcappiness : hint_range(0.0,1.0) = 1.0;
 uniform vec4 texture_colorize : source_color = vec4(0.0);

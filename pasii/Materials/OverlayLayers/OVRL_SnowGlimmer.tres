@@ -19,10 +19,10 @@ domain_warp_fractal_gain = 3.144
 width = 64
 height = 64
 generate_mipmaps = false
+noise = SubResource("FastNoiseLite_ktdah")
+color_ramp = SubResource("Gradient_c0v6d")
 seamless = true
 normalize = false
-color_ramp = SubResource("Gradient_c0v6d")
-noise = SubResource("FastNoiseLite_ktdah")
 
 [resource]
 render_priority = 1

@@ -48,6 +48,8 @@ func _ready() -> void:
 	# For players who use a mouse to make choices, mouse hover should grab focus.
 	# Otherwise the auto-focused button will always show a highlighted color when
 	# the mouse cursor is hovering on another button.
+	
+	
 	if not mouse_entered.is_connected(grab_focus):
 		mouse_entered.connect(grab_focus)
 	if not focus_entered.is_connected(_on_choice_button_focus_entred):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://din8vyp1eg6tk"]
+[gd_scene load_steps=42 format=3 uid="uid://din8vyp1eg6tk"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="2_s8j2k"]
 [ext_resource type="LightmapGIData" uid="uid://bvjmlvj7pyd6j" path="res://Scenes/3rdPartySurfMaps/surf_utopia.lmbake" id="2_wucc6"]
@@ -6,11 +6,17 @@
 [ext_resource type="Script" uid="uid://blnsht0ajtpig" path="res://Entities/SoundMaterialNode.gd" id="4_x3wu7"]
 [ext_resource type="Resource" uid="uid://beesu0jqytwj7" path="res://Audio/Soundtextures/Ice.tres" id="5_3ikpb"]
 [ext_resource type="Material" uid="uid://7icdrsgfiatf" path="res://Shaders/-AA-YKP_VESI.tres" id="6_3ikpb"]
+[ext_resource type="Material" uid="uid://7clbqxka4rxm" path="res://Materials/3p_kalliolumessa.tres" id="6_inh42"]
 [ext_resource type="PackedScene" uid="uid://dq3p6jsb61qyn" path="res://Entities/Powerups/powerup_liukuri.tscn" id="6_qva2f"]
-[ext_resource type="Environment" uid="uid://bg6bl1l0qk5dw" path="res://Materials/WORLD_ENV_Morning.tres" id="7_3ikpb"]
-[ext_resource type="Script" uid="uid://svdh0nyihu6v" path="res://Entities/GoldGdt/src/PlayerParameters.gd" id="7_qva2f"]
+[ext_resource type="Environment" uid="uid://ddvtiguc0u84d" path="res://Materials/WORLD_ENV_Morning_BACKUP.tres" id="7_3ikpb"]
+[ext_resource type="Material" uid="uid://da5bvxiwhhlsk" path="res://Materials/sd_fence_supportmaterial_grid.tres" id="7_5hby1"]
+[ext_resource type="Material" uid="uid://bnkw4qlnjjltt" path="res://Materials/MC_shine.tres" id="7_pyk8c"]
 [ext_resource type="Texture2D" uid="uid://cx7qqixfjty02" path="res://textures/decal_shadowfade.tres" id="7_somx4"]
+[ext_resource type="Material" uid="uid://pe62lpi00ke0" path="res://Materials/OverlayLayers/OVRL_SnowGlimmer.tres" id="8_7bbay"]
 [ext_resource type="Shader" uid="uid://422wpurshq0j" path="res://Shaders/luna_vesishader.gdshader" id="8_somx4"]
+[ext_resource type="Script" uid="uid://cjaukf846nfsa" path="res://Entities/cutscene_camera.gd" id="11_3ikpb"]
+[ext_resource type="PackedScene" uid="uid://c7xq4xxj1n1m2" path="res://Entities/Triggers/trigger_base.tscn" id="16_f2jvd"]
+[ext_resource type="Script" uid="uid://bpc3574rco6ph" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_dialogue.gd" id="17_dey7o"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_06bms"]
 exposure_multiplier = 4.0
@@ -33,41 +39,6 @@ gradient = SubResource("Gradient_somx4")
 fill = 1
 fill_from = Vector2(0.492823, 0.507177)
 fill_to = Vector2(1, 1)
-
-[sub_resource type="Resource" id="Resource_somx4"]
-script = ExtResource("7_qva2f")
-THIRD_PERSON_CAMERA = false
-AUTOHOP = true
-FORWARD_SPEED = 10.16
-SIDE_SPEED = 10.16
-MAX_SPEED = 8.128
-MAX_AIR_SPEED = 0.762
-STOP_SPEED = 2.54
-GRAVITY = 20.32
-JUMP_HEIGHT = 1.143
-STEP_HEIGHT = 0.457
-HULL_STANDING_BOUNDS = Vector3(0.813, 1.829, 0.813)
-HULL_DUCKING_BOUNDS = Vector3(0.813, 0.914, 0.813)
-VIEW_OFFSET = 0.711
-DUCK_VIEW_OFFSET = 0.305
-ACCELERATION = 10.0
-AIR_ACCELERATION = 150.0
-FRICTION = 4.0
-DUCKING_SPEED_MULTIPLIER = 0.333
-BUNNYHOP_CAP_MODE = 0
-SPEED_THRESHOLD_FACTOR = 1.7
-SPEED_DROP_FACTOR = 1.1
-MOUSE_SENSITIVITY = 12.0
-BOB_FREQUENCY = 0.008
-BOB_FRACTION = 12.0
-ROLL_ANGLE = 3.0
-ROLL_SPEED = 300.0
-NECK_LIMIT_UPPER = 89.0
-NECK_LIMIT_LOWER = -40.0
-ARM_LENGTH = 2.0
-ARM_OFFSET_DEGREES = Vector2(0, 0)
-VAULT_CHECK_DISTANCE = 4.1
-MAX_WALLJUMPS = 1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qxsbm"]
 size = Vector2(2000, 500)
@@ -204,7 +175,72 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="Animation" id="Animation_5hby1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-254.142, -268.218, -566.054)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.125742, 1.42914, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3ikpb"]
+resource_name = "op"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.6001, 2.26667, 2.36667, 3.1, 3.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-254.142, -268.218, -566.054), Vector3(-254.142, -268.218, -566.054), Vector3(258.487, 139.427, 127.071), Vector3(246.007, 162.604, 51.2598), Vector3(245.424, 163.687, 47.7171), Vector3(232.22, 188.208, -32.4888), Vector3(-765.379, 2876.42, 173.842)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.6001, 2.26667, 2.33333, 3.13333, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.125742, 1.42914, 0), Vector3(0.688132, 0.272313, 0.202376), Vector3(0.170964, -2.5981, 0), Vector3(-0.434506, -2.06222, 0), Vector3(-0.462317, -2.03761, 0), Vector3(-0.150098, -2.32129, -0.0994838), Vector3(-1.57002, 1.58217, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_inh42"]
+_data = {
+&"RESET": SubResource("Animation_5hby1"),
+&"op": SubResource("Animation_3ikpb")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f2jvd"]
+radius = 5.009
+
+[node name="LevelRoot" type="Node3D" groups=["LevelRoot"]]
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.014, 262.954, -4.24461)
@@ -287,18 +323,39 @@ metadata/_custom_type_script = "uid://blnsht0ajtpig"
 
 [node name="omasurfmap" parent="LightmapGI" instance=ExtResource("4_tf40n")]
 
+[node name="Circle" parent="LightmapGI/omasurfmap" index="0"]
+surface_material_override/1 = ExtResource("6_inh42")
+
+[node name="Circle_001" parent="LightmapGI/omasurfmap" index="1"]
+surface_material_override/1 = ExtResource("6_inh42")
+
+[node name="Circle_001_001" parent="LightmapGI/omasurfmap" index="2"]
+material_override = ExtResource("7_pyk8c")
+surface_material_override/1 = ExtResource("6_inh42")
+
+[node name="Circle_001_002" parent="LightmapGI/omasurfmap" index="3"]
+surface_material_override/1 = ExtResource("6_inh42")
+
+[node name="Circle_001_003" parent="LightmapGI/omasurfmap" index="4"]
+surface_material_override/0 = ExtResource("7_pyk8c")
+
+[node name="Circle_001_006" parent="LightmapGI/omasurfmap" index="8"]
+material_overlay = ExtResource("8_7bbay")
+
 [node name="water" parent="LightmapGI/omasurfmap" index="13"]
 material_override = ExtResource("6_3ikpb")
+
+[node name="Plane" parent="LightmapGI/omasurfmap" index="14"]
+surface_material_override/2 = ExtResource("7_5hby1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="LightmapGI"]
 environment = ExtResource("7_3ikpb")
 
 [node name="Pawn" parent="." instance=ExtResource("2_s8j2k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.014, 264.309, -4.24461)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -312.413, 279.964, -9.17893)
 
 [node name="Powerup_Liukuri" parent="." instance=ExtResource("6_qva2f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -281.889, 264.302, -4.43159)
-player_params = SubResource("Resource_somx4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 589.067, -25.7388, 0)
@@ -335,5 +392,28 @@ material_override = SubResource("ShaderMaterial_dey7o")
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -779.444, 0.596078, 0.468543)
 material_override = SubResource("ShaderMaterial_dey7o")
+
+[node name="CutsceneCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.141183, -0.124155, 0.982167, 0, 0.992105, 0.125411, -0.989983, -0.0177059, 0.140068, -254.142, -268.218, -566.054)
+script = ExtResource("11_3ikpb")
+optional_animation_name = &"op"
+my_cutscene_name = "op"
+metadata/_custom_type_script = "uid://cjaukf846nfsa"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CutsceneCamera"]
+libraries = {
+&"": SubResource("AnimationLibrary_inh42")
+}
+
+[node name="TrigArea" parent="." instance=ExtResource("16_f2jvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -288.232, 264.885, -9.23027)
+
+[node name="trigact_dialogue" type="Node3D" parent="TrigArea"]
+script = ExtResource("17_dey7o")
+timeline_name = "tmln_scene_opening"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrigArea"]
+shape = SubResource("SphereShape3D_f2jvd")
+debug_color = Color(1, 1, 0, 1)
 
 [editable path="LightmapGI/omasurfmap"]

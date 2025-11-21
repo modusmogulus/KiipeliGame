@@ -23,25 +23,32 @@ class_name GoldGdt_View extends Node
 @export var viewmodel_shader_target_parent : Node3D
 @export var adrenaline_effect : ColorRect
 @export var wind_sfx_player : AudioStreamPlayer3D
+@export var surf_sfx_player : AudioStreamPlayer3D
 @export var damage_flash_node : Control
 @export var pre_damage_flash_node : Control
 @export var pre_damage_flash_col_node : Control
 var wind_sfx_vol_original : float
-
+var surf_sfx_vol_original : float
 var initial_anim_camera_rot : Vector3
 var original_fov : float = 0.0
 var previous_velocity : Vector3
 var _frm = 0
 @export var interact_label : Label
+@export_subgroup("Poison effects")
+@export var psychedelic_poison : AnimationPlayer
 
 func get_wishdir():
 	return
-	
+
+func start_psychological_effect(effectname : StringName):
+	if effectname == "PSYCHED":
+		psychedelic_poison.play("psych")
 func _ready() -> void:
 	#initial_anim_camera_rot = animation_camera.global_rotation
 	original_fov = camera.fov
 	wind_sfx_vol_original = wind_sfx_player.volume_linear
-	
+	surf_sfx_vol_original = surf_sfx_player.volume_linear
+	CGG.main_camera = animation_camera
 func _process(delta: float) -> void:
 	if Body.interactables_in_reach.size() > 0:
 		interact_label.visible = true
@@ -82,12 +89,23 @@ func _physics_process(_delta) -> void:
 	var _currentamount = speedlines.material.get("shader_parameter/blur_power")
 	if abs(Body.velocity.length()) > 7.0:
 		#speedlines.modulate.a = lerpf(speedlines.modulate.a, 1.0, 0.1)
-		speedlines.material.set("shader_parameter/blur_power", lerpf(_currentamount, 0.006, 0.1))
 		wind_sfx_player.volume_linear = lerpf(wind_sfx_player.volume_linear, wind_sfx_vol_original, 0.05)
 		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 4.0, 0.01)
+		if Body.surfing:
+			speedlines.material.set("shader_parameter/blur_power", lerpf(_currentamount*0.2, 0.006, 0.1))
+			surf_sfx_player.volume_linear = lerpf(surf_sfx_player.volume_linear, surf_sfx_vol_original, 0.05)
+			surf_sfx_player.pitch_scale = lerpf(surf_sfx_player.pitch_scale, 4.0, 0.01)
+		else:
+			speedlines.material.set("shader_parameter/blur_power", lerpf(_currentamount, 0.006, 0.1))
+			surf_sfx_player.volume_linear = lerpf(surf_sfx_player.volume_linear, 0.0, 0.15)
+			surf_sfx_player.pitch_scale = lerpf(surf_sfx_player.pitch_scale, 1.0, 0.1)
+
 	else:
 		wind_sfx_player.volume_linear = lerpf(wind_sfx_player.volume_linear, 0.0, 0.15)
 		wind_sfx_player.pitch_scale = lerpf(wind_sfx_player.pitch_scale, 1.0, 0.1)
+		surf_sfx_player.volume_linear = lerpf(surf_sfx_player.volume_linear, 0.0, 0.15)
+		surf_sfx_player.pitch_scale = lerpf(surf_sfx_player.pitch_scale, 1.0, 0.1)
+
 		#speedlines.modulate.a = lerpf(speedlines.modulate.a, 0.0, 0.15)
 		speedlines.material.set("shader_parameter/blur_power", lerpf(_currentamount, 0.0, 0.1))
 	if _ft < camera.fov:
