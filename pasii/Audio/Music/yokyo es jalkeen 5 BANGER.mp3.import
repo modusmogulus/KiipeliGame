@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ifxcnejsk4du"
+path="res://.godot/imported/yokyo es jalkeen 5 BANGER.mp3-9c643c1eb736a5866dc77e5158b99546.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/yokyo es jalkeen 5 BANGER.mp3"
+dest_files=["res://.godot/imported/yokyo es jalkeen 5 BANGER.mp3-9c643c1eb736a5866dc77e5158b99546.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
