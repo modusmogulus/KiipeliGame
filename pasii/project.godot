@@ -15,7 +15,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="Pasii"
-run/main_scene="uid://qxw1i1m5a766"
+run/main_scene="uid://debewdsojdvlo"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

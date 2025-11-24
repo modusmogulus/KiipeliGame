@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://da5bvxiwhhlsk"]
+
+[ext_resource type="Texture2D" uid="uid://dp3jl6qhklavp" path="res://Models/BuildingBlocks/kp_building_insides_stairway_rappukaytava_yk_supportmaterial.png" id="1_pgb4x"]
+[ext_resource type="Texture2D" uid="uid://dw63udir1io2m" path="res://textures/ykp_supports_normal.png" id="2_3xavv"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.925353, 0.925353, 0.925353, 1)
+albedo_texture = ExtResource("1_pgb4x")
+roughness = 0.0
+normal_enabled = true
+normal_scale = 4.3
+normal_texture = ExtResource("2_3xavv")

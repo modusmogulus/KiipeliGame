@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://mlf0bonmptgr"
+path.s3tc="res://.godot/imported/sauvakavelija emmi ragdollver_ykp_vaate_sauvakavelija_gimp.png-6fda71da7216881a5e17a31334f893b9.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "4504a14837ab9b64d0f9ada744f99494"
+}
+
+[deps]
+
+source_file="res://Models/Characters/sauvakavelija emmi ragdollver_ykp_vaate_sauvakavelija_gimp.png"
+dest_files=["res://.godot/imported/sauvakavelija emmi ragdollver_ykp_vaate_sauvakavelija_gimp.png-6fda71da7216881a5e17a31334f893b9.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

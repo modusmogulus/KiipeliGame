@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dylby1qgprd0r"]
+
+[ext_resource type="Texture2D" uid="uid://e4cad1p1k0nn" path="res://Models/Blender/YKPTASO1uusin_lampopatteri3.png" id="1_ar5xp"]
+[ext_resource type="Texture2D" uid="uid://b52q7uxjmwmm3" path="res://textures/ykp/Textures/yk_keittiolaatta_n.png" id="2_bjq6s"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bjq6s"]
+load_path = "res://.godot/imported/YKPTASO1uusin_lampopatteri3.png-df2f3510e9ad1ed08d194d60e2474f2b.s3tc.ctex"
+
+[resource]
+albedo_texture = ExtResource("1_ar5xp")
+metallic_specular = 1.0
+roughness = 0.29
+normal_enabled = true
+normal_scale = 0.57
+normal_texture = SubResource("CompressedTexture2D_bjq6s")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("2_bjq6s")

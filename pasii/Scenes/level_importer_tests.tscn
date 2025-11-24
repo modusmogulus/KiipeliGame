@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dk5pboqchu6pj"]
+
+[node name="LevelRoot" type="Node3D" groups=["LevelRoot"]]

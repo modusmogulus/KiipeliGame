@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dqui4kt5fcp46"]
+
+[ext_resource type="Texture2D" uid="uid://bp5qglr48f771" path="res://textures/ykp/Textures/yk_keittiolaatta.png" id="1_ug7qe"]
+[ext_resource type="Texture2D" uid="uid://b52q7uxjmwmm3" path="res://textures/ykp/Textures/yk_keittiolaatta_n.png" id="2_et1ag"]
+
+[resource]
+albedo_texture = ExtResource("1_ug7qe")
+metallic_specular = 1.0
+roughness = 0.29
+normal_enabled = true
+normal_scale = 0.57
+normal_texture = ExtResource("2_et1ag")
+bent_normal_texture = ExtResource("2_et1ag")

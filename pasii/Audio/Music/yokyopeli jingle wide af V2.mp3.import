@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://daypthpp850rh"
+path="res://.godot/imported/yokyopeli jingle wide af V2.mp3-9fc2b3b9d4ad5f10051c25f8921363da.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/yokyopeli jingle wide af V2.mp3"
+dest_files=["res://.godot/imported/yokyopeli jingle wide af V2.mp3-9fc2b3b9d4ad5f10051c25f8921363da.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

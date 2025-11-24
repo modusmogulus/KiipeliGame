@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cvnfkey2xoseh"]
+
+[ext_resource type="Texture2D" uid="uid://bslmj24wnyy4w" path="res://Models/Blender/YKPTASO1uusin_yk_hervandoor.png" id="1_gpy0o"]
+[ext_resource type="Texture2D" uid="uid://b52q7uxjmwmm3" path="res://textures/ykp/Textures/yk_keittiolaatta_n.png" id="2_dqotx"]
+
+[resource]
+albedo_texture = ExtResource("1_gpy0o")
+metallic_specular = 0.0
+normal_scale = 0.57
+normal_texture = ExtResource("2_dqotx")
+bent_normal_texture = ExtResource("2_dqotx")

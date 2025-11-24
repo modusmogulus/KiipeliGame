@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://dinebqo256h1h"]
+
+[ext_resource type="Texture2D" uid="uid://dt01prycbxo53" path="res://textures/haapatiles_mm_albedo.png" id="1_hxgf1"]
+[ext_resource type="Texture2D" uid="uid://2ere2086r6b0" path="res://textures/haapatiles_mm_normal.png" id="2_pheqo"]
+
+[resource]
+albedo_texture = ExtResource("1_hxgf1")
+normal_enabled = true
+normal_scale = 5.41
+normal_texture = ExtResource("2_pheqo")
+uv1_scale = Vector3(0.704, 0.704, 0.704)

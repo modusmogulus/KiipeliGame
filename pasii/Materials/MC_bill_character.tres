@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://og1p6hpfdcdw"]
+
+[ext_resource type="Shader" uid="uid://dvwqi8xti4q7i" path="res://Shaders/Hybrid/matcap_transparent_unshaded.gdshader" id="1_3mfpa"]
+[ext_resource type="Texture2D" uid="uid://bx8sgoto570wr" path="res://textures/texturebloat/ykp_transparent_acidsmiley_uv.png" id="2_3mfpa"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3mfpa")
+shader_parameter/matcap = ExtResource("2_3mfpa")

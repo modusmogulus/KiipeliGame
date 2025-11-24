@@ -1,0 +1,9 @@
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://c2l5k2ea300dq"]
+
+[ext_resource type="Texture2D" uid="uid://bm0ke8w7mmnxq" path="res://textures/ykp/Textures/Kaleva_ClipAlphas/0011.png" id="1_vta4h"]
+[ext_resource type="Texture2D" uid="uid://ceafe31dugn8u" path="res://textures/kaleva_0011_orm.png" id="2_qdxpu"]
+
+[resource]
+albedo_texture = ExtResource("1_vta4h")
+orm_texture = ExtResource("2_qdxpu")
+normal_scale = 8.3

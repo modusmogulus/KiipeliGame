@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://j6m0uf7hbsgt"]
+
+[ext_resource type="FontFile" uid="uid://dafu6uku3rpi1" path="res://GUIAndSprites/Tiresias_Infofont.ttf" id="1_p5cii"]
+
+[resource]
+base_font = ExtResource("1_p5cii")
+variation_embolden = 0.06
+variation_transform = Transform2D(1.035, 0, 0, 1, 0, 0)

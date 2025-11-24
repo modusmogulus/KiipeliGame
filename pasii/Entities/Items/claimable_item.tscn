@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpvtymc0pr65j"]
+
+[ext_resource type="Script" uid="uid://84vfu5iuwwfw" path="res://Entities/Triggers/trigger_base.gd" id="1_vr0pn"]
+[ext_resource type="Script" uid="uid://b3wx62ojfygrp" path="res://Entities/item_spatial.gd" id="3_m607l"]
+[ext_resource type="Script" uid="uid://d0hnejxgbcvk2" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_item.gd" id="3_v13y6"]
+[ext_resource type="Script" uid="uid://dgb7lynbjgbw0" path="res://Entities/item_data.gd" id="4_wj1pq"]
+[ext_resource type="Script" uid="uid://b5rcsde83y2jc" path="res://Entities/item_display.gd" id="5_f2h8l"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vr0pn"]
+radius = 1.335
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e601p"]
+radius = 0.305
+height = 0.64
+radial_segments = 4
+rings = 0
+
+[sub_resource type="Gradient" id="Gradient_e601p"]
+offsets = PackedFloat32Array(0, 0.360248, 1)
+colors = PackedColorArray(0, 1, 0.116667, 1, 1, 0, 0, 1, 0.849058, 0.000880985, 0.898253, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vyfdn"]
+gradient = SubResource("Gradient_e601p")
+fill_from = Vector2(0.444444, 0.367521)
+fill_to = Vector2(0.440171, 0.465812)
+repeat = 2
+
+[node name="ClaimableItem" type="Area3D"]
+collision_mask = 3
+script = ExtResource("1_vr0pn")
+interaction_description = "Press E to pick"
+this_triggertype = 3
+
+[node name="TrigCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_vr0pn")
+debug_color = Color(0, 1, 0.05, 1)
+
+[node name="trigact_itemshit" type="Node3D" parent="." node_paths=PackedStringArray("items")]
+script = ExtResource("3_v13y6")
+items = [NodePath("../inventory_item_base")]
+
+[node name="ItemSpatialPayload" type="Node3D" parent="."]
+script = ExtResource("3_m607l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemSpatialPayload"]
+mesh = SubResource("CapsuleMesh_e601p")
+
+[node name="inventory_item_base" type="Node" parent="." node_paths=PackedStringArray("item_model", "item_hud_display")]
+script = ExtResource("4_wj1pq")
+item_type = 5
+thumbnail = SubResource("GradientTexture2D_vyfdn")
+item_model = NodePath("../ItemSpatialPayload")
+item_hud_display = NodePath("itemHUDPayload")
+in_world = true
+model_visible = true
+metadata/_custom_type_script = "uid://dgb7lynbjgbw0"
+
+[node name="itemHUDPayload" type="TextureRect" parent="inventory_item_base"]
+clip_contents = true
+custom_minimum_size = Vector2(22, 22)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_f2h8l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

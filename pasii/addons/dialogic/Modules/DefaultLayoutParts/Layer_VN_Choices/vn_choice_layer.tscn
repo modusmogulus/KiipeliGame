@@ -60,6 +60,7 @@ sound_hover = ExtResource("4_420fr")
 sound_focus = SubResource("AudioStream_pe27w")
 
 [node name="Cursor" type="TextureRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = 8

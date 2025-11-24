@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgabpfuc0438v"]
+
+[ext_resource type="Script" uid="uid://dgb7lynbjgbw0" path="res://Entities/item_data.gd" id="1_3efbj"]
+[ext_resource type="Script" uid="uid://b3wx62ojfygrp" path="res://Entities/item_spatial.gd" id="2_0ubre"]
+[ext_resource type="Texture2D" uid="uid://d7ppqewjgdcv" path="res://textures/ykp/Textures/es_outline.png" id="2_dg27m"]
+[ext_resource type="Script" uid="uid://b5rcsde83y2jc" path="res://Entities/item_display.gd" id="3_dg27m"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e601p"]
+radius = 0.305
+height = 0.64
+radial_segments = 4
+rings = 0
+
+[node name="inventory_item_base" type="Node" node_paths=PackedStringArray("item_model", "item_hud_display")]
+script = ExtResource("1_3efbj")
+item_type = 5
+thumbnail = ExtResource("2_dg27m")
+item_model = NodePath("ItemSpatialPayload")
+item_hud_display = NodePath("itemHUDPayload")
+in_world = true
+model_visible = true
+metadata/_custom_type_script = "uid://dgb7lynbjgbw0"
+
+[node name="ItemSpatialPayload" type="Node3D" parent="."]
+script = ExtResource("2_0ubre")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemSpatialPayload"]
+mesh = SubResource("CapsuleMesh_e601p")
+
+[node name="itemHUDPayload" type="TextureRect" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(22, 22)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_dg27m")

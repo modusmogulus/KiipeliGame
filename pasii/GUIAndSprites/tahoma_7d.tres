@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://ca8tktmas5fqe"]
+
+[ext_resource type="FontFile" uid="uid://dyhtb4vs6vx2g" path="res://GUIAndSprites/tahoma.ttf" id="1_q8cuf"]
+
+[resource]
+base_font = ExtResource("1_q8cuf")
+variation_embolden = -0.77
+spacing_top = 3
+spacing_bottom = 3
+baseline_offset = 0.06

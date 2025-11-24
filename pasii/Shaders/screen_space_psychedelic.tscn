@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bksqi2ruqmi7l"]
+
+[ext_resource type="Shader" uid="uid://crua58tbytjn3" path="res://Shaders/screen_space_psychedelic.gdshader" id="1_n4i1b"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_n4i1b"]
+size = Vector2(4.33, 10.54)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6n055"]
+load_path = "res://.godot/imported/ykp_bobo.png-c4493b9966313113e59b0d5d25a0ccf4.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1csdh"]
+load_path = "res://.godot/imported/UV_kaleido.png-ebb8b7ec080e8931c4592720318df6a2.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jngi"]
+render_priority = 0
+shader = ExtResource("1_n4i1b")
+shader_parameter/uvremap_texture = SubResource("CompressedTexture2D_1csdh")
+shader_parameter/albedo_texture = SubResource("CompressedTexture2D_6n055")
+shader_parameter/intensity = 0.105
+shader_parameter/size = 0.675
+shader_parameter/saturation = 0.125
+shader_parameter/waviness = 0.0
+shader_parameter/alpha = 1.0
+
+[node name="ScreenSpacePsychedelic" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_n4i1b")
+surface_material_override/0 = SubResource("ShaderMaterial_2jngi")

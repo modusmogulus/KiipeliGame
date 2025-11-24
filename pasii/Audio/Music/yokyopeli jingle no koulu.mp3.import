@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdtccif0a36dm"
+path="res://.godot/imported/yokyopeli jingle no koulu.mp3-8f95351d84dae93aa880225b2d3ed6d4.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/yokyopeli jingle no koulu.mp3"
+dest_files=["res://.godot/imported/yokyopeli jingle no koulu.mp3-8f95351d84dae93aa880225b2d3ed6d4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

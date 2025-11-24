@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi0qhxktsh3iy"]
+
+[ext_resource type="PackedScene" uid="uid://dgsjjcdifmr88" path="res://Models/BuildingBlocks/kp_bg_city_2k_tris.glb" id="1_0n5dg"]
+
+[sub_resource type="Gradient" id="Gradient_4c2j1"]
+offsets = PackedFloat32Array(0.435897, 0.692308)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.266666, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qojqm"]
+gradient = SubResource("Gradient_4c2j1")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2x32p"]
+panorama = SubResource("GradientTexture2D_qojqm")
+
+[sub_resource type="Sky" id="Sky_wru7m"]
+sky_material = SubResource("PanoramaSkyMaterial_2x32p")
+
+[sub_resource type="Environment" id="Environment_8k8ve"]
+background_mode = 2
+sky = SubResource("Sky_wru7m")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="kp_bg_city_2k_tris" parent="." instance=ExtResource("1_0n5dg")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8k8ve")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpsrwlrrjfgqp"]
+
+[ext_resource type="Texture2D" uid="uid://dqp87tnpaa3my" path="res://Models/ykp_corkboard_menu_ykp_baked_corkboard_edited.png" id="1_vdlus"]
+[ext_resource type="Script" uid="uid://b5rcsde83y2jc" path="res://Entities/item_display.gd" id="2_vdlus"]
+
+[node name="ItemDisplay" type="TextureRect"]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("1_vdlus")
+expand_mode = 2
+script = ExtResource("2_vdlus")

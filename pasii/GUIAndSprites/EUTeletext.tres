@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://nqptjdudf8h6"]
+
+[ext_resource type="FontFile" uid="uid://see5xwa8roix" path="res://GUIAndSprites/EuropeanTeletext.ttf" id="1_g384a"]
+
+[resource]
+base_font = ExtResource("1_g384a")

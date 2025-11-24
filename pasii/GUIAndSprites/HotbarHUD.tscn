@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvehug45gay8n"]
+
+[ext_resource type="Script" uid="uid://bsabhyg88td12" path="res://GUIAndSprites/hotbar_hud.gd" id="1_4j2yd"]
+
+[node name="HotbarHUD" type="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -101.485
+offset_bottom = -53.485
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_4j2yd")

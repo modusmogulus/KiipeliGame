@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bnkw4qlnjjltt"]
+
+[ext_resource type="Shader" uid="uid://dw6irdsqw60il" path="res://Shaders/Hybrid/matcap_basic_textured.gdshader" id="1_sfscy"]
+[ext_resource type="Texture2D" uid="uid://trhv630011ex" path="res://textures/matcaps/Powerpoint Matcap (1).png" id="2_iu6tw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sfscy")
+shader_parameter/matcap = ExtResource("2_iu6tw")
+shader_parameter/matcappiness = 1.0
+shader_parameter/texture_colorize = Color(0, 0, 0, 0)
+shader_parameter/vertex_shadow_strength = 0.995
+shader_parameter/matcap_hue_shift = 0.0

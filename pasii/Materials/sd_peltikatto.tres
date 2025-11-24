@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dksoffotayi3x"]
+
+[ext_resource type="Texture2D" uid="uid://oewlq25wejvo" path="res://textures/ykp/Textures/texcd/yk_texcd_rooftop1.png" id="1_r8qsc"]
+[ext_resource type="Texture2D" uid="uid://577k67ey58si" path="res://textures/ykp/Textures/texcd/peltikatto_n.png" id="2_vj1s1"]
+
+[resource]
+albedo_texture = ExtResource("1_r8qsc")
+metallic_texture = ExtResource("1_r8qsc")
+roughness = 0.0
+normal_enabled = true
+normal_scale = 1.65
+normal_texture = ExtResource("2_vj1s1")

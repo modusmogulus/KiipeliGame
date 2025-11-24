@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bomg4ub05vc1f"]
+
+[ext_resource type="Script" uid="uid://cjaukf846nfsa" path="res://Entities/cutscene_camera.gd" id="1_wbg4x"]
+
+[node name="CutsceneCamera" type="Camera3D" groups=["CutsceneCamera"]]
+script = ExtResource("1_wbg4x")

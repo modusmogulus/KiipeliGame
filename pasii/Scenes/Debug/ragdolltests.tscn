@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://jn7fwyvi81i6"]
+
+[ext_resource type="PackedScene" uid="uid://kt12u7dmpg5c" path="res://Entities/NPCs/npc_ragdoll_B.tscn" id="1_2ykoj"]
+
+[sub_resource type="Environment" id="Environment_2ykoj"]
+background_mode = 1
+background_color = Color(0.625665, 0.700666, 0.857369, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99146, 0, -4.32269)
+use_collision = true
+size = Vector3(12.9927, 1, 14.1993)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.994707, -0.00966641, 0.1023, 0, 0.995565, 0.0940716, -0.102756, -0.0935737, 0.990296, 0.789038, 2.27361, 4.12784)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2ykoj")
+
+[node name="Node3D2" parent="." instance=ExtResource("1_2ykoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34123, 1.42678, -0.427353)

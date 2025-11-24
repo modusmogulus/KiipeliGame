@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://bsd5vxf25mrie"]
+
+[ext_resource type="Shader" uid="uid://crua58tbytjn3" path="res://Shaders/screen_space_psychedelic.gdshader" id="1_whdwg"]
+[ext_resource type="Texture2D" uid="uid://b84ss6exvmm51" path="res://textures/uvsphere_weird_matcap2.png" id="2_nvvh0"]
+
+[sub_resource type="Gradient" id="Gradient_bjgf4"]
+offsets = PackedFloat32Array(0, 0.587361, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0.494118, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ck0xe"]
+gradient = SubResource("Gradient_bjgf4")
+fill = 2
+fill_from = Vector2(0.508547, 0.508547)
+
+[sub_resource type="Gradient" id="Gradient_ck0xe"]
+offsets = PackedFloat32Array(0, 0.598513)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ct8aj"]
+gradient = SubResource("Gradient_ck0xe")
+fill = 2
+fill_from = Vector2(0.521368, 0.529915)
+
+[resource]
+render_priority = 127
+shader = ExtResource("1_whdwg")
+shader_parameter/uvremap_texture = ExtResource("2_nvvh0")
+shader_parameter/albedo_texture = SubResource("GradientTexture2D_ck0xe")
+shader_parameter/intensity = 2.395
+shader_parameter/size = 0.075
+shader_parameter/saturation = -5.295
+shader_parameter/waviness = 0.0
+shader_parameter/alpha = 0.07
+shader_parameter/final_distortion = ExtResource("2_nvvh0")
+shader_parameter/mask = SubResource("GradientTexture2D_ct8aj")

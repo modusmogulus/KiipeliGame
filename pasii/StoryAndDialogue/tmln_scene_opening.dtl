@@ -1,0 +1,3 @@
+audio "res://Audio/Music/yokyopeli jingle no koulu.mp3" [volume="-8.0"]
+do CGG.start_camera_cutscene("op")
+Challenge 02\:

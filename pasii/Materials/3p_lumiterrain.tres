@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cbnk2frh58bya"]
+
+[ext_resource type="Shader" uid="uid://c42rhr30uox5w" path="res://Shaders/snow_glimmer_yay.gdshader" id="1_32xww"]
+[ext_resource type="Shader" uid="uid://bms4qqjj0o7c0" path="res://Shaders/Hybrid/3p_retro_stochastic.gdshader" id="1_ha0ag"]
+[ext_resource type="Texture2D" uid="uid://dy63cimxxy2ef" path="res://textures/ykp/Textures/yk_rocksfinland-export.png" id="2_32xww"]
+[ext_resource type="Texture2D" uid="uid://dadg7ls2cav82" path="res://textures/ykp/Textures/yk_lumipenkka 2.png" id="3_84r0r"]
+[ext_resource type="Texture2D" uid="uid://fgolf38k4tlt" path="res://textures/ykp_mustavuorikivi_new_indexed.png" id="4_ha0ag"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84r0r"]
+render_priority = 0
+shader = ExtResource("1_32xww")
+shader_parameter/seed = 0.0
+shader_parameter/emission_factor = 0.0
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_84r0r")
+shader = ExtResource("1_ha0ag")
+shader_parameter/albedo_ceiling = Color(0.184127, 0.323858, 0.539898, 1)
+shader_parameter/texture_albedo_ceiling = ExtResource("2_32xww")
+shader_parameter/roughness = 1.0
+shader_parameter/albedo_wall = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_wall = ExtResource("4_ha0ag")
+shader_parameter/albedo_floor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo_floor = ExtResource("3_84r0r")
+shader_parameter/ground_threshold = 0.99
+shader_parameter/blend_smoothness = 0.11
+shader_parameter/uv1_blend_sharpness = 87.045
+shader_parameter/uv1_scale = Vector3(0.155, -0.16, -0.25)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv_global = true
+shader_parameter/use_uv_on_wall = false
+shader_parameter/use_uv_on_floor = false
+shader_parameter/use_uv_on_ceiling = false

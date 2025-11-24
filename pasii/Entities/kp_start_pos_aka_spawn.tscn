@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxvotcj7pyamf"]
+
+[ext_resource type="Script" uid="uid://bwxrevm5781dv" path="res://Entities/start_pos_aka_spawn.gd" id="1_dktjt"]
+[ext_resource type="Material" uid="uid://dkua5cp2cuehq" path="res://Materials/kptools_startpos.tres" id="2_dktjt"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0lfj8"]
+
+[node name="StartPos" type="Node3D"]
+script = ExtResource("1_dktjt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_0lfj8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dktjt")

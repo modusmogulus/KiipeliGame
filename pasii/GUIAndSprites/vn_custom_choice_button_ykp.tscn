@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://6usjwe0dp0k0"]
+
+[ext_resource type="Theme" uid="uid://n7s8gfkr2uq3" path="res://GUIAndSprites/7dsgui.tres" id="1_mgtgj"]
+[ext_resource type="Script" uid="uid://bldt7xlfum7ov" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="2_1cu08"]
+
+[node name="DialogicNode_ChoiceButton" type="Button"]
+custom_minimum_size = Vector2(146, 0)
+offset_right = 146.0
+offset_bottom = 14.0
+mouse_default_cursor_shape = 3
+theme = ExtResource("1_mgtgj")
+text = "bbbbb"
+script = ExtResource("2_1cu08")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
