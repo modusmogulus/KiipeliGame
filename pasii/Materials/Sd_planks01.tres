@@ -10,8 +10,8 @@ load_path = "res://.godot/imported/ba_planks.png-4c93658cd9f34d046a77c5a8fb9820f
 
 [resource]
 albedo_texture = ExtResource("1_h2jnr")
-metallic_specular = 0.58
-roughness = 0.34
+metallic_specular = 0.0
+roughness = 0.98
 normal_enabled = true
 normal_scale = 5.1
 normal_texture = SubResource("CompressedTexture2D_7hre0")

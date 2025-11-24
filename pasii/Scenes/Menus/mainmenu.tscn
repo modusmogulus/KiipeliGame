@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ruoxyli2qntl"]
+[gd_scene load_steps=7 format=3 uid="uid://ruoxyli2qntl"]
 
 [ext_resource type="PackedScene" uid="uid://cis27cwh2v6o2" path="res://Models/ykp_corkboard_menu.glb" id="1_flfoa"]
 [ext_resource type="Script" uid="uid://lomasvl0diqw" path="res://Scenes/Menus/mainmenu.gd" id="1_k538w"]
+[ext_resource type="Script" uid="uid://c6vgsca0jkt35" path="res://Scenes/Menus/menubutton.gd" id="3_lxkb1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_flfoa"]
 
@@ -13,16 +14,17 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.45
 
-[node name="Mainmenu" type="Node3D"]
+[node name="Mainmenu" type="Node3D" node_paths=PackedStringArray("cam", "camtarget")]
 script = ExtResource("1_k538w")
+cam = NodePath("Camera3D")
+camtarget = NodePath("CameraTarget")
 
 [node name="ykp_corkboard_menu" parent="." instance=ExtResource("1_flfoa")]
 
-[node name="Camera3D" type="Camera3D" parent="ykp_corkboard_menu"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.7456, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="." node_paths=PackedStringArray("menu")]
+transform = Transform3D(0.583, 0, 0, 0, 0.583, 0, 0, 0, 0.583, -1, 0, 0.86751676)
+script = ExtResource("3_lxkb1")
+menu = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_flfoa")
@@ -32,8 +34,29 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00917053, -0.225525, 0.0196533)
 shape = SubResource("BoxShape3D_k538w")
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="." node_paths=PackedStringArray("menu")]
+transform = Transform3D(0.59, 0, 0, 0, 0.59, 0, 0, 0, 0.59, -0.99840564, 0, -1.1013688)
+script = ExtResource("3_lxkb1")
+menu = NodePath("..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("PlaneMesh_flfoa")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00917053, -0.225525, 0.0196533)
+shape = SubResource("BoxShape3D_k538w")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lxkb1")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+process_priority = -1
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.7456, 0)
+
+[node name="CameraTarget" type="Node3D" parent="."]
+
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]
+[connection signal="mouse_entered" from="StaticBody3D2" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="StaticBody3D2" to="." method="_on_static_body_3d_mouse_exited"]
