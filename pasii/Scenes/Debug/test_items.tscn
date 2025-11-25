@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://w1a62wr7lgfs"]
+[gd_scene load_steps=19 format=3 uid="uid://w1a62wr7lgfs"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://Entities/GoldGdt/Pawn.tscn" id="1_vf75a"]
 [ext_resource type="PackedScene" uid="uid://dxvotcj7pyamf" path="res://Entities/kp_start_pos_aka_spawn.tscn" id="2_qt8au"]
+[ext_resource type="Script" uid="uid://84vfu5iuwwfw" path="res://Entities/Triggers/trigger_base.gd" id="3_np1d2"]
+[ext_resource type="Script" uid="uid://d0hnejxgbcvk2" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_item.gd" id="4_e16he"]
+[ext_resource type="Script" uid="uid://b3wx62ojfygrp" path="res://Entities/item_spatial.gd" id="5_tvxuy"]
+[ext_resource type="Script" uid="uid://dgb7lynbjgbw0" path="res://Entities/item_data.gd" id="6_dlaoi"]
+[ext_resource type="Texture2D" uid="uid://c5rabtv8vnhvf" path="res://textures/ykp_es_euroshopper_tex.png" id="7_chiic"]
+[ext_resource type="Script" uid="uid://b5rcsde83y2jc" path="res://Entities/item_display.gd" id="8_7r4ag"]
+[ext_resource type="PackedScene" uid="uid://c7xq4xxj1n1m2" path="res://Entities/Triggers/trigger_base.tscn" id="9_tvxuy"]
+[ext_resource type="PackedScene" uid="uid://dfctl5yhhitu3" path="res://Entities/Triggers/InheritedClassesAndPrefabs/trigact_dialogue.tscn" id="10_dlaoi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qt8au"]
 
@@ -11,6 +19,27 @@ sky_material = SubResource("ProceduralSkyMaterial_qt8au")
 [sub_resource type="Environment" id="Environment_vos01"]
 background_mode = 2
 sky = SubResource("Sky_dg86i")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vr0pn"]
+radius = 1.335
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e601p"]
+radius = 0.305
+height = 0.64
+radial_segments = 4
+rings = 0
+
+[sub_resource type="Gradient" id="Gradient_e601p"]
+offsets = PackedFloat32Array(0, 0.360248, 1)
+colors = PackedColorArray(0, 1, 0.116667, 1, 1, 0, 0, 1, 0.849058, 0.000880985, 0.898253, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vyfdn"]
+gradient = SubResource("Gradient_e601p")
+fill_from = Vector2(0.444444, 0.367521)
+fill_to = Vector2(0.440171, 0.465812)
+repeat = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chiic"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -28,3 +57,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 [node name="StartPos" parent="." instance=ExtResource("2_qt8au")]
 process_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 2)
+
+[node name="ClaimableItem" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+collision_mask = 3
+script = ExtResource("3_np1d2")
+interaction_description = "Press E to pick"
+this_triggertype = 3
+
+[node name="TrigCollision" type="CollisionShape3D" parent="ClaimableItem"]
+shape = SubResource("SphereShape3D_vr0pn")
+debug_color = Color(0, 1, 0.05, 1)
+
+[node name="trigact_itemshit" type="Node3D" parent="ClaimableItem" node_paths=PackedStringArray("items")]
+script = ExtResource("4_e16he")
+items = [NodePath("../inventory_item_base")]
+
+[node name="ItemSpatialPayload" type="Node3D" parent="ClaimableItem"]
+script = ExtResource("5_tvxuy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ClaimableItem/ItemSpatialPayload"]
+mesh = SubResource("CapsuleMesh_e601p")
+
+[node name="inventory_item_base" type="Node" parent="ClaimableItem" node_paths=PackedStringArray("item_model", "item_hud_display")]
+script = ExtResource("6_dlaoi")
+item_type = 112
+thumbnail = SubResource("GradientTexture2D_vyfdn")
+item_model = NodePath("../ItemSpatialPayload")
+item_hud_display = NodePath("itemHUDPayload")
+in_world = true
+model_visible = true
+metadata/_custom_type_script = "uid://dgb7lynbjgbw0"
+
+[node name="itemHUDPayload" type="TextureRect" parent="ClaimableItem/inventory_item_base"]
+clip_contents = true
+custom_minimum_size = Vector2(22, 22)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_chiic")
+script = ExtResource("8_7r4ag")
+
+[node name="TrigArea" parent="." instance=ExtResource("9_tvxuy")]
+transform = Transform3D(3.8, 0, 0, 0, 4.2, 0, 0, 0, 5.1, -2, 1, -2)
+
+[node name="Trigact_Dialogue" parent="TrigArea" instance=ExtResource("10_dlaoi")]
+timeline_name = "tmln_afreen"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrigArea"]
+shape = SubResource("BoxShape3D_chiic")
+
+[connection signal="body_entered" from="ClaimableItem" to="ClaimableItem" method="_on_body_entered"]
+[connection signal="body_exited" from="ClaimableItem" to="ClaimableItem" method="_on_body_exited"]

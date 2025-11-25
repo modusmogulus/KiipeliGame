@@ -5,7 +5,6 @@
 	# Godot-Math-Lib (Sinewave): https://github.com/sinewavey/Godot-Math-Lib/tree/main
 	# Q_Move (Btan2): https://github.com/Btan2/Q_Move/tree/main
 
-@icon("src/gdticon.png")
 class_name GoldGdt_Body extends CharacterBody3D
 
 
@@ -15,7 +14,7 @@ class_name GoldGdt_Body extends CharacterBody3D
 var diving_unlocked : bool = false
 var original_parameters : PlayerParameters
 @export var View : GoldGdt_View
-var in_dialogue : bool = false
+var can_move : bool = true
 @export var anim_tree : AnimationTree
 @export var AnimHandler : KiipeliAnimHandler
 @export var HpHandler : KP_HpHandler
@@ -171,11 +170,15 @@ func get_camera_look_dir() -> Vector3:
 func _physics_process(delta) -> void:
 	# Position the horizontal_view.
 	AnimHandler.grounded = is_on_floor()
-	if Dialogic.current_timeline != null:
-		in_dialogue = true
-	else:
-		in_dialogue = false
-	AnimHandler.in_dialogue = in_dialogue
+	
+	#Uncomment to force the npcs stop you (fucking annoying)
+	#if Dialogic.current_timeline != null:
+	#	can_move = false
+	#else:
+	#	can_move = true
+	
+	
+	AnimHandler.can_move = can_move
 	View.horizontal_view.transform.origin.y = offset
 	if vault_cooldown_timer > 0:
 		vault_cooldown_timer -= delta

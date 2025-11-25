@@ -1,6 +1,6 @@
 extends Node3D
 var selected_node : Node
-var size_multiplier_on_select : Vector3 = Vector3(1.1, 1.1, 1.1)
+var size_multiplier_on_select : Vector3 = Vector3(0.3, 0.3, 0.3)
 @export var cam : Camera3D
 @export var camtarget : Node3D
 @export var lerpstep : float = 0.1
@@ -25,17 +25,21 @@ func _process(delta: float) -> void:
 		select_menubutton(selection_index-1)
 	if Input.is_action_just_pressed("choice_down"):
 		select_menubutton(selection_index+1)
-	
+	if Input.is_action_just_pressed("choice_enter"):
+		if selectables[selection_index].trigact_on_click != null:
+			selectables[selection_index].trigact_on_click.do_shit()
 	if !(selected_node == null):
 		var _t = lerp(original_cam_position, selected_node.global_position, 0.5)
 		camtarget.global_position = lerp(camtarget.position, _t, 0.1)
 		camtarget.look_at_from_position(camtarget.global_position, selected_node.global_position, upvector)
 		cam.global_position = lerp(cam.global_position, camtarget.global_position, lerpstep)
-		cam.global_rotation = lerp(cam.global_rotation, camtarget.global_rotation, lerpstep)
-		camtarget.global_position.y = original_cam_position.y
+		cam.global_rotation = cam.global_rotation.slerp(camtarget.global_rotation, lerpstep)
+		#camtarget.global_position.y = original_cam_position.y
+
 func deselect_all():
 		for stb in selectables:
 			stb.deselect_self()
+
 func select_menubutton(index : int):
 	deselect_all()
 	selection_index = wrap(index, 0, selectables.size())

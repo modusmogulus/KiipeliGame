@@ -14,8 +14,8 @@
 "pitch_variance": 0.0,
 "skip_characters": 0.0,
 "sound_path": "res://Audio/Voices/Acid/VB303 AcidBass note_2.wav",
-"volume_base": -1.0,
-"volume_variance": -0.9
+"volume_base": -7.0,
+"volume_variance": 0.0
 }
 },
 "style": "",

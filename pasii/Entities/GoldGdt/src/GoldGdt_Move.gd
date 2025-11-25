@@ -1,4 +1,3 @@
-@icon("src/gdticon.png")
 class_name GoldGdt_Move extends Node
 
 @export_group("Components")

@@ -1,5 +1,5 @@
 extends Node3D
-#Autoload name is CGG
+#Autoload name is CGG, Client Game Global
 
 var local_player_pawn : GoldGdt_Pawn
 var local_player_body : GoldGdt_Body
@@ -30,3 +30,6 @@ func stop_camera_cutscene(cutscene_name : String):
 func  _enter_tree() -> void:
 	cutscene_cameras = []
 	main_camera = null
+
+func set_movement_allowed(value: bool):
+	local_player_body.can_move = value

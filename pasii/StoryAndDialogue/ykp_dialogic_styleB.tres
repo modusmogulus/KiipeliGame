@@ -41,6 +41,7 @@ overrides = {
 "box_color_use_global": "false",
 "box_margin_bottom": "0.0",
 "box_panel": "\"res://StoryAndDialogue/ykp_dialogue_stylebox_A.tres\"",
+"name_label_font": "\"res://GUIAndSprites/PopHappiness.ttf\"",
 "normal_font": "\"res://GUIAndSprites/TiresiasTekstitys.tres\"",
 "text_use_global_color": "false",
 "typing_sounds_mode": "1",
@@ -85,4 +86,4 @@ layer_info = {
 "16": SubResource("Resource_eybuw"),
 "17": SubResource("Resource_6u8tf")
 }
-metadata/_latest_layer = "13"
+metadata/_latest_layer = "16"

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=91 format=3 uid="uid://bgpya7skvrw7c"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=95 format=3 uid="uid://bgpya7skvrw7c"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ynat8"]
 animation = &"JumpPoseA1"
@@ -208,12 +208,12 @@ animation = &"denssiAction"
 animation = &"denssaus"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ion57"]
-graph_offset = Vector2(-134.284, 221.485)
+graph_offset = Vector2(-116.80078, 151.89844)
 nodes/output/position = Vector2(500, 160)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_vmn6d")
 nodes/Add2/position = Vector2(280, 180)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_4odwf")
-nodes/Animation/position = Vector2(0, 420)
+nodes/Animation/position = Vector2(20, 460)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_0mqpj")
 "nodes/Animation 2/position" = Vector2(20, 280)
 node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation"]
@@ -236,6 +236,15 @@ nodes/Animation/position = Vector2(-20, 100)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ion57")
 "nodes/Animation 2/position" = Vector2(-60, 260)
 node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j5oij"]
+animation = &"Medicine"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6npkc"]
+graph_offset = Vector2(-181.88281, 80.40625)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_j5oij")
+nodes/Animation/position = Vector2(120, 80)
+node_connections = [&"output", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_1u55u"]
 
@@ -282,7 +291,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ion57"]
 advance_mode = 2
-advance_expression = "item == \"LUURI\""
+advance_expression = "item == \"PHONE\""
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lwew4"]
 switch_mode = 2
@@ -300,6 +309,13 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smqei"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pxc30"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a8ejy"]
 states/RELOAD_Beer/node = SubResource("AnimationNodeBlendTree_a8ejy")
 states/RELOAD_Beer/position = Vector2(278, -10)
@@ -308,12 +324,14 @@ states/RELOAD_Beer_Opened/position = Vector2(461, -39)
 states/RELOAD_Denssi/node = SubResource("AnimationNodeBlendTree_ion57")
 states/RELOAD_Denssi/position = Vector2(526, 196)
 states/RELOAD_Luuri/node = SubResource("AnimationNodeBlendTree_d03g2")
-states/RELOAD_Luuri/position = Vector2(682, -23)
+states/RELOAD_Luuri/position = Vector2(684, -23)
+states/RELOAD_Medicine/node = SubResource("AnimationNodeBlendTree_6npkc")
+states/RELOAD_Medicine/position = Vector2(454.3711, 251.66016)
 states/RELOAD_Paahdin/node = SubResource("AnimationNodeBlendTree_nap7o")
 states/RELOAD_Paahdin/position = Vector2(487, 100)
 states/Start/position = Vector2(174, 188)
-transitions = ["Start", "End", SubResource("AnimationNodeStateMachineTransition_6g1eq"), "Start", "RELOAD_Beer", SubResource("AnimationNodeStateMachineTransition_fqhp5"), "RELOAD_Beer", "End", SubResource("AnimationNodeStateMachineTransition_4ikgv"), "Start", "RELOAD_Paahdin", SubResource("AnimationNodeStateMachineTransition_78mof"), "Start", "RELOAD_Beer_Opened", SubResource("AnimationNodeStateMachineTransition_0mqpj"), "RELOAD_Beer_Opened", "End", SubResource("AnimationNodeStateMachineTransition_4odwf"), "Start", "RELOAD_Luuri", SubResource("AnimationNodeStateMachineTransition_ion57"), "RELOAD_Paahdin", "End", SubResource("AnimationNodeStateMachineTransition_lwew4"), "Start", "RELOAD_Denssi", SubResource("AnimationNodeStateMachineTransition_j5oij"), "RELOAD_Denssi", "End", SubResource("AnimationNodeStateMachineTransition_6npkc"), "RELOAD_Luuri", "End", SubResource("AnimationNodeStateMachineTransition_51svp")]
-graph_offset = Vector2(85, -59)
+transitions = ["Start", "End", SubResource("AnimationNodeStateMachineTransition_6g1eq"), "Start", "RELOAD_Beer", SubResource("AnimationNodeStateMachineTransition_fqhp5"), "RELOAD_Beer", "End", SubResource("AnimationNodeStateMachineTransition_4ikgv"), "Start", "RELOAD_Paahdin", SubResource("AnimationNodeStateMachineTransition_78mof"), "Start", "RELOAD_Beer_Opened", SubResource("AnimationNodeStateMachineTransition_0mqpj"), "RELOAD_Beer_Opened", "End", SubResource("AnimationNodeStateMachineTransition_4odwf"), "Start", "RELOAD_Luuri", SubResource("AnimationNodeStateMachineTransition_ion57"), "RELOAD_Paahdin", "End", SubResource("AnimationNodeStateMachineTransition_lwew4"), "Start", "RELOAD_Denssi", SubResource("AnimationNodeStateMachineTransition_j5oij"), "RELOAD_Denssi", "End", SubResource("AnimationNodeStateMachineTransition_6npkc"), "RELOAD_Luuri", "End", SubResource("AnimationNodeStateMachineTransition_51svp"), "Start", "RELOAD_Medicine", SubResource("AnimationNodeStateMachineTransition_smqei"), "RELOAD_Medicine", "End", SubResource("AnimationNodeStateMachineTransition_pxc30")]
+graph_offset = Vector2(66.10156, 34.45703)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2p7nm"]
 animation = &"ClimbPoseVeryHighA1"
@@ -556,4 +574,4 @@ states/Wallruns/position = Vector2(626, 255)
 states/rollAltern2/node = SubResource("AnimationNodeAnimation_i7id1")
 states/rollAltern2/position = Vector2(588, 42)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1covp"), "Idle", "GroundMovement", SubResource("AnimationNodeStateMachineTransition_2p7nm"), "GroundMovement", "rollAltern2", SubResource("AnimationNodeStateMachineTransition_d03g2"), "rollAltern2", "GroundMovement", SubResource("AnimationNodeStateMachineTransition_bijvy"), "rollAltern2", "Manuever", SubResource("AnimationNodeStateMachineTransition_ynat8"), "Manuever", "rollAltern2", SubResource("AnimationNodeStateMachineTransition_45dmv"), "Manuever", "Wallruns", SubResource("AnimationNodeStateMachineTransition_l7e66"), "Wallruns", "GroundMovement", SubResource("AnimationNodeStateMachineTransition_i7id1"), "Idle", "AirMovement", SubResource("AnimationNodeStateMachineTransition_1u55u"), "GroundMovement", "AirMovement", SubResource("AnimationNodeStateMachineTransition_vmn6d"), "rollAltern2", "AirMovement", SubResource("AnimationNodeStateMachineTransition_116pi"), "Wallruns", "AirMovement", SubResource("AnimationNodeStateMachineTransition_g1dig"), "AirMovement", "GroundMovement", SubResource("AnimationNodeStateMachineTransition_a8ejy"), "AirMovement", "Wallruns", SubResource("AnimationNodeStateMachineTransition_mjx8f"), "AirMovement", "Manuever", SubResource("AnimationNodeStateMachineTransition_my8qs"), "Manuever", "AirMovement", SubResource("AnimationNodeStateMachineTransition_qwbhu"), "AirMovement", "Walljump", SubResource("AnimationNodeStateMachineTransition_fbh0q"), "Walljump", "AirMovement", SubResource("AnimationNodeStateMachineTransition_eiope"), "Manuever", "Walljump", SubResource("AnimationNodeStateMachineTransition_4tq2e"), "Walljump", "Manuever", SubResource("AnimationNodeStateMachineTransition_qyrqv"), "GroundMovement", "RELOAD", SubResource("AnimationNodeStateMachineTransition_40x7h"), "RELOAD", "GroundMovement", SubResource("AnimationNodeStateMachineTransition_u3cqj"), "RELOAD", "AirMovement", SubResource("AnimationNodeStateMachineTransition_cpu4p"), "AirMovement", "RELOAD", SubResource("AnimationNodeStateMachineTransition_37gnp")]
-graph_offset = Vector2(-86, -89)
+graph_offset = Vector2(-56, -86)

@@ -1,4 +1,3 @@
-@icon("src/gdticon.png")
 class_name GoldGdt_Controls extends Node
 
 @export_group("Components")
@@ -45,6 +44,10 @@ func _input(event) -> void:
 		return
 		
 	if event is InputEventKey:
+		if event.is_action_released("quicksave"):
+			SaveManager.save_game()
+		if event.is_action_released("quickload"):
+			SaveManager.load_save()
 		if event.is_action_released("ui_cancel"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if event.is_action_released("kp_interact"):
@@ -74,7 +77,7 @@ func _physics_process(delta) -> void:
 	_gather_input()
 	_act_on_input()
 	
-	if movement_input && !Body.in_dialogue:
+	if movement_input && Body.can_move:
 		AnimHandler.is_moving = true
 		#for a in state_machines:
 		#	a.travel("RunCycle")
@@ -121,13 +124,12 @@ func _gather_input() -> void:
 		if speeds[i] > Parameters.MAX_SPEED:
 			speeds[i] *= Parameters.MAX_SPEED / speeds[i]
 	
-	if Dialogic.current_timeline == null:
+	if Body.can_move:
 		move_dir = Vector3(movement_input.x * speeds.x, 0, movement_input.y * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)
-		
 	else:
 		move_dir = Vector3.ZERO
 		return
-	
+
 	# Overwrite movement input on wallrun
 	if Body.current_wallrun_state != 0:
 		#move_dir = Vector3(Body.current_wallrun_state * speeds.x, 0, -10.0 * speeds.y).rotated(Vector3.UP, View.horizontal_view.rotation.y)

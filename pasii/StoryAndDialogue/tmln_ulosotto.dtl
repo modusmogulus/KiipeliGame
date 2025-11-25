@@ -1,1 +1,5 @@
-losotto: Ulosotosta päivää. Kiliseekö kukkaro vai lähteekö radio mukaan?
+do CGG.set_movement_allowed(false)
+losotto: Ulosotosta päivää. Kiliseekö kukkaro vai lähteekö radio mukaan, mites tänään olisi?
+- Ootas mää tarkistan mun lompakon (Paina ↑ )
+- Mitä sää nyt sinne urkit v***n pässi (Paina ↓)
+do CGG.set_movement_allowed(true)

@@ -4,7 +4,7 @@ class_name KiipeliAnimHandler extends Node
 #AnimationTree's advance_expression_base_node needs to point
 #to a node that has this script 
 var is_moving: bool = false
-var in_dialogue: bool = false
+var can_move: bool = true
 var wallrunstate = "NONE"
 var is_grounded: bool = true #DONT USE THIS -- WHAT THE FUCK IS THIS FOR?
 var player_velocity: Vector3 = Vector3.ZERO
@@ -105,7 +105,8 @@ func _process(delta: float) -> void:
 	Dense.visible = false
 	Liukuri.visible = false
 	Beer.visible = false
-	Paahdin.visible = false
+	if Paahdin:
+		Paahdin.visible = false
 	
 	for ant in SyncedAnimTrees:
 		var grndmvprev : Vector2 = ant["parameters/GroundMovement/blend_position"]
@@ -160,7 +161,8 @@ func _process(delta: float) -> void:
 		AnimationSound.stop()
 	
 		Dense.visible = false
-		Paahdin.visible = false
+		if Paahdin:
+			Paahdin.visible = false
 		Phone.visible = false
 		Liukuri.visible = false
 		Beer.visible = false
