@@ -1,5 +1,33 @@
 do CGG.set_movement_allowed(false)
-losotto: Ulosotosta päivää. Kiliseekö kukkaro vai lähteekö radio mukaan, mites tänään olisi?
-- Ootas mää tarkistan mun lompakon (Paina ↑ )
-- Mitä sää nyt sinne urkit v***n pässi (Paina ↓)
+losotto: Ulosotosta päivää. Kiliseekö kukkaro vai lähteekö radio mukaan, mites tänään olisi?\
+(Paina ↑  tai ↓ valitaksesi)
+- *Roastaa
+	main_character: Tweakkaakko sää?\
+	Sunhan pää heiluu niinku Vaasanpuistikon "helistin", ohhoh.
+- *Maksa
+	pasi: Ootas mää tarkistan mun lompakon...
+	[wait time="0.2"]
+	audio "res://Audio/AudioByOthers/ClassicSoundEffects/crickets_awkward_silence.mp3"
+	pasi: Öö
+	[wait time="0.8"]
+	pasi: *No one was there\
+	- except the one and only Matti...
+	- Haistata
+		- V***u
+			main_character: Haista V***u
+			losotto: *Karu Losotto ei ole vaikuttunut
+			losotto: V***u??? Kielsikö Äiti kiroilun? Kuuntele,\
+			HAISTA VITTU
+			losotto: Eli sinullako ei ole rahaa?
+			- *Paljasta totuus
+				main_character: Ei mulla oo muuta kun matti kukkarossa...
+			- *Mee töihin
+				main_character: Mee töihin
+			- *Onko sulla?
+			losotto: No, se on voi voi. Hommaa vaikka toinen laina ja ryhdy yrittäjäksi
+			losotto: Hommaa vaikka pikavippi, ei se minun ongelmani ole
+			losotto: Nykyäänhän kaikki puhuu niistä työbingoista missä arvotaan työ, mene vaikka sellaiseen.
+			losotto: Turinat sikseen, radio lähtee siis mukaan. Seuraavalla kerralla avaat oven, keität kahvit ja maksat joko kenelle lie oletkaan velkaa, tai sitten maksat minulle 200% hinnasta. Käteisellä. Vitsailen toki *wink*
+		- Huilu
+	- *Kerro totuus
 do CGG.set_movement_allowed(true)

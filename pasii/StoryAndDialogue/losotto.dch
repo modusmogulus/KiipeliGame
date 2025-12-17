@@ -22,10 +22,10 @@
 "suffix": ""
 },
 &"default_portrait": "",
-&"description": "",
+&"description": "Karu Losotto, ulosottovirkailija. ",
 &"display_name": "losotto",
 &"mirror": false,
-&"nicknames": [""],
+&"nicknames": ["Karu Losotto"],
 &"offset": Vector2(0, 0),
 &"portraits": {},
 &"scale": 1.0
