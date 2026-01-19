@@ -1,4 +1,4 @@
-[gd_scene load_steps=230 format=4 uid="uid://debewdsojdvlo"]
+[gd_scene load_steps=234 format=4 uid="uid://debewdsojdvlo"]
 
 [ext_resource type="LightmapGIData" uid="uid://ctrntdc7jfpb" path="res://Scenes/gameplaytests01.lmbake" id="1_4e3r8"]
 [ext_resource type="PackedScene" uid="uid://c5xfvg4063s1v" path="res://Models/Blender/YKPTASO1uusin.blend" id="2_ngc71"]
@@ -81,6 +81,8 @@
 [ext_resource type="Script" uid="uid://dcgimy2fx7rok" path="res://Entities/play_animation_on_start.gd" id="79_1l5jm"]
 [ext_resource type="PackedScene" uid="uid://qxw1i1m5a766" path="res://Scenes/challenge_hymypatsas.tscn" id="80_ngc71"]
 [ext_resource type="PackedScene" uid="uid://bmw856vbbuc0k" path="res://Scenes/level1.tscn" id="81_r0rsg"]
+[ext_resource type="Shader" uid="uid://hbtqsa5vylex" path="res://Shaders/Psychedelic/psyc_mimic_01.gdshader" id="82_wvi4v"]
+[ext_resource type="Texture2D" uid="uid://dspb78rq32j1b" path="res://textures/ykp_wallpaper_cool_01.png" id="83_1qpsb"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p27gu"]
 
@@ -11465,6 +11467,16 @@ _data = {
 &"ovi_aukeaa90deg": SubResource("Animation_he25j")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_r0rsg"]
+flip_faces = true
+size = Vector3(80, 80, 80)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qpsb"]
+render_priority = 127
+shader = ExtResource("82_wvi4v")
+shader_parameter/tiling_multiplier = 41.905
+shader_parameter/itex1 = ExtResource("83_1qpsb")
+
 [node name="Combolevel" type="Node3D"]
 
 [node name="LevelRoot" type="Node3D" parent="." groups=["LevelRoot"]]
@@ -18634,9 +18646,15 @@ visible = false
 
 [node name="Pawn" parent="." instance=ExtResource("29_lomr2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29706, -401.074, -14)
+visible = false
 start_view_yaw = 180.0
 
 [node name="Ambience" type="Node3D" parent="."]
+
+[node name="SHADER MESH PSYCHEDELEL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.63739, -409.63464, 0)
+mesh = SubResource("BoxMesh_r0rsg")
+surface_material_override/0 = SubResource("ShaderMaterial_1qpsb")
 
 [connection signal="body_entered" from="LevelRoot/TrigArea2_ULOSOTTO" to="LevelRoot/TrigArea2_ULOSOTTO" method="_on_body_entered"]
 [connection signal="body_exited" from="LevelRoot/TrigArea2_ULOSOTTO" to="LevelRoot/TrigArea2_ULOSOTTO" method="_on_body_exited"]

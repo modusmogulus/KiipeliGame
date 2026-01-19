@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/omasurfmap.glb-c0b94dc4b76226fdf75e4b0d9028a7
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,6 +34,9 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "@MATERIAL:2": {
@@ -40,22 +45,27 @@ _subresources={
 },
 "Material": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/3p_ramp1.tres",
 "use_external/path": "uid://brwptrbxwxg1y"
 },
 "Material.001": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/3p_cave.tres",
 "use_external/path": "uid://dlgj46yl3o27v"
 },
 "crowd": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/crowdspatial.tres",
 "use_external/path": "uid://bov6mj2p5co3r"
 },
 "crowd_top": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/crowdspatial2.tres",
 "use_external/path": "uid://d0qspt6h417jt"
 },
 "water-surface": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Shaders/-AA-IHANA-MOODY-VESI.tres",
 "use_external/path": "uid://csjucp8jhbru4"
 }
 }

@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/hd-puut.glb-aa0a0ddc29733f53d2a7c8f5f9d68818.
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,6 +34,9 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "meshes": {
 "hd-puut_Plane": {
@@ -40,6 +45,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "hd-puut_leaves": {
@@ -48,6 +54,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "hd-puut_leaves_003": {
@@ -56,6 +63,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "hd-puut_tree": {
@@ -64,6 +72,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "hd-puut_tree_001": {
@@ -72,6 +81,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "hd-puut_tree_002": {
@@ -80,6 +90,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "hd-puut_tree_003": {
@@ -88,6 +99,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "hd-puut_tree_004": {
@@ -96,6 +108,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 },
 "hd-puut_tree_005": {
@@ -104,6 +117,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
 "save_to_file/path": ""
 }
 }

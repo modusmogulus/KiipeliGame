@@ -50,7 +50,6 @@ directories/dch_directory={
 "pasi": "res://StoryAndDialogue/pasi.dch"
 }
 directories/dtl_directory={
-"tmln_afreen": "res://StoryAndDialogue/tmln_afreen.dtl",
 "tmln_scene_opening": "res://StoryAndDialogue/tmln_scene_opening.dtl",
 "tmln_test": "res://StoryAndDialogue/tmln_test.dtl",
 "tmln_ulosotto": "res://StoryAndDialogue/tmln_ulosotto.dtl",

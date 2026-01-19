@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/level1.blend-eb2dc485cfe0939126ae2ed67c0d38ad
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,34 +34,44 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "BLO2": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/3D-fake-interior-building-03.tres",
 "use_external/path": "uid://iisvwrrohoor"
 },
 "BLO6": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/3D-fake-interior-building-06.tres",
 "use_external/path": "uid://dthotyctngh6n"
 },
 "BLO7": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/orm_kaleva_building_011_v2.tres",
 "use_external/path": "uid://c2l5k2ea300dq"
 },
 "fence": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/sd_fence_supportmaterial_grid.tres",
 "use_external/path": "uid://da5bvxiwhhlsk"
 },
 "lumi": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/3p_lumiterrain.tres",
 "use_external/path": "uid://cbnk2frh58bya"
 },
 "pelti": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/sd_peltikatto.tres",
 "use_external/path": "uid://dksoffotayi3x"
 },
 "punatiili": {
 "use_external/enabled": true,
+"use_external/fallback_path": "res://Materials/sd_haapatiles.tres",
 "use_external/path": "uid://bqfyovibyagis"
 },
 "tie-blendable": {
@@ -86,3 +98,4 @@ blender/materials/export_materials=1
 blender/animation/limit_playback=true
 blender/animation/always_sample=true
 blender/animation/group_tracks=true
+gltf/naming_version=0
