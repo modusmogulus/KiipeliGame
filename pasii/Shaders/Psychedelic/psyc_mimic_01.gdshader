@@ -65,7 +65,7 @@ vec3 h2r(vec3 hsv) {
 
 void fragment() {
 	vec3 col = vec3(1.0);
-	float dep = texture(depthtex, SCREEN_UV).x;
+	float dep = texture(depthtex, SCREEN_UV).x*0.1;
 	
 	vec2 scruvb = 0.5*tanh(2.0*SCREEN_UV-1.0+cos(TIME)*0.01)+0.5-sin(TIME+cos(TIME*0.2))*0.01;
 	scruvb = mix(scruvb, 0.5*tanh(2.0*rotator(TIME*-0.12)*SCREEN_UV-1.0+cos(TIME*0.6)*0.01)+0.5-sin(TIME+cos(TIME*1.3))*0.01, 0.01*sin(9.3*scruvb.x+TIME));
@@ -79,7 +79,7 @@ void fragment() {
 	scruv = mix(scruv/dep, scruvd/dep, 0.5)/tiling_multiplier;
 	scruv = mirroring(scruv)/2.0;
 	col = texture(itex1, (scruv+vec2(0.0, TIME*-0.1))+scruvb).xyz;
-	col = 1.3*h2r(r2h(texture(screentex, scruvb).xyz).xyz+vec3(0.0-0.01*fract(0.113*TIME+dep*21.0), 0.3-0.12*sin(TIME+dep*920.0), 0.02)) / max(col*0.3, 0.01);
+	col = 1.3*h2r(r2h(texture(screentex, scruvb).xyz).xyz+vec3(0.0-0.01*fract(0.113*TIME+dep*21.0), 0.3-0.22*sin(TIME+dep*9.0), 0.0)) / max(col*0.3, 0.01);
 	
 	ALBEDO.xyz = col.xyz;
 }

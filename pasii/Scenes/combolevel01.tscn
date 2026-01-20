@@ -82,7 +82,7 @@
 [ext_resource type="PackedScene" uid="uid://qxw1i1m5a766" path="res://Scenes/challenge_hymypatsas.tscn" id="80_ngc71"]
 [ext_resource type="PackedScene" uid="uid://bmw856vbbuc0k" path="res://Scenes/level1.tscn" id="81_r0rsg"]
 [ext_resource type="Shader" uid="uid://hbtqsa5vylex" path="res://Shaders/Psychedelic/psyc_mimic_01.gdshader" id="82_wvi4v"]
-[ext_resource type="Texture2D" uid="uid://dspb78rq32j1b" path="res://textures/ykp_wallpaper_cool_01.png" id="83_1qpsb"]
+[ext_resource type="Texture2D" uid="uid://btsfuwbm3655q" path="res://textures/texturebloat/2k_psych.png" id="83_1qpsb"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_p27gu"]
 
@@ -11472,9 +11472,9 @@ flip_faces = true
 size = Vector3(80, 80, 80)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1qpsb"]
-render_priority = 127
+render_priority = 0
 shader = ExtResource("82_wvi4v")
-shader_parameter/tiling_multiplier = 41.905
+shader_parameter/tiling_multiplier = 17.455
 shader_parameter/itex1 = ExtResource("83_1qpsb")
 
 [node name="Combolevel" type="Node3D"]
@@ -18652,7 +18652,8 @@ start_view_yaw = 180.0
 [node name="Ambience" type="Node3D" parent="."]
 
 [node name="SHADER MESH PSYCHEDELEL" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.63739, -409.63464, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.65325, -409.63464, 222.92606)
+visible = false
 mesh = SubResource("BoxMesh_r0rsg")
 surface_material_override/0 = SubResource("ShaderMaterial_1qpsb")
 
